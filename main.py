@@ -2,7 +2,7 @@
 import graphic_main
 
 # initialisation des modules
-screen = graphic_main.initialisation()
+screen = graphic_main.initialisation(True)
 frame = graphic_main.import_character_picture(6)
 
 # boucle de fonctionement

@@ -24,6 +24,8 @@ def boucle():
         if event.type == pygame.QUIT:
             sys.exit()
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                sys.exit()
             if event.key == pygame.K_z:
                 move_down = True
                 is_movement += 1
@@ -54,10 +56,10 @@ def boucle():
                 move_left = False
                 is_movement -= 1
     if move_up:
-        pos[1] += 1
+        pos[1] += 2
     if move_down:
-        pos[1] -= 1
+        pos[1] -= 2
     if move_left:
-        pos[0] -= 1
+        pos[0] -= 2
     if move_right:
-        pos[0] += 1
+        pos[0] += 2
