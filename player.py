@@ -58,8 +58,7 @@ def boucle():
             if event.key == pygame.K_q:
                 move_left = False
                 is_movement -= 1
-    print(collision())
-    if not collision():
+    if not collision_with_ennemy_1():
         if move_up:
             pos[1] += 2
         if move_down:
@@ -68,7 +67,7 @@ def boucle():
             pos[0] -= 2
         if move_right:
             pos[0] += 2
-    if collision():
+    if collision_with_ennemy_1():
         if move_up:
             pos[1] -= 2
         if move_down:
@@ -79,16 +78,16 @@ def boucle():
             pos[0] -= 2
 
 
-def collision():
+def collision_with_ennemy_1():
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
-    rectA.h = 10
-    rectA.w = 10
+    rectA.h = 40
+    rectA.w = 15
     rectA.center = pos
 
     for i in ennemy.enemy_1_list:
         rectB = i[0].get_rect(center=i[1])
-        rectB.h = 10
-        rectB.w = 10
+        rectB.h = 40
+        rectB.w = 15
         rectB.center = i[1]
         if rectB.right < rectA.left:
             return False
