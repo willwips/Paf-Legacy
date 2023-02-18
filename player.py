@@ -12,7 +12,6 @@ move_left = False
 move_up = False
 move_down = False
 is_movement = 0
-
 pv = 100
 
 
@@ -82,11 +81,15 @@ def boucle():
 
 def collision():
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
-    print(rectA)
-    print(ennemy.enemy_1_list)
+    rectA.h = 10
+    rectA.w = 10
+    rectA.center = pos
+
     for i in ennemy.enemy_1_list:
         rectB = i[0].get_rect(center=i[1])
-        print(rectB, 'e')
+        rectB.h = 10
+        rectB.w = 10
+        rectB.center = i[1]
         if rectB.right < rectA.left:
             return False
         if rectB.bottom < rectA.top:
