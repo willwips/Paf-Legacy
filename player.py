@@ -13,7 +13,7 @@ move_up = False
 move_down = False
 is_movement = 0
 pv = 100
-
+cooldown = 0
 
 # boucle permétant de bougé le personage
 def boucle():
@@ -23,6 +23,8 @@ def boucle():
     global move_up
     global move_left
     global is_movement
+    global pv
+    global cooldown
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -76,6 +78,14 @@ def boucle():
             pos[0] += 2
         if move_right:
             pos[0] -= 2
+        if cooldown <= 0:
+            pv -= 10
+            cooldown = 60
+        print(pv)
+    if pv == 0:
+        sys.exit()
+
+    cooldown -= 1
 
 
 def collision_with_ennemy_1():
@@ -98,3 +108,14 @@ def collision_with_ennemy_1():
         if rectB.top > rectA.bottom:
             return False
         return True
+
+def showpv():
+    global pv
+    w, h = pygame.display.get_surface().get_size()
+    widht = 0.3
+    height = 0.05
+    life_red = pygame.Rect(w/2-(widht*w)/2, h-0.1*h, widht*w, height*h)
+    rectA = pygame.draw.rect(graphic_main.screen, (255, 0, 0), life_red)
+    life_black = pygame.Rect(w/2-(widht*w)/2+widht*w - (widht*w-widht*w*pv/100), h-0.1*h, widht*w-widht*w*pv/100, height*h)
+    rectB = pygame.draw.rect(graphic_main.screen, (0, 0, 0), life_black)
+    return rectA, rectB
