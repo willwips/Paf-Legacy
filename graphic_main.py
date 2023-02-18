@@ -1,6 +1,7 @@
 # importation
 import pygame
 import player
+import ennemy
 
 # initialisation des variables
 screen = None
@@ -22,8 +23,8 @@ def initialisation(full_screen=False):
 
 
 current = 0
-p = None
-old_p = None
+player_pos = None
+old_player_pos = None
 
 
 """
@@ -34,17 +35,23 @@ on utilise les variable p et old_p pour pouvoir stocké les coordoné des images
 
 """
 def boucle():
-    global p
-    global old_p
+    global player_pos
+    global old_player_pos
     player.boucle()
     global frame
     global current
     global screen
-    old_p = p
+    old_player_pos = player_pos
     screen.fill((0, 0, 0))
-    p = screen.blit(frame[current], player.pos)
-    if old_p != None:
-        pygame.display.update([p, old_p])
+    update = []
+    player_pos = screen.blit(frame[current], player.pos)
+    update.append(player_pos)
+    update.append(old_player_pos)
+    for i in ennemy.enemy_1_list:
+        ennemy_pos = screen.blit(i[0], i[1])
+        update.append(ennemy_pos)
+    if old_player_pos != None:
+        pygame.display.update(update)
     clock.tick(60)
     if player.is_movement:
         current += 1
