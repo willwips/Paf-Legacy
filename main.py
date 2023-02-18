@@ -1,7 +1,7 @@
 import graphic_main
 
-graphic_main.initialisation()
-graphic_main.import_character_picture()
+screen = graphic_main.initialisation()
+frame = graphic_main.import_character_picture(6)
 
 while True:
     graphic_main.boucle()
