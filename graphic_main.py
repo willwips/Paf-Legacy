@@ -1,10 +1,8 @@
-import time
-
+# importation
 import pygame
-import sys
-
 import player
 
+# initialisation des variables
 screen = None
 frame = None
 
@@ -24,11 +22,17 @@ def initialisation(full_screen=False):
 
 
 current = 0
-
 p = None
 old_p = None
 
 
+"""
+fonction boucle
+
+dans cette fonction, on affiche les differentes images afin de déplacé le personnage
+on utilise les variable p et old_p pour pouvoir stocké les coordoné des images et ainsi pour ne pas à avoir à update tout l'écran
+
+"""
 def boucle():
     global p
     global old_p
@@ -42,8 +46,11 @@ def boucle():
     if old_p != None:
         pygame.display.update([p, old_p])
     clock.tick(60)
-    current += 1
-    current = current % len(frame)
+    if player.is_movement:
+        current += 1
+        current = current % len(frame)
+    else:
+        current = 0
 
 
 def import_character_picture(nbr):
