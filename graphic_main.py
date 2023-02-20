@@ -63,12 +63,11 @@ def boucle():
         update.append(ennemy_pos)
     w, a = weapon.loop(player.pos)
 
-
     update.append(w)
     update.append(a)
     ennemy.boucle()
 
-    pygame.display.update(update+old_update)
+    pygame.display.update(update + old_update)
     clock.tick(60)
     if player.is_movement:
         current += 1
