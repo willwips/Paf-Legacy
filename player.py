@@ -3,7 +3,7 @@ import sys
 import pygame
 import ennemy
 import graphic_main
-
+import weapon
 # initialisation des variables
 pos = [0, 0]
 
@@ -13,6 +13,9 @@ move_up = False
 move_down = False
 is_movement = 0
 pv = 100
+pv_max = 120
+strength = 10
+resistance = 0.1
 cooldown = 0
 
 # boucle permétant de bougé le personage
@@ -45,6 +48,9 @@ def boucle():
             if event.key == pygame.K_q:
                 move_left = True
                 is_movement += 1
+            if event.key == pygame.K_a:
+                weapon.is_attacking = True
+
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_z:
@@ -79,10 +85,9 @@ def boucle():
         if move_right:
             pos[0] -= 2
         if cooldown <= 0:
-            pv -= 10
+            pv -= 10-10 * resistance
             cooldown = 60
-        print(pv)
-    if pv == 0:
+    if pv <= 0:
         sys.exit()
 
     cooldown -= 1
@@ -92,22 +97,24 @@ def collision_with_ennemy_1():
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
     rectA.h = 40
     rectA.w = 15
-    rectA.center = pos
-
+    rectA.center = (pos[0]+15, pos[1]+25)
+    collision = False
     for i in ennemy.enemy_1_list:
         rectB = i[0].get_rect(center=i[1])
         rectB.h = 40
         rectB.w = 15
-        rectB.center = i[1]
+        rectB.center = (i[1][0]+15, i[1][1]+25)
+        collision = True
         if rectB.right < rectA.left:
-            return False
+            collision = False
         if rectB.bottom < rectA.top:
-            return False
+            collision = False
         if rectB.left > rectA.right:
-            return False
+            collision = False
         if rectB.top > rectA.bottom:
-            return False
-        return True
+            collision = False
+        if collision:
+            return collision
 
 def showpv():
     global pv
@@ -116,6 +123,6 @@ def showpv():
     height = 0.05
     life_red = pygame.Rect(w/2-(widht*w)/2, h-0.1*h, widht*w, height*h)
     rectA = pygame.draw.rect(graphic_main.screen, (255, 0, 0), life_red)
-    life_black = pygame.Rect(w/2-(widht*w)/2+widht*w - (widht*w-widht*w*pv/100), h-0.1*h, widht*w-widht*w*pv/100, height*h)
+    life_black = pygame.Rect(w/2-(widht*w)/2+widht*w - (widht*w-widht*w*pv/pv_max), h-0.1*h, widht*w-widht*w*pv/pv_max + 1, height*h)
     rectB = pygame.draw.rect(graphic_main.screen, (0, 0, 0), life_black)
     return rectA, rectB

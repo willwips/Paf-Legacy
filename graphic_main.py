@@ -2,6 +2,7 @@
 import pygame
 import player
 import ennemy
+import weapon
 
 # initialisation des variables
 screen = None
@@ -25,8 +26,10 @@ def initialisation(full_screen=False):
 current = 0
 player_pos = None
 old_player_pos = None
-
-
+old_w = None
+w = None
+update = []
+old_update = []
 """
 fonction boucle
 
@@ -34,6 +37,8 @@ dans cette fonction, on affiche les differentes images afin de déplacé le pers
 on utilise les variable p et old_p pour pouvoir stocké les coordoné des images et ainsi pour ne pas à avoir à update tout l'écran
 
 """
+
+
 def boucle():
     global player_pos
     global old_player_pos
@@ -41,18 +46,29 @@ def boucle():
     global frame
     global current
     global screen
-    old_player_pos = player_pos
+    global w
+    global old_w
+    global update
+    global old_update
+    old_update = update
     screen.fill((125, 125, 125))
     update = []
     player_pos = screen.blit(frame[current], player.pos)
     update.append(player_pos)
-    update.append(old_player_pos)
     update.extend(player.showpv())
+    old_w = w
+
     for i in ennemy.enemy_1_list:
         ennemy_pos = screen.blit(i[0], i[1])
         update.append(ennemy_pos)
-    if old_player_pos != None:
-        pygame.display.update(update)
+    w, a = weapon.loop(player.pos)
+
+
+    update.append(w)
+    update.append(a)
+    ennemy.boucle()
+
+    pygame.display.update(update+old_update)
     clock.tick(60)
     if player.is_movement:
         current += 1
