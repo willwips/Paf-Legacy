@@ -20,6 +20,7 @@ resistance = 0.1
 cooldown = 0
 cooldown_move = 0
 
+
 # boucle permétant de bougé le personage
 def boucle():
     global pos
@@ -40,17 +41,22 @@ def boucle():
             if event.key == pygame.K_z:
                 move_down = True
                 is_movement += 1
+                graphic_main.frame = graphic_main.frame_back
             if event.key == pygame.K_s:
                 move_up = True
                 is_movement += 1
+                graphic_main.frame = graphic_main.frame_front
 
             if event.key == pygame.K_d:
                 move_right = True
                 is_movement += 1
+                graphic_main.frame = graphic_main.frame_R
 
             if event.key == pygame.K_q:
                 move_left = True
                 is_movement += 1
+                graphic_main.frame = graphic_main.frame_L
+
             if event.key == pygame.K_a:
                 weapon.is_attacking = True
 

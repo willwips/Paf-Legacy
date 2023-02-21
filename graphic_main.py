@@ -7,7 +7,10 @@ import weapon
 # initialisation des variables
 screen = None
 frame = None
-
+frame_front = None
+frame_L = None
+frame_R = None
+frame_back = None
 clock = pygame.time.Clock()
 
 
@@ -30,6 +33,7 @@ old_w = None
 w = None
 update = []
 old_update = []
+
 """
 fonction boucle
 
@@ -80,12 +84,56 @@ def import_character_picture(nbr):
     player1 = pygame.image.load('picture/character/player1.png').convert_alpha()
     player2 = pygame.image.load('picture/character/player2.png').convert_alpha()
     player3 = pygame.image.load('picture/character/player3.png').convert_alpha()
+    global frame_front
+    frame_front = []
+    for i in range(0, nbr):
+        frame_front.append(player1)
+    for i in range(0, nbr):
+        frame_front.append(player2)
+    for i in range(0, nbr):
+        frame_front.append(player1)
+    for i in range(0, nbr):
+        frame_front.append(player3)
+    player1 = pygame.image.load('picture/character/Player_L_1.png').convert_alpha()
+    player2 = pygame.image.load('picture/character/Player_L_3.png').convert_alpha()
+    player3 = pygame.image.load('picture/character/Player_L_2.png').convert_alpha()
+    global frame_L
+    frame_L = []
+    for i in range(0, nbr):
+        frame_L.append(player1)
+    for i in range(0, nbr):
+        frame_L.append(player2)
+    for i in range(0, nbr):
+        frame_L.append(player1)
+    for i in range(0, nbr):
+        frame_L.append(player3)
+    player1 = pygame.image.load('picture/character/Player_R_1.png').convert_alpha()
+    player2 = pygame.image.load('picture/character/Player_R_2.png').convert_alpha()
+    player3 = pygame.image.load('picture/character/Player_R_3.png').convert_alpha()
+    global frame_R
+    frame_R = []
+    for i in range(0, nbr):
+        frame_R.append(player1)
+    for i in range(0, nbr):
+        frame_R.append(player2)
+    for i in range(0, nbr):
+        frame_R.append(player1)
+    for i in range(0, nbr):
+        frame_R.append(player3)
+    player1 = pygame.image.load('picture/character/Player_back_1.png').convert_alpha()
+    player2 = pygame.image.load('picture/character/Player_back_2.png').convert_alpha()
+    player3 = pygame.image.load('picture/character/Player_back_3.png').convert_alpha()
+    global frame_back
+    frame_back = []
+    for i in range(0, nbr):
+        frame_back.append(player1)
+    for i in range(0, nbr):
+        frame_back.append(player2)
+    for i in range(0, nbr):
+        frame_back.append(player1)
+    for i in range(0, nbr):
+        frame_back.append(player3)
     global frame
-    frame = []
-    for i in range(0, nbr):
-        frame.append(player1)
-    for i in range(0, nbr):
-        frame.append(player2)
-    for i in range(0, nbr):
-        frame.append(player3)
+    frame=frame_L
+
     return frame
