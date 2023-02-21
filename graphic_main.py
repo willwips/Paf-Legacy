@@ -20,7 +20,7 @@ def initialisation(full_screen=False):
     if full_screen:
         screen = pygame.display.set_mode((300, 200), flags=pygame.FULLSCREEN)
     else:
-        screen = pygame.display.set_mode((300, 200))
+        screen = pygame.display.set_mode((600, 400))
     screen.fill((125, 125, 125))
     pygame.display.flip()
     return screen
@@ -94,9 +94,9 @@ def import_character_picture(nbr):
         frame_front.append(player1)
     for i in range(0, nbr):
         frame_front.append(player3)
-    player1 = pygame.image.load('picture/character/Player_L_1.png').convert_alpha()
-    player2 = pygame.image.load('picture/character/Player_L_3.png').convert_alpha()
-    player3 = pygame.image.load('picture/character/Player_L_2.png').convert_alpha()
+    player1 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_1.png').convert_alpha(), (30*(47/56), 47))
+    player2 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_3.png').convert_alpha(), (31*(47/55), 47))
+    player3 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_2.png').convert_alpha(), (30*(47/56), 47))
     global frame_L
     frame_L = []
     for i in range(0, nbr):
@@ -107,9 +107,9 @@ def import_character_picture(nbr):
         frame_L.append(player1)
     for i in range(0, nbr):
         frame_L.append(player3)
-    player1 = pygame.image.load('picture/character/Player_R_1.png').convert_alpha()
-    player2 = pygame.image.load('picture/character/Player_R_2.png').convert_alpha()
-    player3 = pygame.image.load('picture/character/Player_R_3.png').convert_alpha()
+    player1 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_1.png').convert_alpha(), (28*(47/54), 47))
+    player2 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_2.png').convert_alpha(), (28*(47/54), 47))
+    player3 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_3.png').convert_alpha(), (29*(47/55), 47))
     global frame_R
     frame_R = []
     for i in range(0, nbr):

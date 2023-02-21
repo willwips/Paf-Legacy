@@ -12,6 +12,10 @@ move_right = False
 move_left = False
 move_up = False
 move_down = False
+last_move_is_right = False
+last_move_is_left = True
+last_move_is_up = False
+last_move_is_down = False
 is_movement = 0
 pv = 100
 pv_max = 120
@@ -32,6 +36,10 @@ def boucle():
     global pv
     global cooldown
     global cooldown_move
+    global last_move_is_down
+    global last_move_is_left
+    global last_move_is_right
+    global last_move_is_up
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -40,23 +48,36 @@ def boucle():
                 sys.exit()
             if event.key == pygame.K_z:
                 move_down = True
+                last_move_is_right = False
+                last_move_is_left = False
+                last_move_is_up = False
+                last_move_is_down = True
                 is_movement += 1
                 graphic_main.frame = graphic_main.frame_back
             if event.key == pygame.K_s:
                 move_up = True
                 is_movement += 1
                 graphic_main.frame = graphic_main.frame_front
-
+                last_move_is_right = False
+                last_move_is_left = False
+                last_move_is_up = True
+                last_move_is_down = False
             if event.key == pygame.K_d:
                 move_right = True
                 is_movement += 1
                 graphic_main.frame = graphic_main.frame_R
-
+                last_move_is_right = True
+                last_move_is_left = False
+                last_move_is_up = False
+                last_move_is_down = False
             if event.key == pygame.K_q:
                 move_left = True
                 is_movement += 1
                 graphic_main.frame = graphic_main.frame_L
-
+                last_move_is_right = False
+                last_move_is_left = True
+                last_move_is_up = False
+                last_move_is_down = False
             if event.key == pygame.K_a:
                 weapon.is_attacking = True
 
@@ -74,7 +95,8 @@ def boucle():
             if event.key == pygame.K_q:
                 move_left = False
                 is_movement -= 1
-    if not collision_with_ennemy_1() and cooldown_move < 0:
+    print(collision_with_wall())
+    if not collision_with_ennemy_1() and cooldown_move < 0 and not collision_with_wall():
         if move_up:
             pos[1] += 2
         if move_down:
@@ -83,6 +105,16 @@ def boucle():
             pos[0] -= 2
         if move_right:
             pos[0] += 2
+    if collision_with_wall():
+        print(pos)
+        if move_up:
+            pos[1] -= 10
+        if move_down:
+            pos[1] += 10
+        if move_left:
+            pos[0] += 10
+        if move_right:
+            pos[0] -= 10
     if collision_with_ennemy_1():
         if move_up:
             pos[1] -= 10
@@ -103,6 +135,12 @@ def boucle():
     cooldown -= 1
     cooldown_move -= 1
 
+
+def collision_with_wall():
+    rectA = graphic_main.frame[graphic_main.current].get_rect(center = (pos[0] + 15, pos[1] + 25))
+    if rectA.left < 0 or rectA.right > pygame.display.get_surface().get_size()[0] or rectA.top < 0 or rectA.bottom > pygame.display.get_surface().get_size()[1]:
+        return True
+    return False
 
 def collision_with_ennemy_1():
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
