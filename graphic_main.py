@@ -46,7 +46,6 @@ on utilise les variable p et old_p pour pouvoir stocké les coordoné des images
 def boucle():
     global player_pos
     global old_player_pos
-    player.boucle()
     global frame
     global current
     global screen
@@ -54,6 +53,7 @@ def boucle():
     global old_w
     global update
     global old_update
+    player.boucle()
     old_update = update
     screen.fill((125, 125, 125))
     update = []

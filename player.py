@@ -40,6 +40,7 @@ def boucle():
     global last_move_is_left
     global last_move_is_right
     global last_move_is_up
+    old_pos = pos
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -95,8 +96,7 @@ def boucle():
             if event.key == pygame.K_q:
                 move_left = False
                 is_movement -= 1
-    print(collision_with_wall())
-    if not collision_with_ennemy_1() and cooldown_move < 0 and not collision_with_wall():
+    if cooldown_move < 0 :
         if move_up:
             pos[1] += 2
         if move_down:
@@ -106,29 +106,22 @@ def boucle():
         if move_right:
             pos[0] += 2
     if collision_with_wall():
-        print(pos)
         if move_up:
-            pos[1] -= 10
+            pos[1] -= 2
         if move_down:
-            pos[1] += 10
+            pos[1] += 2
         if move_left:
-            pos[0] += 10
+            pos[0] += 2
         if move_right:
-            pos[0] -= 10
+            pos[0] -= 2
+
     if collision_with_ennemy_1():
-        if move_up:
-            pos[1] -= 10
-        if move_down:
-            pos[1] += 10
-        if move_left:
-            pos[0] += 10
-        if move_right:
-            pos[0] -= 10
+
         if cooldown <= 0:
             pv -= 10 - 10 * resistance
             cooldown = 60
 
-            cooldown_move = 60
+            cooldown_move = 10
     if pv <= 0:
         sys.exit()
 
@@ -137,12 +130,24 @@ def boucle():
 
 
 def collision_with_wall():
+    global pos
     rectA = graphic_main.frame[graphic_main.current].get_rect(center = (pos[0] + 15, pos[1] + 25))
-    if rectA.left < 0 or rectA.right > pygame.display.get_surface().get_size()[0] or rectA.top < 0 or rectA.bottom > pygame.display.get_surface().get_size()[1]:
+    if rectA.left < 0:
+        pos[0] += 10
+        return True
+    if rectA.right > pygame.display.get_surface().get_size()[0]:
+        pos[0] -= 10
+        return True
+    if rectA.top < 0:
+        pos[1] += 10
+        return True
+    if rectA.bottom > pygame.display.get_surface().get_size()[1]:
+        pos[1] -= 10
         return True
     return False
 
 def collision_with_ennemy_1():
+    global pos
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
     rectA.h = 40
     rectA.w = 15
@@ -163,6 +168,14 @@ def collision_with_ennemy_1():
         if rectB.top > rectA.bottom:
             collision = False
         if collision:
+            if i[4][0] == True:
+                pos[0] -= 10
+            if i[4][1] == True:
+                pos[0] += 10
+            if i[4][2] == True:
+                pos[1] += 10
+            if i[4][3] == True:
+                pos[1] -= 10
             return collision
 
 
