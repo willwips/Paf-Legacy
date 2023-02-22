@@ -11,6 +11,10 @@ frame_front = None
 frame_L = None
 frame_R = None
 frame_back = None
+frame_front_wounded = None
+frame_back_wounded = None
+frame_L_wounded = None
+frame_R_wounded = None
 clock = pygame.time.Clock()
 
 
@@ -133,7 +137,62 @@ def import_character_picture(nbr):
         frame_back.append(player1)
     for i in range(0, nbr):
         frame_back.append(player3)
+    player1 = pygame.image.load('picture/character/player1_wounded.png').convert_alpha()
+    player2 = pygame.image.load('picture/character/player2_wounded.png').convert_alpha()
+    player3 = pygame.image.load('picture/character/player3_wounded.png').convert_alpha()
+    global frame_front_wounded
+    frame_front_wounded = []
+    for i in range(0, nbr):
+        frame_front_wounded.append(player1)
+    for i in range(0, nbr):
+        frame_front_wounded.append(player2)
+    for i in range(0, nbr):
+        frame_front_wounded.append(player1)
+    for i in range(0, nbr):
+        frame_front_wounded.append(player3)
+    player1 = pygame.image.load('picture/character/Player_back_wounded_1.png').convert_alpha()
+    player2 = pygame.image.load('picture/character/Player_back_wounded_2.png').convert_alpha()
+    player3 = pygame.image.load('picture/character/Player_back_wounded_3.png').convert_alpha()
+    global frame_back_wounded
+    frame_back_wounded = []
+    for i in range(0, nbr):
+        frame_back_wounded.append(player1)
+    for i in range(0, nbr):
+        frame_back_wounded.append(player2)
+    for i in range(0, nbr):
+        frame_back_wounded.append(player1)
+    for i in range(0, nbr):
+        frame_back_wounded.append(player3)
+
+    player1 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_wounded_1.png').convert_alpha(), (28*(47/54), 47))
+    player2 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_wounded_3.png').convert_alpha(), (28*(47/54), 47))
+    player3 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_wounded_2.png').convert_alpha(), (29*(47/55), 47))
+    global frame_L_wounded
+    frame_L_wounded = []
+    for i in range(0, nbr):
+        frame_L_wounded.append(player1)
+    for i in range(0, nbr):
+        frame_L_wounded.append(player2)
+    for i in range(0, nbr):
+        frame_L_wounded.append(player1)
+    for i in range(0, nbr):
+        frame_L_wounded.append(player3)
+
+    player1 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_wounded_1.png').convert_alpha(), (28*(47/54), 47))
+    player2 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_wounded_2.png').convert_alpha(), (28*(47/54), 47))
+    player3 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_wounded_3.png').convert_alpha(), (29*(47/55), 47))
+    global frame_R_wounded
+    frame_R_wounded = []
+    for i in range(0, nbr):
+        frame_R_wounded.append(player1)
+    for i in range(0, nbr):
+        frame_R_wounded.append(player2)
+    for i in range(0, nbr):
+        frame_R_wounded.append(player1)
+    for i in range(0, nbr):
+        frame_R_wounded.append(player3)
+
     global frame
-    frame=frame_L
+    frame = frame_back
 
     return frame

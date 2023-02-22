@@ -118,15 +118,33 @@ def boucle():
     if collision_with_ennemy_1():
 
         if cooldown <= 0:
-            pv -= 10 - 10 * resistance
+            pv -= 20 - 20 * resistance
             cooldown = 60
 
-            cooldown_move = 10
+            cooldown_move = 0
     if pv <= 0:
         sys.exit()
 
     cooldown -= 1
     cooldown_move -= 1
+    if cooldown > 0 and cooldown % 20 == 10:
+        if last_move_is_up:
+            graphic_main.frame = graphic_main.frame_front_wounded
+        if last_move_is_down:
+            graphic_main.frame = graphic_main.frame_back_wounded
+        if last_move_is_left:
+            graphic_main.frame = graphic_main.frame_L_wounded
+        if last_move_is_right:
+            graphic_main.frame = graphic_main.frame_R_wounded
+    if cooldown >= 0 and cooldown % 20 == 0:
+        if last_move_is_up:
+            graphic_main.frame = graphic_main.frame_front
+        if last_move_is_down:
+            graphic_main.frame = graphic_main.frame_back
+        if last_move_is_left:
+            graphic_main.frame = graphic_main.frame_L
+        if last_move_is_right:
+            graphic_main.frame = graphic_main.frame_R
 
 
 def collision_with_wall():
