@@ -3,7 +3,7 @@ import graphic_main
 import ennemy
 import weapon
 # initialisation des modules
-screen = graphic_main.initialisation()
+screen = graphic_main.initialisation(True)
 frame = graphic_main.import_character_picture(6)
 ennemy.spawn_enemy([50, 50], 'picture/character/player1.png', 50)
 

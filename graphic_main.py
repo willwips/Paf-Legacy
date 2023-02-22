@@ -22,7 +22,7 @@ def initialisation(full_screen=False):
     pygame.init()
     global screen
     if full_screen:
-        screen = pygame.display.set_mode((300, 200), flags=pygame.FULLSCREEN)
+        screen = pygame.display.set_mode((0, 0), flags=pygame.FULLSCREEN)
     else:
         screen = pygame.display.set_mode((600, 400))
     screen.fill((125, 125, 125))
