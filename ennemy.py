@@ -10,7 +10,7 @@ def spawn_enemy(pos, img, pv):
     img = pygame.image.load(img).convert_alpha()
     pos = pos
     global enemy_1_list
-    enemy_1_list.append([img, pos, pv, 10, [False, False, False, False]])
+    enemy_1_list.append([img, pos, pv, 10, [False, False, False, False], [0, 0]])
 
 
 def boucle():
@@ -56,7 +56,8 @@ def move_ennemi_1():
         enemy_1_list[i][4][1] = False
         enemy_1_list[i][4][2] = False
         enemy_1_list[i][4][3] = False
-
+        if enemy_1_list[i][3] % 2 == 0 and enemy_1_list[i][3]  > 0:
+                enemy_1_list[i][1][0] += enemy_1_list[i][5][0]
         if 15 < dist <= 200 and not touch_wall(enemy_1_list[i][1]):
             if (enemy_1_list[i][1][0] - player.pos[0]) >= 0:
                 enemy_1_list[i][1][0] -= abs((enemy_1_list[i][1][0] - player.pos[0]) / (
@@ -90,7 +91,7 @@ def move_ennemi_1():
                 enemy_1_list[i][1][0] += 9
 
 
-def collision_with_weapon(a, strenght):
+def collision_with_weapon(a, strenght, knockback):
     n = 0
     for i in enemy_1_list:
 
@@ -103,10 +104,10 @@ def collision_with_weapon(a, strenght):
         if collision and i[3] <= 0:
             enemy_1_list[n][2] -= strenght
             enemy_1_list[n][3] = 30
-            if player.last_move_is_down or player.last_move_is_right:
-                enemy_1_list[n][1][0] += 20
-            if player.last_move_is_up or player.last_move_is_left:
-                enemy_1_list[n][1][0] -= 20
+            if player.last_move_is_up or player.last_move_is_right:
+                enemy_1_list[n][5][0] = knockback
+            if player.last_move_is_down or player.last_move_is_left:
+                enemy_1_list[n][5][0] = -knockback
 
             if enemy_1_list[n][2] <= 0:
                 del enemy_1_list[n]

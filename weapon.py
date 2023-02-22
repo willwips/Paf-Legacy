@@ -9,8 +9,7 @@ weapon = {}
 def import_weapon():
     global weapon
     weapon['final_axe'] = (
-        pygame.transform.scale(pygame.image.load('picture/weapon/final_axe.png').convert_alpha(), (20, 40)), 10,
-        [17, 30])
+        pygame.transform.scale(pygame.image.load('picture/weapon/final_axe.png').convert_alpha(), (20, 40)), 10, [17, 30], 10)
 
 
 is_attacking = False
@@ -60,7 +59,7 @@ def loop_final_axe(pos_player):
         a.center = (
             pos_player[0] + weapon[current_weapon][2][0] + 12, pos_player[1] + weapon[current_weapon][2][1] + 25)
         if is_attacking:
-            ennemy.collision_with_weapon(w, weapon[current_weapon][1] + player.strength)
+            ennemy.collision_with_weapon(w, weapon[current_weapon][1] + player.strength, weapon[current_weapon][3])
     
     if player.last_move_is_right:
         a = rotate(
@@ -74,7 +73,7 @@ def loop_final_axe(pos_player):
         a.center = (
             pos_player[0] + weapon[current_weapon][2][0] + 12, pos_player[1] + weapon[current_weapon][2][1] - 10)
         if is_attacking:
-            ennemy.collision_with_weapon(w, weapon[current_weapon][1] + player.strength)
+            ennemy.collision_with_weapon(w, weapon[current_weapon][1] + player.strength, weapon[current_weapon][3])
     
     if player.last_move_is_down:
         a = rotate(
@@ -88,7 +87,7 @@ def loop_final_axe(pos_player):
         a.center = (
             pos_player[0] + weapon[current_weapon][2][0] + 12, pos_player[1] + weapon[current_weapon][2][1] + 25)
         if is_attacking:
-            ennemy.collision_with_weapon(w, weapon[current_weapon][1] + player.strength)
+            ennemy.collision_with_weapon(w, weapon[current_weapon][1] + player.strength, weapon[current_weapon][3])
 
     if player.last_move_is_left:
         a = rotate(
@@ -102,5 +101,5 @@ def loop_final_axe(pos_player):
         a.center = (
             pos_player[0] + weapon[current_weapon][2][0] + 12, pos_player[1] + weapon[current_weapon][2][1] + 25)
         if is_attacking:
-            ennemy.collision_with_weapon(w, weapon[current_weapon][1] + player.strength)
+            ennemy.collision_with_weapon(w, weapon[current_weapon][1] + player.strength, weapon[current_weapon][3])
     return w, a
