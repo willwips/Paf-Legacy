@@ -25,7 +25,7 @@ cooldown = 0
 cooldown_move = 0
 
 
-# boucle permétant de bouger le personage
+# boucle permettant de bouger le personage
 def boucle():
     global pos
     global move_down
