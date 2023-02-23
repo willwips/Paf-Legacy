@@ -41,8 +41,8 @@ old_update = []
 """
 fonction boucle
 
-dans cette fonction, on affiche les differentes images afin de déplacé le personnage
-on utilise les variable p et old_p pour pouvoir stocké les coordoné des images et ainsi pour ne pas à avoir à update tout l'écran
+Dans cette fonction, on affiche les differentes images afin de déplacer le personnage.
+On utilise les variable p et old_p pour pouvoir stocker les coordonées des images et ainsi pour ne pas à avoir à update tout l'écran
 
 """
 
