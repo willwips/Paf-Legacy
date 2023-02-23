@@ -13,7 +13,7 @@ for i in range(0, 600, 50):
 
 weapon.import_weapon()
 
-# boucle de fonctionement
+# boucle de fonctionnement
 while True:
     graphic_main.boucle()
 
