@@ -96,7 +96,7 @@ def boucle():
             if event.key == pygame.K_q:
                 move_left = False
                 is_movement -= 1
-    if cooldown_move < 0 :
+    if cooldown_move < 0:
         if move_up:
             pos[1] += 2
         if move_down:
@@ -121,6 +121,19 @@ def boucle():
             pv -= 20 - 20 * resistance
             cooldown = 60
 
+            cooldown_move = 0
+    if collision_with_ennemy_2_1():
+
+        if cooldown <= 0:
+            pv -= 20 - 20 * resistance
+            cooldown = 60
+
+            cooldown_move = 0
+
+    if collision_with_projectile():
+        if cooldown <= 0:
+            pv -= 20 - 20 * resistance
+            cooldown = 60
             cooldown_move = 0
     if pv <= 0:
         sys.exit()
@@ -149,7 +162,7 @@ def boucle():
 
 def collision_with_wall():
     global pos
-    rectA = graphic_main.frame[graphic_main.current].get_rect(center = (pos[0] + 15, pos[1] + 25))
+    rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
     if rectA.left < 0:
         pos[0] += 10
         return True
@@ -163,6 +176,7 @@ def collision_with_wall():
         pos[1] -= 10
         return True
     return False
+
 
 def collision_with_ennemy_1():
     global pos
@@ -197,6 +211,61 @@ def collision_with_ennemy_1():
             return collision
 
 
+def collision_with_ennemy_2_1():
+    global pos
+    rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
+    rectA.h = 40
+    rectA.w = 15
+    rectA.center = (pos[0] + 15, pos[1] + 25)
+    collision = False
+    for i in ennemy.enemy_2_1_list:
+        rectB = i[0].get_rect(center=i[1])
+        rectB.h = 40
+        rectB.w = 15
+        rectB.center = (i[1][0] + 15, i[1][1] + 25)
+        collision = True
+        if rectB.right < rectA.left:
+            collision = False
+        if rectB.bottom < rectA.top:
+            collision = False
+        if rectB.left > rectA.right:
+            collision = False
+        if rectB.top > rectA.bottom:
+            collision = False
+        if collision:
+            if i[4][0] == True:
+                pos[0] -= 10
+            if i[4][1] == True:
+                pos[0] += 10
+            if i[4][2] == True:
+                pos[1] += 10
+            if i[4][3] == True:
+                pos[1] -= 10
+            return collision
+
+def collision_with_projectile():
+    global pos
+    rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
+    rectA.h = 70
+    rectA.w = 30
+    rectA.center = (pos[0] + 15, pos[1] + 25)
+
+    n = 0
+    for i in ennemy.projectile_list:
+        rectB = pygame.draw.circle(graphic_main.screen, (0, 0, 0), i[0], i[1], -1)
+        collision = True
+        if rectB.right < rectA.left:
+            collision = False
+        if rectB.bottom < rectA.top:
+            collision = False
+        if rectB.left > rectA.right:
+            collision = False
+        if rectB.top > rectA.bottom:
+            collision = False
+        if collision:
+            del ennemy.projectile_list[n]
+            return collision
+        n += 1
 def showpv():
     global pv
     w, h = pygame.display.get_surface().get_size()

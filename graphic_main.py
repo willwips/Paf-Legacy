@@ -2,8 +2,9 @@
 import pygame
 import player
 import ennemy
+import tiles
 import weapon
-
+import room
 # initialisation des variables
 screen = None
 frame = None
@@ -16,7 +17,8 @@ frame_back_wounded = None
 frame_L_wounded = None
 frame_R_wounded = None
 clock = pygame.time.Clock()
-
+r, u = None, None
+trash_update = []
 
 def initialisation(full_screen=False):
     pygame.init()
@@ -25,7 +27,6 @@ def initialisation(full_screen=False):
         screen = pygame.display.set_mode((0, 0), flags=pygame.FULLSCREEN)
     else:
         screen = pygame.display.set_mode((600, 400))
-    screen.fill((125, 125, 125))
     pygame.display.flip()
     return screen
 
@@ -57,31 +58,38 @@ def boucle():
     global old_w
     global update
     global old_update
+    global trash_update
+    u(old_update)
     player.boucle()
     old_update = update
-    screen.fill((125, 125, 125))
     update = []
     player_pos = screen.blit(frame[current], player.pos)
     update.append(player_pos)
     update.extend(player.showpv())
     old_w = w
-
     for i in ennemy.enemy_1_list:
         ennemy_pos = screen.blit(i[0], i[1])
         update.append(ennemy_pos)
+    for i in ennemy.enemy_2_1_list:
+        ennemy_pos = screen.blit(i[0], i[1])
+        update.append(ennemy_pos)
+    for i in ennemy.projectile_list:
+        proj_pos = pygame.draw.circle(screen, (255, 255, 255), i[0], i[1], 0)
+        update.append(proj_pos)
     w, a = weapon.loop(player.pos)
 
     update.append(w)
     update.append(a)
     ennemy.boucle()
-
-    pygame.display.update(update + old_update)
+    pygame.display.update(update + old_update + trash_update)
+    trash_update = []
     clock.tick(60)
     if player.is_movement:
         current += 1
         current = current % len(frame)
     else:
         current = 0
+
 
 
 def import_character_picture(nbr):
@@ -194,5 +202,4 @@ def import_character_picture(nbr):
 
     global frame
     frame = frame_back
-
     return frame
