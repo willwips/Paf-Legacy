@@ -219,7 +219,7 @@ def collision_with_ennemy_2_1():
     rectA.center = (pos[0] + 15, pos[1] + 25)
     collision = False
     for i in ennemy.enemy_2_1_list:
-        rectB = i[0].get_rect(center=i[1])
+        rectB = i[0][i[8]].get_rect(center=i[1])
         rectB.h = 40
         rectB.w = 15
         rectB.center = (i[1][0] + 15, i[1][1] + 25)

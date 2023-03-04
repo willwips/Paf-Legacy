@@ -71,10 +71,10 @@ def boucle():
         ennemy_pos = screen.blit(i[0], i[1])
         update.append(ennemy_pos)
     for i in ennemy.enemy_2_1_list:
-        ennemy_pos = screen.blit(i[0], i[1])
+        ennemy_pos = screen.blit(i[0][i[8]], i[1])
         update.append(ennemy_pos)
     for i in ennemy.projectile_list:
-        proj_pos = pygame.draw.circle(screen, (255, 255, 255), i[0], i[1], 0)
+        proj_pos = pygame.draw.circle(screen, i[3], i[0], i[1], 0)
         update.append(proj_pos)
     w, a = weapon.loop(player.pos)
 
@@ -84,6 +84,7 @@ def boucle():
     pygame.display.update(update + old_update + trash_update)
     trash_update = []
     clock.tick(60)
+    print(clock.get_fps())
     if player.is_movement:
         current += 1
         current = current % len(frame)
