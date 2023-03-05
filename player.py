@@ -25,6 +25,8 @@ cooldown = 0
 cooldown_move = 0
 dash_unlocked = True
 dash = 0
+dash_invicibility_unlocked = True
+dash_inv = False
 
 # boucle permettant de bouger le personage
 def boucle():
@@ -42,6 +44,8 @@ def boucle():
     global last_move_is_right
     global last_move_is_up
     global dash
+    global dash_inv
+    print(pos)
     old_pos = pos
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -84,7 +88,11 @@ def boucle():
             if event.key == pygame.K_u:
                 weapon.is_attacking = True
             if event.key == pygame.K_i:
-                dash = 15
+                print(dash)
+                if dash == -15:
+                    dash = 15
+                if dash_invicibility_unlocked:
+                    dash_inv = True
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_z:
@@ -100,7 +108,8 @@ def boucle():
             if event.key == pygame.K_q:
                 move_left = False
                 is_movement -= 1
-    if cooldown_move < 0 and (dash == 0 or not dash_unlocked):
+    if cooldown_move < 0 and (dash <= 0 or not dash_unlocked):
+        dash_inv = False
         if move_up:
             pos[1] += 2
         if move_down:
@@ -109,7 +118,7 @@ def boucle():
             pos[0] -= 2
         if move_right:
             pos[0] += 2
-    if cooldown_move < 0 and dash>0 and dash_unlocked:
+    if cooldown_move < 0 and dash > 0 and dash_unlocked:
         if last_move_is_up:
             pos[1] += 10
         if last_move_is_down:
@@ -118,7 +127,9 @@ def boucle():
             pos[0] -= 10
         if last_move_is_right:
             pos[0] += 10
-        dash -= 1
+
+    if dash > -15:
+        dash-=1
     if collision_with_wall():
         if move_up:
             pos[1] -= 2
@@ -128,34 +139,34 @@ def boucle():
             pos[0] += 2
         if move_right:
             pos[0] -= 2
+    if dash_inv == False:
+        if collision_with_ennemy_1():
 
-    if collision_with_ennemy_1():
+            if cooldown <= 0:
+                pv -= 20 - 20 * resistance
+                cooldown = 60
 
-        if cooldown <= 0:
-            pv -= 20 - 20 * resistance
-            cooldown = 60
+                cooldown_move = 0
+        if collision_with_ennemy_1_2():
 
-            cooldown_move = 0
-    if collision_with_ennemy_1_2():
+            if cooldown <= 0:
+                pv -= 20 - 20 * resistance
+                cooldown = 60
 
-        if cooldown <= 0:
-            pv -= 20 - 20 * resistance
-            cooldown = 60
+                cooldown_move = 0
+        if collision_with_ennemy_2_1():
 
-            cooldown_move = 0
-    if collision_with_ennemy_2_1():
+            if cooldown <= 0:
+                pv -= 20 - 20 * resistance
+                cooldown = 60
 
-        if cooldown <= 0:
-            pv -= 20 - 20 * resistance
-            cooldown = 60
+                cooldown_move = 0
 
-            cooldown_move = 0
-
-    if collision_with_projectile():
-        if cooldown <= 0:
-            pv -= 20 - 20 * resistance
-            cooldown = 60
-            cooldown_move = 0
+        if collision_with_projectile():
+            if cooldown <= 0:
+                pv -= 20 - 20 * resistance
+                cooldown = 60
+                cooldown_move = 0
     if pv <= 0:
         sys.exit()
 
@@ -185,16 +196,16 @@ def collision_with_wall():
     global pos
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
     if rectA.left < 0:
-        pos[0] += 10
+        pos[0] += 20
         return True
     if rectA.right > pygame.display.get_surface().get_size()[0]:
-        pos[0] -= 10
+        pos[0] -= 20
         return True
     if rectA.top < 0:
-        pos[1] += 10
+        pos[1] += 20
         return True
     if rectA.bottom > pygame.display.get_surface().get_size()[1]:
-        pos[1] -= 10
+        pos[1] -= 20
         return True
     return False
 

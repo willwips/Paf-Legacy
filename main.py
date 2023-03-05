@@ -15,8 +15,8 @@ ennemy.spawn_enemy_2_1([123, 150], ['picture/enemy/foe/foe_L_1.png', 'picture/en
 ennemy.spawn_enemy_2_1([350, 350], ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
 ennemy.spawn_enemy_1([21, 223], 'picture/character/player1.png', 50)
 ennemy.spawn_enemy_1([49, 27], 'picture/character/player1.png', 50)
-"""
 
+"""
 for i in range(1, 10):
     for j in range(1, 10):
         ennemy.spawn_enemy_2_1([i*50, j*50], ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png',
