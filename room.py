@@ -10,9 +10,9 @@ def room_1():
             room.append([])
             for j in range(0, int(graphic_main.screen.get_size()[1] / 50) + 1):
                 if (j % 2 + i % 2) % 2 == 0:
-                    room[i].append(tiles.blit_tile_1_4(i * 50, j * 50))
+                    room[i].append(tiles.blit_tile_3_1(i * 50, j * 50))
                 if j % 2 + i % 2 == 1:
-                    room[i].append(tiles.blit_tile_1_4(i * 50, j * 50))
+                    room[i].append(tiles.blit_tile_3_1(i * 50, j * 50))
 
         for i in room:
             for j in i:
