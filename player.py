@@ -23,7 +23,8 @@ strength = 10
 resistance = 0.1
 cooldown = 0
 cooldown_move = 0
-
+dash_unlocked = True
+dash = 0
 
 # boucle permettant de bouger le personage
 def boucle():
@@ -40,6 +41,7 @@ def boucle():
     global last_move_is_left
     global last_move_is_right
     global last_move_is_up
+    global dash
     old_pos = pos
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -79,8 +81,10 @@ def boucle():
                 last_move_is_left = True
                 last_move_is_up = False
                 last_move_is_down = False
-            if event.key == pygame.K_a:
+            if event.key == pygame.K_u:
                 weapon.is_attacking = True
+            if event.key == pygame.K_i:
+                dash = 15
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_z:
@@ -96,7 +100,7 @@ def boucle():
             if event.key == pygame.K_q:
                 move_left = False
                 is_movement -= 1
-    if cooldown_move < 0:
+    if cooldown_move < 0 and (dash == 0 or not dash_unlocked):
         if move_up:
             pos[1] += 2
         if move_down:
@@ -105,6 +109,16 @@ def boucle():
             pos[0] -= 2
         if move_right:
             pos[0] += 2
+    if cooldown_move < 0 and dash>0 and dash_unlocked:
+        if last_move_is_up:
+            pos[1] += 10
+        if last_move_is_down:
+            pos[1] -= 10
+        if last_move_is_left:
+            pos[0] -= 10
+        if last_move_is_right:
+            pos[0] += 10
+        dash -= 1
     if collision_with_wall():
         if move_up:
             pos[1] -= 2
