@@ -118,7 +118,7 @@ def move_ennemi_1():
         enemy_1_list[i][4][1] = False
         enemy_1_list[i][4][2] = False
         enemy_1_list[i][4][3] = False
-        enemy_1_list[i][1] = touch_wall(enemy_1_list[i][1], enemy_1_list[0].get_rect())
+        enemy_1_list[i][1] = touch_wall(enemy_1_list[i][1], enemy_1_list[i][0].get_rect())
         if enemy_1_list[i][3] % 2 == 0 and enemy_1_list[i][3] > 0:
             enemy_1_list[i][1][0] += enemy_1_list[i][5][0]
         if 15 < dist <= 200:
