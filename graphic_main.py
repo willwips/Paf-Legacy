@@ -17,7 +17,7 @@ frame_back_wounded = None
 frame_L_wounded = None
 frame_R_wounded = None
 clock = pygame.time.Clock()
-r, u = None, None
+r, u, door = None, None, None
 trash_update = []
 
 def initialisation(full_screen=False):

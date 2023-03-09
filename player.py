@@ -3,7 +3,9 @@ import sys
 import pygame
 import ennemy
 import graphic_main
+#import main
 import weapon
+import world
 
 # initialisation des variables
 pos = [0, 0]
@@ -130,6 +132,8 @@ def boucle():
 
     if dash > -15:
         dash-=1
+    if collision_with_door(graphic_main.door):
+        pass
     if collision_with_wall():
         if move_up:
             pos[1] -= 2
@@ -191,6 +195,13 @@ def boucle():
         if last_move_is_right:
             graphic_main.frame = graphic_main.frame_R
 
+
+def collision_with_door(door):
+    rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
+    print(rectA.collidelist(door))
+    if rectA.collidelist(door) != -1:
+        world.coo[0] += 1
+        world.next_room()
 
 def collision_with_wall():
     global pos
