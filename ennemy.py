@@ -83,24 +83,24 @@ def test_collision__ennemy_1(rect, index=-1):
         n += 1
 
 def is_touch_wall(pos):
-    if pos[0] < 0:
+    if pos[0] < 50:
         return True
-    if pos[1] < 0:
+    if pos[1] < 50:
         return True
-    if pos[0] > pygame.display.get_surface().get_size()[0]:
+    if pos[0] > pygame.display.get_surface().get_size()[0] - 50:
         return True
-    if pos[1] > pygame.display.get_surface().get_size()[1]:
+    if pos[1] > pygame.display.get_surface().get_size()[1] - 50:
         return True
 
     return False
 def touch_wall(pos, size):
-    if pos[0] < 0:
+    if pos[0] < 50:
         pos[0] += 10
-    if pos[1] < 0:
+    if pos[1] < 50:
         pos[1] += 10
-    if pos[0] + size[0] > pygame.display.get_surface().get_size()[0]:
+    if pos[0] + size[0] > pygame.display.get_surface().get_size()[0] -50:
         pos[0] -= 10
-    if pos[1] +size[1]> pygame.display.get_surface().get_size()[1]:
+    if pos[1] +size[1]> pygame.display.get_surface().get_size()[1] -50:
         pos[1] -= 10
 
     return pos

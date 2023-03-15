@@ -5,6 +5,8 @@ Tile_1 = []
 Tile_2 = []
 Tile_3 = []
 Tile_4 = []
+door = []
+wall = []
 
 
 def load_tile():
@@ -12,6 +14,8 @@ def load_tile():
     global Tile_2
     global Tile_3
     global Tile_4
+    global door
+    global wall
     for i in range(1, 7):
         Tile_1.append(
             pygame.transform.scale(pygame.image.load('picture/tiles/Tile_1-' + str(i) + '.png').convert_alpha(),
@@ -22,8 +26,10 @@ def load_tile():
         Tile_3.append(pygame.transform.scale(pygame.image.load('picture/tiles/Tile_3-' + str(i) + '.png').convert_alpha(), [50, 50]))
 
     for i in range(1, 6):
-        Tile_4.append(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png'))
-
+        Tile_4.append(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png').convert_alpha())
+    door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [50, 50]), -90))
+    wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center.png').convert_alpha(), [50, 50]), -90))
+    print(door)
 
 def blit_tile_1_1(x, y):
     def blit_tile():
@@ -155,6 +161,21 @@ def blit_tile_3_5(x, y):
 def blit_tile_3_6(x, y):
     def blit_tile():
         a = graphic_main.screen.blit(Tile_3[5], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_wall_mid(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(wall[0], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_door_black(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[0], [x, y])
         return a
 
     return blit_tile

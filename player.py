@@ -200,22 +200,23 @@ def collision_with_door(door):
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
     print(rectA.collidelist(door))
     if rectA.collidelist(door) != -1:
-        world.coo[0] += 1
-        world.next_room()
+        if not ennemy.enemy_1_list and not ennemy.enemy_1_2_list and not ennemy.enemy_1_2_list:
+            world.coo[0] += 1
+            world.next_room()
 
 def collision_with_wall():
     global pos
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
-    if rectA.left < 0:
+    if rectA.left < 50:
         pos[0] += 20
         return True
-    if rectA.right > pygame.display.get_surface().get_size()[0]:
+    if rectA.right > pygame.display.get_surface().get_size()[0] - 50:
         pos[0] -= 20
         return True
-    if rectA.top < 0:
+    if rectA.top < 50:
         pos[1] += 20
         return True
-    if rectA.bottom > pygame.display.get_surface().get_size()[1]:
+    if rectA.bottom > pygame.display.get_surface().get_size()[1] - 50:
         pos[1] -= 20
         return True
     return False
