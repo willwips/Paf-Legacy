@@ -16,7 +16,7 @@ def spawn_enemy_2_1(pos, img, pv):
     n = 0
     for i in img:
 
-        if n%3 == 2:
+        if n % 3 == 2:
             img_.append(pygame.transform.scale(pygame.image.load(i).convert_alpha(), [40, 40]))
         else:
             img_.append(pygame.transform.scale(pygame.image.load(i).convert_alpha(), [25, 49]))
@@ -25,9 +25,11 @@ def spawn_enemy_2_1(pos, img, pv):
     global enemy_2_1_list
     enemy_2_1_list.append([img_, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, 0])
 
+
 def spawm_projectile(pos, radius, directon, color):
     global projectile_list
     projectile_list.append([pos, radius, directon, color])
+
 
 def spawn_enemy_1(pos, img, pv):
     img = pygame.image.load(img).convert_alpha()
@@ -35,14 +37,15 @@ def spawn_enemy_1(pos, img, pv):
     global enemy_1_list
     enemy_1_list.append([img, pos, pv, 10, [False, False, False, False], [0, 0]])
 
+
 def spawn_enemy_1_2(pos, img, pv):
     _img = []
     for i in img:
-
         _img.append(pygame.transform.scale(pygame.image.load(i).convert_alpha(), [49, 23]))
     pos = pos
     global enemy_1_2_list
     enemy_1_2_list.append([_img, pos, pv, 10, [False, False, False, False], [0, 0], [0, 0], 0, 0])
+
 
 def boucle():
     global enemy_1_list
@@ -82,25 +85,28 @@ def test_collision__ennemy_1(rect, index=-1):
 
         n += 1
 
+
 def is_touch_wall(pos):
-    if pos[0] < 50:
+    if pos[0] < graphic_main.left + 50:
         return True
-    if pos[1] < 50:
+    if pos[1] < graphic_main.top + 50:
         return True
-    if pos[0] > pygame.display.get_surface().get_size()[0] - 50:
+    if pos[0]  > graphic_main.right - 50:
         return True
-    if pos[1] > pygame.display.get_surface().get_size()[1] - 50:
+    if pos[1]  > graphic_main.bottom - 50:
         return True
 
     return False
+
+
 def touch_wall(pos, size):
-    if pos[0] < 50:
+    if pos[0] < graphic_main.left + 50:
         pos[0] += 10
-    if pos[1] < 50:
+    if pos[1] < graphic_main.top + 50:
         pos[1] += 10
-    if pos[0] + size[0] > pygame.display.get_surface().get_size()[0] -50:
+    if pos[0] + size[0] > graphic_main.right - 50:
         pos[0] -= 10
-    if pos[1] +size[1]> pygame.display.get_surface().get_size()[1] -50:
+    if pos[1] + size[1] > graphic_main.bottom - 50:
         pos[1] -= 10
 
     return pos
@@ -147,16 +153,17 @@ def move_ennemi_1_2():
         rectB.h = 40
         rectB.w = 15
         rectB.center = (enemy_1_2_list[i][1][0] + 15, enemy_1_2_list[i][1][1] + 25)
-        dist = math.sqrt((enemy_1_2_list[i][1][0] - player.pos[0]) ** 2 + (enemy_1_2_list[i][1][1] - player.pos[1]) ** 2)
+        dist = math.sqrt(
+            (enemy_1_2_list[i][1][0] - player.pos[0]) ** 2 + (enemy_1_2_list[i][1][1] - player.pos[1]) ** 2)
         enemy_1_2_list[i][4][0] = False
         enemy_1_2_list[i][4][1] = False
         enemy_1_2_list[i][4][2] = False
         enemy_1_2_list[i][4][3] = False
 
         if is_touch_wall(enemy_1_2_list[i][1]) or enemy_1_2_list[i][6] == [0, 0]:
-            dir_to_player = [-3*(enemy_1_2_list[i][1][0] - player.pos[0]) / (
+            dir_to_player = [-3 * (enemy_1_2_list[i][1][0] - player.pos[0]) / (
                     abs(enemy_1_2_list[i][1][1] - player.pos[1]) + abs((enemy_1_2_list[i][1][0] - player.pos[0]))),
-                             -3*(enemy_1_2_list[i][1][1] - player.pos[1]) / (
+                             -3 * (enemy_1_2_list[i][1][1] - player.pos[1]) / (
                                      abs(enemy_1_2_list[i][1][1] - player.pos[1]) + abs(
                                  enemy_1_2_list[i][1][0] - player.pos[0]))]
             enemy_1_2_list[i][6] = dir_to_player
@@ -173,10 +180,10 @@ def move_ennemi_1_2():
 
         else:
             if (enemy_1_2_list[i][1][0] - player.pos[0]) >= 0:
-                enemy_1_2_list[i][1][0] += enemy_1_2_list[i][6][0] + math.cos(enemy_1_2_list[i][7]) *5
+                enemy_1_2_list[i][1][0] += enemy_1_2_list[i][6][0] + math.cos(enemy_1_2_list[i][7]) * 5
                 enemy_1_2_list[i][4][0] = True
             elif (enemy_1_2_list[i][1][0] - player.pos[0]) <= 0:
-                enemy_1_2_list[i][1][0] += enemy_1_2_list[i][6][0] +math.cos(enemy_1_2_list[i][7]) *5
+                enemy_1_2_list[i][1][0] += enemy_1_2_list[i][6][0] + math.cos(enemy_1_2_list[i][7]) * 5
                 enemy_1_2_list[i][4][1] = True
             if (enemy_1_2_list[i][1][1] - player.pos[1]) >= 0:
                 enemy_1_2_list[i][1][1] += enemy_1_2_list[i][6][1] + math.sin(enemy_1_2_list[i][7]) * 5
@@ -186,7 +193,9 @@ def move_ennemi_1_2():
                 enemy_1_2_list[i][1][1] += enemy_1_2_list[i][6][1] + math.sin(enemy_1_2_list[i][7]) * 5
 
                 enemy_1_2_list[i][4][3] = True
-        enemy_1_2_list[i][7] += 1/20
+        enemy_1_2_list[i][7] += 1 / 20
+
+
 def move_ennemi_2_1():
     global enemy_2_1_list
     for i in range(0, len(enemy_2_1_list)):
@@ -200,25 +209,27 @@ def move_ennemi_2_1():
         enemy_2_1_list[i][4][1] = False
         enemy_2_1_list[i][4][2] = False
         enemy_2_1_list[i][4][3] = False
-        enemy_2_1_list[i][1] = touch_wall(enemy_2_1_list[i][1], (enemy_2_1_list[i][0][enemy_2_1_list[i][8]].get_rect().w, enemy_2_1_list[i][0][enemy_2_1_list[i][8]].get_rect().h))
+        enemy_2_1_list[i][1] = touch_wall(enemy_2_1_list[i][1], (
+        enemy_2_1_list[i][0][enemy_2_1_list[i][8]].get_rect().w,
+        enemy_2_1_list[i][0][enemy_2_1_list[i][8]].get_rect().h))
         if enemy_2_1_list[i][3] % 2 == 0 and enemy_2_1_list[i][3] > 0:
             enemy_2_1_list[i][1][0] += enemy_2_1_list[i][5][0]
-        if dist <= 300 and enemy_2_1_list[i][7] > 0:
+        if 10 < dist <= 300 and enemy_2_1_list[i][7] > 0:
             if (enemy_2_1_list[i][1][0] - player.pos[0]) >= 0:
                 enemy_2_1_list[i][1][0] += abs((enemy_2_1_list[i][1][0] - player.pos[0]) / (
                         abs(enemy_2_1_list[i][1][1] - player.pos[1]) + abs((enemy_2_1_list[i][1][0] - player.pos[0]))))
                 enemy_2_1_list[i][4][0] = True
-                if 0 <=enemy_2_1_list[i][7] % 12 < 6:
+                if 0 <= enemy_2_1_list[i][7] % 12 < 6:
                     enemy_2_1_list[i][8] = 3
-                elif 6 <=enemy_2_1_list[i][7] % 12 < 12:
+                elif 6 <= enemy_2_1_list[i][7] % 12 < 12:
                     enemy_2_1_list[i][8] = 4
             elif (enemy_2_1_list[i][1][0] - player.pos[0]) <= 0:
                 enemy_2_1_list[i][1][0] -= abs((enemy_2_1_list[i][1][0] - player.pos[0]) / (
                         abs(enemy_2_1_list[i][1][1] - player.pos[1]) + abs(enemy_2_1_list[i][1][0] - player.pos[0])))
                 enemy_2_1_list[i][4][1] = True
-                if 0 <=enemy_2_1_list[i][7] % 12 < 6:
+                if 0 <= enemy_2_1_list[i][7] % 12 < 6:
                     enemy_2_1_list[i][8] = 0
-                elif 6 <=enemy_2_1_list[i][7] % 12:
+                elif 6 <= enemy_2_1_list[i][7] % 12:
                     enemy_2_1_list[i][8] = 1
 
             if (enemy_2_1_list[i][1][1] - player.pos[1]) >= 0:
@@ -240,8 +251,10 @@ def move_ennemi_2_1():
                 if enemy_2_1_list[i][8] == 3 or enemy_2_1_list[i][8] == 4:
                     enemy_2_1_list[i][8] = 2
                 try:
-                    total = abs(enemy_2_1_list[i][1][0]-player.pos[0])+abs(enemy_2_1_list[i][1][1]-player.pos[1])
-                    spawm_projectile([enemy_2_1_list[i][1][0], enemy_2_1_list[i][1][1]], 10, [(player.pos[0]-enemy_2_1_list[i][1][0])/total*5, (player.pos[1]-enemy_2_1_list[i][1][1])/total*5], (75, 0, 130))
+                    total = abs(enemy_2_1_list[i][1][0] - player.pos[0]) + abs(enemy_2_1_list[i][1][1] - player.pos[1])
+                    spawm_projectile([enemy_2_1_list[i][1][0], enemy_2_1_list[i][1][1]], 10,
+                                     [(player.pos[0] - enemy_2_1_list[i][1][0]) / total * 5,
+                                      (player.pos[1] - enemy_2_1_list[i][1][1]) / total * 5], (75, 0, 130))
                 except:
                     pass
             if -1 < enemy_2_1_list[i][7] < -30:
@@ -255,15 +268,13 @@ def move_ennemi_2_1():
                 if enemy_2_1_list[i][8] == 5:
                     enemy_2_1_list[i][8] = 0
 
-
-
                 enemy_2_1_list[i][6] = False
                 enemy_2_1_list[i][7] = 300
+
 
 def move_projectile():
     global projectile_lists
     for i in range(0, len(projectile_list)):
-
         projectile_list[i][0][0] += projectile_list[i][2][0]
         projectile_list[i][0][1] += projectile_list[i][2][1]
 
@@ -272,6 +283,7 @@ def move_projectile():
         if is_touch_wall(i[0]):
             del projectile_list[n]
         n += 1
+
 
 def collision_with_weapon(a, strenght, knockback):
     n = 0

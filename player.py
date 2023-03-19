@@ -207,16 +207,16 @@ def collision_with_door(door):
 def collision_with_wall():
     global pos
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
-    if rectA.left < 50:
+    if rectA.left < graphic_main.left  + 50:
         pos[0] += 20
         return True
-    if rectA.right > pygame.display.get_surface().get_size()[0] - 50:
+    if rectA.right > graphic_main.right - 50:
         pos[0] -= 20
         return True
-    if rectA.top < 50:
+    if rectA.top < graphic_main.top +50:
         pos[1] += 20
         return True
-    if rectA.bottom > pygame.display.get_surface().get_size()[1] - 50:
+    if rectA.bottom > graphic_main.bottom - 50:
         pos[1] -= 20
         return True
     return False
