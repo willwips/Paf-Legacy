@@ -28,6 +28,7 @@ def load_tile():
     for i in range(1, 6):
         Tile_4.append(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png').convert_alpha())
     door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), -90))
+    door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), -90))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center.png').convert_alpha(), [55, 55]), -90))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center.png').convert_alpha(), [55, 55]), 0))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center.png').convert_alpha(), [55, 55]), 90))
@@ -202,6 +203,14 @@ def blit_wall_left(x, y):
         a = graphic_main.screen.blit(wall[4], [x, y])
         return a
     return blit_tile
+def blit_door_black(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[0], [x, y])
+        return a
+
+    return blit_tile
+
 def blit_door_black(x, y, tile):
     def blit_tile():
         a = tile()
