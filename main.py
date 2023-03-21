@@ -30,6 +30,7 @@ weapon.import_weapon()
 graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right = room.room_1_1()
 graphic_main.r()
 # boucle de fonctionnement
+
 while True:
     graphic_main.boucle()
 
