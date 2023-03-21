@@ -28,7 +28,8 @@ def load_tile():
         Tile_3.append(pygame.transform.scale(pygame.image.load('picture/tiles/Tile_3-' + str(i) + '.png').convert_alpha(), [50, 50]))
 
     for i in range(1, 6):
-        Tile_4.append(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png').convert_alpha())
+        #Tile_4.append(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png').convert_alpha()) ce que tu as mit
+        Tile_4.append(pygame.transform.scale(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png').convert_alpha(), [50, 50]))
     door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), -90))
     door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), -90))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center-Square.png').convert_alpha(), [55, 55]), -90))
@@ -39,8 +40,8 @@ def load_tile():
 
     print(door)
 
-    for i in range(1, 7):
-        Tile_5.append(pygame.transform.scale(pygame.image.load('picture/tiles/Tile_5-' + str(i) + '.png').convert_alpha(), [50, 50]))
+    #for i in range(1, 7):
+   #     Tile_5.append(pygame.transform.scale(pygame.image.load('picture/tiles/Tile_5-' + str(i) + '.png').convert_alpha(), [50, 50]))
         
 def blit_tile_1_1(x, y):
     def blit_tile():
