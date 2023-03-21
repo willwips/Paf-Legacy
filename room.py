@@ -227,7 +227,7 @@ def room_1_3():
         #ennely (voir main)
         ennemy.spawn_enemy_1_2([left + 80, top +80], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 30)
         ennemy.spawn_enemy_1_2([left + 250, top + 150], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 30)
-        ennemy.spawn_enemy_1([left + 72, top+529], 'picture/character/player1.png', 50)
+        ennemy.spawn_enemy_1([left + 72, top+123], 'picture/character/player1.png', 50)
 
         ennemy.spawn_enemy_1([left + 80, top+223], 'picture/character/player1.png', 50)
         ennemy.spawn_enemy_1([left + 210, top + 85], 'picture/character/player1.png', 50)
