@@ -5,6 +5,7 @@ Tile_1 = []
 Tile_2 = []
 Tile_3 = []
 Tile_4 = []
+Tile_5 = []
 door = []
 wall = []
 
@@ -14,6 +15,7 @@ def load_tile():
     global Tile_2
     global Tile_3
     global Tile_4
+    global Tile_5
     global door
     global wall
     for i in range(1, 7):
@@ -35,9 +37,11 @@ def load_tile():
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center-Square.png').convert_alpha(), [55, 55]), 180))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Corner-Square.png').convert_alpha(), [55, 55]), 0))
 
-
     print(door)
 
+    for i in range(1, 7):
+        Tile_5.append(pygame.transform.scale(pygame.image.load('picture/tiles/Tile_5-' + str(i) + '.png').convert_alpha(), [50, 50]))
+        
 def blit_tile_1_1(x, y):
     def blit_tile():
         a = graphic_main.screen.blit(Tile_1[0], [x, y])
@@ -172,6 +176,90 @@ def blit_tile_3_6(x, y):
 
     return blit_tile
 
+def blit_tile_4_1(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(Tile_4[0], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_tile_4_2(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(Tile_4[1], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_tile_4_3(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(Tile_4[2], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_tile_4_4(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(Tile_4[3], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_tile_4_5(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(Tile_4[4], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_tile_4_6(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(Tile_4[5], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_tile_5_1(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(Tile_5[0], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_tile_5_2(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(Tile_5[1], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_tile_5_3(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(Tile_5[2], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_tile_5_4(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(Tile_5[3], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_tile_5_5(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(Tile_5[4], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_tile_5_6(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(Tile_5[5], [x, y])
+        return a
+
+    return blit_tile
+
 def blit_wall_mid(x, y):
     def blit_tile():
         a = graphic_main.screen.blit(wall[0], [x, y])
@@ -185,6 +273,7 @@ def blit_wall_top_mid(x, y):
         return a
 
     return blit_tile
+
 def blit_wall_left_mid(x, y):
     def blit_tile():
         a = graphic_main.screen.blit(wall[2], [x, y])
@@ -198,6 +287,8 @@ def blit_bottom_mid(x, y):
         return a
 
     return blit_tile
+
+
 def blit_wall_left(x, y):
     def blit_tile():
         a = graphic_main.screen.blit(wall[4], [x, y])
