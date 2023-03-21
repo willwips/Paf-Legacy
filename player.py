@@ -19,7 +19,7 @@ last_move_is_left = True
 last_move_is_up = False
 last_move_is_down = False
 is_movement = 0
-pv = 100
+pv = 120
 pv_max = 120
 strength = 10
 resistance = 0.1
@@ -154,7 +154,7 @@ def boucle():
         if collision_with_ennemy_1_2():
 
             if cooldown <= 0:
-                pv -= 20 - 20 * resistance
+                pv -= 10 - 10 * resistance
                 cooldown = 60
 
                 cooldown_move = 0
@@ -168,7 +168,7 @@ def boucle():
 
         if collision_with_projectile():
             if cooldown <= 0:
-                pv -= 20 - 20 * resistance
+                pv -= 30 - 30 * resistance
                 cooldown = 60
                 cooldown_move = 0
     if pv <= 0:
@@ -201,8 +201,19 @@ def collision_with_door(door):
     print(rectA.collidelist(door))
     if rectA.collidelist(door) != -1:
         if not ennemy.enemy_1_list and not ennemy.enemy_1_2_list and not ennemy.enemy_1_2_list:
-            world.coo[0] += 1
+            if rectA.collidelist(door) == 0:
+
+                world.coo[0] += 1
+            if rectA.collidelist(door) == 1:
+                world.coo[1] -= 1
+
+            if rectA.collidelist(door) == 2:
+                world.coo[0] -= 1
+
+            if rectA.collidelist(door) == 3:
+                world.coo[1] += 1
             world.next_room()
+            print(world.coo, 'azqdezea541f63ez41f6541')
 
 def collision_with_wall():
     global pos
@@ -350,5 +361,5 @@ def showpv():
     rectA = pygame.draw.rect(graphic_main.screen, (255, 0, 0), life_red)
     life_black = pygame.Rect(w / 2 - (widht * w) / 2 + widht * w - (widht * w - widht * w * pv / pv_max), h - 0.1 * h,
                              widht * w - widht * w * pv / pv_max + 1, height * h)
-    rectB = pygame.draw.rect(graphic_main.screen, (0, 0, 0), life_black)
+    rectB = pygame.draw.rect(graphic_main.screen, (40, 40, 40), life_black)
     return rectA, rectB

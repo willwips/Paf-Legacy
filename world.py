@@ -1,6 +1,7 @@
 import room
 import graphic_main
 import random
+import player
 
 floor = []
 coo = [0, 0]
@@ -17,4 +18,4 @@ def create_floor(level):
 
 create_floor(0)
 def next_room():
-    graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right =floor[coo[0]][coo[1]]()
+    graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right, player.pos=floor[coo[0]][coo[1]]()

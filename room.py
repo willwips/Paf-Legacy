@@ -16,7 +16,7 @@ def room_1_1():
     bottom = pygame.display.get_surface().get_size()[1]/2 + y/2 * 50
     left = pygame.display.get_surface().get_size()[0]/2 - x/2 * 50
     right = pygame.display.get_surface().get_size()[0]/2 + x/2 * 50
-
+    pos_play = [(x-1) * 50 + left - 20, int(y/2) * 50+ top]
     def create():
         graphic_main.trash_update.append(graphic_main.screen.fill((0, 0, 0)))
         for i in range(0, x):
@@ -68,7 +68,6 @@ def room_1_1():
         door.append(pygame.Rect(left , int(y/2) * 50+ top, 50, 50)) # Porte 3
         door.append(pygame.Rect(int(x/2) * 50 + left,  top , 50, 50)) # Porte 4
 
-        graphic_main.update.append(pygame.draw.rect(graphic_main.screen, (255, 255, 255), door[1]))
 
     create()
 
@@ -88,7 +87,7 @@ def room_1_1():
             except:
                 pass
 
-    return create, update, door, top, bottom, left, right
+    return create, update, door, top, bottom, left, right, pos_play
 
 
 
@@ -102,6 +101,7 @@ def room_1_2():
     bottom = pygame.display.get_surface().get_size()[1]/2 + y/2 * 50
     left = pygame.display.get_surface().get_size()[0]/2 - x/2 * 50
     right = pygame.display.get_surface().get_size()[0]/2 + x/2 * 50
+    pos_play = [(x-1) * 50 + left - 20, int(y/2) * 50+ top]
 
     def create():
         graphic_main.trash_update.append(graphic_main.screen.fill((0, 0, 0)))
@@ -154,7 +154,6 @@ def room_1_2():
         door.append(pygame.Rect(int(x/2) * 50 + left , y - 1 * 50+ bottom - 10, 50, 50)) # Porte 2
         door.append(pygame.Rect(left , int(y/2) * 50+ top, 50, 50)) # Porte 3
         door.append(pygame.Rect(int(x/2) * 50 + left,  top, 50, 50)) # Porte 4
-        graphic_main.update.append(pygame.draw.rect(graphic_main.screen, (255, 255, 255), door[1]))
 
 
     create()
@@ -175,7 +174,7 @@ def room_1_2():
             except:
                 pass
 
-    return create, update, door, top, bottom, left, right
+    return create, update, door, top, bottom, left, right, pos_play
 
 
 def room_1_3():
@@ -188,6 +187,7 @@ def room_1_3():
     bottom = pygame.display.get_surface().get_size()[1]/2 + y/2 * 50
     left = pygame.display.get_surface().get_size()[0]/2 - x/2 * 50
     right = pygame.display.get_surface().get_size()[0]/2 + x/2 * 50
+    pos_play = [(x-1) * 50 + left - 20, int(y/2) * 50+ top]
 
     def create():
         graphic_main.trash_update.append(graphic_main.screen.fill((0, 0, 0)))
@@ -241,7 +241,6 @@ def room_1_3():
         door.append(pygame.Rect(int(x/2) * 50 + left , y - 1 * 50+ bottom - 10, 50, 50)) # Porte 2
         door.append(pygame.Rect(left , int(y/2) * 50+ top, 50, 50)) # Porte 3
         door.append(pygame.Rect(int(x/2) * 50 + left,  top, 50, 50)) # Porte 4
-        graphic_main.update.append(pygame.draw.rect(graphic_main.screen, (255, 255, 255), door[1]))
 
 
     create()
@@ -262,4 +261,4 @@ def room_1_3():
             except:
                 pass
 
-    return create, update, door, top, bottom, left, right
+    return create, update, door, top, bottom, left, right, pos_play

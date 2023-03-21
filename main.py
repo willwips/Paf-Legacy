@@ -4,6 +4,8 @@ import ennemy
 import room
 import weapon
 import tiles
+import world
+
 # initialisation des module
 screen = graphic_main.initialisation(True)
 tiles.load_tile()
@@ -27,7 +29,8 @@ ennemy.spawn_enemy_2_1([x, y], ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/
 #                                            'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
 
 weapon.import_weapon()
-graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right = room.room_1_1()
+#graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right = world.next_room()
+world.next_room()
 graphic_main.r()
 # boucle de fonctionnement
 
