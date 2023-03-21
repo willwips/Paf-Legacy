@@ -9,7 +9,7 @@ coo = [0, 0]
 def create_floor(level):
     global floor
     if level == 0:
-        liste_level = [room.room_1_1, room.room_1_2]
+        liste_level = [room.room_1_1, room.room_1_2, room.room_1_3]
     for i in range(10):
         floor.append([])
         for j in range(0, 10):

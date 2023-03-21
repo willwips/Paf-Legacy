@@ -37,6 +37,9 @@ def load_tile():
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center-Square.png').convert_alpha(), [55, 55]), 90))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center-Square.png').convert_alpha(), [55, 55]), 180))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Corner-Square.png').convert_alpha(), [55, 55]), 0))
+    wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Corner-Square.png').convert_alpha(), [55, 55]), 90))
+    wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Corner-Square.png').convert_alpha(), [55, 55]), 180))
+    wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Corner-Square.png').convert_alpha(), [55, 55]), -90))
 
     print(door)
 
@@ -293,6 +296,24 @@ def blit_bottom_mid(x, y):
 def blit_wall_left(x, y):
     def blit_tile():
         a = graphic_main.screen.blit(wall[4], [x, y])
+        return a
+    return blit_tile
+
+def blit_wall_top(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(wall[5], [x, y])
+        return a
+    return blit_tile
+
+def blit_wall_right(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(wall[6], [x, y])
+        return a
+    return blit_tile
+
+def blit_wall_bottom(x, y):
+    def blit_tile():
+        a = graphic_main.screen.blit(wall[7], [x, y])
         return a
     return blit_tile
 def blit_door_black(x, y, tile):

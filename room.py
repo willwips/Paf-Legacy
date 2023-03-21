@@ -32,7 +32,12 @@ def room_1_1():
                     room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 4
                 elif i == 0 and j == 0:
                     room[i].append(tiles.blit_wall_left(i * 50 + left, j * 50 + top))
-                    print('r')
+                elif i == x-1 and j == 0:
+                    room[i].append(tiles.blit_wall_bottom(i * 50 + left, j * 50 + top))
+                elif i == x-1 and j == y-1:
+                    room[i].append(tiles.blit_wall_right(i * 50 + left, j * 50 + top))
+                elif i == 0 and j == y-1:
+                    room[i].append(tiles.blit_wall_top(i * 50 + left, j * 50 + top))
 
                 elif i == 0:
                     room[i].append(tiles.blit_wall_left_mid(i * 50 + left, j * 50 + top))
@@ -47,8 +52,8 @@ def room_1_1():
                 elif j % 2 + i % 2 == 1:
                     room[i].append(tiles.blit_tile_4_1(i * 50 + left, j * 50 + top))
         #ennely (voir main)
-        ennemy.spawn_enemy_1_2([left + 80, top +80], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 10)
-        ennemy.spawn_enemy_1_2([left + 250, top + 150], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 10)
+        ennemy.spawn_enemy_1_2([left + 80, top +80], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 30)
+        ennemy.spawn_enemy_1_2([left + 250, top + 150], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 30)
         ennemy.spawn_enemy_1([left + 80, top+223], 'picture/character/player1.png', 50)
         ennemy.spawn_enemy_1([left + 210, top + 85], 'picture/character/player1.png', 50)
 
@@ -113,7 +118,12 @@ def room_1_2():
                     room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 4
                 elif i == 0 and j == 0:
                     room[i].append(tiles.blit_wall_left(i * 50 + left, j * 50 + top))
-                    print('r')
+                elif i == x - 1 and j == 0:
+                    room[i].append(tiles.blit_wall_bottom(i * 50 + left, j * 50 + top))
+                elif i == x - 1 and j == y - 1:
+                    room[i].append(tiles.blit_wall_right(i * 50 + left, j * 50 + top))
+                elif i == 0 and j == y - 1:
+                    room[i].append(tiles.blit_wall_top(i * 50 + left, j * 50 + top))
 
                 elif i == 0:
                     room[i].append(tiles.blit_wall_left_mid(i * 50 + left, j * 50 + top))
@@ -129,8 +139,8 @@ def room_1_2():
                     room[i].append(tiles.blit_tile_1_1(i * 50 + left, j * 50 + top))
 
         #ennely (voir main)
-        ennemy.spawn_enemy_1_2([left + 80, top +80], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 10)
-        ennemy.spawn_enemy_1_2([left + 250, top + 150], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 10)
+        ennemy.spawn_enemy_1_2([left + 80, top +80], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 30)
+        ennemy.spawn_enemy_1_2([left + 250, top + 150], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 30)
 
         ennemy.spawn_enemy_1([left + 80, top+223], 'picture/character/player1.png', 50)
         ennemy.spawn_enemy_1([left + 210, top + 85], 'picture/character/player1.png', 50)
@@ -194,7 +204,12 @@ def room_1_3():
                     room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 4
                 elif i == 0 and j == 0:
                     room[i].append(tiles.blit_wall_left(i * 50 + left, j * 50 + top))
-                    print('r')
+                elif i == x - 1 and j == 0:
+                    room[i].append(tiles.blit_wall_bottom(i * 50 + left, j * 50 + top))
+                elif i == x - 1 and j == y - 1:
+                    room[i].append(tiles.blit_wall_right(i * 50 + left, j * 50 + top))
+                elif i == 0 and j == y - 1:
+                    room[i].append(tiles.blit_wall_top(i * 50 + left, j * 50 + top))
 
                 elif i == 0:
                     room[i].append(tiles.blit_wall_left_mid(i * 50 + left, j * 50 + top))
@@ -210,9 +225,9 @@ def room_1_3():
                     room[i].append(tiles.blit_tile_4_1(i * 50 + left, j * 50 + top))
 
         #ennely (voir main)
-        ennemy.spawn_enemy_1_2([left + 80, top +80], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 10)
-        ennemy.spawn_enemy_1_2([left + 250, top + 150], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 10)
-        ennemy.spawn_enemy_1([left + 27, top+45], 'picture/character/player1.png', 50)
+        ennemy.spawn_enemy_1_2([left + 80, top +80], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 30)
+        ennemy.spawn_enemy_1_2([left + 250, top + 150], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 30)
+        ennemy.spawn_enemy_1([left + 72, top+529], 'picture/character/player1.png', 50)
 
         ennemy.spawn_enemy_1([left + 80, top+223], 'picture/character/player1.png', 50)
         ennemy.spawn_enemy_1([left + 210, top + 85], 'picture/character/player1.png', 50)
