@@ -17,5 +17,5 @@ def create_floor(level):
             floor[i].append(random.choice(liste_level))
 
 create_floor(0)
-def next_room():
-    graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right, player.pos=floor[coo[0]][coo[1]]()
+def next_room(n):
+    graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right, player.pos=floor[coo[0]][coo[1]](n)

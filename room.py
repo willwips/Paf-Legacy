@@ -6,7 +6,7 @@ import tiles
 import graphic_main
 
 
-def room_1_1():
+def room_1_1(n):
     room = []
     door = []
     x = 18 # Longueur x de la salle
@@ -16,7 +16,7 @@ def room_1_1():
     bottom = pygame.display.get_surface().get_size()[1]/2 + y/2 * 50
     left = pygame.display.get_surface().get_size()[0]/2 - x/2 * 50
     right = pygame.display.get_surface().get_size()[0]/2 + x/2 * 50
-    pos_play = [(x-1) * 50 + left - 20, int(y/2) * 50+ top]
+    pos_play = [[(x-1) * 50 + left - 20, int(y/2) * 50+ top], [int(x/2) * 50 + left , y - 1 * 50+ bottom - 10 - 50], [left + 20, int(y/2) * 50+ top], [int(x/2) * 50 + left,  top + 50]]
     def create():
         graphic_main.trash_update.append(graphic_main.screen.fill((0, 0, 0)))
         for i in range(0, x):
@@ -87,11 +87,11 @@ def room_1_1():
             except:
                 pass
 
-    return create, update, door, top, bottom, left, right, pos_play
+    return create, update, door, top, bottom, left, right, pos_play[n]
 
 
 
-def room_1_2():
+def room_1_2(n):
     room = []
     door = []
     x = 9 # Longueur x de la salle
@@ -101,7 +101,7 @@ def room_1_2():
     bottom = pygame.display.get_surface().get_size()[1]/2 + y/2 * 50
     left = pygame.display.get_surface().get_size()[0]/2 - x/2 * 50
     right = pygame.display.get_surface().get_size()[0]/2 + x/2 * 50
-    pos_play = [(x-1) * 50 + left - 20, int(y/2) * 50+ top]
+    pos_play = [[(x-1) * 50 + left - 20, int(y/2) * 50+ top], [int(x/2) * 50 + left , y - 1 * 50+ bottom - 10 - 50], [left + 20, int(y/2) * 50+ top], [int(x/2) * 50 + left,  top + 50]]
 
     def create():
         graphic_main.trash_update.append(graphic_main.screen.fill((0, 0, 0)))
@@ -174,10 +174,10 @@ def room_1_2():
             except:
                 pass
 
-    return create, update, door, top, bottom, left, right, pos_play
+    return create, update, door, top, bottom, left, right, pos_play[n]
 
 
-def room_1_3():
+def room_1_3(n):
     room = []
     door = []
     x = 15 # Longueur x de la salle
@@ -187,7 +187,7 @@ def room_1_3():
     bottom = pygame.display.get_surface().get_size()[1]/2 + y/2 * 50
     left = pygame.display.get_surface().get_size()[0]/2 - x/2 * 50
     right = pygame.display.get_surface().get_size()[0]/2 + x/2 * 50
-    pos_play = [(x-1) * 50 + left - 20, int(y/2) * 50+ top]
+    pos_play = [[(x-1) * 50 + left - 20, int(y/2) * 50+ top], [int(x/2) * 50 + left , y - 1 * 50+ bottom - 10 - 50], [left + 20, int(y/2) * 50+ top], [int(x/2) * 50 + left,  top + 50]]
 
     def create():
         graphic_main.trash_update.append(graphic_main.screen.fill((0, 0, 0)))
@@ -261,4 +261,4 @@ def room_1_3():
             except:
                 pass
 
-    return create, update, door, top, bottom, left, right, pos_play
+    return create, update, door, top, bottom, left, right, pos_play[n]

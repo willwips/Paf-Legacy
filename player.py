@@ -204,15 +204,19 @@ def collision_with_door(door):
             if rectA.collidelist(door) == 0:
 
                 world.coo[0] += 1
+                world.next_room(2)
+
             if rectA.collidelist(door) == 1:
                 world.coo[1] -= 1
+                world.next_room(3)
 
             if rectA.collidelist(door) == 2:
                 world.coo[0] -= 1
+                world.next_room(0)
 
             if rectA.collidelist(door) == 3:
                 world.coo[1] += 1
-            world.next_room()
+                world.next_room(1)
             print(world.coo, 'azqdezea541f63ez41f6541')
 
 def collision_with_wall():

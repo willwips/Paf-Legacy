@@ -30,7 +30,7 @@ ennemy.spawn_enemy_2_1([x, y], ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/
 
 weapon.import_weapon()
 #graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right = world.next_room()
-world.next_room()
+world.next_room(0)
 graphic_main.r()
 # boucle de fonctionnement
 
