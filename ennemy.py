@@ -307,7 +307,7 @@ def collision_with_weapon(a, strenght, knockback):
                 enemy_1_list[n][5][0] = -knockback
 
             if enemy_1_list[n][2] <= 0:
-                player.folie -= 20
+                player.folie -= 30
                 del enemy_1_list[n]
 
         n += 1
@@ -351,6 +351,6 @@ def collision_with_weapon(a, strenght, knockback):
 
             if enemy_2_1_list[n][2] <= 0:
                 del enemy_2_1_list[n]
-                player.folie -= 20
+                player.folie -= 30
 
         n += 1

@@ -9,7 +9,7 @@ weapon = {}
 def import_weapon():
     global weapon
     weapon['final_axe'] = (
-        pygame.transform.scale(pygame.image.load('picture/weapon/final_axe.png').convert_alpha(), (20, 40)), 10, [17, 30], 10)
+        pygame.transform.scale(pygame.image.load('picture/weapon/final_axe.png').convert_alpha(), (20, 40)), 10, [17, 30], 10, 20)
 
 
 is_attacking = False

@@ -95,8 +95,8 @@ def boucle():
                 last_move_is_down = False
             if event.key == pygame.K_u:
                 weapon.is_attacking = True
-                folie += 5
-                print(folie, 'ezsdzfezfiuezoçduftj')
+                folie += weapon.weapon[weapon.current_weapon][4]
+                #print(folie, 'ezsdzfezfiuezoçduftj')
                 if folie >= floie_max:
                     sys.exit()
             if event.key == pygame.K_i:
@@ -209,10 +209,11 @@ def collision_with_door(door):
     global folie
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
     if rectA.collidelist(door) != -1:
-        folie -= 50
-        if folie< 0:
-            folie = 0
+
         if not ennemy.enemy_1_list and not ennemy.enemy_1_2_list and not ennemy.enemy_1_2_list:
+            folie -= 100
+            if folie < 0:
+                folie = 0
             if rectA.collidelist(door) == 0:
                 world.coo[0] += 1
                 world.next_room(2)
