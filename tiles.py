@@ -308,7 +308,7 @@ def blit_wall_top(x, y):
         a = graphic_main.screen.blit(wall[5], [x, y])
         return a
     return blit_tile
-
+#a
 def blit_wall_right(x, y):
     def blit_tile():
         a = graphic_main.screen.blit(wall[6], [x, y])
