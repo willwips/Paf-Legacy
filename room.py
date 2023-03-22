@@ -23,13 +23,13 @@ def room_1_1(n):
             room.append([])
             for j in range(0, y):
                 if j == int(y/2) and i == x - 1:
-                    room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 1
+                    room[i].append(tiles.blit_door_black_1(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 1
                 elif j == y - 1 and i == int(x/2):
-                    room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 2
+                    room[i].append(tiles.blit_door_black_3(i * 50 + left, j * 50 + top, tiles.blit_bottom_mid(i*50 + left, j*50 + top))) # Porte 2
                 elif j == int(y/2) and i == 0:
-                    room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 3
+                    room[i].append(tiles.blit_door_black_4(i * 50 + left, j * 50 + top, tiles.blit_wall_left_mid(i*50 + left, j*50 + top))) # Porte 3
                 elif j == 0 and i == int(x/2):
-                    room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 4
+                    room[i].append(tiles.blit_door_black_2(i * 50 + left, j * 50 + top, tiles.blit_wall_top_mid(i*50 + left, j*50 + top))) # Porte 4
                 elif i == 0 and j == 0:
                     room[i].append(tiles.blit_wall_left(i * 50 + left, j * 50 + top))
                 elif i == x-1 and j == 0:
@@ -109,13 +109,13 @@ def room_1_2(n):
             room.append([])
             for j in range(0, y):
                 if j == int(y/2) and i == x - 1:
-                    room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 1
+                    room[i].append(tiles.blit_door_black_1(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 1
                 elif j == y - 1 and i == int(x/2):
-                    room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 2
+                    room[i].append(tiles.blit_door_black_3(i * 50 + left, j * 50 + top, tiles.blit_bottom_mid(i*50 + left, j*50 + top))) # Porte 2
                 elif j == int(y/2) and i == 0:
-                    room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 3
+                    room[i].append(tiles.blit_door_black_4(i * 50 + left, j * 50 + top, tiles.blit_wall_left_mid(i*50 + left, j*50 + top))) # Porte 3
                 elif j == 0 and i == int(x/2):
-                    room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 4
+                    room[i].append(tiles.blit_door_black_2(i * 50 + left, j * 50 + top, tiles.blit_wall_top_mid(i*50 + left, j*50 + top))) # Porte 4
                 elif i == 0 and j == 0:
                     room[i].append(tiles.blit_wall_left(i * 50 + left, j * 50 + top))
                 elif i == x - 1 and j == 0:
@@ -195,13 +195,13 @@ def room_1_3(n):
             room.append([])
             for j in range(0, y):
                 if j == int(y/2) and i == x - 1:
-                    room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 1
+                    room[i].append(tiles.blit_door_black_1(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 1
                 elif j == y - 1 and i == int(x/2):
-                    room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 2
+                    room[i].append(tiles.blit_door_black_3(i * 50 + left, j * 50 + top, tiles.blit_bottom_mid(i*50 + left, j*50 + top))) # Porte 2
                 elif j == int(y/2) and i == 0:
-                    room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 3
+                    room[i].append(tiles.blit_door_black_4(i * 50 + left, j * 50 + top, tiles.blit_wall_left_mid(i*50 + left, j*50 + top))) # Porte 3
                 elif j == 0 and i == int(x/2):
-                    room[i].append(tiles.blit_door_black(i * 50 + left, j * 50 + top, tiles.blit_wall_mid(i*50 + left, j*50 + top))) # Porte 4
+                    room[i].append(tiles.blit_door_black_2(i * 50 + left, j * 50 + top, tiles.blit_wall_top_mid(i*50 + left, j*50 + top))) # Porte 4
                 elif i == 0 and j == 0:
                     room[i].append(tiles.blit_wall_left(i * 50 + left, j * 50 + top))
                 elif i == x - 1 and j == 0:

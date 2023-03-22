@@ -31,7 +31,11 @@ def load_tile():
         #Tile_4.append(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png').convert_alpha()) ce que tu as mit
         Tile_4.append(pygame.transform.scale(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png').convert_alpha(), [50, 50]))
     door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), -90))
-    door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), -90))
+    door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), 0))
+    door.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), 180))
+    door.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), 90))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center-Square.png').convert_alpha(), [55, 55]), -90))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center-Square.png').convert_alpha(), [55, 55]), 0))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center-Square.png').convert_alpha(), [55, 55]), 90))
@@ -316,7 +320,7 @@ def blit_wall_bottom(x, y):
         a = graphic_main.screen.blit(wall[7], [x, y])
         return a
     return blit_tile
-def blit_door_black(x, y, tile):
+def blit_door_black_1(x, y, tile):
     def blit_tile():
         a = tile()
         graphic_main.screen.blit(door[0], [x, y])
@@ -324,10 +328,25 @@ def blit_door_black(x, y, tile):
 
     return blit_tile
 
-def blit_door_black(x, y, tile):
+def blit_door_black_2(x, y, tile):
     def blit_tile():
         a = tile()
-        graphic_main.screen.blit(door[0], [x, y])
+        graphic_main.screen.blit(door[1], [x, y])
+        return a
+
+    return blit_tile
+def blit_door_black_3(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[2], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_door_black_4(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[3], [x, y])
         return a
 
     return blit_tile
