@@ -3,7 +3,7 @@ import sys
 import pygame
 import ennemy
 import graphic_main
-#import main
+# import main
 import weapon
 import world
 
@@ -29,6 +29,10 @@ dash_unlocked = True
 dash = 0
 dash_invicibility_unlocked = True
 dash_inv = False
+folie = 0
+floie_max = 200
+barre_de_folie =None
+
 
 # boucle permettant de bouger le personage
 def boucle():
@@ -47,7 +51,7 @@ def boucle():
     global last_move_is_up
     global dash
     global dash_inv
-    print(pos)
+    global folie
     old_pos = pos
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -89,9 +93,12 @@ def boucle():
                 last_move_is_down = False
             if event.key == pygame.K_u:
                 weapon.is_attacking = True
+                folie += 5
+                print(folie, 'ezsdzfezfiuezoçduftj')
+                if folie >= floie_max:
+                    sys.exit()
             if event.key == pygame.K_i:
-                print(dash)
-                if dash == -15:
+                if dash == -135:
                     dash = 15
                 if dash_invicibility_unlocked:
                     dash_inv = True
@@ -130,8 +137,8 @@ def boucle():
         if last_move_is_right:
             pos[0] += 10
 
-    if dash > -15:
-        dash-=1
+    if dash > -135:
+        dash -= 1
     if collision_with_door(graphic_main.door):
         pass
     if collision_with_wall():
@@ -197,12 +204,14 @@ def boucle():
 
 
 def collision_with_door(door):
+    global folie
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
-    print(rectA.collidelist(door))
     if rectA.collidelist(door) != -1:
+        folie -= 50
+        if folie< 0:
+            folie = 0
         if not ennemy.enemy_1_list and not ennemy.enemy_1_2_list and not ennemy.enemy_1_2_list:
             if rectA.collidelist(door) == 0:
-
                 world.coo[0] += 1
                 world.next_room(2)
 
@@ -217,18 +226,18 @@ def collision_with_door(door):
             if rectA.collidelist(door) == 3:
                 world.coo[1] += 1
                 world.next_room(1)
-            print(world.coo, 'azqdezea541f63ez41f6541')
+
 
 def collision_with_wall():
     global pos
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
-    if rectA.left < graphic_main.left  + 50:
+    if rectA.left < graphic_main.left + 50:
         pos[0] += 20
         return True
     if rectA.right > graphic_main.right - 50:
         pos[0] -= 20
         return True
-    if rectA.top < graphic_main.top +50:
+    if rectA.top < graphic_main.top + 50:
         pos[1] += 20
         return True
     if rectA.bottom > graphic_main.bottom - 50:
@@ -269,6 +278,7 @@ def collision_with_ennemy_1():
                 pos[1] -= 10
             return collision
 
+
 def collision_with_ennemy_1_2():
     global pos
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
@@ -300,6 +310,7 @@ def collision_with_ennemy_1_2():
             if i[4][3] == True:
                 pos[1] -= 10
             return collision
+
 
 def collision_with_ennemy_2_1():
     global pos
@@ -333,6 +344,7 @@ def collision_with_ennemy_2_1():
                 pos[1] -= 10
             return collision
 
+
 def collision_with_projectile():
     global pos
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
@@ -356,6 +368,8 @@ def collision_with_projectile():
             del ennemy.projectile_list[n]
             return collision
         n += 1
+
+
 def showpv():
     global pv
     w, h = pygame.display.get_surface().get_size()
@@ -366,4 +380,12 @@ def showpv():
     life_black = pygame.Rect(w / 2 - (widht * w) / 2 + widht * w - (widht * w - widht * w * pv / pv_max), h - 0.1 * h,
                              widht * w - widht * w * pv / pv_max + 1, height * h)
     rectB = pygame.draw.rect(graphic_main.screen, (40, 40, 40), life_black)
+    return rectA, rectB
+
+
+def showfolie():
+    w, h = pygame.display.get_surface().get_size()
+    rectA = graphic_main.screen.blit(barre_de_folie, (w/300, h * 20/100))
+    rectB = pygame.Rect((w/300, (h* 20/100) + (folie/floie_max) * 800, 66, 800 - (folie/floie_max) * 800))
+    rectB = pygame.draw.rect(graphic_main.screen, (0, 0, 0), rectB)
     return rectA, rectB

@@ -66,6 +66,7 @@ def boucle():
     player_pos = screen.blit(frame[current], player.pos)
     update.append(player_pos)
     update.extend(player.showpv())
+    update.extend(player.showfolie())
     old_w = w
     for i in ennemy.enemy_1_list:
         ennemy_pos = screen.blit(i[0], i[1])
@@ -88,7 +89,7 @@ def boucle():
     pygame.display.update(update + old_update + trash_update)
     trash_update = []
     clock.tick(60)
-    print(clock.get_fps())
+    #print(clock.get_fps())
     if player.is_movement:
         current += 1
         current = current % len(frame)
@@ -207,4 +208,5 @@ def import_character_picture(nbr):
 
     global frame
     frame = frame_back
+    player.barre_de_folie =  pygame.transform.scale(pygame.image.load('picture/ui/result_1.png').convert_alpha(), [66, 800])
     return frame

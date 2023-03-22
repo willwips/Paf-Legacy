@@ -307,12 +307,12 @@ def collision_with_weapon(a, strenght, knockback):
                 enemy_1_list[n][5][0] = -knockback
 
             if enemy_1_list[n][2] <= 0:
+                player.folie -= 20
                 del enemy_1_list[n]
 
         n += 1
     n = 0
     for i in enemy_1_2_list:
-        print(i)
         collision = False
         rectB = i[0][i[8]].get_rect(center=i[1])
         rectB.h = 12
@@ -329,12 +329,12 @@ def collision_with_weapon(a, strenght, knockback):
                 enemy_1_2_list[n][5][0] = -knockback
 
             if enemy_1_2_list[n][2] <= 0:
+                player.folie -= 20
                 del enemy_1_2_list[n]
 
         n += 1
     n = 0
     for i in enemy_2_1_list:
-        print(i)
         collision = False
         rectB = i[0][i[8]].get_rect(center=i[1])
         rectB.h = 40
@@ -351,5 +351,6 @@ def collision_with_weapon(a, strenght, knockback):
 
             if enemy_2_1_list[n][2] <= 0:
                 del enemy_2_1_list[n]
+                player.folie -= 20
 
         n += 1
