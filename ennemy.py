@@ -300,7 +300,7 @@ def collision_with_weapon(a, strenght, knockback):
         collision = rectB.colliderect(a)
         if collision and i[3] <= 0:
             enemy_1_list[n][2] -= strenght
-            enemy_1_list[n][3] = 10
+            enemy_1_list[n][3] = 30
             if player.last_move_is_up or player.last_move_is_right:
                 enemy_1_list[n][5][0] = knockback
             if player.last_move_is_down or player.last_move_is_left:
@@ -322,7 +322,7 @@ def collision_with_weapon(a, strenght, knockback):
         collision = rectB.colliderect(a)
         if collision and i[3] <= 0:
             enemy_1_2_list[n][2] -= strenght
-            enemy_1_2_list[n][3] = 10
+            enemy_1_2_list[n][3] = 30
             if player.last_move_is_up or player.last_move_is_right:
                 enemy_1_2_list[n][5][0] = knockback
             if player.last_move_is_down or player.last_move_is_left:
@@ -343,7 +343,7 @@ def collision_with_weapon(a, strenght, knockback):
         collision = rectB.colliderect(a)
         if collision and i[3] <= 0:
             enemy_2_1_list[n][2] -= strenght
-            enemy_2_1_list[n][3] = 10
+            enemy_2_1_list[n][3] = 30
             if player.last_move_is_up or player.last_move_is_right:
                 enemy_2_1_list[n][5][0] = knockback
             if player.last_move_is_down or player.last_move_is_left:
