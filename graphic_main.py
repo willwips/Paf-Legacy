@@ -208,5 +208,7 @@ def import_character_picture(nbr):
 
     global frame
     frame = frame_back
-    player.barre_de_folie =  pygame.transform.scale(pygame.image.load('picture/ui/result_1.png').convert_alpha(), [66, 800])
+    w, h = pygame.display.get_surface().get_size()
+    player.barre_de_folie =  pygame.transform.scale(pygame.image.load('picture/ui/img1.jpg'
+                                                                      ).convert_alpha(), [73 * w / 1920, 634 * h / 1080])
     return frame

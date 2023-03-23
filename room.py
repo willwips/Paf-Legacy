@@ -18,7 +18,7 @@ def room_1_1(n):
     right = pygame.display.get_surface().get_size()[0]/2 + x/2 * 50
     pos_play = [[(x-1) * 50 + left - 20, int(y/2) * 50+ top], [int(x/2) * 50 + left , y - 1 * 50+ bottom - 10 - 50], [left + 20, int(y/2) * 50+ top], [int(x/2) * 50 + left,  top + 50]]
     def create():
-        graphic_main.trash_update.append(graphic_main.screen.fill((0, 0, 0)))
+        graphic_main.trash_update.append(graphic_main.screen.fill((0,0,0)))
         for i in range(0, x):
             room.append([])
             for j in range(0, y):
