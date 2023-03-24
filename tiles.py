@@ -303,8 +303,7 @@ def blit_wall_left(x, y):
         return a
     return blit_tile
 
-<<<<<<< Updated upstream
-=======
+
 
 def blit_door_black(x, y, tile):
     def blit_tile():
@@ -355,8 +354,7 @@ def blit_wall_bottom(x, y):
     return blit_tile
 def blit_door_black_1(x, y, tile):
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
+    pass
 def blit_wall_top(x, y):
     def blit_tile():
         a = graphic_main.screen.blit(wall[5], [x, y])
