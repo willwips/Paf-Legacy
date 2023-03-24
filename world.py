@@ -15,7 +15,7 @@ def create_floor(level):
     for i in range(10):
         floor.append([])
         for j in range(0, 10):
-            if j == 0:
+            if j == 0 and i== 0:
                 floor[i].append(first_room)
             floor[i].append(random.choice(liste_level))
 
