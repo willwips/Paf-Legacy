@@ -78,6 +78,9 @@ def boucle():
     for i in ennemy.enemy_2_1_list:
         ennemy_pos = screen.blit(i[0][i[8]], i[1])
         update.append(ennemy_pos)
+    for i in ennemy.boss_list:
+        ennemy_pos = screen.blit(i[0][0], i[1])
+        update.append(ennemy_pos)
     for i in ennemy.projectile_list:
         proj_pos = pygame.draw.circle(screen, i[3], i[0], i[1], 0)
         update.append(proj_pos)
@@ -192,6 +195,7 @@ def import_character_picture(nbr):
     for i in range(0, nbr):
         frame_L_wounded.append(player3)
 
+
     player1 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_wounded_1.png').convert_alpha(), (28*(47/54), 47))
     player2 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_wounded_2.png').convert_alpha(), (28*(47/54), 47))
     player3 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_wounded_3.png').convert_alpha(), (29*(47/55), 47))
@@ -208,5 +212,7 @@ def import_character_picture(nbr):
 
     global frame
     frame = frame_back
-    player.barre_de_folie =  pygame.transform.scale(pygame.image.load('picture/ui/result_1.png').convert_alpha(), [66, 800])
+    w, h = pygame.display.get_surface().get_size()
+    player.barre_de_folie =  pygame.transform.scale(pygame.image.load('picture/ui/img1.jpg'
+                                                                      ).convert_alpha(), [73 * w / 1920, 634 * h / 1080])
     return frame

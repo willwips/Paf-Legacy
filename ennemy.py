@@ -8,6 +8,7 @@ import player
 enemy_1_list = []
 enemy_1_2_list = []
 enemy_2_1_list = []
+boss_list = []
 projectile_list = []
 
 
@@ -46,6 +47,27 @@ def spawn_enemy_1_2(pos, img, pv):
     global enemy_1_2_list
     enemy_1_2_list.append([_img, pos, pv, 10, [False, False, False, False], [0, 0], [0, 0], 0, 0])
 
+def spawn_boss_1(pos, pv):
+    _img = []
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p1_L.png'), [46, 80]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p1_R.png'), [46, 80]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p1_to_p2_L.png'), [46, 80]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p1_to_p2_R.png'), [46, 80]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_1_L_1.png'), [46, 80]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_1_L_2.png'), [46, 80]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_1_L_3.png'), [46, 80]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_1_R_1.png'), [46, 80]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_1_R_2.png'), [46, 80]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_1.png'), [46, 80]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_2.png'), [46, 80]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_3.png'), [46, 80]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_4.png'), [46, 80]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_5.png'), [46, 80]))
+    boss_list.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0]])
+
+
+
+
 
 def boucle():
     global enemy_1_list
@@ -55,6 +77,7 @@ def boucle():
     move_ennemi_2_1()
     move_ennemi_1_2()
     move_projectile()
+    move_boss_1()
     for i in enemy_1_list:
         if i[3] > 0:
             enemy_1_list[n][3] -= 1
@@ -70,7 +93,12 @@ def boucle():
             enemy_2_1_list[n][3] -= 1
         enemy_2_1_list[n][7] -= 1
         n += 1
-
+    for i in boss_list:
+        if i[6] > 0:
+            boss_list[n][6] -= 1
+        if i[8] > 0:
+            boss_list[n][8] -= 1
+        n += 1
 
 def test_collision__ennemy_1(rect, index=-1):
     n = 0
@@ -86,14 +114,14 @@ def test_collision__ennemy_1(rect, index=-1):
         n += 1
 
 
-def is_touch_wall(pos):
+def is_touch_wall(pos, size):
     if pos[0] < graphic_main.left + 50:
         return True
     if pos[1] < graphic_main.top + 50:
         return True
-    if pos[0]  > graphic_main.right - 50:
+    if pos[0]  + size[0]> graphic_main.right - 50:
         return True
-    if pos[1]  > graphic_main.bottom - 50:
+    if pos[1]  + size[1]> graphic_main.bottom - 50:
         return True
 
     return False
@@ -271,6 +299,138 @@ def move_ennemi_2_1():
                 enemy_2_1_list[i][6] = False
                 enemy_2_1_list[i][7] = 300
 
+def move_boss_1():
+    global boss_list
+    if not boss_list:
+        return
+    if boss_list[0][4] == 0:
+        rectB = boss_list[0][0][0].get_rect(center=boss_list[0][1])
+        rectB.h = 90
+        rectB.w = 46
+        rectB.center = (boss_list[0][1][0] + 23, boss_list[0][1][1] + 40)
+        #zadezd = pygame.draw.rect(graphic_main.screen, (255, 255, 255), rectB)
+        #graphic_main.update.append(zadezd)
+        dist = math.sqrt((boss_list[0][1][0] - player.pos[0]) ** 2 + (boss_list[0][1][1] - player.pos[1]) ** 2)
+        boss_list[0][1] = touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect())
+
+        boss_list[0][3][0] = False
+        boss_list[0][3][1] = False
+        boss_list[0][3][2] = False
+        boss_list[0][3][3] = False
+        if boss_list[0][6] %2 == 0 and boss_list[0][6] > 0:
+            boss_list[0][1][0] += boss_list[0][7][0]
+        if 15 < dist <= 800:
+            if (boss_list[0][1][0] - player.pos[0]) >= 0:
+                boss_list[0][1][0] -= (abs((boss_list[0][1][0] - player.pos[0]) / (
+                        abs(boss_list[0][1][1] - player.pos[1]) + abs((boss_list[0][1][0] - player.pos[0])))))*3
+                boss_list[0][3][0] = True
+
+            elif (boss_list[0][1][0] - player.pos[0]) <= 0:
+                boss_list[0][1][0] += (abs((boss_list[0][1][0] - player.pos[0]) / (
+                        abs(boss_list[0][1][1] - player.pos[1]) + abs(boss_list[0][1][0] - player.pos[0]))))*3
+                boss_list[0][3][1] = True
+            if (boss_list[0][1][1] - player.pos[1]) >= 0:
+
+                boss_list[0][1][1] -= (abs((boss_list[0][1][1] - player.pos[1]) / (
+                        abs(boss_list[0][1][1] - player.pos[1]) + abs(boss_list[0][1][0] - player.pos[0])))) * 3
+                boss_list[0][3][3] = True
+            elif (boss_list[0][1][1] - player.pos[1]) <= 0:
+
+                boss_list[0][1][1] += (abs((boss_list[0][1][1] - player.pos[1]) / (
+                        abs(boss_list[0][1][1] - player.pos[1]) + abs(boss_list[0][1][0] - player.pos[0])))) * 3
+                boss_list[0][3][3] = True
+    if boss_list[0][4] == 1:
+        rectB = boss_list[0][0][0].get_rect(center=boss_list[0][1])
+        rectB.h = 90
+        rectB.w = 46
+        rectB.center = (boss_list[0][1][0] + 23, boss_list[0][1][1] + 40)
+        #zadezd = pygame.draw.rect(graphic_main.screen, (255, 255, 255), rectB)
+        #graphic_main.update.append(zadezd)
+        dist = math.sqrt((boss_list[0][1][0] - player.pos[0]) ** 2 + (boss_list[0][1][1] - player.pos[1]) ** 2)
+        boss_list[0][1] = touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect())
+
+        boss_list[0][3][0] = False
+        boss_list[0][3][1] = False
+        boss_list[0][3][2] = False
+        boss_list[0][3][3] = False
+        print(boss_list[0][9])
+        print(is_touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect()))
+
+        if is_touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect()) or boss_list[0][9] == [0, 0]:
+            dir_to_player = [-3 * (boss_list[0][1][0] - player.pos[0]) / (
+                    abs(boss_list[0][1][1] - player.pos[1]) + abs((boss_list[0][1][0] - player.pos[0]))),
+                             -3 * (boss_list[0][1][1] - player.pos[1]) / (
+                                     abs(boss_list[0][1][1] - player.pos[1]) + abs(
+                                 boss_list[0][1][0] - player.pos[0]))]
+            boss_list[0][9] = dir_to_player
+
+        boss_list[0][1] = touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect())
+
+
+        if boss_list[0][6] %2 == 0 and boss_list[0][6] > 0:
+            boss_list[0][1][0] += boss_list[0][7][0]
+
+        else:
+            if (boss_list[0][1][0] - player.pos[0]) >= 0:
+                boss_list[0][1][0] += boss_list[0][9][0] * 2 + math.cos(boss_list[0][5]) * 5
+                boss_list[0][3][0] = True
+            elif (boss_list[0][1][0] - player.pos[0]) <= 0:
+                boss_list[0][1][0] += boss_list[0][9][0] * 2+ math.cos(boss_list[0][5]) * 5
+                boss_list[0][3][1] = True
+            if (boss_list[0][1][1] - player.pos[1]) >= 0:
+                boss_list[0][1][1] += boss_list[0][9][1] * 2+ math.sin(boss_list[0][5]) * 5
+
+                boss_list[0][3][2] = True
+            elif (boss_list[0][1][1] - player.pos[1]) <= 0:
+                boss_list[0][1][1] += boss_list[0][9][1] * 2 + math.sin(boss_list[0][5]) * 5
+
+                boss_list[0][3][3] = True
+        boss_list[0][5] += 1/20
+    if boss_list[0][4] == 2:
+        for i in range(0, len(boss_list)):
+            rectB = boss_list[i][0][0].get_rect(center=boss_list[i][1])
+            rectB.h = 90
+            rectB.w = 46
+            rectB.center = (boss_list[i][1][0] + 23, boss_list[i][1][1] + 40)
+            #zadezd = pygame.draw.rect(graphic_main.screen, (255, 255, 255), rectB)
+            #graphic_main.update.append(zadezd)
+            dist = math.sqrt((boss_list[0][1][0] - player.pos[0]) ** 2 + (boss_list[0][1][1] - player.pos[1]) ** 2)
+            boss_list[i][1] = touch_wall(boss_list[i][1], boss_list[i][0][0].get_rect())
+
+            boss_list[0][3][0] = False
+            boss_list[0][3][1] = False
+            boss_list[0][3][2] = False
+            boss_list[0][3][3] = False
+            if is_touch_wall(boss_list[0][1]) or boss_list[0][6] == [0, 0]:
+                dir_to_player = [-3 * (boss_list[i][1][0] - player.pos[0]) / (
+                        abs(boss_list[i][1][1] - player.pos[1]) + abs((boss_list[i][1][0] - player.pos[0]))),
+                                 -3 * (boss_list[i][1][1] - player.pos[1]) / (
+                                         abs(boss_list[i][1][1] - player.pos[1]) + abs(
+                                     boss_list[i][1][0] - player.pos[0]))]
+                boss_list[i][9] = dir_to_player
+
+            boss_list[i][1] = touch_wall(boss_list[i][1], boss_list[i][0][0].get_rect())
+
+
+            if boss_list[i][6] %2 == 0 and boss_list[i][6] > 0:
+                boss_list[i][1][0] += boss_list[i][7][0]
+
+            else:
+                if (boss_list[i][1][0] - player.pos[0]) >= 0:
+                    boss_list[i][1][0] += boss_list[i][9][0] * 10 + math.cos(boss_list[i][5]) * 5
+                    boss_list[i][3][0] = True
+                elif (boss_list[0][1][0] - player.pos[0]) <= 0:
+                    boss_list[i][1][0] += boss_list[i][9][0] * 10+ math.cos(boss_list[i][5]) * 5
+                    boss_list[i][3][1] = True
+                if (boss_list[i][1][1] - player.pos[1]) >= 0:
+                    boss_list[i][1][1] += boss_list[i][9][1] * 10+ math.sin(boss_list[i][5]) * 5
+
+                    boss_list[i][3][2] = True
+                elif (boss_list[i][1][1] - player.pos[1]) <= 0:
+                    boss_list[i][1][1] += boss_list[i][9][1] * 10 + math.sin(boss_list[i][5]) * 5
+
+                    boss_list[i][3][3] = True
+            boss_list[i][5] += 1/20
 
 def move_projectile():
     global projectile_lists
@@ -290,6 +450,7 @@ def collision_with_weapon(a, strenght, knockback):
     global enemy_1_list
     global enemy_1_2_list
     global enemy_2_1_list
+    global boss_list
     for i in enemy_1_list:
 
         collision = False
@@ -352,5 +513,41 @@ def collision_with_weapon(a, strenght, knockback):
             if enemy_2_1_list[n][2] <= 0:
                 del enemy_2_1_list[n]
                 player.folie -= 30
+
+        n += 1
+    n=0
+    for i in boss_list:
+        rectB = boss_list[0][0][0].get_rect(center=boss_list[0][1])
+        rectB.h = 90
+        rectB.w = 46
+        rectB.center = (boss_list[0][1][0] + 23, boss_list[0][1][1] + 40)
+
+        collision = rectB.colliderect(a)
+        if collision and i[8] <= 0:
+
+            boss_list[n][2] -= strenght
+            boss_list[n][6] = 10
+            boss_list[n][8] = 30
+            if player.last_move_is_up or player.last_move_is_right:
+                boss_list[n][7][0] = knockback
+            if player.last_move_is_down or player.last_move_is_left:
+                boss_list[n][7][0] = -knockback
+            if boss_list[n][2] <= 0:
+                if boss_list[n][4] == 0:
+                    boss_list[n][4] += 1
+                    boss_list[n][2] = 100
+                    player.folie -= 50
+
+                elif boss_list[n][4] == 1:
+                    boss_list[n][4] += 1
+                    boss_list[n][2] = 100
+                    spawn_boss_1([0, 0], 100)
+                    print(boss_list, 'eZSQDSQ')
+                    boss_list[1][4] = 2
+                    player.folie -= 50
+
+                elif boss_list[n][4] == 2:
+                    del boss_list[n]
+                    player.folie -= 50
 
         n += 1
