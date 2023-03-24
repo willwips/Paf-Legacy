@@ -188,7 +188,7 @@ def move_ennemi_1_2():
         enemy_1_2_list[i][4][2] = False
         enemy_1_2_list[i][4][3] = False
 
-        if is_touch_wall(enemy_1_2_list[i][1]) or enemy_1_2_list[i][6] == [0, 0]:
+        if is_touch_wall(enemy_1_2_list[i][1], enemy_1_2_list[i][0][enemy_1_2_list[i][8]].get_rect()) or enemy_1_2_list[i][6] == [0, 0]:
             dir_to_player = [-3 * (enemy_1_2_list[i][1][0] - player.pos[0]) / (
                     abs(enemy_1_2_list[i][1][1] - player.pos[1]) + abs((enemy_1_2_list[i][1][0] - player.pos[0]))),
                              -3 * (enemy_1_2_list[i][1][1] - player.pos[1]) / (
@@ -347,7 +347,7 @@ def move_boss_1():
         #zadezd = pygame.draw.rect(graphic_main.screen, (255, 255, 255), rectB)
         #graphic_main.update.append(zadezd)
         dist = math.sqrt((boss_list[0][1][0] - player.pos[0]) ** 2 + (boss_list[0][1][1] - player.pos[1]) ** 2)
-        boss_list[0][1] = touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect())
+        #boss_list[0][1] = touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect())
 
         boss_list[0][3][0] = False
         boss_list[0][3][1] = False
@@ -355,6 +355,7 @@ def move_boss_1():
         boss_list[0][3][3] = False
         print(boss_list[0][9])
         print(is_touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect()))
+        print(boss_list[0][1])
 
         if is_touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect()) or boss_list[0][9] == [0, 0]:
             dir_to_player = [-3 * (boss_list[0][1][0] - player.pos[0]) / (
@@ -395,13 +396,12 @@ def move_boss_1():
             #zadezd = pygame.draw.rect(graphic_main.screen, (255, 255, 255), rectB)
             #graphic_main.update.append(zadezd)
             dist = math.sqrt((boss_list[0][1][0] - player.pos[0]) ** 2 + (boss_list[0][1][1] - player.pos[1]) ** 2)
-            boss_list[i][1] = touch_wall(boss_list[i][1], boss_list[i][0][0].get_rect())
 
             boss_list[0][3][0] = False
             boss_list[0][3][1] = False
             boss_list[0][3][2] = False
             boss_list[0][3][3] = False
-            if is_touch_wall(boss_list[0][1]) or boss_list[0][6] == [0, 0]:
+            if is_touch_wall(boss_list[i][1], boss_list[i][0][0].get_rect()) or boss_list[0][6] == [0, 0]:
                 dir_to_player = [-3 * (boss_list[i][1][0] - player.pos[0]) / (
                         abs(boss_list[i][1][1] - player.pos[1]) + abs((boss_list[i][1][0] - player.pos[0]))),
                                  -3 * (boss_list[i][1][1] - player.pos[1]) / (
