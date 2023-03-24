@@ -267,8 +267,8 @@ def room_1_3(n):
 def room_boss_1(n):
     room = []
     door = []
-    x = 13 # Longueur x de la salle
-    y = 15  # Longueur y de la salle
+    x = 12 # Longueur x de la salle
+    y = 12  # Longueur y de la salle
     print(pygame.display.get_surface().get_size()[0]/2 , 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1]/2 - y/2 * 50
     bottom = pygame.display.get_surface().get_size()[1]/2 + y/2 * 50
@@ -306,7 +306,7 @@ def room_boss_1(n):
                 elif i == x - 1:
                     room[i].append(tiles.blit_wall_mid(i * 50 + left, j * 50 + top))
                 elif (j % 2 + i % 2) % 2 == 0:
-                    room[i].append(tiles.blit_tile_4_1(i * 50 + left, j * 50 + top))
+                    room[i].append(tiles.blit_tile_3_1(i * 50 + left, j * 50 + top))
                 elif j % 2 + i % 2 == 1:
                     room[i].append(tiles.blit_tile_4_1(i * 50 + left, j * 50 + top))
         #ennely (voir main)
@@ -314,7 +314,7 @@ def room_boss_1(n):
         #ennemy.spawn_enemy_1_2([left + 250, top + 150], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 30)
         #ennemy.spawn_enemy_1([left + 80, top+223], 'picture/character/player1.png', 50)
         #ennemy.spawn_enemy_1([left + 210, top + 85], 'picture/character/player1.png', 50)
-        ennemy.spawn_boss_1([left + 80, top +80], 30)
+        ennemy.spawn_boss_1([left + 80, top +80], 100)
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
