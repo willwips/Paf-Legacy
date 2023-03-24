@@ -322,22 +322,22 @@ def move_boss_1():
         if 15 < dist <= 800:
             if (boss_list[0][1][0] - player.pos[0]) >= 0:
                 boss_list[0][1][0] -= (abs((boss_list[0][1][0] - player.pos[0]) / (
-                        abs(boss_list[0][1][1] - player.pos[1]) + abs((boss_list[0][1][0] - player.pos[0])))))*2
+                        abs(boss_list[0][1][1] - player.pos[1]) + abs((boss_list[0][1][0] - player.pos[0])))))*3
                 boss_list[0][3][0] = True
 
             elif (boss_list[0][1][0] - player.pos[0]) <= 0:
                 boss_list[0][1][0] += (abs((boss_list[0][1][0] - player.pos[0]) / (
-                        abs(boss_list[0][1][1] - player.pos[1]) + abs(boss_list[0][1][0] - player.pos[0]))))*2
+                        abs(boss_list[0][1][1] - player.pos[1]) + abs(boss_list[0][1][0] - player.pos[0]))))*3
                 boss_list[0][3][1] = True
             if (boss_list[0][1][1] - player.pos[1]) >= 0:
 
                 boss_list[0][1][1] -= (abs((boss_list[0][1][1] - player.pos[1]) / (
-                        abs(boss_list[0][1][1] - player.pos[1]) + abs(boss_list[0][1][0] - player.pos[0])))) * 2
+                        abs(boss_list[0][1][1] - player.pos[1]) + abs(boss_list[0][1][0] - player.pos[0])))) * 3
                 boss_list[0][3][3] = True
             elif (boss_list[0][1][1] - player.pos[1]) <= 0:
 
                 boss_list[0][1][1] += (abs((boss_list[0][1][1] - player.pos[1]) / (
-                        abs(boss_list[0][1][1] - player.pos[1]) + abs(boss_list[0][1][0] - player.pos[0])))) * 2
+                        abs(boss_list[0][1][1] - player.pos[1]) + abs(boss_list[0][1][0] - player.pos[0])))) * 3
                 boss_list[0][3][3] = True
     if boss_list[0][4] == 1:
         rectB = boss_list[0][0][0].get_rect(center=boss_list[0][1])
@@ -369,20 +369,20 @@ def move_boss_1():
 
         else:
             if (boss_list[0][1][0] - player.pos[0]) >= 0:
-                boss_list[0][1][0] += boss_list[0][9][0] + math.cos(boss_list[0][5]) * 5
+                boss_list[0][1][0] += boss_list[0][9][0] * 2 + math.cos(boss_list[0][5]) * 10
                 boss_list[0][3][0] = True
             elif (boss_list[0][1][0] - player.pos[0]) <= 0:
-                boss_list[0][1][0] += boss_list[0][9][0] + math.cos(boss_list[0][5]) * 5
+                boss_list[0][1][0] += boss_list[0][9][0] * 2+ math.cos(boss_list[0][5]) * 10
                 boss_list[0][3][1] = True
             if (boss_list[0][1][1] - player.pos[1]) >= 0:
-                boss_list[0][1][1] += boss_list[0][9][1] + math.sin(boss_list[0][5]) * 5
+                boss_list[0][1][1] += boss_list[0][9][1] * 2+ math.sin(boss_list[0][5]) * 10
 
                 boss_list[0][3][2] = True
             elif (boss_list[0][1][1] - player.pos[1]) <= 0:
-                boss_list[0][1][1] += boss_list[0][9][1] + math.sin(boss_list[0][5]) * 5
+                boss_list[0][1][1] += boss_list[0][9][1] + math.sin(boss_list[0][5]) * 10
 
                 boss_list[0][3][3] = True
-        boss_list[0][5] += 1/20
+        boss_list[0][5] += 1/30
     if boss_list[0][4] == 2:
         for i in range(0, len(boss_list)):
             rectB = boss_list[i][0][0].get_rect(center=boss_list[i][1])
@@ -414,17 +414,17 @@ def move_boss_1():
 
             else:
                 if (boss_list[i][1][0] - player.pos[0]) >= 0:
-                    boss_list[i][1][0] += boss_list[i][9][0] + math.cos(boss_list[i][5]) * 5
+                    boss_list[i][1][0] += boss_list[i][9][0] * 2 + math.cos(boss_list[i][5]) * 10
                     boss_list[i][3][0] = True
                 elif (boss_list[0][1][0] - player.pos[0]) <= 0:
-                    boss_list[i][1][0] += boss_list[i][9][0] + math.cos(boss_list[i][5]) * 5
+                    boss_list[i][1][0] += boss_list[i][9][0] * 2+ math.cos(boss_list[i][5]) * 10
                     boss_list[i][3][1] = True
                 if (boss_list[i][1][1] - player.pos[1]) >= 0:
-                    boss_list[i][1][1] += boss_list[i][9][1] + math.sin(boss_list[i][5]) * 5
+                    boss_list[i][1][1] += boss_list[i][9][1] * 2+ math.sin(boss_list[i][5]) * 10
 
                     boss_list[i][3][2] = True
                 elif (boss_list[i][1][1] - player.pos[1]) <= 0:
-                    boss_list[i][1][1] += boss_list[i][9][1] + math.sin(boss_list[i][5]) * 5
+                    boss_list[i][1][1] += boss_list[i][9][1] * 2 + math.sin(boss_list[i][5]) * 10
 
                     boss_list[i][3][3] = True
             boss_list[i][5] += 1/20
@@ -533,13 +533,18 @@ def collision_with_weapon(a, strenght, knockback):
                 if boss_list[n][4] == 0:
                     boss_list[n][4] += 1
                     boss_list[n][2] = 30
+                    player.folie -= 30
+
                 elif boss_list[n][4] == 1:
                     boss_list[n][4] += 1
                     boss_list[n][2] = 30
                     spawn_boss_1([0, 0], 90)
                     print(boss_list, 'eZSQDSQ')
                     boss_list[1][4] = 2
+                    player.folie -= 30
+
                 elif boss_list[n][4] == 2:
                     del boss_list[n]
-                player.folie -= 30
+                    player.folie -= 30
+
         n += 1
