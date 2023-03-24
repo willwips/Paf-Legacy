@@ -520,7 +520,6 @@ def collision_with_weapon(a, strenght, knockback):
         rectB.center = (boss_list[0][1][0] + 23, boss_list[0][1][1] + 40)
 
         collision = rectB.colliderect(a)
-        print(i[6])
         if collision and i[8] <= 0:
 
             boss_list[n][2] -= strenght
@@ -530,7 +529,6 @@ def collision_with_weapon(a, strenght, knockback):
                 boss_list[n][7][0] = knockback
             if player.last_move_is_down or player.last_move_is_left:
                 boss_list[n][7][0] = -knockback
-            print(boss_list[n][2])
             if boss_list[n][2] <= 0:
                 if boss_list[n][4] == 0:
                     boss_list[n][4] += 1
@@ -538,7 +536,8 @@ def collision_with_weapon(a, strenght, knockback):
                 elif boss_list[n][4] == 1:
                     boss_list[n][4] += 1
                     boss_list[n][2] = 30
-                    spawn_boss_1([0, 0], 20)
+                    spawn_boss_1([0, 0], 90)
+                    print(boss_list, 'eZSQDSQ')
                     boss_list[1][4] = 2
                 elif boss_list[n][4] == 2:
                     del boss_list[n]
