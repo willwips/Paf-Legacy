@@ -353,7 +353,10 @@ def blit_wall_bottom(x, y):
         return a
     return blit_tile
 def blit_door_black_1(x, y, tile):
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     pass
 def blit_wall_top(x, y):
     def blit_tile():
