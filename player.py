@@ -249,7 +249,7 @@ def collision_with_chest():
         if ex_current_arm != weapon.current_weapon:
             def old_weapon():
                 weapon.current_weapon = ex_current_arm
-            graphic_main[old_weapon] = rect
+            graphic_main.chest[old_weapon] = rect
         tiles._chest[rectA.collidelist(list(graphic_main.chest.values())) ] = True
         graphic_main.chest.pop(list(graphic_main.chest.keys())[rectA.collidelist(list(graphic_main.chest.values()))])
         print(rect)

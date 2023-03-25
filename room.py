@@ -4,7 +4,7 @@ import ennemy
 import player
 import tiles
 import graphic_main
-
+import weapon
 
 def heal(pv):
     a = pv
@@ -12,6 +12,11 @@ def heal(pv):
     def _heal():
         player.pv += a
     return _heal
+
+def change_weapon(_weapon):
+    def _change():
+        weapon.current_weapon = _weapon
+    return _change
 
 def room_1_0(n):
     room = []
@@ -131,7 +136,7 @@ def room_1_1(n):
                     room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_2_1(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_4_1(i * 50 + left, j * 50 + top), heal(15))[1])
+                                                         tiles.blit_tile_4_1(i * 50 + left, j * 50 + top), change_weapon('final_axe'))[1])
                 elif j == int(y / 2) and i == x - 1:
                     room[i].append(tiles.blit_door_black_1(i * 50 + left, j * 50 + top,
                                                            tiles.blit_wall_mid(i * 50 + left, j * 50 + top)))  # Porte 1
