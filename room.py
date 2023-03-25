@@ -55,7 +55,7 @@ def room_1_0(n):
             for j in i:
                 graphic_main.trash_update.append(j())
         print(top, left, 'ee')
-        player.pos = [50 + left, 220 + top]
+        player.pos = [500 + left, 220 + top]
         print(player.pos)
         door.append(pygame.Rect((x-1) * 50 + left , int(y/2) * 50+ top, 50, 50)) # Porte 1
         door.append(pygame.Rect(int(x/2) * 50 + left , y - 1 * 50+ bottom - 10, 50, 50)) # Porte 2
