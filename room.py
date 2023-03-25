@@ -415,6 +415,8 @@ def room_1_3(n):
 def room_1_4(n):
     room = []
     door = []
+    chest = {}
+
     x = 27 # Longueur x de la salle
     y = 4  # Longueur y de la salle
     print(pygame.display.get_surface().get_size()[0]/2 , 12 * 50, 'e')
@@ -500,11 +502,13 @@ def room_1_4(n):
             except:
                 pass
 
-    return create, update, door, top, bottom, left, right, pos_play[n]
+    return create, update, door, top, bottom, left, right, pos_play[n], chest
 
 def room_1_5(n):
     room = []
     door = []
+    chest = {}
+
     x = 7 # Longueur x de la salle
     y = 7  # Longueur y de la salle
     print(pygame.display.get_surface().get_size()[0]/2 , 12 * 50, 'e')
@@ -580,11 +584,13 @@ def room_1_5(n):
             except:
                 pass
 
-    return create, update, door, top, bottom, left, right, pos_play[n]
+    return create, update, door, top, bottom, left, right, pos_play[n], chest
 
 def room_1_6(n):
     room = []
     door = []
+    chest = {}
+
     x = 20 # Longueur x de la salle
     y = 15  # Longueur y de la salle
     print(pygame.display.get_surface().get_size()[0]/2 , 12 * 50, 'e')
@@ -675,11 +681,13 @@ def room_1_6(n):
             except:
                 pass
 
-    return create, update, door, top, bottom, left, right, pos_play[n]
+    return create, update, door, top, bottom, left, right, pos_play[n], chest
 
 def room_1_7(n):
     room = []
     door = []
+    chest = {}
+
     x = 12 # Longueur x de la salle
     y = 8  # Longueur y de la salle
     print(pygame.display.get_surface().get_size()[0]/2 , 12 * 50, 'e')
@@ -760,11 +768,13 @@ def room_1_7(n):
             except:
                 pass
 
-    return create, update, door, top, bottom, left, right, pos_play[n]
+    return create, update, door, top, bottom, left, right, pos_play[n], chest
 
 def room_1_8(n):
     room = []
     door = []
+    chest = {}
+
     x = 13 # Longueur x de la salle
     y = 8  # Longueur y de la salle
     print(pygame.display.get_surface().get_size()[0]/2 , 12 * 50, 'e')
@@ -848,7 +858,7 @@ def room_1_8(n):
             except:
                 pass
 
-    return create, update, door, top, bottom, left, right, pos_play[n]
+    return create, update, door, top, bottom, left, right, pos_play[n], chest
 
 def room_boss_1(n):
     room = []

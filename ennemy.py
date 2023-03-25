@@ -340,7 +340,7 @@ def move_boss_1():
         # zadezd = pygame.draw.rect(graphic_main.screen, (255, 255, 255), rectB)
         # graphic_main.update.append(zadezd)
         dist = math.sqrt((boss_list[0][1][0] - player.pos[0]) ** 2 + (boss_list[0][1][1] - player.pos[1]) ** 2)
-        boss_list[0][1] = touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect())
+        boss_list[0][1] = touch_wall(boss_list[0][1], [46, 80])
 
         boss_list[0][3][0] = False
         boss_list[0][3][1] = False

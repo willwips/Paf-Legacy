@@ -34,7 +34,7 @@ def loop(pos_player):
     if current_weapon == 'final_axe':
         return loop_final_axe(pos_player)
     if current_weapon == 'final_sword':
-        return loop_final_axe(pos_player)
+        return loop_final_sword(pos_player)
 
 def loop_final_axe(pos_player):
     global angle
@@ -124,15 +124,15 @@ def loop_final_sword(pos_player):
 
     if player.last_move_is_up:
         a = rotate(
-            weapon[current_weapon][0], -180 + angle,
-            (pos_player[0] + weapon[current_weapon][2][0] + 12, pos_player[1] + weapon[current_weapon][2][1] + 5),
+            weapon[current_weapon][0], -150 + angle,
+            (pos_player[0] + weapon[current_weapon][2][0] + 40, pos_player[1] + weapon[current_weapon][2][1] + 5),
             pygame.math.Vector2(0, 15))[1]
         w = graphic_main.screen.blit(rotate(
-            weapon[current_weapon][0], -180 + angle, (
-                pos_player[0] + weapon[current_weapon][2][0] + 12, pos_player[1] + weapon[current_weapon][2][1] + 25),
-            pygame.math.Vector2(0, -15))[0], a)
+            weapon[current_weapon][0], -150 + angle, (
+                pos_player[0] + weapon[current_weapon][2][0] + 40, pos_player[1] + weapon[current_weapon][2][1] - 120),
+            pygame.math.Vector2(0, 0))[0], a)
         a.center = (
-            pos_player[0] + weapon[current_weapon][2][0] + 12, pos_player[1] + weapon[current_weapon][2][1] + 25)
+            pos_player[0] + weapon[current_weapon][2][0] - 500, pos_player[1] + weapon[current_weapon][2][1] + 25)
         if is_attacking:
             ennemy.collision_with_weapon(w, weapon[current_weapon][1] + player.strength, weapon[current_weapon][3])
 
