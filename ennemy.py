@@ -67,15 +67,30 @@ def spawn_boss_1(pos, pv):
     _img.append(
         pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_1_R_2.png'), [46, 80]))
     _img.append(
-        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_1.png'), [46, 80]))
+        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_1_R_3.png'), [46, 80]))
+
     _img.append(
-        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_2.png'), [46, 80]))
+        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_2_L_1.png'), [46, 80]))
     _img.append(
-        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_3.png'), [46, 80]))
+        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_2_L_2.png'), [46, 80]))
     _img.append(
-        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_4.png'), [46, 80]))
+        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_2_L_3.png'), [46, 80]))
     _img.append(
-        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_5.png'), [46, 80]))
+        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_2_R_1.png'), [46, 80]))
+    _img.append(
+        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_2_R_2.png'), [46, 80]))
+    _img.append(
+        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_2_R_3.png'), [46, 80]))
+    _img.append(
+        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_1.png'), [60, 80]))
+    _img.append(
+        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_2.png'), [70, 80]))
+    _img.append(
+        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_3.png'), [85, 80]))
+    _img.append(
+        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_4.png'), [80, 80]))
+    _img.append(
+        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_5.png'), [92, 80]))
     boss_list.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0])
 
 
@@ -418,8 +433,9 @@ def move_boss_1():
         boss_list[0][5] += 1 / 20
     if 1 < boss_list[0][4] < 2:
         boss_list[0][4] += 0.01
-        print(boss_list[0][4])
-
+        print(boss_list[0][10])
+        if 1.17 < boss_list[0][4] < 1.18:
+            boss_list[0][4]=1.17
         if boss_list[0][4] == 1.17:
             boss_list[0][10] = 16
         if 1.26 < boss_list[0][4] < 1.27:
@@ -438,7 +454,10 @@ def move_boss_1():
             boss_list[0][4]=1.92
         if boss_list[0][4] == 1.92:
             boss_list[0][10] += 1
-        if boss_list[0][4] > 2:
+        if boss_list[0][4] >= 2:
+            spawn_boss_1([boss_list[0][1][0]+90, boss_list[0][1][1]], 100)
+            boss_list[1][4] = 2
+            boss_list[1][10] = 10
             boss_list[0][2] = 100
             boss_list[0][4] = 2
     if boss_list[0][4] == 2:
@@ -605,9 +624,6 @@ def collision_with_weapon(a, strenght, knockback):
                 elif boss_list[n][4] == 1:
                     boss_list[n][4] += 0.01
                     boss_list[n][2] = 80
-                    spawn_boss_1([0, 0], 100)
-                    print(boss_list, 'eZSQDSQ')
-                    boss_list[1][4] = 2
                     player.folie -= 120
 
                 elif boss_list[n][4] == 2:
