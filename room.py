@@ -64,6 +64,23 @@ def room_1_0(n):
 
 
     create()
+    def update(list):
+        for i in list:
+            try:
+                room[int((i.left - left)/ 50)][int((i.top-top) / 50)-1]()
+                room[int((i.left - left) / 50)-1][int((i.top-top) / 50)-1]()
+                room[int((i.left - left) / 50)-1][int((i.top-top) / 50)]()
+            except: pass
+            try:
+                room[int((i.left - left) / 50)][int((i.top-top) / 50)]()
+                room[int((i.left - left) / 50)][int((i.top-top) / 50)]()
+                room[int((i.left - left) / 50) + 1][int((i.top-top) / 50)]()
+                room[int((i.left - left) / 50)][int((i.top-top) / 50) + 1]()
+                room[int((i.left - left) / 50) + 1][int((i.top-top) / 50) + 1]()
+            except:
+                pass
+    return create, update, door, top, bottom, left, right, pos_play[n]
+
 
 def room_1_1(n):
     room = []
