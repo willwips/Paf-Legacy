@@ -765,8 +765,8 @@ def room_1_7(n):
 def room_1_8(n):
     room = []
     door = []
-    x = 13 # Longueur x de la salle
-    y = 8  # Longueur y de la salle
+    x = 15 # Longueur x de la salle
+    y = 10  # Longueur y de la salle
     print(pygame.display.get_surface().get_size()[0]/2 , 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1]/2 - y/2 * 50
     bottom = pygame.display.get_surface().get_size()[1]/2 + y/2 * 50
