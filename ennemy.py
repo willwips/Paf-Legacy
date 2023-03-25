@@ -215,8 +215,12 @@ def move_ennemi_1_2():
         enemy_1_2_list[i][4][2] = False
         enemy_1_2_list[i][4][3] = False
 
+<<<<<<< Updated upstream
         if is_touch_wall(enemy_1_2_list[i][1], enemy_1_2_list[i][0][enemy_1_2_list[i][8]].get_rect()) or \
                 enemy_1_2_list[i][6] == [0, 0]:
+=======
+        if is_touch_wall(enemy_1_2_list[i][1],  enemy_1_2_list[i][0][enemy_1_2_list[i][8]].get_rect()) or enemy_1_2_list[i][6] == [0, 0]:
+>>>>>>> Stashed changes
             dir_to_player = [-3 * (enemy_1_2_list[i][1][0] - player.pos[0]) / (
                     abs(enemy_1_2_list[i][1][1] - player.pos[1]) + abs((enemy_1_2_list[i][1][0] - player.pos[0]))),
                              -3 * (enemy_1_2_list[i][1][1] - player.pos[1]) / (
@@ -408,7 +412,7 @@ def move_boss_1():
                                  boss_list[0][1][0] - player.pos[0]))]
             boss_list[0][9] = dir_to_player
 
-        boss_list[0][1] = touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect())
+        #boss_list[0][1] = touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect())
 
         if boss_list[0][6] % 2 == 0 and boss_list[0][6] > 0:
             boss_list[0][1][0] += boss_list[0][7][0]
