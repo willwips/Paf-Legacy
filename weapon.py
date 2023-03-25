@@ -11,7 +11,7 @@ def import_weapon():
     weapon['final_axe'] = (
         pygame.transform.scale(pygame.image.load('picture/weapon/final_axe.png').convert_alpha(), (20, 40)), 10, [17, 30], 10, 20)
     weapon['final_sword'] = (
-        pygame.transform.scale(pygame.image.load('picture/weapon/final_sword.png').convert_alpha(), (20, 90)), 10, [0, 0], 10, 20)
+        pygame.transform.scale(pygame.image.load('picture/weapon/final_sword.png').convert_alpha(), (12, 70)), 10, [0, 0], 10, 20)
 
 
 is_attacking = False
@@ -23,6 +23,7 @@ modify_angle = 5
 def rotate(surface, angle, pivot, offset):
     rotated_image = pygame.transform.rotate(surface, -angle)
     rotated_offset = offset.rotate(angle)
+    pygame.draw.circle(graphic_main.screen, (255, 0, 0), pivot, 1)
     rect = rotated_image.get_rect(center=pivot + rotated_offset)
     return rotated_image, rect
 
@@ -125,12 +126,12 @@ def loop_final_sword(pos_player):
     if player.last_move_is_up:
         a = rotate(
             weapon[current_weapon][0], -150 + angle,
-            (pos_player[0] + weapon[current_weapon][2][0] + 40, pos_player[1] + weapon[current_weapon][2][1] + 5),
-            pygame.math.Vector2(0, 15))[1]
+            (pos_player[0] + weapon[current_weapon][2][0] + 30, pos_player[1] + weapon[current_weapon][2][1] + 30),
+            pygame.math.Vector2(0, 45 ))[1]
         w = graphic_main.screen.blit(rotate(
             weapon[current_weapon][0], -150 + angle, (
-                pos_player[0] + weapon[current_weapon][2][0] + 40, pos_player[1] + weapon[current_weapon][2][1] - 120),
-            pygame.math.Vector2(0, 0))[0], a)
+                pos_player[0] + weapon[current_weapon][2][0] + 12, pos_player[1] + weapon[current_weapon][2][1] + 0 ),
+            pygame.math.Vector2(-10, -0))[0], a)
         a.center = (
             pos_player[0] + weapon[current_weapon][2][0] - 500, pos_player[1] + weapon[current_weapon][2][1] + 25)
         if is_attacking:
@@ -139,12 +140,12 @@ def loop_final_sword(pos_player):
     if player.last_move_is_right:
         a = rotate(
             weapon[current_weapon][0], -150 + angle,
-            (pos_player[0] + weapon[current_weapon][2][0] + 0, pos_player[1] + weapon[current_weapon][2][1] + 10),
-            pygame.math.Vector2(0, 15))[1]
+            (pos_player[0] + weapon[current_weapon][2][0] + 30, pos_player[1] + weapon[current_weapon][2][1] + 20),
+            pygame.math.Vector2(-10, 25))[1]
         w = graphic_main.screen.blit(rotate(
             weapon[current_weapon][0], -130 + angle, (
-                pos_player[0] + weapon[current_weapon][2][0] + 0, pos_player[1] + weapon[current_weapon][2][1] + 10),
-            pygame.math.Vector2(0, -15))[0], a)
+                pos_player[0] + weapon[current_weapon][2][0] + 30, pos_player[1] + weapon[current_weapon][2][1] + 20),
+            pygame.math.Vector2(-10, 25))[0], a)
         a.center = (
             pos_player[0] + weapon[current_weapon][2][0] + 12, pos_player[1] + weapon[current_weapon][2][1] - 10)
         if is_attacking:
