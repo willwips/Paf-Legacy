@@ -491,7 +491,6 @@ def blit_chest_yellow(x, y, tile, _loot, rot=-90, nbr = 0):
 
     def blit_tile():
         a = tile()
-        pygame.draw.rect(graphic_main.screen, (255, 255, 255), rect)
 
         if _chest[nbr]:
             graphic_main.screen.blit(pygame.transform.rotate(chest[1], rot), [x + 10, y + 10])

@@ -6,7 +6,6 @@ import player
 floor = []
 coo = [0, 0]
 
-random.seed(90)
 def create_floor(level):
     global floor
     if level == 0:
