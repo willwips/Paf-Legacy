@@ -11,7 +11,7 @@ def import_weapon():
     weapon['final_axe'] = (
         pygame.transform.scale(pygame.image.load('picture/weapon/final_axe.png').convert_alpha(), (20, 40)), 10, [17, 30], 10, 20)
     weapon['final_sword'] = (
-        pygame.transform.scale(pygame.image.load('picture/weapon/final_sword.png').convert_alpha(), (20, 70)), 10, [17, 30], 10, 20)
+        pygame.transform.scale(pygame.image.load('picture/weapon/final_sword.png').convert_alpha(), (20, 90)), 10, [0, 0], 10, 20)
 
 
 is_attacking = False
