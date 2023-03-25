@@ -6,7 +6,7 @@ import player
 floor = []
 coo = [0, 0]
 
-
+random.seed(90)
 def create_floor(level):
     global floor
     if level == 0:
@@ -21,4 +21,4 @@ def create_floor(level):
 
 create_floor(0)
 def next_room(n):
-    graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right, player.pos=floor[coo[0]][coo[1]](n)
+    graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right, player.pos, graphic_main.chest=floor[coo[0]][coo[1]](n)
