@@ -923,10 +923,21 @@ def room_boss_1(n):
         # ennemy.spawn_enemy_1_2([left + 250, top + 150], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 30)
         # ennemy.spawn_enemy_1([left + 80, top+223], 'picture/character/player1.png', 50)
         # ennemy.spawn_enemy_1([left + 210, top + 85], 'picture/character/player1.png', 50)
-        ennemy.spawn_boss_1([left + 80, top + 80], 100)
+        
+        # Permet de modifier le point d'apparition en fonction de la porte emprunté
+        if n == 0:
+            ennemy.spawn_boss_1([left + 80, top + 275], 100)
+        elif n == 1:
+            ennemy.spawn_boss_1([left + 300, top + 80], 100)
+        elif n == 2:
+            ennemy.spawn_boss_1([left + 450, top + 275], 100)
+        elif n == 3:
+            ennemy.spawn_boss_1([left + 300, top + 450], 100)
+            
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
+                
         print(top, left, 'ee')
         player.pos = [50 + left, 220 + top]
         print(player.pos)
