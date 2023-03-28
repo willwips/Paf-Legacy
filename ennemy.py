@@ -390,7 +390,7 @@ def move_boss_1():
         # zadezd = pygame.draw.rect(graphic_main.screen, (255, 255, 255), rectB)
         # graphic_main.update.append(zadezd)
         dist = math.sqrt((boss_list[0][1][0] - player.pos[0]) ** 2 + (boss_list[0][1][1] - player.pos[1]) ** 2)
-        # boss_list[0][1] = touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect())
+        #boss_list[0][1] = touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect())
 
         boss_list[0][3][0] = False
         boss_list[0][3][1] = False
@@ -408,7 +408,7 @@ def move_boss_1():
                                  boss_list[0][1][0] - player.pos[0]))]
             boss_list[0][9] = dir_to_player
 
-        #boss_list[0][1] = touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect())
+        boss_list[0][1] = touch_wall(boss_list[0][1], boss_list[0][0][0].get_rect())
 
         if boss_list[0][6] % 2 == 0 and boss_list[0][6] > 0:
             boss_list[0][1][0] += boss_list[0][7][0]
@@ -523,6 +523,7 @@ def move_projectile():
 
 
 def collision_with_weapon(a, strenght, knockback):
+
     n = 0
     global enemy_1_list
     global enemy_1_2_list
@@ -537,6 +538,7 @@ def collision_with_weapon(a, strenght, knockback):
         rectB.center = (i[1][0] + 15, i[1][1] + 25)
         collision = rectB.colliderect(a)
         if collision and i[3] <= 0:
+            player.mana += 5
             player.folie -= 5
 
             enemy_1_list[n][2] -= strenght
@@ -561,6 +563,8 @@ def collision_with_weapon(a, strenght, knockback):
 
         collision = rectB.colliderect(a)
         if collision and i[3] <= 0:
+            player.mana += 5
+
             player.folie -= 5
 
             enemy_1_2_list[n][2] -= strenght
@@ -584,6 +588,8 @@ def collision_with_weapon(a, strenght, knockback):
         rectB.center = (i[1][0] + 15, i[1][1] + 25)
         collision = rectB.colliderect(a)
         if collision and i[3] <= 0:
+            player.mana += 5
+
             player.folie -= 5
 
             enemy_2_1_list[n][2] -= strenght
@@ -607,6 +613,8 @@ def collision_with_weapon(a, strenght, knockback):
 
         collision = rectB.colliderect(a)
         if collision and i[8] <= 0:
+            player.mana += 5
+
             player.folie -= 5
             boss_list[n][2] -= strenght
             boss_list[n][6] = 10

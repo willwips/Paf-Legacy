@@ -34,7 +34,12 @@ folie = 0
 floie_max = 200
 barre_de_folie =None
 
-
+mana = 100
+mana_max = 100
+heal = 15
+heal_duration = 120
+heal_duration_max = 120
+is_heal = False
 # boucle permettant de bouger le personage
 def boucle():
     global pos
@@ -53,6 +58,10 @@ def boucle():
     global dash
     global dash_inv
     global folie
+    global heal_duration
+    global is_heal
+    print(mana)
+    print(heal_duration, 'e')
     old_pos = pos
     if folie < 0:
         folie = 0
@@ -105,7 +114,8 @@ def boucle():
                     dash = 15
                 if dash_invicibility_unlocked:
                     dash_inv = True
-
+            if event.key == pygame.K_a:
+                is_heal=True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_z:
                 move_down = False
@@ -120,6 +130,9 @@ def boucle():
             if event.key == pygame.K_q:
                 move_left = False
                 is_movement -= 1
+            if event.key == pygame.K_a:
+                heal_duration = heal_duration_max
+                is_heal=False
     if cooldown_move < 0 and (dash <= 0 or not dash_unlocked):
         dash_inv = False
         if move_up:
@@ -139,7 +152,8 @@ def boucle():
             pos[0] -= 10
         if last_move_is_right:
             pos[0] += 10
-
+    if is_heal:
+        _heal()
     if dash > -135:
         dash -= 1
     if collision_with_door(graphic_main.door):
@@ -425,6 +439,21 @@ def collision_with_projectile():
             del ennemy.projectile_list[n]
             return collision
         n += 1
+
+def _heal():
+    global heal_duration
+    global mana
+    global pv
+    heal_duration -= 1
+    mana -= 20/120
+    print('ddddddddddddd', heal_duration)
+    if mana < 0:
+        mana = 0
+        heal_duration = heal_duration_max
+    if heal_duration == 0 and mana >= 0:
+        pv += heal
+        heal_duration = heal_duration_max
+
 
 
 def showpv():
