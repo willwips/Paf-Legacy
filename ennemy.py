@@ -606,6 +606,7 @@ def collision_with_weapon(a, strenght, knockback):
         n += 1
     n = 0
     for i in boss_list:
+
         rectB = boss_list[n][0][0].get_rect(center=boss_list[n][1])
         rectB.h = 90
         rectB.w = 46
@@ -639,3 +640,5 @@ def collision_with_weapon(a, strenght, knockback):
                     player.folie -= 70
 
         n += 1
+    if player.mana > player.mana_max:
+        player.mana=player.mana_max
