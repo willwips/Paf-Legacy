@@ -26,7 +26,7 @@ strength = 10
 resistance = 0.1
 cooldown = 0
 cooldown_move = 0
-dash_unlocked = False
+dash_unlocked = True
 dash = 0
 dash_invicibility_unlocked = False
 dash_inv = False
@@ -60,8 +60,7 @@ def boucle():
     global folie
     global heal_duration
     global is_heal
-    print(mana)
-    print(heal_duration, 'e')
+    global mana
     old_pos = pos
     if folie < 0:
         folie = 0
@@ -110,10 +109,14 @@ def boucle():
                 if folie >= floie_max:
                     sys.exit()
             if event.key == pygame.K_i:
-                if dash == -135:
-                    dash = 15
-                if dash_invicibility_unlocked:
-                    dash_inv = True
+                if dash_unlocked:
+                    if mana - 10 >= 0:
+                        print('e')
+                        if dash == -45:
+                            dash = 15
+                            if dash_invicibility_unlocked:
+                                dash_inv = True
+                            mana -= 10
             if event.key == pygame.K_a:
                 is_heal=True
         if event.type == pygame.KEYUP:
@@ -154,7 +157,7 @@ def boucle():
             pos[0] += 10
     if is_heal:
         _heal()
-    if dash > -135:
+    if dash > -45:
         dash -= 1
     if collision_with_door(graphic_main.door):
         pass
@@ -255,7 +258,6 @@ def collision_with_door(door):
 
 def collision_with_chest():
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
-    print(graphic_main.chest.values())
     if rectA.collidelist(list(graphic_main.chest.values())) != -1:
         rect = list(graphic_main.chest.values())[rectA.collidelist(list(graphic_main.chest.values()))]
         ex_current_arm = weapon.current_weapon
@@ -266,7 +268,6 @@ def collision_with_chest():
             graphic_main.chest[old_weapon] = rect
         tiles._chest[rectA.collidelist(list(graphic_main.chest.values())) ] = True
         graphic_main.chest.pop(list(graphic_main.chest.keys())[rectA.collidelist(list(graphic_main.chest.values()))])
-        print(rect)
         graphic_main.update.append(rect)
 def collision_with_wall():
     global pos
@@ -446,7 +447,6 @@ def _heal():
     global pv
     heal_duration -= 1
     mana -= 20/120
-    print('ddddddddddddd', heal_duration)
     if mana < 0:
         mana = 0
         heal_duration = heal_duration_max
