@@ -90,6 +90,10 @@ def boucle():
     update.append(w)
     update.append(a)
     ennemy.boucle()
+    r = pygame.rect.Rect(0, 0, 50, 50)
+    update.append(pygame.draw.rect(screen,(0, 0, 0), r))
+    update.append(screen.blit(pygame.font.SysFont(None ,30).render(str(int(player.mana)), 1, (0, 0, 255)), (10, 10)))
+
     pygame.display.update(update + old_update + trash_update)
     trash_update = []
     clock.tick(60)
