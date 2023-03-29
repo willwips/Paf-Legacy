@@ -8,6 +8,9 @@ Tile_4 = []
 Tile_5 = []
 door = []
 wall = []
+_chest = [False for i in range(0, 10)]
+chest = []
+
 
 
 def load_tile():
@@ -44,7 +47,12 @@ def load_tile():
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Corner-Square.png').convert_alpha(), [55, 55]), 90))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Corner-Square.png').convert_alpha(), [55, 55]), 180))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Corner-Square.png').convert_alpha(), [55, 55]), -90))
-
+    chest.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Chest-Yellow-Closed.png').convert_alpha(), [29, 29]),
+        -90))
+    chest.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Chest-Yellow-Opened.png').convert_alpha(), [29, 29]),
+        -90))
     print(door)
 
     #for i in range(1, 7):
@@ -403,3 +411,21 @@ def blit_door_black_4(x, y, tile):
         return a
 
     return blit_tile
+
+def blit_chest_yellow(x, y, tile, _loot, rot=-90, nbr = 0):
+    rect = tile()
+
+    def blit_tile():
+        a = tile()
+
+        if _chest[nbr]:
+            graphic_main.screen.blit(pygame.transform.rotate(chest[1], rot), [x + 10, y + 10])
+        else:
+            graphic_main.screen.blit(pygame.transform.rotate(chest[0], rot), [x + 10, y + 10])
+
+        return a
+
+
+    a = {}
+    a[_loot] = rect
+    return blit_tile, a

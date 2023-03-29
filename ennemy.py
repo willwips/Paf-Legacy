@@ -4,6 +4,7 @@ import pygame
 
 import graphic_main
 import player
+import world
 
 enemy_1_list = []
 enemy_1_2_list = []
@@ -640,6 +641,9 @@ def collision_with_weapon(a, strenght, knockback):
                 elif boss_list[n][4] == 2:
                     del boss_list[n]
                     player.folie -= 70
+                    if len(boss_list) == 0:
+                        player.dash_unlocked=True
+                        world.next_level()
 
         n += 1
     if player.mana > player.mana_max:
