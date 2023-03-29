@@ -3,6 +3,7 @@ import sys
 import pygame
 import ennemy
 import graphic_main
+import tiles
 # import main
 import weapon
 import world
@@ -143,6 +144,8 @@ def boucle():
         dash -= 1
     if collision_with_door(graphic_main.door):
         pass
+    if collision_with_chest():
+        pass
     if collision_with_wall():
         if move_up:
             pos[1] -= 2
@@ -236,7 +239,21 @@ def collision_with_door(door):
                 world.coo[1] += 1
                 world.next_room(1)
 
-
+def collision_with_chest():
+    rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
+    print(graphic_main.chest.values())
+    if rectA.collidelist(list(graphic_main.chest.values())) != -1:
+        rect = list(graphic_main.chest.values())[rectA.collidelist(list(graphic_main.chest.values()))]
+        ex_current_arm = weapon.current_weapon
+        list(graphic_main.chest.keys())[rectA.collidelist(list(graphic_main.chest.values()))]()
+        if ex_current_arm != weapon.current_weapon:
+            def old_weapon():
+                weapon.current_weapon = ex_current_arm
+            graphic_main.chest[old_weapon] = rect
+        tiles._chest[rectA.collidelist(list(graphic_main.chest.values())) ] = True
+        graphic_main.chest.pop(list(graphic_main.chest.keys())[rectA.collidelist(list(graphic_main.chest.values()))])
+        print(rect)
+        graphic_main.update.append(rect)
 def collision_with_wall():
     global pos
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))

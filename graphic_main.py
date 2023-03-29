@@ -38,6 +38,7 @@ old_w = None
 w = None
 update = []
 old_update = []
+chest = {}
 
 """
 fonction boucle
@@ -79,7 +80,7 @@ def boucle():
         ennemy_pos = screen.blit(i[0][i[8]], i[1])
         update.append(ennemy_pos)
     for i in ennemy.boss_list:
-        ennemy_pos = screen.blit(i[0][0], i[1])
+        ennemy_pos = screen.blit(i[0][i[10]], i[1])
         update.append(ennemy_pos)
     for i in ennemy.projectile_list:
         proj_pos = pygame.draw.circle(screen, i[3], i[0], i[1], 0)
