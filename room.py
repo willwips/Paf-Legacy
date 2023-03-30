@@ -12,7 +12,12 @@ def heal(pv):
 
     def _heal():
         player.pv += a
-    return _heal
+        player.possible_object_picture = None
+        player.possible_object = player._pass
+    def __heal():
+        player.possible_object = _heal
+        player.possible_object_picture = pygame.image.load('picture/ui/Potions Soin.png').convert_alpha()
+    return __heal
 
 def change_weapon(_weapon):
     def _change():
@@ -126,7 +131,7 @@ def room_1_1(n):
                     room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_2_1(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_4_1(i * 50 + left, j * 50 + top), change_weapon('final_axe'))[1])
+                                                         tiles.blit_tile_4_1(i * 50 + left, j * 50 + top), heal(50))[1])
                 elif j == int(y / 2) and i == x - 1:
                     room[i].append(tiles.blit_door_black_1(i * 50 + left, j * 50 + top,
                                                            tiles.blit_wall_mid(i * 50 + left, j * 50 + top)))  # Porte 1
@@ -168,7 +173,7 @@ def room_1_1(n):
                                30)
         ennemy.spawn_enemy_1_2([left + 250, top + 150], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'],
                                30)
-        ennemy.spawn_enemy_1([left + 80, top + 223], 'picture/character/player1.png', 50)
+        ennemy.spawn_enemy_1([left + 80, top + 223], 'picture/enemy/skeleton/skeleton-front.png', 50)
         ennemy.spawn_enemy_1([left + 210, top + 85], 'picture/character/player1.png', 50)
 
         for i in room:

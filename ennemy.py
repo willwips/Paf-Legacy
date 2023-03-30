@@ -34,7 +34,7 @@ def spawm_projectile(pos, radius, directon, color):
 
 
 def spawn_enemy_1(pos, img, pv):
-    img = pygame.image.load(img).convert_alpha()
+    img = pygame.transform.scale(pygame.image.load(img).convert_alpha(), [28, 50])
     pos = pos
     global enemy_1_list
     enemy_1_list.append([img, pos, pv, 10, [False, False, False, False], [0, 0]])

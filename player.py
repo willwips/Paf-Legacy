@@ -8,6 +8,9 @@ import tiles
 import weapon
 import world
 
+
+def _pass():
+    pass
 # initialisation des variables
 pos = [0, 0]
 
@@ -33,7 +36,8 @@ dash_inv = False
 folie = 0
 floie_max = 200
 barre_de_folie =None
-
+possible_object = _pass
+possible_object_picture = None
 mana = 100
 mana_max = 100
 heal = 15
@@ -119,6 +123,9 @@ def boucle():
                             mana -= 10
             if event.key == pygame.K_a:
                 is_heal=True
+            if event.key == pygame.K_o:
+                possible_object()
+
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_z:
                 move_down = False
@@ -146,6 +153,12 @@ def boucle():
             pos[0] -= 2
         if move_right:
             pos[0] += 2
+    if possible_object_picture == None:
+        rect = pygame.rect.Rect(100, 0, 100, 100)
+        graphic_main.update.append(pygame.draw.rect(graphic_main.screen, (0, 0, 0), rect))
+    else:
+        graphic_main.update.append(graphic_main.screen.blit(possible_object_picture, (100, 0)))
+
     if cooldown_move < 0 and dash > 0 and dash_unlocked:
         if last_move_is_up:
             pos[1] += 10
@@ -230,7 +243,8 @@ def boucle():
         if last_move_is_right:
             graphic_main.frame = graphic_main.frame_R
 
-
+    if pv > pv_max:
+        pv = pv_max
 def collision_with_door(door):
     global folie
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
