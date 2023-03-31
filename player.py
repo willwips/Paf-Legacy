@@ -226,6 +226,13 @@ def boucle():
                 cooldown = 60
 
                 cooldown_move = 0
+        if collision_with_ennemy_4_1():
+
+            if cooldown <= 0:
+                pv -= 20 - 20 * resistance
+                cooldown = 60
+
+                cooldown_move = 0
     if pv <= 0:
         sys.exit()
 
@@ -257,7 +264,7 @@ def collision_with_door(door):
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
     if rectA.collidelist(door) != -1:
 
-        if not ennemy.enemy_1_list and not ennemy.enemy_1_2_list and not ennemy.enemy_1_2_list and not ennemy.boss_list:
+        if not ennemy.enemy_1_list and not ennemy.enemy_1_2_list and not ennemy.enemy_2_1_list and not ennemy.boss_list and not ennemy.enemy_slime_list and not ennemy.enemy_4_1_list:
             folie -= 100
             if folie < 0:
                 folie = 0
@@ -449,7 +456,7 @@ def collision_with_ennemy_slime():
         rectB.h = 20
         rectB.w = 30
         rectB.center = (i[1][0] + 15, i[1][1] + 10)
-        
+
         collision = True
         if rectB.right < rectA.left:
             collision = False
@@ -493,7 +500,38 @@ def collision_with_projectile():
             del ennemy.projectile_list[n]
             return collision
         n += 1
+def collision_with_ennemy_4_1():
+    global pos
+    rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
+    rectA.h = 40
+    rectA.w = 15
+    rectA.center = (pos[0] + 15, pos[1] + 25)
+    collision = False
+    for i in ennemy.enemy_4_1_list:
+        rectB = i[0].get_rect()
+        rectB.h = 20
+        rectB.w = 30
+        rectB.center = (i[1][0] + 15, i[1][1] + 10)
 
+        collision = True
+        if rectB.right < rectA.left:
+            collision = False
+        if rectB.bottom < rectA.top:
+            collision = False
+        if rectB.left > rectA.right:
+            collision = False
+        if rectB.top > rectA.bottom:
+            collision = False
+        if collision:
+            if i[4][0] == True:
+                pos[0] -= 10
+            if i[4][1] == True:
+                pos[0] += 10
+            if i[4][2] == True:
+                pos[1] += 10
+            if i[4][3] == True:
+                pos[1] -= 10
+            return collision
 def _heal():
     global heal_duration
     global mana
