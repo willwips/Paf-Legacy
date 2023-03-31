@@ -776,7 +776,6 @@ def collision_with_weapon(a, strenght, knockback):
         rectB.h = 20
         rectB.w = 30
         rectB.center = (i[1][0] + 15, i[1][1] + 10)
-        graphic_main.update.append(pygame.draw.rect(graphic_main.screen, (255, 0, 0), rectB))
         collision = rectB.colliderect(a)
         print(collision)
         if collision and i[3] <= 0:
@@ -801,8 +800,6 @@ def collision_with_weapon(a, strenght, knockback):
         rectB.h = 40
         rectB.w = 15
         rectB.center = (i[1][0] + 15, i[1][1] + 25)
-        graphic_main.update.append(pygame.draw.rect(graphic_main.screen, (255, 0, 0), rectB))
-
         collision = rectB.colliderect(a)
         if collision and i[3] <= 0:
             player.mana += 3
