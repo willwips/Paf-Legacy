@@ -219,6 +219,13 @@ def boucle():
                 pv -= 30 - 30 * resistance
                 cooldown = 60
                 cooldown_move = 0
+        if collision_with_ennemy_slime():
+
+            if cooldown <= 0:
+                pv -= 20 - 20 * resistance
+                cooldown = 60
+
+                cooldown_move = 0
     if pv <= 0:
         sys.exit()
 
@@ -430,6 +437,38 @@ def collision_with_ennemy_2_1():
                 pos[1] -= 10
             return collision
 
+def collision_with_ennemy_slime():
+    global pos
+    rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
+    rectA.h = 40
+    rectA.w = 15
+    rectA.center = (pos[0] + 15, pos[1] + 25)
+    collision = False
+    for i in ennemy.enemy_slime_list:
+        rectB = i[0].get_rect()
+        rectB.h = 20
+        rectB.w = 30
+        rectB.center = (i[1][0] + 15, i[1][1] + 10)
+        
+        collision = True
+        if rectB.right < rectA.left:
+            collision = False
+        if rectB.bottom < rectA.top:
+            collision = False
+        if rectB.left > rectA.right:
+            collision = False
+        if rectB.top > rectA.bottom:
+            collision = False
+        if collision:
+            if i[4][0] == True:
+                pos[0] -= 10
+            if i[4][1] == True:
+                pos[0] += 10
+            if i[4][2] == True:
+                pos[1] += 10
+            if i[4][3] == True:
+                pos[1] -= 10
+            return collision
 
 def collision_with_projectile():
     global pos

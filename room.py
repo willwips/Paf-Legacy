@@ -110,6 +110,7 @@ def room_1_0(n, _door):
                 graphic_main.trash_update.append(j())
         print(top, left, 'ee')
         player.pos = [510 + left, 240 + top]
+        ennemy.spawn_enemy_slime([left + 120, top + 250], 'picture/enemy/mage/slime.png', 20)
         print(player.pos)
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
@@ -1290,6 +1291,7 @@ def room_1_9(n, _door):
                                30)
         ennemy.spawn_enemy_1([left + 60, top + 600],  'picture/enemy/skeleton/skeleton-front.png', 50)
         ennemy.spawn_enemy_1([left + 360, top + 600],  'picture/enemy/skeleton/skeleton-front.png', 50)
+
 
         for i in room:
             for j in i:

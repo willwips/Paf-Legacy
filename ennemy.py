@@ -11,6 +11,7 @@ enemy_1_2_list = []
 enemy_2_1_list = []
 boss_list = []
 projectile_list = []
+enemy_slime_list = []
 
 
 def spawn_enemy_2_1(pos, img, pv):
@@ -95,6 +96,12 @@ def spawn_boss_1(pos, pv):
     boss_list.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0])
 
 
+def spawn_enemy_slime(pos, img, pv):
+    img = pygame.image.load(img).convert_alpha()
+    pos = pos
+    global enemy_1_list
+    enemy_slime_list.append([img, pos, pv, 10, [False, False, False, False], [0, 0]])
+
 def boucle():
     global enemy_1_list
     global enemy_2_1_list
@@ -104,6 +111,7 @@ def boucle():
     move_ennemi_1_2()
     move_projectile()
     move_boss_1()
+    move_ennemi_slime()
     for i in enemy_1_list:
         if i[3] > 0:
             enemy_1_list[n][3] -= 1
@@ -126,7 +134,11 @@ def boucle():
         if i[8] > 0:
             boss_list[n][8] -= 1
         n += 1
-
+    n = 0
+    for i in enemy_slime_list:
+        if i[3] > 0:
+            enemy_slime_list[n][3] -= 1
+        n += 1
 
 def test_collision__ennemy_1(rect, index=-1):
     n = 0
@@ -512,6 +524,40 @@ def move_boss_1():
             boss_list[i][5] += 1 / 20
 
 
+def move_ennemi_slime():
+    global enemy_slime_list
+    for i in range(0, len(enemy_slime_list)):
+        rectB = enemy_slime_list[i][0].get_rect(center=enemy_slime_list[i][1])
+        rectB.h = 40
+        rectB.w = 15
+        rectB.center = (enemy_slime_list[i][1][0] + 15, enemy_slime_list[i][1][1] + 25)
+        dist = math.sqrt((enemy_slime_list[i][1][0] - player.pos[0]) ** 2 + (enemy_slime_list[i][1][1] - player.pos[1]) ** 2)
+        enemy_slime_list[i][4][0] = False
+        enemy_slime_list[i][4][1] = False
+        enemy_slime_list[i][4][2] = False
+        enemy_slime_list[i][4][3] = False
+        enemy_slime_list[i][1] = touch_wall(enemy_slime_list[i][1], enemy_slime_list[i][0].get_rect())
+        if enemy_slime_list[i][3] % 2 == 0 and enemy_slime_list[i][3] > 0:
+            enemy_slime_list[i][1][0] += enemy_slime_list[i][5][0]
+        if 15 < dist <= 200:
+            if (enemy_slime_list[i][1][0] - player.pos[0]) >= 0:
+                enemy_slime_list[i][1][0] -= abs((enemy_slime_list[i][1][0] - player.pos[0]) / (
+                        abs(enemy_slime_list[i][1][1] - player.pos[1]) + abs((enemy_slime_list[i][1][0] - player.pos[0]))))
+                enemy_slime_list[i][4][0] = True
+            elif (enemy_slime_list[i][1][0] - player.pos[0]) <= 0:
+                enemy_slime_list[i][1][0] += abs((enemy_slime_list[i][1][0] - player.pos[0]) / (
+                        abs(enemy_slime_list[i][1][1] - player.pos[1]) + abs(enemy_slime_list[i][1][0] - player.pos[0])))
+                enemy_slime_list[i][4][1] = True
+            if (enemy_slime_list[i][1][1] - player.pos[1]) >= 0:
+                enemy_slime_list[i][1][1] -= abs((enemy_slime_list[i][1][1] - player.pos[1]) / (
+                        abs(enemy_slime_list[i][1][1] - player.pos[1]) + abs(enemy_slime_list[i][1][0] - player.pos[0])))
+                enemy_slime_list[i][4][2] = True
+            elif (enemy_slime_list[i][1][1] - player.pos[1]) <= 0:
+                enemy_slime_list[i][1][1] += abs((enemy_slime_list[i][1][1] - player.pos[1]) / (
+                        abs(enemy_slime_list[i][1][1] - player.pos[1]) + abs(enemy_slime_list[i][1][0] - player.pos[0])))
+                enemy_slime_list[i][4][3] = True
+
+
 def move_projectile():
     global projectile_lists
     for i in range(0, len(projectile_list)):
@@ -645,6 +691,32 @@ def collision_with_weapon(a, strenght, knockback):
                         player.dash_unlocked=True
                         world.next_level()
 
+        n += 1
+    n = 0
+    for i in enemy_slime_list:
+
+        collision = False
+        rectB = i[0].get_rect()
+        rectB.h = 20
+        rectB.w = 30
+        rectB.center = (i[1][0] + 15, i[1][1] + 10)
+        graphic_main.update.append(pygame.draw.rect(graphic_main.screen, (255, 0, 0), rectB))
+        collision = rectB.colliderect(a)
+        print(collision)
+        if collision and i[3] <= 0:
+            player.mana += 3
+            player.folie -= 5
+
+            enemy_slime_list[n][2] -= strenght
+            enemy_slime_list[n][3] = 30
+            if player.last_move_is_up or player.last_move_is_right:
+                enemy_slime_list[n][5][0] = knockback / 2
+            if player.last_move_is_down or player.last_move_is_left:
+                enemy_slime_list[n][5][0] = -knockback / 2
+
+            if enemy_slime_list[n][2] <= 0:
+                player.folie -= 30
+                del enemy_slime_list[n]
         n += 1
     if player.mana > player.mana_max:
         player.mana=player.mana_max
