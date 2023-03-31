@@ -632,7 +632,7 @@ def move_ennemi_4_1():
 
 
                 enemy_4_1_list[i][6] = False
-                enemy_4_1_list[i][7] = 20
+                enemy_4_1_list[i][7] = 40
 
 def move_projectile():
     global projectile_lists
