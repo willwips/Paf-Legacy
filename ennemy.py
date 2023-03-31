@@ -541,7 +541,7 @@ def collision_with_weapon(a, strenght, knockback):
         rectB.center = (i[1][0] + 15, i[1][1] + 25)
         collision = rectB.colliderect(a)
         if collision and i[3] <= 0:
-            player.mana += 5
+            player.mana += 3
             player.folie -= 5
 
             enemy_1_list[n][2] -= strenght
@@ -566,7 +566,7 @@ def collision_with_weapon(a, strenght, knockback):
 
         collision = rectB.colliderect(a)
         if collision and i[3] <= 0:
-            player.mana += 5
+            player.mana += 3
 
             player.folie -= 5
 
@@ -591,7 +591,7 @@ def collision_with_weapon(a, strenght, knockback):
         rectB.center = (i[1][0] + 15, i[1][1] + 25)
         collision = rectB.colliderect(a)
         if collision and i[3] <= 0:
-            player.mana += 5
+            player.mana += 3
 
             player.folie -= 5
 
@@ -617,7 +617,7 @@ def collision_with_weapon(a, strenght, knockback):
 
         collision = rectB.colliderect(a)
         if collision and i[8] <= 0:
-            player.mana += 5
+            player.mana += 3
 
             player.folie -= 5
             boss_list[n][2] -= strenght
