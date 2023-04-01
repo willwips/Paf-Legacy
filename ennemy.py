@@ -108,6 +108,14 @@ def spawn_enemy_4_1(pos, img, pv):
     pos = pos
     global enemy_2_1_list
     enemy_4_1_list.append([img, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, 0])
+
+def spawn_enemy_4_2(pos, img, pv):
+    n = 0
+    img = pygame.transform.scale(pygame.image.load(img).convert_alpha(), [40, 40])
+
+    pos = pos
+    global enemy_2_1_list
+    enemy_4_1_list.append([img, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, 0])
 def boucle():
     global enemy_1_list
     global enemy_2_1_list
@@ -625,8 +633,9 @@ def move_ennemi_4_1():
                 try:
                     total = abs(enemy_4_1_list[i][1][0] - player.pos[0]) + abs(enemy_4_1_list[i][1][1] - player.pos[1])
                     spawn_enemy_slime([enemy_4_1_list[i][1][0], enemy_4_1_list[i][1][1]], 'picture/enemy/mage/slime.png', 20)
+
                 except:
-                    pass
+                    raise
 
             if enemy_4_1_list[i][7] == -30:
 
@@ -634,6 +643,69 @@ def move_ennemi_4_1():
                 enemy_4_1_list[i][6] = False
                 enemy_4_1_list[i][7] = 20
 
+def move_ennemi_4_2():
+    global enemy_4_1_list
+    for i in range(0, len(enemy_4_1_list)):
+        rectB = enemy_4_1_list[i][0].get_rect(center=enemy_4_1_list[i][1])
+        rectB.h = 40
+        rectB.w = 15
+        rectB.center = (enemy_4_1_list[i][1][0] + 15, enemy_4_1_list[i][1][1] + 25)
+        dist = math.sqrt(
+            (enemy_4_1_list[i][1][0] - player.pos[0]) ** 2 + (enemy_4_1_list[i][1][1] - player.pos[1]) ** 2)
+        enemy_4_1_list[i][4][0] = False
+        enemy_4_1_list[i][4][1] = False
+        enemy_4_1_list[i][4][2] = False
+        enemy_4_1_list[i][4][3] = False
+        enemy_4_1_list[i][1] = touch_wall(enemy_4_1_list[i][1], (
+            enemy_4_1_list[i][0].get_rect().w,
+            enemy_4_1_list[i][0].get_rect().h))
+        if enemy_4_1_list[i][3] % 2 == 0 and enemy_4_1_list[i][3] > 0:
+            enemy_4_1_list[i][1][0] += enemy_4_1_list[i][5][0]
+        if 10 < dist <= 300 and enemy_4_1_list[i][7] > 0:
+            if (enemy_4_1_list[i][1][0] - player.pos[0]) >= 0:
+                enemy_4_1_list[i][1][0] -= abs((enemy_4_1_list[i][1][0] - player.pos[0]) / (
+                        abs(enemy_4_1_list[i][1][1] - player.pos[1]) + abs((enemy_4_1_list[i][1][0] - player.pos[0]))))
+                enemy_4_1_list[i][4][0] = True
+                if 0 <= enemy_4_1_list[i][7] % 12 < 6:
+                    enemy_4_1_list[i][8] = 3
+                elif 6 <= enemy_4_1_list[i][7] % 12 < 12:
+                    enemy_4_1_list[i][8] = 4
+            elif (enemy_4_1_list[i][1][0] - player.pos[0]) <= 0:
+                enemy_4_1_list[i][1][0] += abs((enemy_4_1_list[i][1][0] - player.pos[0]) / (
+                        abs(enemy_4_1_list[i][1][1] - player.pos[1]) + abs(enemy_4_1_list[i][1][0] - player.pos[0])))
+                enemy_4_1_list[i][4][1] = True
+                if 0 <= enemy_4_1_list[i][7] % 12 < 6:
+                    enemy_4_1_list[i][8] = 0
+                elif 6 <= enemy_4_1_list[i][7] % 12:
+                    enemy_4_1_list[i][8] = 1
+
+            if (enemy_4_1_list[i][1][1] - player.pos[1]) >= 0:
+                enemy_4_1_list[i][1][1] -= abs((enemy_4_1_list[i][1][1] - player.pos[1]) / (
+                        abs(enemy_4_1_list[i][1][1] - player.pos[1]) + abs(enemy_4_1_list[i][1][0] - player.pos[0])))
+                enemy_4_1_list[i][4][2] = True
+            elif (enemy_4_1_list[i][1][1] - player.pos[1]) <= 0:
+                enemy_4_1_list[i][1][1] += abs((enemy_4_1_list[i][1][1] - player.pos[1]) / (
+                        abs(enemy_4_1_list[i][1][1] - player.pos[1]) + abs(enemy_4_1_list[i][1][0] - player.pos[0])))
+                enemy_4_1_list[i][4][3] = True
+
+        if enemy_4_1_list[i][7] < 0:
+            enemy_4_1_list[i][6] = True
+
+        if enemy_4_1_list[i][6] == True:
+            if enemy_4_1_list[i][7] == -1:
+
+                try:
+                    total = abs(enemy_4_1_list[i][1][0] - player.pos[0]) + abs(enemy_4_1_list[i][1][1] - player.pos[1])
+                    spawm_projectile([enemy_4_1_list[i][1][0], enemy_4_1_list[i][1][1]], 5, [(player.pos[0] - enemy_4_1_list[i][1][0]) / total * 5,
+                                      0* 5], (0, 0, 255))
+                except:
+                    raise
+
+            if enemy_4_1_list[i][7] == -30:
+
+
+                enemy_4_1_list[i][6] = False
+                enemy_4_1_list[i][7] = 20
 def move_projectile():
     global projectile_lists
     for i in range(0, len(projectile_list)):
@@ -642,7 +714,7 @@ def move_projectile():
 
     n = 0
     for i in projectile_list:
-        if is_touch_wall(i[0]):
+        if is_touch_wall(i[0], [10, 10]):
             del projectile_list[n]
         n += 1
 
@@ -779,8 +851,8 @@ def collision_with_weapon(a, strenght, knockback):
         collision = rectB.colliderect(a)
         print(collision)
         if collision and i[3] <= 0:
-            player.mana += 3
-            player.folie -= 5
+            #player.mana += 3
+            player.folie -= 1
 
             enemy_slime_list[n][2] -= strenght
             enemy_slime_list[n][3] = 30
@@ -790,7 +862,7 @@ def collision_with_weapon(a, strenght, knockback):
                 enemy_slime_list[n][5][0] = -knockback / 2
 
             if enemy_slime_list[n][2] <= 0:
-                player.folie -= 30
+                #player.folie -= 30
                 del enemy_slime_list[n]
         n += 1
     n = 0
