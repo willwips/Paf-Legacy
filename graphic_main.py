@@ -92,6 +92,9 @@ def boucle():
     for i in ennemy.enemy_4_1_list:
         ennemy_pos = screen.blit(i[0], i[1])
         update.append(ennemy_pos)
+    for i in ennemy.enemy_4_2_list:
+        ennemy_pos = screen.blit(i[0][i[8]], i[1])
+        update.append(ennemy_pos)
     w, a = weapon.loop(player.pos)
 
     update.append(w)

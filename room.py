@@ -110,8 +110,8 @@ def room_1_0(n, _door):
                 graphic_main.trash_update.append(j())
         print(top, left, 'ee')
         player.pos = [510 + left, 240 + top]
-        ennemy.spawn_enemy_4_1([left + 120, top + 250], 'picture/enemy/mage/Mage.png', 20)
-        ennemy.spawn_enemy_4_1([left + 320, top + 400], 'picture/enemy/mage/Mage.png', 20)
+        ennemy.spawn_enemy_4_2([left + 550, top + 250], 'picture/enemy/snipe/mob_1.png', 20)
+        #ennemy.spawn_enemy_4_1([left + 320, top + 400], 'picture/enemy/mage/Mage.png', 20)
 
         print(player.pos)
         if _door[0]:
