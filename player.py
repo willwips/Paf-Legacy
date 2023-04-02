@@ -44,6 +44,7 @@ heal = 15
 heal_duration = 120
 heal_duration_max = 120
 is_heal = False
+timer = 60
 # boucle permettant de bouger le personage
 def boucle():
     global pos
@@ -65,7 +66,9 @@ def boucle():
     global heal_duration
     global is_heal
     global mana
+    global timer
     old_pos = pos
+    timer -= 1
     if folie < 0:
         folie = 0
     for event in pygame.event.get():
@@ -271,7 +274,7 @@ def collision_with_door(door):
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
     if rectA.collidelist(door) != -1:
 
-        if not ennemy.enemy_1_list and not ennemy.enemy_1_2_list and not ennemy.enemy_2_1_list and not ennemy.boss_list and not ennemy.enemy_slime_list and not ennemy.enemy_4_1_list and not ennemy.enemy_4_2_list:
+        if not ennemy.enemy_1_list and not ennemy.enemy_1_2_list and not ennemy.enemy_2_1_list and not ennemy.boss_list and not ennemy.enemy_slime_list and not ennemy.enemy_4_1_list and not ennemy.enemy_4_2_list and timer < 0:
             folie -= 100
             if folie < 0:
                 folie = 0
