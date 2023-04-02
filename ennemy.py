@@ -680,10 +680,10 @@ def move_ennemi_4_2():
                 enemy_4_2_list[i][8] = 0
 
             if (enemy_4_2_list[i][1][1] - player.pos[1]) >= 0:
-                enemy_4_2_list[i][1][1] -= abs((enemy_4_2_list[i][1][1] - player.pos[1]))
+                enemy_4_2_list[i][1][1] -= abs((enemy_4_2_list[i][1][1] - player.pos[1]))/5
                 enemy_4_2_list[i][4][2] = True
             elif (enemy_4_2_list[i][1][1] - player.pos[1]) <= 0:
-                enemy_4_2_list[i][1][1] += abs((enemy_4_2_list[i][1][1] - player.pos[1]))
+                enemy_4_2_list[i][1][1] += abs((enemy_4_2_list[i][1][1] - player.pos[1]))/5
                 enemy_4_2_list[i][4][3] = True
 
 
