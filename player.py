@@ -31,7 +31,7 @@ cooldown = 0
 cooldown_move = 0
 dash_unlocked = True
 dash = 0
-dash_invicibility_unlocked = False
+dash_invicibility_unlocked = True
 dash_inv = False
 folie = 0
 floie_max = 200
@@ -240,6 +240,12 @@ def boucle():
 
             if cooldown <= 0:
                 pv -= 20 - 20 * resistance
+                cooldown = 60
+
+                cooldown_move = 0
+        if collision_with_boss_4():
+            if cooldown <= 0:
+                pv -= 15 - 15 * resistance
                 cooldown = 60
 
                 cooldown_move = 0
@@ -575,6 +581,39 @@ def collision_with_ennemy_4_2():
             if i[4][3] == True:
                 pos[1] -= 10
             return collision
+
+def collision_with_boss_4():
+    global pos
+    rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
+    rectA.h = 40
+    rectA.w = 15
+    rectA.center = (pos[0] + 15, pos[1] + 25)
+    collision = False
+    for i in ennemy.boss_list_4:
+        rectB = i[0][0].get_rect(center=i[1])
+        rectB.h = 40
+        rectB.w = 15
+        rectB.center = (i[1][0] + 15, i[1][1] + 25)
+        collision = True
+        if rectB.right < rectA.left:
+            collision = False
+        if rectB.bottom < rectA.top:
+            collision = False
+        if rectB.left > rectA.right:
+            collision = False
+        if rectB.top > rectA.bottom:
+            collision = False
+        if collision:
+            if i[3][0] == True:
+                pos[0] -= 10
+            if i[3][1] == True:
+                pos[0] += 10
+            if i[3][2] == True:
+                pos[1] += 10
+            if i[3][3] == True:
+                pos[1] -= 10
+            return collision
+
 def _heal():
     global heal_duration
     global mana
