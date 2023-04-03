@@ -1,4 +1,5 @@
 import math
+import random
 
 import pygame
 
@@ -100,6 +101,8 @@ def spawn_boss_1(pos, pv):
 
 def spawn_boss_4(pos, pv):
     _img = []
+    _img.append(pygame.image.load('picture/enemy/tortue/Boss_tortue_1.png'))
+    """    _img = []
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p1_L.png'), [46, 80]))
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p1_R.png'), [46, 80]))
     _img.append(
@@ -140,7 +143,7 @@ def spawn_boss_4(pos, pv):
     _img.append(
         pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_4.png'), [80, 80]))
     _img.append(
-        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_5.png'), [92, 80]))
+        pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_5.png'), [92, 80]))"""
     boss_list_4.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0])
 
 def spawn_enemy_slime(pos, img, pv):
@@ -225,6 +228,8 @@ def boucle():
             boss_list_4[n][6] -= 1
         if i[8] > 0:
             boss_list_4[n][8] -= 1
+        boss_list_4[n][5] -= 1
+
         n += 1
 def test_collision__ennemy_1(rect, index=-1):
     n = 0
@@ -769,17 +774,18 @@ def move_boss_4():
     if not boss_list_4:
         return
     if boss_list_4[0][4] == 0:
-        rectB = boss_list_4[0][0][boss_list_4[0][8]].get_rect(center=boss_list_4[0][1])
+        rectB = boss_list_4[0][0][0].get_rect(center=boss_list_4[0][1])
         rectB.h = 40
         rectB.w = 15
         rectB.center = (boss_list_4[0][1][0] + 15, boss_list_4[0][1][1] + 25)
         dist = math.sqrt(
             (boss_list_4[0][1][0] - player.pos[0]) ** 2 + (boss_list_4[0][1][1] - player.pos[1]) ** 2)
         boss_list_4[0][1] = touch_wall(boss_list_4[0][1], (
-            boss_list_4[0][0][boss_list_4[0][8]].get_rect().w,
-            boss_list_4[0][0][boss_list_4[0][8]].get_rect().h))
-        if boss_list_4[0][5] % 2 == 0 and boss_list_4[0][5] > 0:
-            boss_list_4[0][1][0] += boss_list_4[0][5][0]
+            boss_list_4[0][0][0].get_rect().w,
+            boss_list_4[0][0][0].get_rect().h))
+        if boss_list_4[0][6] % 2 == 0 and boss_list_4[0][6] > 0:
+
+            boss_list_4[0][1][0] += boss_list_4[0][7][0]
         if True:
             if (boss_list_4[0][1][0] - player.pos[0]) >= 0:
                 boss_list_4[0][8] = 1
@@ -790,30 +796,26 @@ def move_boss_4():
 
             if (boss_list_4[0][1][1] - player.pos[1]) >= 0:
                 boss_list_4[0][1][1] -= abs((boss_list_4[0][1][1] - player.pos[1])) / 5
-                boss_list_4[0][4][2] = True
-            elif (enemy_4_2_list[0][1][1] - player.pos[1]) <= 0:
+                boss_list_4[0][3][2] = True
+            elif (boss_list_4[0][1][1] - player.pos[1]) <= 0:
                 boss_list_4[0][1][1] += abs((boss_list_4[0][1][1] - player.pos[1])) / 5
-                boss_list_4[0][4][3] = True
+                boss_list_4[0][3][3] = True
 
-        if boss_list_4[0][7] < 0:
+        if boss_list_4[0][5] < 0:
             boss_list_4[0][6] = True
-
+        print(boss_list_4[0][5])
         if boss_list_4[0][6] == True:
-            if boss_list_4[0][7] == -1:
+            if boss_list_4[0][5] == -1:
 
                 try:
-                    if boss_list_4[0][8] == 0:
-                        spawm_projectile([boss_list_4[0][1][0] + 30, boss_list_4[0][1][1] + 22], 5, [5, 0],
-                                         (0, 0, 255))
-                    if boss_list_4[0][8] == 1:
-                        spawm_projectile([boss_list_4[0][1][0] + 0, boss_list_4[0][1][1] + 22], 5, [-5, 0],
-                                         (0, 0, 255))
+
+                    spawn_enemy_4_1([boss_list_4[0][1][0], boss_list_4[0][1][1]], 'picture/enemy/mage/Mage.png', 20)
                 except:
                     raise
 
-            if boss_list_4[0][7] == -20:
+            if boss_list_4[0][5] == -20:
                 boss_list_4[0][6] = False
-                boss_list_4[0][7] = 5
+                boss_list_4[0][5] = 60
     if  0 < boss_list_4[0][4] < 1:
         boss_list_4[0][4] += 0.01
         print(boss_list_4[0][4])
@@ -824,7 +826,36 @@ def move_boss_4():
             print(boss_list_4[0][10])
         if boss_list_4[0][4] > 1:
             boss_list_4[0][4] = 1
+            boss_list_4[0][5] = 60
+
     if boss_list_4[0][4] == 1:
+
+        rectB = boss_list_4[0][0][0].get_rect(center=boss_list_4[0][1])
+        rectB.h = 90
+        rectB.w = 46
+        rectB.center = (boss_list_4[0][1][0] + 23, boss_list_4[0][1][1] + 40)
+        # zadezd = pygame.draw.rect(graphic_main.screen, (255, 255, 255), rectB)
+        # graphic_main.update.append(zadezd)
+        dist = math.sqrt((boss_list_4[0][1][0] - player.pos[0]) ** 2 + (boss_list_4[0][1][1] - player.pos[1]) ** 2)
+
+        boss_list_4[0][3][0] = False
+        boss_list_4[0][3][1] = False
+        boss_list_4[0][3][2] = False
+        boss_list_4[0][3][3] = False
+        print(boss_list_4[0][5])
+        if boss_list_4[0][5] == 0:
+            boss_list_4[0][1][0] = player.pos[0] + random.randrange(0, 50)
+            boss_list_4[0][1][1] = player.pos[1] + random.randrange(0, 50)
+            boss_list_4[0][5] = 120
+        if boss_list_4[0][5] == 60:
+            boss_list_4[0][1][0] = random.randrange(graphic_main.left, graphic_main.right)
+            boss_list_4[0][1][1] = random.randrange(graphic_main.top, graphic_main.bottom)
+        if 0 < boss_list_4[0][5] < 10:
+            boss_list_4[0][1][0] += random.randrange(0, 10)
+            boss_list_4[0][1][1] += random.randrange(0, 10)
+
+
+        """        
         rectB = boss_list_4[0][0][0].get_rect(center=boss_list_4[0][1])
         rectB.h = 90
         rectB.w = 46
@@ -872,7 +903,7 @@ def move_boss_4():
                 boss_list_4[0][1][1] += boss_list_4[0][9][1] * 1 + math.sin(boss_list_4[0][5]) * 5
 
                 boss_list_4[0][3][3] = True
-        boss_list_4[0][5] += 1 / 20
+        boss_list_4[0][5] += 1 / 20"""
     if 1 < boss_list_4[0][4] < 2:
         boss_list_4[0][4] += 0.01
         print(boss_list_4[0][10])
@@ -897,7 +928,7 @@ def move_boss_4():
         if boss_list_4[0][4] == 1.92:
             boss_list_4[0][10] += 1
         if boss_list_4[0][4] >= 2:
-            spawn_boss_4([boss_list_4[0][1][0]+90, boss_list_4[0][1][1]], 100)
+            #spawn_boss_4([boss_list_4[0][1][0]+90, boss_list_4[0][1][1]], 100)
             boss_list_4[1][4] = 2
             boss_list_4[1][10] = 10
             boss_list_4[0][2] = 100
