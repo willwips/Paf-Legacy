@@ -815,7 +815,7 @@ def move_boss_4():
 
             if boss_list_4[0][5] == -20:
                 boss_list_4[0][6] = False
-                boss_list_4[0][5] = 60
+                boss_list_4[0][5] = 120
     if  0 < boss_list_4[0][4] < 1:
         boss_list_4[0][4] += 0.01
         print(boss_list_4[0][4])
@@ -848,11 +848,11 @@ def move_boss_4():
             boss_list_4[0][1][1] = player.pos[1] + random.randrange(0, 50)
             boss_list_4[0][5] = 120
         if boss_list_4[0][5] == 60:
-            boss_list_4[0][1][0] = random.randrange(graphic_main.left, graphic_main.right)
-            boss_list_4[0][1][1] = random.randrange(graphic_main.top, graphic_main.bottom)
+            boss_list_4[0][1][0] = random.randrange(graphic_main.left +50, graphic_main.right-50)
+            boss_list_4[0][1][1] = random.randrange(graphic_main.top+50, graphic_main.bottom-50)
         if 0 < boss_list_4[0][5] < 10:
-            boss_list_4[0][1][0] += random.randrange(0, 10)
-            boss_list_4[0][1][1] += random.randrange(0, 10)
+            boss_list_4[0][1][0] += random.randrange(-10, 10)
+            boss_list_4[0][1][1] += random.randrange(-10, 10)
 
 
         """        
