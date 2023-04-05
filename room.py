@@ -1,51 +1,61 @@
 import pygame
-
 import ennemy
 import player
 import tiles
 import graphic_main
 import weapon
 
-
+# Fonction qui s'occupe de ce qui est lié au soin
 def heal(pv):
     a = pv
 
+    # Fonction qui permet au joueur de se soigner
     def _heal():
         player.pv += a
         player.possible_object_picture = None
         player.possible_object = player._pass
 
+    # Fonction qui affiche l'objet de soin sur l'écran
     def __heal():
         player.possible_object = _heal
         player.possible_object_picture = pygame.image.load('picture/ui/Potions Soin.png').convert_alpha()
 
     return __heal
 
-
+# Fonction qui permet de changer d'arme
 def change_weapon(_weapon):
     def _change():
         weapon.current_weapon = _weapon
 
     return _change
 
-
+# Fonction qui défini la salle 0 du niveau 1 (la salle d'apparition)
 def room_1_0(n, _door):
+
+    # Liste qui vont recueillir des éléments pour l'affichage de la salle
     room = []
     door = []
     chest = {}
-    tiles._chest = [False]
+
+    tiles._chest = [False] # Liste qui permet ou non la création de coffre
 
     x = 20  # Longueur x de la salle
     y = 10  # Longueur y de la salle
+
     print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
+
+    # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
     right = pygame.display.get_surface().get_size()[0] / 2 + x / 2 * 50
+
+    # Donne la position initialie de 
     pos_play = [[(x - 1) * 50 + left - 20, int(y / 2) * 50 + top],
                 [int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10 - 50], [left + 20, int(y / 2) * 50 + top],
                 [int(x / 2) * 50 + left, top + 50]]
 
+    # Fonction qui créer les tuiles de la salle (murs, portes et potentiel coffre)
     def create():
         graphic_main.trash_update.append(graphic_main.screen.fill((0, 0, 0)))
         for i in range(0, x):
@@ -105,11 +115,17 @@ def room_1_0(n, _door):
                 elif j % 2 + i % 2 == 1:
                     room[i].append(tiles.blit_tile_4_1(i * 50 + left, j * 50 + top))
 
+        # Affiche les éléments de la salle
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
+
         print(top, left, 'ee')
+
+        # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
+
+
         #ennemy.spawn_enemy_4_2([left + 550, top + 250], 'picture/enemy/snipe/mob_1.png', 20)
         #ennemy.spawn_enemy_4_1([left + 320, top + 400], 'picture/enemy/mage/Mage.png', 20)
         #ennemy.spawn_enemy_4_1([left + 370, top + 80], 'picture/enemy/mage/Mage.png', 20)
@@ -118,6 +134,8 @@ def room_1_0(n, _door):
 
 
         print(player.pos)
+
+        # Affiche les portes des quatres coins de l'écran en fonction des éléments de la variable _door
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         else:
@@ -136,8 +154,10 @@ def room_1_0(n, _door):
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
 
+    # La salle est crée
     create()
 
+    # Fonction qui permet d'update la salle
     def update(list):
         for i in list:
             try:
@@ -155,22 +175,29 @@ def room_1_0(n, _door):
             except:
                 pass
 
+    # Retourne les éléments suivant
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
-
+# Fonction qui défini la salle 1 du niveau 1
 def room_1_1(n, _door):
     room = []
     door = []
     chest = {}
     tiles._chest = [False]
+
     x = 18  # Longueur x de la salle
     y = 7  # Longueur y de la salle
+
     print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
+    
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
     right = pygame.display.get_surface().get_size()[0] / 2 + x / 2 * 50
+    
     print(left, top, 'e')
+    
+    
     pos_play = [[(x - 1) * 50 + left - 20, int(y / 2) * 50 + top],
                 [int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10 - 50], [left + 20, int(y / 2) * 50 + top],
                 [int(x / 2) * 50 + left, top + 50]]
@@ -237,20 +264,23 @@ def room_1_1(n, _door):
                     room[i].append(tiles.blit_tile_4_1(i * 50 + left, j * 50 + top))
                 elif j % 2 + i % 2 == 1:
                     room[i].append(tiles.blit_tile_4_1(i * 50 + left, j * 50 + top))
-        # ennely (voir main)
-        ennemy.spawn_enemy_1_2([left + 80, top + 80], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'],
-                               30)
-        ennemy.spawn_enemy_1_2([left + 250, top + 150], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'],
-                               30)
+
+        # Créer les ennemies du fichier ennemy et les affiches
+        ennemy.spawn_enemy_1_2([left + 80, top + 80], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 30)
+        ennemy.spawn_enemy_1_2([left + 250, top + 150], ['picture/enemy/bat/Bat_1.png', 'picture/enemy/bat/Bat_2.png'], 30)
         ennemy.spawn_enemy_1([left + 80, top + 223], 'picture/enemy/skeleton/skeleton-front.png', 50)
         ennemy.spawn_enemy_1([left + 210, top + 85],  'picture/enemy/skeleton/skeleton-front.png', 50)
 
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
+
         print(top, left, 'ee')
+
         player.pos = [50 + left, 220 + top]
+
         print(player.pos)
+
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         else:
@@ -290,7 +320,7 @@ def room_1_1(n, _door):
 
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
-
+# Fonction qui défini la salle 2 du niveau 1
 def room_1_2(n, _door):
     room = []
     door = []
@@ -418,7 +448,7 @@ def room_1_2(n, _door):
 
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
-
+# Fonction qui défini la salle 3 du niveau 1
 def room_1_3(n, _door):
     room = []
     door = []
@@ -547,7 +577,7 @@ def room_1_3(n, _door):
 
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
-
+# Fonction qui défini la salle 4 du niveau 1
 def room_1_4(n, _door):
     room = []
     door = []
@@ -679,7 +709,7 @@ def room_1_4(n, _door):
 
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
-
+# Fonction qui défini la salle 5 du niveau 1
 def room_1_5(n, _door):
     room = []
     door = []
@@ -801,7 +831,7 @@ def room_1_5(n, _door):
 
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
-
+# Fonction qui défini la salle 6 du niveau 1
 def room_1_6(n, _door):
     room = []
     door = []
@@ -954,7 +984,7 @@ def room_1_6(n, _door):
 
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
-
+# Fonction qui défini la salle 7 du niveau 1
 def room_1_7(n, _door):
     room = []
     door = []
@@ -1081,7 +1111,7 @@ def room_1_7(n, _door):
 
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
-
+# Fonction qui défini la salle 8 du niveau 1
 def room_1_8(n, _door):
     room = []
     door = []
@@ -1211,7 +1241,7 @@ def room_1_8(n, _door):
 
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
-
+# Fonction qui défini la salle 9 du niveau 1
 def room_1_9(n, _door):
     room = []
     door = []
@@ -1341,6 +1371,7 @@ def room_1_9(n, _door):
 
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
+# Fonction qui défini la salle 10 du niveau 1
 def room_1_10(n, _door):
     room = []
     door = []
@@ -1458,6 +1489,7 @@ def room_1_10(n, _door):
 
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
+# Fonction qui défini la salle 11 du niveau 1
 def room_1_11(n, _door):
     room = []
     door = []
@@ -1582,6 +1614,7 @@ def room_1_11(n, _door):
 
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
+# Fonction qui défini la salle du boss du niveau 1
 def room_boss_1(n, _door):
     room = []
     door = []
