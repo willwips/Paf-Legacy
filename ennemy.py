@@ -10,6 +10,7 @@ import world
 enemy_1_list = []
 enemy_1_2_list = []
 enemy_2_1_list = []
+enemy_2_2_list = []
 boss_list = []
 projectile_list = []
 enemy_slime_list = []
@@ -31,7 +32,17 @@ def spawn_enemy_2_1(pos, img, pv):
     global enemy_2_1_list
     enemy_2_1_list.append([img_, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, 0])
 
+def spawn_enemy_2_2(pos, img, pv):
+    img_ = []
+    n = 0
+    for i in img:
 
+        img_.append(pygame.image.load(i).convert_alpha())
+
+        n += 1
+    pos = pos
+    global enemy_2_2_list
+    enemy_2_2_list.append([img_, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, [0, 0]])
 def spawm_projectile(pos, radius, directon, color):
     global projectile_list
     projectile_list.append([pos, radius, directon, color])
@@ -175,6 +186,7 @@ def boucle():
     n = 0
     move_ennemi_1()
     move_ennemi_2_1()
+    move_ennemi_2_2()
     move_ennemi_1_2()
     move_projectile()
     move_boss_1()
@@ -196,6 +208,12 @@ def boucle():
         if i[3] > 0:
             enemy_2_1_list[n][3] -= 1
         enemy_2_1_list[n][7] -= 1
+        n += 1
+    n = 0
+    for i in enemy_2_2_list:
+        if i[3] > 0:
+            enemy_2_2_list[n][3] -= 1
+        enemy_2_2_list[n][7] -= 1
         n += 1
     n = 0
     for i in boss_list:
@@ -433,7 +451,97 @@ def move_ennemi_2_1():
                 enemy_2_1_list[i][6] = False
                 enemy_2_1_list[i][7] = 300
 
+def move_ennemi_2_2():
+    global enemy_2_2_list
+    for i in range(0, len(enemy_2_2_list)):
+        rectB = enemy_2_2_list[i][0][0].get_rect(center=enemy_2_2_list[i][1])
+        rectB.h = 40
+        rectB.w = 15
+        rectB.center = (enemy_2_2_list[i][1][0] + 15, enemy_2_2_list[i][1][1] + 25)
+        dist = math.sqrt(
+            (enemy_2_2_list[i][1][0] - player.pos[0]) ** 2 + (enemy_2_2_list[i][1][1] - player.pos[1]) ** 2)
+        enemy_2_2_list[i][4][0] = False
+        enemy_2_2_list[i][4][1] = False
+        enemy_2_2_list[i][4][2] = False
+        enemy_2_2_list[i][4][3] = False
+        enemy_2_2_list[i][1] = touch_wall(enemy_2_2_list[i][1], (
+            enemy_2_2_list[i][0][0].get_rect().w,
+            enemy_2_2_list[i][0][0].get_rect().h))
+        if enemy_2_2_list[i][3] % 2 == 0 and enemy_2_2_list[i][3] > 0:
+            enemy_2_2_list[i][1][0] += enemy_2_2_list[i][5][0]
+        if enemy_2_2_list[i][7] < 0:
+            enemy_2_2_list[i][6] = True
 
+        if enemy_2_2_list[i][6] == True:
+            if enemy_2_2_list[i][7] == -1:
+                enemy_2_2_list[i][8] = [player.pos[0], player.pos[1]]
+                enemy_2_2_list[i][1][0] = -150000
+                enemy_2_2_list[i][1][1] = -150000
+            if enemy_2_2_list[i][7] == -30:
+                print(enemy_2_2_list)
+                enemy_2_2_list[i][1][0] = enemy_2_2_list[i][8][0]
+                enemy_2_2_list[i][1][1] = enemy_2_2_list[i][8][1]
+                enemy_2_2_list[i][6] = False
+                enemy_2_2_list[i][7] = 50
+        """if enemy_2_2_list[i][3] % 2 == 0 and enemy_2_2_list[i][3] > 0:
+                enemy_2_2_list[i][1][0] += enemy_2_2_list[i][5][0]
+            if 10 < dist <= 300 and enemy_2_2_list[i][7] > 0:
+                if (enemy_2_2_list[i][1][0] - player.pos[0]) >= 0:
+                    enemy_2_2_list[i][1][0] += abs((enemy_2_2_list[i][1][0] - player.pos[0]) / (
+                            abs(enemy_2_2_list[i][1][1] - player.pos[1]) + abs((enemy_2_2_list[i][1][0] - player.pos[0]))))
+                    enemy_2_2_list[i][4][0] = True
+                    if 0 <= enemy_2_2_list[i][7] % 12 < 6:
+                        enemy_2_2_list[i][8] = 3
+                    elif 6 <= enemy_2_2_list[i][7] % 12 < 12:
+                        enemy_2_2_list[i][8] = 4
+                elif (enemy_2_2_list[i][1][0] - player.pos[0]) <= 0:
+                    enemy_2_2_list[i][1][0] -= abs((enemy_2_2_list[i][1][0] - player.pos[0]) / (
+                            abs(enemy_2_2_list[i][1][1] - player.pos[1]) + abs(enemy_2_2_list[i][1][0] - player.pos[0])))
+                    enemy_2_2_list[i][4][1] = True
+                    if 0 <= enemy_2_2_list[i][7] % 12 < 6:
+                        enemy_2_2_list[i][8] = 0
+                    elif 6 <= enemy_2_2_list[i][7] % 12:
+                        enemy_2_2_list[i][8] = 1
+    
+                if (enemy_2_2_list[i][1][1] - player.pos[1]) >= 0:
+                    enemy_2_2_list[i][1][1] += abs((enemy_2_2_list[i][1][1] - player.pos[1]) / (
+                            abs(enemy_2_2_list[i][1][1] - player.pos[1]) + abs(enemy_2_2_list[i][1][0] - player.pos[0])))
+                    enemy_2_2_list[i][4][2] = True
+                elif (enemy_2_2_list[i][1][1] - player.pos[1]) <= 0:
+                    enemy_2_2_list[i][1][1] -= abs((enemy_2_2_list[i][1][1] - player.pos[1]) / (
+                            abs(enemy_2_2_list[i][1][1] - player.pos[1]) + abs(enemy_2_2_list[i][1][0] - player.pos[0])))
+                    enemy_2_2_list[i][4][3] = True
+    
+            if enemy_2_2_list[i][7] < 0:
+                enemy_2_2_list[i][6] = True
+    
+            if enemy_2_2_list[i][6] == True:
+                if enemy_2_2_list[i][7] == -1:
+                    if enemy_2_2_list[i][8] == 0 or enemy_2_2_list[i][8] == 1:
+                        enemy_2_2_list[i][8] = 5
+                    if enemy_2_2_list[i][8] == 3 or enemy_2_2_list[i][8] == 4:
+                        enemy_2_2_list[i][8] = 2
+                    try:
+                        total = abs(enemy_2_2_list[i][1][0] - player.pos[0]) + abs(enemy_2_2_list[i][1][1] - player.pos[1])
+                        spawm_projectile([enemy_2_2_list[i][1][0], enemy_2_2_list[i][1][1]], 10,
+                                         [(player.pos[0] - enemy_2_2_list[i][1][0]) / total * 5,
+                                          (player.pos[1] - enemy_2_2_list[i][1][1]) / total * 5], (75, 0, 130))
+                    except:
+                        pass
+                if -1 < enemy_2_2_list[i][7] < -30:
+                    if enemy_2_2_list[i][8] == 0 or enemy_2_2_list[i][8] == 1:
+                        enemy_2_2_list[i][8] = 5
+                    if enemy_2_2_list[i][8] == 3 or enemy_2_2_list[i][8] == 4:
+                        enemy_2_2_list[i][8] = 2
+                if enemy_2_2_list[i][7] == -30:
+                    if enemy_2_2_list[i][8] == 2:
+                        enemy_2_2_list[i][8] = 3
+                    if enemy_2_2_list[i][8] == 5:
+                        enemy_2_2_list[i][8] = 0
+    
+                    enemy_2_2_list[i][6] = False
+                    enemy_2_2_list[i][7] = 300
+        """
 def move_boss_1():
     global boss_list
     if not boss_list:
@@ -786,7 +894,7 @@ def move_boss_4():
         if boss_list_4[0][6] % 2 == 0 and boss_list_4[0][6] > 0:
 
             boss_list_4[0][1][0] += boss_list_4[0][7][0]
-        if True:
+            """        if True:
             if (boss_list_4[0][1][0] - player.pos[0]) >= 0:
                 boss_list_4[0][8] = 1
 
@@ -799,8 +907,10 @@ def move_boss_4():
                 boss_list_4[0][3][2] = True
             elif (boss_list_4[0][1][1] - player.pos[1]) <= 0:
                 boss_list_4[0][1][1] += abs((boss_list_4[0][1][1] - player.pos[1])) / 5
-                boss_list_4[0][3][3] = True
-
+                boss_list_4[0][3][3] = True"""
+        if dist < 100 and boss_list_4[0][5] == -10:
+            boss_list_4[0][1][0] = random.randrange(graphic_main.left +50, graphic_main.right-50)
+            boss_list_4[0][1][1] = random.randrange(graphic_main.top+50, graphic_main.bottom-50)
         if boss_list_4[0][5] < 0:
             boss_list_4[0][6] = True
         print(boss_list_4[0][5])
@@ -1054,6 +1164,31 @@ def collision_with_weapon(a, strenght, knockback):
 
             if enemy_2_1_list[n][2] <= 0:
                 del enemy_2_1_list[n]
+                player.folie -= 30
+
+        n += 1
+    n = 0
+    for i in enemy_2_2_list:
+        collision = False
+        rectB = i[0][0].get_rect(center=i[1])
+        rectB.h = 40
+        rectB.w = 15
+        rectB.center = (i[1][0] + 15, i[1][1] + 25)
+        collision = rectB.colliderect(a)
+        if collision and i[3] <= 0:
+            player.mana += 3
+
+            player.folie -= 5
+
+            enemy_2_2_list[n][2] -= strenght
+            enemy_2_2_list[n][3] = 30
+            if player.last_move_is_up or player.last_move_is_right:
+                enemy_2_2_list[n][5][0] = knockback
+            if player.last_move_is_down or player.last_move_is_left:
+                enemy_2_2_list[n][5][0] = -knockback
+
+            if enemy_2_2_list[n][2] <= 0:
+                del enemy_2_2_list[n]
                 player.folie -= 30
 
         n += 1
