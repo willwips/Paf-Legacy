@@ -815,7 +815,7 @@ def move_boss_4():
 
             if boss_list_4[0][5] == -20:
                 boss_list_4[0][6] = False
-                boss_list_4[0][5] = 60
+                boss_list_4[0][5] = 120
     if  0 < boss_list_4[0][4] < 1:
         boss_list_4[0][4] += 0.01
         print(boss_list_4[0][4])
@@ -848,11 +848,11 @@ def move_boss_4():
             boss_list_4[0][1][1] = player.pos[1] + random.randrange(0, 50)
             boss_list_4[0][5] = 120
         if boss_list_4[0][5] == 60:
-            boss_list_4[0][1][0] = random.randrange(graphic_main.left, graphic_main.right)
-            boss_list_4[0][1][1] = random.randrange(graphic_main.top, graphic_main.bottom)
+            boss_list_4[0][1][0] = random.randrange(graphic_main.left +50, graphic_main.right-50)
+            boss_list_4[0][1][1] = random.randrange(graphic_main.top+50, graphic_main.bottom-50)
         if 0 < boss_list_4[0][5] < 10:
-            boss_list_4[0][1][0] += random.randrange(0, 10)
-            boss_list_4[0][1][1] += random.randrange(0, 10)
+            boss_list_4[0][1][0] += random.randrange(-10, 10)
+            boss_list_4[0][1][1] += random.randrange(-10, 10)
 
 
         """        
@@ -929,58 +929,35 @@ def move_boss_4():
             boss_list_4[0][10] += 1
         if boss_list_4[0][4] >= 2:
             #spawn_boss_4([boss_list_4[0][1][0]+90, boss_list_4[0][1][1]], 100)
-            boss_list_4[1][4] = 2
-            boss_list_4[1][10] = 10
-            boss_list_4[0][2] = 100
+            boss_list_4[0][2] = 200
             boss_list_4[0][4] = 2
+            boss_list_4[0][5] = 20
     if boss_list_4[0][4] == 2:
-        for i in range(0, len(boss_list_4)):
-            rectB = boss_list_4[i][0][0].get_rect(center=boss_list_4[i][1])
-            rectB.h = 90
-            rectB.w = 46
-            rectB.center = (boss_list_4[i][1][0] + 23, boss_list_4[i][1][1] + 40)
-            # zadezd = pygame.draw.rect(graphic_main.screen, (255, 255, 255), rectB)
-            # graphic_main.update.append(zadezd)
-            #dist = math.sqrt((boss_list_4[0][1][0] - player.pos[0]) ** 2 + (boss_list_4[0][1][1] - player.pos[1]) ** 2)
+        rectB = boss_list_4[0][0][0].get_rect(center=boss_list_4[0][1])
+        rectB.h = 90
+        rectB.w = 46
+        rectB.center = (boss_list_4[0][1][0] + 23, boss_list_4[0][1][1] + 40)
+        # zadezd = pygame.draw.rect(graphic_main.screen, (255, 255, 255), rectB)
+        # graphic_main.update.append(zadezd)
+        dist = math.sqrt((boss_list_4[0][1][0] - player.pos[0]) ** 2 + (boss_list_4[0][1][1] - player.pos[1]) ** 2)
 
-            boss_list_4[i][3][0] = False
-            boss_list_4[i][3][1] = False
-            boss_list_4[i][3][2] = False
-            boss_list_4[i][3][3] = False
-            if is_touch_wall(boss_list_4[i][1], boss_list_4[i][0][0].get_rect()) or boss_list_4[0][6] == [0, 0]:
-                dir_to_player = [-3 * (boss_list_4[i][1][0] - player.pos[0]) / (
-                        abs(boss_list_4[i][1][1] - player.pos[1]) + abs((boss_list_4[i][1][0] - player.pos[0]))),
-                                 -3 * (boss_list_4[i][1][1] - player.pos[1]) / (
-                                         abs(boss_list_4[i][1][1] - player.pos[1]) + abs(
-                                     boss_list_4[i][1][0] - player.pos[0]))]
-                boss_list_4[i][9] = dir_to_player
+        boss_list_4[0][3][0] = False
+        boss_list_4[0][3][1] = False
+        boss_list_4[0][3][2] = False
+        boss_list_4[0][3][3] = False
+        print(boss_list_4[0][5])
+        if boss_list_4[0][5] == 0:
+            boss_list_4[0][1][0] = player.pos[0] + random.randrange(0, 50)
+            boss_list_4[0][1][1] = player.pos[1] + random.randrange(0, 50)
+            boss_list_4[0][5] = 120
+        if boss_list_4[0][5] == 60:
+            boss_list_4[0][1][0] = random.randrange(graphic_main.left +50, graphic_main.right-50)
+            boss_list_4[0][1][1] = random.randrange(graphic_main.top+50, graphic_main.bottom-50)
+            spawn_enemy_slime([boss_list_4[0][1][0], boss_list_4[0][1][1]], 'picture/enemy/mage/slime.png', 20)
+        if 0 < boss_list_4[0][5] < 10:
 
-            boss_list_4[i][1] = touch_wall(boss_list_4[i][1], boss_list_4[i][0][0].get_rect())
-
-            if boss_list_4[i][6] % 2 == 0 and boss_list_4[i][6] > 0:
-                boss_list_4[i][1][0] += boss_list_4[i][7][0]
-
-            else:
-                if (boss_list_4[i][1][0] - player.pos[0]) >= 0:
-                    boss_list_4[i][1][0] += boss_list_4[i][9][0] * 1 + math.cos(boss_list_4[i][5]) * 2.5
-                    boss_list_4[i][3][0] = True
-                    boss_list_4[i][10] = 4 + 6*i
-
-                elif (boss_list_4[i][1][0] - player.pos[0]) <= 0:
-                    boss_list_4[i][1][0] += boss_list_4[i][9][0] * 1 + math.cos(boss_list_4[i][5]) * 2.5
-                    boss_list_4[i][3][1] = True
-                    boss_list_4[i][10] = 7 +6*i
-
-                if (boss_list_4[i][1][1] - player.pos[1]) >= 0:
-                    boss_list_4[i][1][1] += boss_list_4[i][9][1] * 1 + math.sin(boss_list_4[i][5]) * 2.5
-
-                    boss_list_4[i][3][2] = True
-                elif (boss_list_4[i][1][1] - player.pos[1]) <= 0:
-                    boss_list_4[i][1][1] += boss_list_4[i][9][1] * 1 + math.sin(boss_list_4[i][5]) * 2.5
-
-                    boss_list_4[i][3][3] = True
-            boss_list_4[i][5] += 1 / 20
-
+            boss_list_4[0][1][0] += random.randrange(-10, 10)
+            boss_list_4[0][1][1] += random.randrange(-10, 10)
 
 def move_projectile():
     global projectile_lists
@@ -1226,7 +1203,7 @@ def collision_with_weapon(a, strenght, knockback):
                     player.folie -= 120
 
                 elif boss_list_4[n][4] == 2:
-                    del boss_list[n]
+                    del boss_list_4[n]
                     player.folie -= 70
                     if len(boss_list) == 0:
                         player.dash_unlocked=True

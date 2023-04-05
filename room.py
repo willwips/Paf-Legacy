@@ -114,7 +114,7 @@ def room_1_0(n, _door):
         #ennemy.spawn_enemy_4_1([left + 320, top + 400], 'picture/enemy/mage/Mage.png', 20)
         #ennemy.spawn_enemy_4_1([left + 370, top + 80], 'picture/enemy/mage/Mage.png', 20)
         #ennemy.spawn_enemy_4_2([left + 427, top + 79], 'picture/enemy/snipe/mob_1.png', 20)
-        ennemy.spawn_boss_4([left + 427, top + 79], 100)
+        ennemy.spawn_boss_4([left + 427, top + 79], 200)
 
 
         print(player.pos)
