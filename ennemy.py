@@ -894,21 +894,24 @@ def move_boss_4():
         if boss_list_4[0][6] % 2 == 0 and boss_list_4[0][6] > 0:
 
             boss_list_4[0][1][0] += boss_list_4[0][7][0]
-            """        if True:
+        if dist <200:
             if (boss_list_4[0][1][0] - player.pos[0]) >= 0:
-                boss_list_4[0][8] = 1
+                boss_list_4[0][1][0] += abs((boss_list_4[0][1][0] - player.pos[0]) / (
+                        abs(boss_list_4[0][1][1] - player.pos[1]) + abs((boss_list_4[0][1][0] - player.pos[0]))))
+
 
             elif (boss_list_4[0][1][0] - player.pos[0]) <= 0:
-
-                boss_list_4[0][8] = 0
+                boss_list_4[0][1][0] -= abs((boss_list_4[0][1][0] - player.pos[0]) / (
+                        abs(boss_list_4[0][1][1] - player.pos[1]) + abs(boss_list_4[0][1][0] - player.pos[0])))
 
             if (boss_list_4[0][1][1] - player.pos[1]) >= 0:
-                boss_list_4[0][1][1] -= abs((boss_list_4[0][1][1] - player.pos[1])) / 5
-                boss_list_4[0][3][2] = True
+                boss_list_4[0][1][1] += abs((boss_list_4[0][1][1] - player.pos[1]) / (
+                        abs(boss_list_4[0][1][1] - player.pos[1]) + abs(boss_list_4[0][1][0] - player.pos[0])))
             elif (boss_list_4[0][1][1] - player.pos[1]) <= 0:
-                boss_list_4[0][1][1] += abs((boss_list_4[0][1][1] - player.pos[1])) / 5
-                boss_list_4[0][3][3] = True"""
-        if dist < 100 and boss_list_4[0][5] == -10:
+                boss_list_4[0][1][1] -= abs((boss_list_4[0][1][1] - player.pos[1]) / (
+                        abs(boss_list_4[0][1][1] - player.pos[1]) + abs(boss_list_4[0][1][0] - player.pos[0])))
+
+        if dist < 100 and  -10 >= boss_list_4[0][5]  >= -20:
             boss_list_4[0][1][0] = random.randrange(graphic_main.left +50, graphic_main.right-50)
             boss_list_4[0][1][1] = random.randrange(graphic_main.top+50, graphic_main.bottom-50)
         if boss_list_4[0][5] < 0:
@@ -963,7 +966,9 @@ def move_boss_4():
         if 0 < boss_list_4[0][5] < 10:
             boss_list_4[0][1][0] += random.randrange(-10, 10)
             boss_list_4[0][1][1] += random.randrange(-10, 10)
+        if boss_list_4[0][6] % 2 == 0 and boss_list_4[0][6] > 0:
 
+            boss_list_4[0][1][0] += boss_list_4[0][7][0]
 
         """        
         rectB = boss_list_4[0][0][0].get_rect(center=boss_list_4[0][1])
@@ -1056,6 +1061,9 @@ def move_boss_4():
         boss_list_4[0][3][2] = False
         boss_list_4[0][3][3] = False
         print(boss_list_4[0][5])
+        if boss_list_4[0][6] % 2 == 0 and boss_list_4[0][6] > 0:
+
+            boss_list_4[0][1][0] += boss_list_4[0][7][0]
         if boss_list_4[0][5] == 0:
             boss_list_4[0][1][0] = player.pos[0] + random.randrange(0, 50)
             boss_list_4[0][1][1] = player.pos[1] + random.randrange(0, 50)
@@ -1243,7 +1251,7 @@ def collision_with_weapon(a, strenght, knockback):
         print(collision)
         if collision and i[3] <= 0:
             #player.mana += 3
-            player.folie -= 1
+            player.folie -= 3
 
             enemy_slime_list[n][2] -= strenght
             enemy_slime_list[n][3] = 30
