@@ -5,6 +5,8 @@ import ennemy
 import tiles
 import weapon
 import room
+import world
+
 # initialisation des variables
 screen = None
 frame = None
@@ -19,7 +21,7 @@ frame_R_wounded = None
 clock = pygame.time.Clock()
 r, u, door = None, None, None
 trash_update = []
-
+timer = 0
 def initialisation(full_screen=False):
     pygame.init()
     global screen
@@ -50,6 +52,7 @@ On utilise les variable p et old_p pour pouvoir stocker les coordonées des imag
 
 
 def boucle():
+    global timer
     global player_pos
     global old_player_pos
     global frame
@@ -60,65 +63,76 @@ def boucle():
     global update
     global old_update
     global trash_update
-    u(old_update)
-    player.boucle()
-    old_update = update
-    update = []
-    player_pos = screen.blit(frame[current], player.pos)
-    update.append(player_pos)
-    update.extend(player.showpv())
-    update.extend(player.showfolie())
-    old_w = w
-    for i in ennemy.enemy_1_list:
-        ennemy_pos = screen.blit(i[0], i[1])
-        update.append(ennemy_pos)
+    global r
+    print(timer)
+    timer -= 1
+    if timer == 0:
 
-    for i in ennemy.enemy_1_2_list:
-        ennemy_pos = screen.blit(i[0][i[8]], i[1])
-        update.append(ennemy_pos)
-    for i in ennemy.enemy_2_1_list:
-        ennemy_pos = screen.blit(i[0][i[8]], i[1])
-        update.append(ennemy_pos)
-    for i in ennemy.enemy_2_2_list:
-        ennemy_pos = screen.blit(i[0][0], i[1])
-        update.append(ennemy_pos)
-    for i in ennemy.enemy_2_2_list:
-        ennemy_pos = screen.blit(i[0][0], i[1])
-        update.append(ennemy_pos)
-    for i in ennemy.projectile_list:
-        proj_pos = pygame.draw.circle(screen, i[3], i[0], i[1], 0)
-        update.append(proj_pos)
-    for i in ennemy.enemy_slime_list:
-        ennemy_pos = screen.blit(i[0], i[1])
-        update.append(ennemy_pos)
+        world.show_next_room()
+    elif timer <= 0:
+        u(old_update)
+        player.boucle()
+        old_update = update
+        update = []
+        player_pos = screen.blit(frame[current], player.pos)
+        update.append(player_pos)
+        update.extend(player.showpv())
+        update.extend(player.showfolie())
+        old_w = w
+        for i in ennemy.enemy_1_list:
+            ennemy_pos = screen.blit(i[0], i[1])
+            update.append(ennemy_pos)
 
-    for i in ennemy.enemy_4_1_list:
-        ennemy_pos = screen.blit(i[0], i[1])
-        update.append(ennemy_pos)
-    for i in ennemy.enemy_4_2_list:
-        ennemy_pos = screen.blit(i[0][i[8]], i[1])
-        update.append(ennemy_pos)
-    for i in ennemy.boss_list_4:
-        ennemy_pos = screen.blit(i[0][0], i[1])
-        update.append(ennemy_pos)
-    w, a = weapon.loop(player.pos)
+        for i in ennemy.enemy_1_2_list:
+            ennemy_pos = screen.blit(i[0][i[8]], i[1])
+            update.append(ennemy_pos)
+        for i in ennemy.enemy_2_1_list:
+            ennemy_pos = screen.blit(i[0][i[8]], i[1])
+            update.append(ennemy_pos)
+        for i in ennemy.enemy_2_2_list:
+            ennemy_pos = screen.blit(i[0][0], i[1])
+            update.append(ennemy_pos)
+        for i in ennemy.enemy_2_2_list:
+            ennemy_pos = screen.blit(i[0][0], i[1])
+            update.append(ennemy_pos)
+        for i in ennemy.projectile_list:
+            proj_pos = pygame.draw.circle(screen, i[3], i[0], i[1], 0)
+            update.append(proj_pos)
+        for i in ennemy.enemy_slime_list:
+            ennemy_pos = screen.blit(i[0], i[1])
+            update.append(ennemy_pos)
 
-    update.append(w)
-    update.append(a)
-    ennemy.boucle()
-    r = pygame.rect.Rect(0, 0, 50, 50)
-    update.append(pygame.draw.rect(screen,(0, 0, 0), r))
-    update.append(screen.blit(pygame.font.SysFont(None ,30).render(str(int(player.mana)), 1, (0, 0, 255)), (10, 10)))
+        for i in ennemy.enemy_4_1_list:
+            ennemy_pos = screen.blit(i[0], i[1])
+            update.append(ennemy_pos)
+        for i in ennemy.enemy_4_2_list:
+            ennemy_pos = screen.blit(i[0][i[8]], i[1])
+            update.append(ennemy_pos)
+        for i in ennemy.boss_list_4:
+            ennemy_pos = screen.blit(i[0][0], i[1])
+            update.append(ennemy_pos)
+        w, a = weapon.loop(player.pos)
 
-    pygame.display.update(update + old_update + trash_update)
-    trash_update = []
-    clock.tick(60)
-    #print(clock.get_fps())
-    if player.is_movement:
-        current += 1
-        current = current % len(frame)
+        update.append(w)
+        update.append(a)
+        ennemy.boucle()
+        r = pygame.rect.Rect(0, 0, 50, 50)
+        update.append(pygame.draw.rect(screen,(0, 0, 0), r))
+        update.append(screen.blit(pygame.font.SysFont(None ,30).render(str(int(player.mana)), 1, (0, 0, 255)), (10, 10)))
+
+        pygame.display.update(update + old_update + trash_update)
+        trash_update = []
+        clock.tick(60)
+        #print(clock.get_fps())
+        if player.is_movement:
+            current += 1
+            current = current % len(frame)
+        else:
+            current = 0
     else:
-        current = 0
+        screen.fill((0, 0, 0))
+        pygame.display.flip()
+        clock.tick(60)
 
 
 

@@ -6,6 +6,7 @@ import player
 floor = []
 coo = [0, 0]
 level = 0
+pos_p = None
 def create_floor(_level):
     global floor
     if _level == 0:
@@ -32,5 +33,8 @@ def next_level():
     create_floor(level)
 create_floor(0)
 def next_room(n):
-    player.timer = 60
-    graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right, player.pos, graphic_main.chest = floor[coo[0]%10][coo[1]%10](n, [not coo[0] ==9, not coo[1] == 9, not coo[0]==0, not coo[1] == 0])
+    global pos_p
+    pos_p = n
+    graphic_main.timer = 20
+def show_next_room():
+    graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right, player.pos, graphic_main.chest = floor[coo[0]%10][coo[1]%10](pos_p, [not coo[0] ==9, not coo[1] == 9, not coo[0]==0, not coo[1] == 0])
