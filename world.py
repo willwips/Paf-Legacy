@@ -28,6 +28,8 @@ def create_floor(_level):
 def next_level():
     global level
     global coo
+    graphic_main.timer = 60
+    next_room(0)
     coo = [0, 0]
     #level += 1
     create_floor(level)
@@ -36,5 +38,6 @@ def next_room(n):
     global pos_p
     pos_p = n
     graphic_main.timer = 20
+    player.timer = 120
 def show_next_room():
     graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right, player.pos, graphic_main.chest = floor[coo[0]%10][coo[1]%10](pos_p, [not coo[0] ==9, not coo[1] == 9, not coo[0]==0, not coo[1] == 0])
