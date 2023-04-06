@@ -1818,7 +1818,7 @@ def room_4_0(n, _door):
                 elif (j % 2 + i % 2) % 2 == 0:
                     room[i].append(tiles.blit_tile_4_4(i * 50 + left, j * 50 + top))
                 elif j % 2 + i % 2 == 1:
-                    room[i].append(tiles.blit_tile_4_4(i * 50 + left, j * 50 + top))
+                    room[i].append(tiles.blit_tile_1_4(i * 50 + left, j * 50 + top))
 
         # Affiche les éléments de la salle
         for i in room:
