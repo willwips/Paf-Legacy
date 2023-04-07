@@ -805,7 +805,7 @@ def move_ennemi_4_1():
             enemy_4_1_list[i][6] = True
 
         if enemy_4_1_list[i][6] == True:
-            if enemy_4_1_list[i][7] == -1:
+            if enemy_4_1_list[i][7] == -1 and len(enemy_slime_list)/len(enemy_4_1_list) < 4:
 
                 try:
                     total = abs(enemy_4_1_list[i][1][0] - player.pos[0]) + abs(enemy_4_1_list[i][1][1] - player.pos[1])

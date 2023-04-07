@@ -9,9 +9,15 @@ level = 0
 pos_p = None
 def create_floor(_level):
     global floor
+    _level = 0
     if _level == 0:
-        first_room = room.room_4_0
+        first_room = room.room_1_5
         liste_level = [room.room_1_1, room.room_1_2, room.room_1_3, room.room_1_4, room.room_1_5, room.room_1_6, room.room_1_7, room.room_1_8, room.room_1_9, room.room_1_10, room.room_1_11]
+        boss_room = room.room_boss_1
+        pos_boss = [9, random.randint(0, 9)]
+    if _level == 4:
+        first_room = room.room_4_0
+        liste_level = [room.room_4_1]
         boss_room = room.room_boss_1
         pos_boss = [9, random.randint(0, 9)]
     for i in range(10):
