@@ -14,6 +14,8 @@ def import_weapon():
         pygame.transform.scale(pygame.image.load('picture/weapon/final_sword.png').convert_alpha(), (12, 70)), 7 , [0, 0], 8, 20)
     weapon['curved_sword'] = (
     pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/weapon/Weapon-Curved.png').convert_alpha(),  (20, 60)), 0), 5 , [0, -50], 12, 10)
+    weapon['katana'] = (
+        pygame.transform.scale(pygame.image.load('picture/weapon/final_sword.png').convert_alpha(), (12, 70)), 5 , [0, 0], 6, 5)
 
 
 is_attacking = False
