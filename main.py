@@ -32,7 +32,6 @@ weapon.import_weapon()
 world.next_room(0)
 #graphic_main.r()
 # boucle de fonctionnement
-
 while True:
     graphic_main.boucle()
 

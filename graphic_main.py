@@ -24,6 +24,8 @@ trash_update = []
 timer = 0
 def initialisation(full_screen=False):
     pygame.init()
+    pygame.mouse.set_visible(False)
+
     global screen
     if full_screen:
         screen = pygame.display.set_mode((0, 0), flags=pygame.FULLSCREEN)
