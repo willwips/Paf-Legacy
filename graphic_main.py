@@ -94,11 +94,16 @@ def boucle():
         for i in ennemy.enemy_2_2_list:
             ennemy_pos = screen.blit(i[0][0], i[1])
             update.append(ennemy_pos)
-        for i in ennemy.enemy_2_2_list:
+        for i in ennemy.enemy_3_1_list:
+            print(i)
             ennemy_pos = screen.blit(i[0][0], i[1])
             update.append(ennemy_pos)
         for i in ennemy.projectile_list:
-            proj_pos = pygame.draw.circle(screen, i[3], i[0], i[1], 0)
+            if i[4] != None:
+                proj_pos = screen.blit(i[4], i[0])
+
+            else:
+                proj_pos = pygame.draw.circle(screen, i[3], i[0], i[1], 0)
             update.append(proj_pos)
         for i in ennemy.enemy_slime_list:
             ennemy_pos = screen.blit(i[0], i[1])
