@@ -96,7 +96,7 @@ def boucle():
             update.append(ennemy_pos)
         for i in ennemy.enemy_3_1_list:
             print(i)
-            ennemy_pos = screen.blit(i[0][0], i[1])
+            ennemy_pos = screen.blit(i[0][i[8]], i[1])
             update.append(ennemy_pos)
         for i in ennemy.projectile_list:
             if i[4] != None:
