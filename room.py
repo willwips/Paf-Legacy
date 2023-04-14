@@ -42,8 +42,6 @@ def room_1_0(n, _door):
     x = 20  # Longueur x de la salle
     y = 10  # Longueur y de la salle
 
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
-
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
@@ -120,8 +118,6 @@ def room_1_0(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
@@ -135,8 +131,6 @@ def room_1_0(n, _door):
         # ennemy.spawn_boss_4([left + 427, top + 79], 200)
         # ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
         ennemy.spawn_enemy_3_1([left + 427, top + 79], ['picture/enemy/star/star enemy.png', 'picture/enemy/star/star enemy 2.png'], 20)
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -190,16 +184,11 @@ def room_1_1(n, _door):
 
     x = 18  # Longueur x de la salle
     y = 7  # Longueur y de la salle
-
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
     
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
-    right = pygame.display.get_surface().get_size()[0] / 2 + x / 2 * 50
-    
-    print(left, top, 'e')
-    
+    right = pygame.display.get_surface().get_size()[0] / 2 + x / 2 * 50  
     
     pos_play = [[(x - 1) * 50 + left - 20, int(y / 2) * 50 + top],
                 [int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10 - 50], [left + 20, int(y / 2) * 50 + top],
@@ -281,11 +270,7 @@ def room_1_1(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         player.pos = [50 + left, 220 + top]
-
-        print(player.pos)
 
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
@@ -334,7 +319,6 @@ def room_1_2(n, _door):
     tiles._chest = [False]
     x = 9  # Longueur x de la salle
     y = 9  # Longueur y de la salle
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
@@ -412,9 +396,9 @@ def room_1_2(n, _door):
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
-        print(top, left, 'ee')
+
         player.pos = [50 + left, 220 + top]
-        print(player.pos)
+
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         else:
@@ -462,7 +446,6 @@ def room_1_3(n, _door):
     tiles._chest = [False]
     x = 15  # Longueur x de la salle
     y = 8  # Longueur y de la salle
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
@@ -541,9 +524,9 @@ def room_1_3(n, _door):
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
-        print(top, left, 'ee')
+
         player.pos = [50 + left, 220 + top]
-        print(player.pos)
+
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         else:
@@ -591,7 +574,6 @@ def room_1_4(n, _door):
     tiles._chest = [False]
     x = 27  # Longueur x de la salle
     y = 4  # Longueur y de la salle
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
@@ -673,9 +655,7 @@ def room_1_4(n, _door):
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
-        print(top, left, 'ee')
         player.pos = [50 + left, 220 + top]
-        print(player.pos)
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         else:
@@ -723,7 +703,6 @@ def room_1_5(n, _door):
     tiles._chest = [False]
     x = 7  # Longueur x de la salle
     y = 7  # Longueur y de la salle
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
@@ -801,9 +780,7 @@ def room_1_5(n, _door):
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
-        print(top, left, 'ee')
         player.pos = [50 + left, 220 + top]
-        print(player.pos)
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         else:
@@ -851,7 +828,6 @@ def room_1_6(n, _door):
     tiles._chest = [False]
     x = 20  # Longueur x de la salle
     y = 15  # Longueur y de la salle
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
@@ -959,9 +935,7 @@ def room_1_6(n, _door):
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
-        print(top, left, 'ee')
         player.pos = [50 + left, 220 + top]
-        print(player.pos)
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         else:
@@ -1009,7 +983,6 @@ def room_1_7(n, _door):
     tiles._chest = [False]
     x = 12  # Longueur x de la salle
     y = 8  # Longueur y de la salle
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
@@ -1086,9 +1059,7 @@ def room_1_7(n, _door):
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
-        print(top, left, 'ee')
         player.pos = [50 + left, 220 + top]
-        print(player.pos)
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         else:
@@ -1136,7 +1107,6 @@ def room_1_8(n, _door):
     tiles._chest = [False]
     x = 15  # Longueur x de la salle
     y = 10  # Longueur y de la salle
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
@@ -1221,9 +1191,7 @@ def room_1_8(n, _door):
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
-        print(top, left, 'ee')
         player.pos = [50 + left, 220 + top]
-        print(player.pos)
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         else:
@@ -1271,7 +1239,6 @@ def room_1_9(n, _door):
     tiles._chest = [False]
     x = 9  # Longueur x de la salle
     y = 14  # Longueur y de la salle
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
@@ -1357,9 +1324,7 @@ def room_1_9(n, _door):
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
-        print(top, left, 'ee')
         player.pos = [50 + left, 220 + top]
-        print(player.pos)
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         else:
@@ -1407,7 +1372,6 @@ def room_1_10(n, _door):
     tiles._chest = [False]
     x = 3  # Longueur x de la salle
     y = 10  # Longueur y de la salle
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
@@ -1475,9 +1439,7 @@ def room_1_10(n, _door):
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
-        print(top, left, 'ee')
         player.pos = [50 + left, 220 + top]
-        print(player.pos)
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         else:
@@ -1525,7 +1487,6 @@ def room_1_11(n, _door):
     tiles._chest = [False]
     x = 7  # Longueur x de la salle
     y = 12  # Longueur y de la salle
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
@@ -1600,9 +1561,7 @@ def room_1_11(n, _door):
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
-        print(top, left, 'ee')
         player.pos = [50 + left, 220 + top]
-        print(player.pos)
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         else:
@@ -1649,7 +1608,6 @@ def room_1_12(n, _door):
     tiles._chest = [False]
     x = 13  # Longueur x de la salle
     y = 5  # Longueur y de la salle
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
@@ -1720,9 +1678,7 @@ def room_1_12(n, _door):
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
-        print(top, left, 'ee')
         player.pos = [50 + left, 220 + top]
-        print(player.pos)
         if _door[0]:
             door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         else:
@@ -1771,7 +1727,6 @@ def room_boss_1(n, _door):
     tiles._chest = [False]
     x = 12  # Longueur x de la salle
     y = 12  # Longueur y de la salle
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
@@ -1850,7 +1805,6 @@ def room_boss_1(n, _door):
         for i in room:
             for j in i:
                 graphic_main.trash_update.append(j())
-        print(top, left, 'ee')
         player.pos = [50 + left, 220 + top]
         door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
         door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
@@ -1890,8 +1844,6 @@ def room_4_0(n, _door):
 
     x = 20  # Longueur x de la salle
     y = 10  # Longueur y de la salle
-
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -1969,8 +1921,6 @@ def room_4_0(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
@@ -1982,8 +1932,6 @@ def room_4_0(n, _door):
         #ennemy.spawn_boss_4([left + 427, top + 79], 200)
         #ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
 
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -2039,8 +1987,6 @@ def room_4_1(n, _door):
 
     x = 13  # Longueur x de la salle
     y = 13  # Longueur y de la salle
-
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -2110,8 +2056,6 @@ def room_4_1(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
@@ -2120,11 +2064,6 @@ def room_4_1(n, _door):
         ennemy.spawn_enemy_4_1([left + 320, top + 100], 'picture/enemy/mage/Mage.png', 20)
         ennemy.spawn_enemy_4_1([left + 370, top + 80], 'picture/enemy/mage/Mage.png', 20)
         ennemy.spawn_enemy_4_2([left + 450, top + 100], 'picture/enemy/snipe/mob_1.png', 20)
-        #ennemy.spawn_boss_4([left + 427, top + 79], 200)
-        #ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
-
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -2180,8 +2119,6 @@ def room_4_2(n, _door):
 
     x = 21  # Longueur x de la salle
     y = 5 # Longueur y de la salle
-
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -2256,7 +2193,6 @@ def room_4_2(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
 
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
@@ -2270,9 +2206,6 @@ def room_4_2(n, _door):
         ennemy.spawn_enemy_4_2([left + 500, top + 100], 'picture/enemy/snipe/mob_1.png', 20)
         #ennemy.spawn_boss_4([left + 427, top + 79], 200)
         #ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
-
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -2328,8 +2261,6 @@ def room_4_3(n, _door):
 
     x = 9  # Longueur x de la salle
     y = 13  # Longueur y de la salle
-
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -2399,8 +2330,6 @@ def room_4_3(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
@@ -2464,8 +2393,6 @@ def room_4_4(n, _door):
 
     x = 15  # Longueur x de la salle
     y = 9  # Longueur y de la salle
-
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -2535,8 +2462,6 @@ def room_4_4(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
@@ -2548,8 +2473,6 @@ def room_4_4(n, _door):
         #ennemy.spawn_boss_4([left + 427, top + 79], 200)
         #ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
 
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -2605,8 +2528,6 @@ def room_4_5(n, _door):
 
     x = 7  # Longueur x de la salle
     y = 7 # Longueur y de la salle
-
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -2681,12 +2602,8 @@ def room_4_5(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -2742,8 +2659,6 @@ def room_4_6(n, _door):
 
     x = 23  # Longueur x de la salle
     y = 15    # Longueur y de la salle
-
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -2818,8 +2733,6 @@ def room_4_6(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
@@ -2839,8 +2752,6 @@ def room_4_6(n, _door):
         ennemy.spawn_enemy_4_1([left + 500, top + 450], 'picture/enemy/mage/Mage.png', 20)
         ennemy.spawn_enemy_4_1([left + 550, top + 450], 'picture/enemy/mage/Mage.png', 20)
         ennemy.spawn_enemy_4_1([left + 600, top + 450], 'picture/enemy/mage/Mage.png', 20)
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -2897,8 +2808,6 @@ def room_4_7(n, _door):
     x = 17  # Longueur x de la salle
     y = 11  # Longueur y de la salle
 
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
-
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
@@ -2967,8 +2876,6 @@ def room_4_7(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
@@ -2978,9 +2885,6 @@ def room_4_7(n, _door):
 
         ennemy.spawn_enemy_4_2([left + 250, top + 250], 'picture/enemy/snipe/mob_1.png', 20)
         ennemy.spawn_enemy_4_2([left + 550, top + 250], 'picture/enemy/snipe/mob_1.png', 20)
-
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -3037,8 +2941,6 @@ def room_4_8(n, _door):
     x = 9  # Longueur x de la salle
     y = 9 # Longueur y de la salle
 
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
-
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
@@ -3107,17 +3009,12 @@ def room_4_8(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
         ennemy.spawn_enemy_4_1([left + 200, top + 100], 'picture/enemy/mage/Mage.png', 20)
         ennemy.spawn_enemy_4_1([left + 100, top + 250], 'picture/enemy/mage/Mage.png', 20)
         ennemy.spawn_enemy_4_1([left + 300, top + 250], 'picture/enemy/mage/Mage.png', 20)
-
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -3174,8 +3071,6 @@ def room_4_9(n, _door):
     x = 5  # Longueur x de la salle
     y = 5 # Longueur y de la salle
 
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
-
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
@@ -3244,14 +3139,10 @@ def room_4_9(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
         ennemy.spawn_enemy_4_1([left + 100, top + 100], 'picture/enemy/mage/Mage.png', 20)
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -3308,8 +3199,6 @@ def room_4_10(n, _door):
     x = 5  # Longueur x de la salle
     y = 5 # Longueur y de la salle
 
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
-
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
@@ -3378,14 +3267,11 @@ def room_4_10(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
         ennemy.spawn_enemy_4_1([left + 100, top + 100], 'picture/enemy/mage/Mage.png', 20)
 
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -3441,8 +3327,6 @@ def room_4_10(n, _door):
 
     x = 21  # Longueur x de la salle
     y = 13  # Longueur y de la salle
-
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -3512,8 +3396,6 @@ def room_4_10(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
@@ -3522,12 +3404,6 @@ def room_4_10(n, _door):
         ennemy.spawn_enemy_4_2([left + 450, top + 300], 'picture/enemy/snipe/mob_1.png', 20)
         ennemy.spawn_enemy_4_2([left + 550, top + 300], 'picture/enemy/snipe/mob_1.png', 20)
         ennemy.spawn_enemy_4_2([left + 650, top + 300], 'picture/enemy/snipe/mob_1.png', 20)
-
-        #ennemy.spawn_boss_4([left + 427, top + 79], 200)
-        #ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
-
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -3583,8 +3459,6 @@ def room_4_11(n, _door):
 
     x = 9  # Longueur x de la salle
     y = 13  # Longueur y de la salle
-
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -3659,8 +3533,6 @@ def room_4_11(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
@@ -3670,12 +3542,6 @@ def room_4_11(n, _door):
         ennemy.spawn_enemy_4_1([left + 200, top + 200], 'picture/enemy/mage/Mage.png', 20)
         ennemy.spawn_enemy_4_1([left + 200, top + 400], 'picture/enemy/mage/Mage.png', 20)
 
-
-        #ennemy.spawn_boss_4([left + 427, top + 79], 200)
-        #ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
-
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -3731,8 +3597,6 @@ def room_4_12(n, _door):
 
     x = 11  # Longueur x de la salle
     y = 11  # Longueur y de la salle
-
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -3802,8 +3666,6 @@ def room_4_12(n, _door):
             for j in i:
                 graphic_main.trash_update.append(j())
 
-        print(top, left, 'ee')
-
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
@@ -3813,9 +3675,6 @@ def room_4_12(n, _door):
         ennemy.spawn_enemy_4_1([left + 300, top + 200], 'picture/enemy/mage/Mage.png', 20)
         ennemy.spawn_enemy_4_1([left + 200, top + 300], 'picture/enemy/mage/Mage.png', 20)
         ennemy.spawn_enemy_4_1([left + 300, top + 300], 'picture/enemy/mage/Mage.png', 20)
-
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -3871,8 +3730,6 @@ def room_boss_4(n, _door):
 
     x = 19  # Longueur x de la salle
     y = 13  # Longueur y de la salle
-
-    print(pygame.display.get_surface().get_size()[0] / 2, 12 * 50, 'e')
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -3954,8 +3811,6 @@ def room_boss_4(n, _door):
         player.pos = [510 + left, 240 + top]
 
         ennemy.spawn_boss_4([left + 450, top + 300], 200)
-
-        print(player.pos)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
