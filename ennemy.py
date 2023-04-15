@@ -892,7 +892,7 @@ def move_ennemi_4_2():
 
 
                 enemy_4_2_list[i][6] = False
-                enemy_4_2_list[i][7] = 5
+                enemy_4_2_list[i][7] = 20
 def move_ennemi_3_1():
     global enemy_3_1_list
     for i in range(0, len(enemy_3_1_list)):
@@ -1342,7 +1342,7 @@ def collision_with_weapon(a, strenght, knockback):
         collision = rectB.colliderect(a)
         print(collision)
         if collision and i[3] <= 0:
-            #player.mana += 3
+            player.mana += 1
             player.folie -= 3
 
             enemy_slime_list[n][2] -= strenght

@@ -246,7 +246,7 @@ def boucle():
         if collision_with_ennemy_4_2():
 
             if cooldown <= 0:
-                pv -= 20 - 20 * resistance
+                #pv -= 0 - 0 * resistance
                 cooldown = 60
 
                 cooldown_move = 0
