@@ -64,7 +64,13 @@ def spawn_enemy_1(pos, img, pv):
     global enemy_1_list
     enemy_1_list.append([img, pos, pv, 10, [False, False, False, False], [0, 0]])
 
-
+def spawn_enemy_3_2(pos, img, pv):
+    _img = []
+    for i in img:
+        _img.append(pygame.image.load(i).convert_alpha())
+    pos = pos
+    global enemy_1_list
+    enemy_1_list.append([img, pos, pv, 10, [False, False, False, False], [0, 0], 0])
 def spawn_enemy_1_2(pos, img, pv):
     _img = []
     for i in img:
