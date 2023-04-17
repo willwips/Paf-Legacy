@@ -112,13 +112,11 @@ def boucle():
             if event.key == pygame.K_u:
                 weapon.is_attacking = True
                 folie += weapon.weapon[weapon.current_weapon][4]
-                #print(folie, 'ezsdzfezfiuezoçduftj')
                 if folie >= floie_max:
                     sys.exit()
             if event.key == pygame.K_i:
                 if dash_unlocked:
                     if mana - 10 >= 0:
-                        print('e')
                         if dash == -45:
                             dash = 15
                             if dash_invicibility_unlocked:
@@ -226,7 +224,6 @@ def boucle():
         dgt = collision_with_projectile()
         if dgt:
             if cooldown <= 0:
-                print(collision_with_projectile())
                 pv -= dgt - dgt * resistance
                 cooldown = 60
                 cooldown_move = 0
@@ -555,7 +552,6 @@ def collision_with_projectile():
             collision = False
         if collision:
             del ennemy.projectile_list[n]
-            print(collision, 'e')
 
             return collision
 

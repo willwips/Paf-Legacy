@@ -1851,6 +1851,7 @@ def room_4_0(n, _door):
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
     right = pygame.display.get_surface().get_size()[0] / 2 + x / 2 * 50
 
+
     # Donne la position initialie de
     pos_play = [[(x - 1) * 50 + left - 20, int(y / 2) * 50 + top],
                 [int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10 - 50], [left + 20, int(y / 2) * 50 + top],
@@ -1931,7 +1932,7 @@ def room_4_0(n, _door):
         #ennemy.spawn_enemy_4_2([left + 427, top + 79], 'picture/enemy/snipe/mob_1.png', 20)
         #ennemy.spawn_boss_4([left + 427, top + 79], 200)
         #ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
-
+        ennemy.spawn_boss_2([left + 427, top + 79], 10)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -3588,7 +3589,7 @@ def room_4_11(n, _door):
 
 def room_4_12(n, _door):
 
-    # Liste qui vont recueillir des éléments pour l'affichage de la salle
+    # Listes qui vont recueillir des éléments pour l'affichage de la salle
     room = []
     door = []
     chest = {}
