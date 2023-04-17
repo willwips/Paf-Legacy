@@ -97,7 +97,7 @@ def boucle():
             ennemy_pos = screen.blit(i[0][i[8]], i[1])
             update.append(ennemy_pos)
         for i in ennemy.projectile_list:
-            if type(i[4]) != int and i[4]:
+            if type(i[4]) != list and i[4]:
                 proj_pos = screen.blit(i[4], i[0])
             else:
                 proj_pos = pygame.draw.circle(screen, i[3], i[0], i[1], 0)

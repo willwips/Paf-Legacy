@@ -227,9 +227,10 @@ def boucle():
         if _coll:
             if cooldown <= 0:
                 pv -= _coll[0] - _coll[0] * resistance
-                pv -= _coll[1]
+                folie += _coll[1]
                 cooldown = 60
                 cooldown_move = 0
+                print(folie, _coll[1])
         if collision_with_ennemy_slime():
 
             if cooldown <= 0:

@@ -57,6 +57,7 @@ def spawn_enemy_2_2(pos, img, pv):
 def spawm_projectile(pos, radius, directon, color, img = None, dgt = [30, 0]):
     global projectile_list
     projectile_list.append([pos, radius, directon, color, img, dgt])
+    print(projectile_list)
 
 
 def spawn_enemy_1(pos, img, pv):
@@ -476,7 +477,7 @@ def move_ennemi_2_1():
                     total = abs(enemy_2_1_list[i][1][0] - player.pos[0]) + abs(enemy_2_1_list[i][1][1] - player.pos[1])
                     spawm_projectile([enemy_2_1_list[i][1][0], enemy_2_1_list[i][1][1]], 10,
                                      [(player.pos[0] - enemy_2_1_list[i][1][0]) / total * 5,
-                                      (player.pos[1] - enemy_2_1_list[i][1][1]) / total * 5], (75, 0, 130), [30, 10])
+                                      (player.pos[1] - enemy_2_1_list[i][1][1]) / total * 5], (75, 0, 130), None, [30, 20])
                 except:
                     pass
             if -1 < enemy_2_1_list[i][7] < -30:
@@ -491,7 +492,7 @@ def move_ennemi_2_1():
                     enemy_2_1_list[i][8] = 0
 
                 enemy_2_1_list[i][6] = False
-                enemy_2_1_list[i][7] = 300
+                enemy_2_1_list[i][7] = 100
 
 def move_ennemi_2_2():
     global enemy_2_2_list
