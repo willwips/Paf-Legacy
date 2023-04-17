@@ -33,18 +33,27 @@ def load_tile():
     for i in range(1, 6):
         #Tile_4.append(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png').convert_alpha()) ce que tu as mit
         Tile_4.append(pygame.transform.scale(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png').convert_alpha(), [50, 50]))
+    
     door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), -90))
     door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), 0))
     door.append(pygame.transform.rotate(
         pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), 180))
     door.append(pygame.transform.rotate(
         pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), 90))
+    
     door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Blue.png').convert_alpha(), [55, 55]), -90))
     door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Blue.png').convert_alpha(), [55, 55]), 0))
     door.append(pygame.transform.rotate(
         pygame.transform.scale(pygame.image.load('picture/tiles/Door-Blue.png').convert_alpha(), [55, 55]), 180))
     door.append(pygame.transform.rotate(
         pygame.transform.scale(pygame.image.load('picture/tiles/Door-Blue.png').convert_alpha(), [55, 55]), 90))
+    
+    door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Purple.png').convert_alpha(), [55, 55]), -90))
+    door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Purple.png').convert_alpha(), [55, 55]), 0))
+    door.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Door-Purple.png').convert_alpha(), [55, 55]), 180))
+    door.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Door-Purple.png').convert_alpha(), [55, 55]), 90))
 
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center-Square.png').convert_alpha(), [55, 55]), -90))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center-Square.png').convert_alpha(), [55, 55]), 0))
@@ -335,6 +344,7 @@ def blit_door_black_2(x, y, tile):
         return a
 
     return blit_tile
+
 def blit_door_black_3(x, y, tile):
     def blit_tile():
         a = tile()
@@ -367,6 +377,7 @@ def blit_door_blue_2(x, y, tile):
         return a
 
     return blit_tile
+
 def blit_door_blue_3(x, y, tile):
     def blit_tile():
         a = tile()
@@ -379,6 +390,38 @@ def blit_door_blue_4(x, y, tile):
     def blit_tile():
         a = tile()
         graphic_main.screen.blit(door[7], [x, y])
+        return a
+
+    return blit_tile
+
+
+def blit_door_purple(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[8], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_door_purple_2(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[9], [x, y])
+        return a
+
+    return blit_tile
+def blit_door_purple_3(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[10], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_door_purple_4(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[11], [x, y])
         return a
 
     return blit_tile

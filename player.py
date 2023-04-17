@@ -223,10 +223,11 @@ def boucle():
                 cooldown = 60
 
                 cooldown_move = 0
-
-        if collision_with_projectile():
+        _coll = collision_with_projectile()
+        if _coll:
             if cooldown <= 0:
-                pv -= 30 - 30 * resistance
+                pv -= _coll[0] - _coll[0] * resistance
+                pv -= _coll[1]
                 cooldown = 60
                 cooldown_move = 0
         if collision_with_ennemy_slime():
@@ -543,7 +544,7 @@ def collision_with_projectile():
     n = 0
     for i in ennemy.projectile_list:
         rectB = pygame.draw.circle(graphic_main.screen, (0, 0, 0), i[0], i[1], -1)
-        collision = True
+        collision = i[5]
         if rectB.right < rectA.left:
             collision = False
         if rectB.bottom < rectA.top:
@@ -686,5 +687,5 @@ def showfolie():
     w, h = pygame.display.get_surface().get_size()
     rectA = graphic_main.screen.blit(barre_de_folie, (w/300, h * 20/100))
     rectB = pygame.Rect((w/300, (h* 20/100) + 55 * h / 1080 + (folie/floie_max) * (634 * h / 1080  - 55 * h / 1080 ), 73 * w / 1920 , (634 - 55)* h / 1080  - (folie/floie_max) * (634 - 55)* h / 1080  + 1))
-    rectB = pygame.draw.rect(graphic_main.screen, (54,57,66), rectB)
+    rectB = pygame.draw.rect(graphic_main.screen, (0,0,0), rectB)
     return rectA, rectB

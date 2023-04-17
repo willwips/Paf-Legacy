@@ -16,8 +16,8 @@ def create_floor(_level):
         boss_room = room.room_boss_1
         pos_boss = [9,random.randint(0, 9)]
     if _level == 1:
-        first_room = room.room_2_0
-        liste_level = [room.room_2_0, room.room_2_0, room.room_2_0, room.room_2_0]
+        first_room = room.room_2_1
+        liste_level = [room.room_2_0, room.room_2_1, room.room_2_2, room.room_2_0, room.room_2_0, room.room_2_0, room.room_2_0, room.room_2_0, room.room_2_0, room.room_2_0,]
         boss_room = room.room_boss_4
         pos_boss = [9, random.randint(0, 9)]
     if _level == 5:
@@ -25,6 +25,7 @@ def create_floor(_level):
         liste_level = [room.room_4_1, room.room_4_2, room.room_4_3, room.room_4_4, room.room_4_5, room.room_4_6, room.room_4_7, room.room_4_8, room.room_4_9, room.room_4_10, room.room_4_11, room.room_4_12]
         boss_room = room.room_boss_4
         pos_boss = [9, random.randint(0, 9)]
+
     for i in range(10):
         floor.append([])    
         for j in range(0, 10):

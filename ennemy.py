@@ -54,7 +54,7 @@ def spawn_enemy_2_2(pos, img, pv):
     pos = pos
     global enemy_2_2_list
     enemy_2_2_list.append([img_, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, [0, 0]])
-def spawm_projectile(pos, radius, directon, color, img = None, dgt = 30):
+def spawm_projectile(pos, radius, directon, color, img = None, dgt = [30, 0]):
     global projectile_list
     projectile_list.append([pos, radius, directon, color, img, dgt])
 
@@ -476,7 +476,7 @@ def move_ennemi_2_1():
                     total = abs(enemy_2_1_list[i][1][0] - player.pos[0]) + abs(enemy_2_1_list[i][1][1] - player.pos[1])
                     spawm_projectile([enemy_2_1_list[i][1][0], enemy_2_1_list[i][1][1]], 10,
                                      [(player.pos[0] - enemy_2_1_list[i][1][0]) / total * 5,
-                                      (player.pos[1] - enemy_2_1_list[i][1][1]) / total * 5], (75, 0, 130))
+                                      (player.pos[1] - enemy_2_1_list[i][1][1]) / total * 5], (75, 0, 130), [30, 10])
                 except:
                     pass
             if -1 < enemy_2_1_list[i][7] < -30:
@@ -520,8 +520,8 @@ def move_ennemi_2_2():
                 enemy_2_2_list[i][1][0] = -150000
                 enemy_2_2_list[i][1][1] = -150000
             if enemy_2_2_list[i][7] == -30:
-                enemy_2_2_list[i][1][0] = enemy_2_2_list[i][8][0]
-                enemy_2_2_list[i][1][1] = enemy_2_2_list[i][8][1]
+                enemy_2_2_list[i][1][0] = max((min((enemy_2_2_list[i][8][0] + random.random() * 100 - random.random() * 100, graphic_main.right-100)), graphic_main.left+50))
+                enemy_2_2_list[i][1][1] = max((min((enemy_2_2_list[i][8][1] + random.random() * 100 - random.random() * 100, graphic_main.bottom-100)), graphic_main.top+50))
                 enemy_2_2_list[i][6] = False
                 enemy_2_2_list[i][7] = 50
         """if enemy_2_2_list[i][3] % 2 == 0 and enemy_2_2_list[i][3] > 0:
