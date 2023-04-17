@@ -223,10 +223,11 @@ def boucle():
                 cooldown = 60
 
                 cooldown_move = 0
-
-        if collision_with_projectile():
+        dgt = collision_with_projectile()
+        if dgt:
             if cooldown <= 0:
-                pv -= 30 - 30 * resistance
+                print(collision_with_projectile())
+                pv -= dgt - dgt * resistance
                 cooldown = 60
                 cooldown_move = 0
         if collision_with_ennemy_slime():
@@ -539,11 +540,11 @@ def collision_with_projectile():
     rectA.h = 70
     rectA.w = 30
     rectA.center = (pos[0] + 15, pos[1] + 25)
-
+    collision = False
     n = 0
     for i in ennemy.projectile_list:
         rectB = pygame.draw.circle(graphic_main.screen, (0, 0, 0), i[0], i[1], -1)
-        collision = True
+        collision = i[5]
         if rectB.right < rectA.left:
             collision = False
         if rectB.bottom < rectA.top:
@@ -554,8 +555,12 @@ def collision_with_projectile():
             collision = False
         if collision:
             del ennemy.projectile_list[n]
+            print(collision, 'e')
+
             return collision
+
         n += 1
+    return collision
 def collision_with_ennemy_4_1():
     global pos
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)

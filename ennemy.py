@@ -53,9 +53,9 @@ def spawn_enemy_2_2(pos, img, pv):
     pos = pos
     global enemy_2_2_list
     enemy_2_2_list.append([img_, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, [0, 0]])
-def spawm_projectile(pos, radius, directon, color, img = None):
+def spawm_projectile(pos, radius, directon, color, img = None, dgt = 30):
     global projectile_list
-    projectile_list.append([pos, radius, directon, color, img])
+    projectile_list.append([pos, radius, directon, color, img, dgt])
 
 
 def spawn_enemy_1(pos, img, pv):
@@ -887,14 +887,14 @@ def move_ennemi_4_2():
                 try:
                     if enemy_4_2_list[i][8] == 0:
 
-                        spawm_projectile([enemy_4_2_list[i][1][0]+30, enemy_4_2_list[i][1][1]+22], 5, [5, 0], (0, 0, 255))
+                        spawm_projectile([enemy_4_2_list[i][1][0]+30, enemy_4_2_list[i][1][1]+22], 5, [5, 0], (0, 0, 255), 5)
                     if enemy_4_2_list[i][8] == 1:
 
-                        spawm_projectile([enemy_4_2_list[i][1][0]+0, enemy_4_2_list[i][1][1]+22], 5, [-5, 0], (0, 0, 255))
+                        spawm_projectile([enemy_4_2_list[i][1][0]+0, enemy_4_2_list[i][1][1]+22], 5, [-5, 0], (0, 0, 255), 10)
                 except:
                     raise
 
-            if enemy_4_2_list[i][7] == -20:
+            if enemy_4_2_list[i][7] == -5:
 
 
                 enemy_4_2_list[i][6] = False
@@ -1348,7 +1348,7 @@ def collision_with_weapon(a, strenght, knockback):
         collision = rectB.colliderect(a)
         print(collision)
         if collision and i[3] <= 0:
-            #player.mana += 3
+            player.mana += 1
             player.folie -= 3
 
             enemy_slime_list[n][2] -= strenght
