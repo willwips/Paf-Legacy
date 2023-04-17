@@ -66,7 +66,6 @@ def boucle():
     global old_update
     global trash_update
     global r
-    print(timer)
     timer -= 1
     if timer == 0:
 
@@ -95,11 +94,10 @@ def boucle():
             ennemy_pos = screen.blit(i[0][0], i[1])
             update.append(ennemy_pos)
         for i in ennemy.enemy_3_1_list:
-            print(i)
             ennemy_pos = screen.blit(i[0][i[8]], i[1])
             update.append(ennemy_pos)
         for i in ennemy.projectile_list:
-            if i[4] != None:
+            if type(i[4]) != int:
                 proj_pos = screen.blit(i[4], i[0])
 
             else:
@@ -119,6 +117,9 @@ def boucle():
             ennemy_pos = screen.blit(i[0][i[8]], i[1])
             update.append(ennemy_pos)
         for i in ennemy.boss_list_4:
+            ennemy_pos = screen.blit(i[0][0], i[1])
+            update.append(ennemy_pos)
+        for i in ennemy.boss_list_2:
             ennemy_pos = screen.blit(i[0][0], i[1])
             update.append(ennemy_pos)
         w, a = weapon.loop(player.pos)
