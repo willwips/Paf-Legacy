@@ -99,7 +99,8 @@ def boucle():
             ennemy_pos = screen.blit(i[0][i[8]], i[1])
             update.append(ennemy_pos)
         for i in ennemy.projectile_list:
-            if i[4] != None:
+            if type(i[4]) != int:
+                print(i)
                 proj_pos = screen.blit(i[4], i[0])
 
             else:
