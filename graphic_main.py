@@ -119,7 +119,8 @@ def boucle():
             ennemy_pos = screen.blit(i[0][0], i[1])
             update.append(ennemy_pos)
         for i in ennemy.boss_list_2:
-            ennemy_pos = screen.blit(i[0][0], i[1])
+            print(i[10], 'e')
+            ennemy_pos = screen.blit(i[0][i[10]], i[1])
             update.append(ennemy_pos)
         w, a = weapon.loop(player.pos)
 
