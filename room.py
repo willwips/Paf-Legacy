@@ -1925,6 +1925,7 @@ def room_2_0(n, _door):
 
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
+        ennemy.spawn_boss_2([left + 427, top + 79], 80)
 
 
 
