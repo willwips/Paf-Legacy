@@ -23,22 +23,56 @@ def heal(pv):
 
     return __heal
 
-# Fonction qui s'occupe de ce qui est lié au soin
+# Fonction qui s'occupe de ce qui est lié a la perte de folie
 def cure(madness):
     a = madness
 
-    # Fonction qui permet au joueur de se soigner
+    # Fonction qui permet au joueur de soigner sa santé mentale
     def _cure():
         player.folie -= a
         player.possible_object_picture = None
         player.possible_object = player._pass
 
-    # Fonction qui affiche l'objet de soin sur l'écran
+    # Fonction qui affiche l'objet de soin de folie sur l'écran
     def __cure():
         player.possible_object = _cure
         player.possible_object_picture = pygame.image.load('picture/ui/Potion_Madness.png').convert_alpha()
 
     return __cure
+
+# Fonction qui s'occupe de ce qui est lié au mana du joueur
+def mana(magic):
+    a = magic
+
+    # Fonction qui permet au joueur de se soigner
+    def _mana():
+        player.mana += a
+        player.possible_object_picture = None
+        player.possible_object = player._pass
+
+    # Fonction qui affiche l'objet de soin sur l'écran
+    def __mana():
+        player.possible_object = _mana
+        player.possible_object_picture = pygame.image.load('picture/ui/Potion_Mana.png').convert_alpha()
+
+    return __mana
+
+# Fonction qui s'occupe de ce qui est lié à la résistance du joueur
+# def robustness(resistance):
+#     a = resistance
+
+#     # Fonction qui permet au joueur de se soigner
+#     def _robustness():
+#         player.resistance += a
+#         player.possible_object_picture = None
+#         player.possible_object = player._pass
+
+#     # Fonction qui affiche l'objet de soin sur l'écran
+#     def __robustness():
+#         player.possible_object = _robustness
+#         player.possible_object_picture = pygame.image.load('picture/ui/Potion_Resistance.png').convert_alpha()
+
+#     return __robustness
 
 # Fonction qui permet de changer d'arme
 def change_weapon(_weapon):
@@ -2356,7 +2390,7 @@ def room_2_3(n, _door):
                     room[i].append(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_1_2(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_1_2(i * 50 + left, j * 50 + top), cure(50))[1])
+                                                         tiles.blit_tile_1_2(i * 50 + left, j * 50 + top), cure(75))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_purple(i * 50 + left, j * 50 + top,
