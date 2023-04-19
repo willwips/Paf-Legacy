@@ -1693,6 +1693,9 @@ def collision_with_weapon(a, strenght, knockback):
             boss_list_2[n][2] -= strenght
             boss_list_2[n][6] = 10
             boss_list_2[n][8] = 30
+            if boss_list_2[n][12]:
+                boss_list_2[n][5] = 30
+
             if player.last_move_is_up or player.last_move_is_right:
                 boss_list_2[n][7][0] = knockback
             if player.last_move_is_down or player.last_move_is_left:
@@ -1717,7 +1720,7 @@ def collision_with_weapon(a, strenght, knockback):
                         if len(boss_list) == 0:
                             player.dash_invicibility_unlocked=True
                             world.next_level()
-                            breakq
+                            break
 
                 else:
                     del boss_list_2[n]
