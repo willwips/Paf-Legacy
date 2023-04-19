@@ -19,10 +19,26 @@ def heal(pv):
     # Fonction qui affiche l'objet de soin sur l'écran
     def __heal():
         player.possible_object = _heal
-        player.possible_object_picture = pygame.image.load('picture/ui/Potions Soin.png').convert_alpha()
+        player.possible_object_picture = pygame.image.load('picture/ui/Potions_Heal.png.png').convert_alpha()
 
     return __heal
 
+# Fonction qui s'occupe de ce qui est lié au soin
+def cure(madness):
+    a = madness
+
+    # Fonction qui permet au joueur de se soigner
+    def _cure():
+        player.folie -= a
+        player.possible_object_picture = None
+        player.possible_object = player._pass
+
+    # Fonction qui affiche l'objet de soin sur l'écran
+    def __cure():
+        player.possible_object = _cure
+        player.possible_object_picture = pygame.image.load('picture/ui/Potion_Madness.png').convert_alpha()
+
+    return __cure
 
 # Fonction qui permet de changer d'arme
 def change_weapon(_weapon):
@@ -2340,7 +2356,7 @@ def room_2_3(n, _door):
                     room[i].append(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_1_2(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_1_2(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_1_2(i * 50 + left, j * 50 + top), cure(50))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_purple(i * 50 + left, j * 50 + top,

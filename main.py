@@ -33,4 +33,3 @@ world.next_room(0)
 # boucle de fonctionnement
 while True:
     graphic_main.boucle()
-
