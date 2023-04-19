@@ -203,9 +203,9 @@ def room_1_1(n, _door):
             room.append([])
             for j in range(0, y):
                 if j == 3 and i == 9:
-                    room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    room[i].append(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_4_1(i * 50 + left, j * 50 + top), 0)[0])
-                    chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    chest.update(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                          tiles.blit_tile_4_1(i * 50 + left, j * 50 + top), heal(50))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
@@ -727,9 +727,9 @@ def room_1_5(n, _door):
             room.append([])
             for j in range(0, y):
                 if j == 2 and i == 2:
-                    room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    room[i].append(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_2_1(i * 50 + left, j * 50 + top), 0)[0])
-                    chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    chest.update(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                          tiles.blit_tile_2_1(i * 50 + left, j * 50 + top), heal(50))[1])
 
                 elif j == int(y / 2) and i == x - 1:
@@ -853,9 +853,9 @@ def room_1_6(n, _door):
             room.append([])
             for j in range(0, y):
                 if j == 7 and i == 10:
-                    room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    room[i].append(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_4_1(i * 50 + left, j * 50 + top), 0)[0])
-                    chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    chest.update(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                          tiles.blit_tile_4_1(i * 50 + left, j * 50 + top), heal(50))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
@@ -1137,9 +1137,9 @@ def room_1_8(n, _door):
             room.append([])
             for j in range(0, y):
                 if j == 5 and i == 7:
-                    room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    room[i].append(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_3_1(i * 50 + left, j * 50 + top), 0)[0])
-                    chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    chest.update(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                          tiles.blit_tile_3_1(i * 50 + left, j * 50 + top), heal(50))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
@@ -1270,9 +1270,9 @@ def room_1_9(n, _door):
             room.append([])
             for j in range(0, y):
                 if j == 7 and i == 4:
-                    room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    room[i].append(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_2_1(i * 50 + left, j * 50 + top), 0)[0])
-                    chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    chest.update(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                          tiles.blit_tile_2_1(i * 50 + left, j * 50 + top), heal(50))[1])
 
                 elif j == int(y / 2) and i == x - 1:
@@ -2337,9 +2337,9 @@ def room_2_3(n, _door):
             room.append([])
             for j in range(0, y):
                 if j == 5 and i == 8:
-                    room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    room[i].append(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_1_2(i * 50 + left, j * 50 + top), 0)[0])
-                    chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    chest.update(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
                                                          tiles.blit_tile_1_2(i * 50 + left, j * 50 + top), heal(50))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
@@ -2654,9 +2654,9 @@ def room_2_5(n, _door):
             room.append([])
             for j in range(0, y):
                 if j == 2 and i == 2:
-                    room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    room[i].append(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_2_2(i * 50 + left, j * 50 + top), 0)[0])
-                    chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    chest.update(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
                                                          tiles.blit_tile_2_2(i * 50 + left, j * 50 + top), heal(50))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
@@ -2793,9 +2793,9 @@ def room_2_6(n, _door):
             room.append([])
             for j in range(0, y):
                 if j == 5 and i == 8:
-                    room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    room[i].append(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_4_2(i * 50 + left, j * 50 + top), 0)[0])
-                    chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    chest.update(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
                                                          tiles.blit_tile_4_2(i * 50 + left, j * 50 + top), heal(50))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
@@ -3526,9 +3526,9 @@ def room_2_11(n, _door):
             room.append([])
             for j in range(0, y):
                 if j == 4 and i == 4:
-                    room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    room[i].append(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_3_2(i * 50 + left, j * 50 + top), 0)[0])
-                    chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    chest.update(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
                                                          tiles.blit_tile_3_2(i * 50 + left, j * 50 + top), heal(50))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
@@ -4510,9 +4510,9 @@ def room_4_2(n, _door):
             room.append([])
             for j in range(0, y):
                 if j == 2 and i == 10:
-                    room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    room[i].append(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_3_4(i * 50 + left, j * 50 + top), 0)[0])
-                    chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    chest.update(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
                                                          tiles.blit_tile_3_4(i * 50 + left, j * 50 + top), heal(50))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
@@ -4939,9 +4939,9 @@ def room_4_5(n, _door):
             room.append([])
             for j in range(0, y):
                 if j == 2 and i == 2:
-                    room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    room[i].append(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_2_4(i * 50 + left, j * 50 + top), 0)[0])
-                    chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    chest.update(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
                                                          tiles.blit_tile_2_4(i * 50 + left, j * 50 + top), heal(50))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
@@ -5078,9 +5078,9 @@ def room_4_6(n, _door):
             room.append([])
             for j in range(0, y):
                 if j == 7 and i == 11:
-                    room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    room[i].append(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_1_4(i * 50 + left, j * 50 + top), 0)[0])
-                    chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    chest.update(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
                                                          tiles.blit_tile_1_4(i * 50 + left, j * 50 + top), heal(50))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
@@ -5922,9 +5922,9 @@ def room_4_11(n, _door):
             room.append([])
             for j in range(0, y):
                 if j == 6 and i == 4:
-                    room[i].append(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    room[i].append(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_1_4(i * 50 + left, j * 50 + top), 0)[0])
-                    chest.update(tiles.blit_chest_yellow(i * 50 + left, j * 50 + top,
+                    chest.update(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
                                                          tiles.blit_tile_1_4(i * 50 + left, j * 50 + top), heal(50))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
@@ -6665,9 +6665,9 @@ def room_boss_5(n, _door):
                 elif i == x - 1:
                     room[i].append(tiles.blit_wall_mid(i * 50 + left, j * 50 + top))
                 elif (j % 2 + i % 2) % 2 == 0:
-                    room[i].append(tiles.blit_tile_3_6(i * 50 + left, j * 50 + top))
-                elif j % 2 + i % 2 == 1:
                     room[i].append(tiles.blit_tile_2_6(i * 50 + left, j * 50 + top))
+                elif j % 2 + i % 2 == 1:
+                    room[i].append(tiles.blit_tile_3_6(i * 50 + left, j * 50 + top))
 
         # Affiche les éléments de la salle
         for i in room:
