@@ -679,7 +679,6 @@ def collision_with_boss_2():
     rectA.w = 15
     rectA.center = (pos[0] + 15, pos[1] + 40)
     collision = False
-    graphic_main.update.append(pygame.draw.rect(graphic_main.screen, (0,255,0), rectA))
     for i in ennemy.boss_list_2:
         rectB = i[0][0].get_rect(center=i[1])
         rectB.h = 40
