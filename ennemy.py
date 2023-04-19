@@ -137,7 +137,7 @@ def spawn_boss_2(pos, pv, is_reel  = True):
 
 def spawn_boss_2(pos, pv):
     _img = []
-    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Red_boss/RedBoss_face_standing.png').convert_alpha())
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Red_boss/RedBoss_face_standing.png').convert_alpha()))
 
 
     boss_list_2.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0, [0, 0]])

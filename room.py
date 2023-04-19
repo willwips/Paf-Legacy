@@ -3919,7 +3919,7 @@ def room_boss_2(n, _door):
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
 
-# Initialisation des salles du niveau 2
+# Initialisation des salles du niveau 3
 def room_3_0(n, _door):
 
     # Liste qui vont recueillir des éléments pour l'affichage de la salle
@@ -4059,6 +4059,145 @@ def room_3_0(n, _door):
     # Retourne les éléments suivant
     return create, update, door, top, bottom, left, right, pos_play[n], chest
 
+def room_3_1(n, _door):
+
+    # Liste qui vont recueillir des éléments pour l'affichage de la salle
+    room = []
+    door = []
+    chest = {}
+
+    tiles._chest = [False] # Liste qui permet ou non la création de coffre
+
+    x = 11  # Longueur x de la salle
+    y = 11  # Longueur y de la salle
+
+    # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
+    top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
+    bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
+    left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
+    right = pygame.display.get_surface().get_size()[0] / 2 + x / 2 * 50
+
+
+    # Donne la position initialie de
+    pos_play = [[(x - 1) * 50 + left - 20, int(y / 2) * 50 + top],
+                [int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10 - 50], [left + 20, int(y / 2) * 50 + top],
+                [int(x / 2) * 50 + left, top + 50]]
+
+    # Fonction qui créer les tuiles de la salle (murs, portes et potentiel coffre)
+    def create():
+        graphic_main.trash_update.append(graphic_main.screen.fill((0, 0, 0)))
+        for i in range(0, x):
+            room.append([])
+            for j in range(0, y):
+                if j == int(y / 2) and i == x - 1:
+                    if _door[0]:
+                        room[i].append(tiles.blit_door_red(i * 50 + left, j * 50 + top,
+                                                               tiles.blit_wall_mid(i * 50 + left,
+                                                                                   j * 50 + top)))  # Porte 1
+                    else:
+                        room[i].append(tiles.blit_wall_mid(i * 50 + left, j * 50 + top))
+
+                elif j == y - 1 and i == int(x / 2):
+                    if _door[1]:
+                        room[i].append(tiles.blit_door_red_3(i * 50 + left, j * 50 + top,
+                                                               tiles.blit_bottom_mid(i * 50 + left,
+                                                                                     j * 50 + top)))  # Porte 2
+                    else:
+                        room[i].append(tiles.blit_bottom_mid(i * 50 + left, j * 50 + top))
+
+                elif j == int(y / 2) and i == 0:
+                    if _door[2]:
+                        room[i].append(tiles.blit_door_red_4(i * 50 + left, j * 50 + top,
+                                                               tiles.blit_wall_left_mid(i * 50 + left,
+                                                                                        j * 50 + top)))  # Porte 3
+                    else:
+                        room[i].append(tiles.blit_wall_left_mid(i * 50 + left, j * 50 + top))
+
+                elif j == 0 and i == int(x / 2):
+                    if _door[3]:
+                        room[i].append(tiles.blit_door_red_2(i * 50 + left, j * 50 + top,
+                                                               tiles.blit_wall_top_mid(i * 50 + left,
+                                                                                       j * 50 + top)))  # Porte 4
+                    else:
+                        room[i].append(tiles.blit_wall_top_mid(i * 50 + left, j * 50 + top))
+
+                elif i == 0 and j == 0:
+                    room[i].append(tiles.blit_wall_left(i * 50 + left, j * 50 + top))
+                elif i == x - 1 and j == 0:
+                    room[i].append(tiles.blit_wall_bottom(i * 50 + left, j * 50 + top))
+                elif i == x - 1 and j == y - 1:
+                    room[i].append(tiles.blit_wall_right(i * 50 + left, j * 50 + top))
+                elif i == 0 and j == y - 1:
+                    room[i].append(tiles.blit_wall_top(i * 50 + left, j * 50 + top))
+
+                elif i == 0:
+                    room[i].append(tiles.blit_wall_left_mid(i * 50 + left, j * 50 + top))
+                elif j == 0:
+                    room[i].append(tiles.blit_wall_top_mid(i * 50 + left, j * 50 + top))
+                elif j == y - 1:
+                    room[i].append(tiles.blit_bottom_mid(i * 50 + left, j * 50 + top))
+                elif i == x - 1:
+                    room[i].append(tiles.blit_wall_mid(i * 50 + left, j * 50 + top))
+                elif (j % 2 + i % 2) % 2 == 0:
+                    room[i].append(tiles.blit_tile_4_3(i * 50 + left, j * 50 + top))
+                elif j % 2 + i % 2 == 1:
+                    room[i].append(tiles.blit_tile_2_3(i * 50 + left, j * 50 + top))
+ 
+        ennemy.spawn_enemy_3_1([left + 50, top + 50], ['picture/enemy/star/star enemy.png', 'picture/enemy/star/star enemy 2.png'], 20)
+        ennemy.spawn_enemy_3_1([left + 450, top + 50], ['picture/enemy/star/star enemy.png', 'picture/enemy/star/star enemy 2.png'], 20)
+        ennemy.spawn_enemy_3_1([left + 50, top + 450], ['picture/enemy/star/star enemy.png', 'picture/enemy/star/star enemy 2.png'], 20)
+        ennemy.spawn_enemy_3_1([left + 450, top + 450], ['picture/enemy/star/star enemy.png', 'picture/enemy/star/star enemy 2.png'], 20)
+
+        # Affiche les éléments de la salle
+        for i in room:
+            for j in i:
+                graphic_main.trash_update.append(j())
+
+        # Initie la position d'apparition du joueur
+        player.pos = [510 + left, 240 + top]
+
+        # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
+        if _door[0]:
+            door.append(pygame.Rect((x - 1) * 50 + left, int(y / 2) * 50 + top, 50, 50))  # Porte 1
+        else:
+            door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
+
+        if _door[1]:
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+        else:
+            door.append(pygame.Rect(0, 0, 0, 0))
+        if _door[2]:
+            door.append(pygame.Rect(left, int(y / 2) * 50 + top, 50, 50))  # Porte 3
+        else:
+            door.append(pygame.Rect(0, 0, 0, 0))
+        if _door[3]:
+            door.append(pygame.Rect(int(x / 2) * 50 + left, top, 50, 50))  # Porte 4
+        else:
+            door.append(pygame.Rect(0, 0, 0, 0))
+
+    # La salle est crée
+    create()
+
+    # Fonction qui permet d'update la salle
+    def update(list):
+        for i in list:
+            try:
+                room[int((i.left - left) / 50)][int((i.top - top) / 50) - 1]()
+                room[int((i.left - left) / 50) - 1][int((i.top - top) / 50) - 1]()
+                room[int((i.left - left) / 50) - 1][int((i.top - top) / 50)]()
+            except:
+                pass
+            try:
+                room[int((i.left - left) / 50)][int((i.top - top) / 50)]()
+                room[int((i.left - left) / 50)][int((i.top - top) / 50)]()
+                room[int((i.left - left) / 50) + 1][int((i.top - top) / 50)]()
+                room[int((i.left - left) / 50)][int((i.top - top) / 50) + 1]()
+                room[int((i.left - left) / 50) + 1][int((i.top - top) / 50) + 1]()
+            except:
+                pass
+
+    # Retourne les éléments suivant
+    return create, update, door, top, bottom, left, right, pos_play[n], chest
 
 # Initialisation des salles du niveau 4
 def room_4_0(n, _door):
