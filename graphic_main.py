@@ -22,6 +22,7 @@ clock = pygame.time.Clock()
 r, u, door = None, None, None
 trash_update = []
 timer = 0
+modifie = None
 def initialisation(full_screen=False):
     pygame.init()
     pygame.mouse.set_visible(False)

@@ -20,6 +20,7 @@ enemy_4_1_list = []
 enemy_4_2_list = []
 boss_list_4 = []
 boss_list_2 = []
+boss_list_3 = []
 
 def spawn_enemy_2_1(pos, img, pv):
     img_ = []
@@ -133,6 +134,13 @@ def spawn_boss_2(pos, pv, is_reel  = True):
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_boss_3.png').convert_alpha(), [50, 45]))
 
     boss_list_2.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0, [0, 0], is_reel])
+
+def spawn_boss_2(pos, pv):
+    _img = []
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Red_boss/RedBoss_face_standing.png').convert_alpha())
+
+
+    boss_list_2.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0, [0, 0]])
 
 
 def spawn_boss_4(pos, pv):
@@ -520,8 +528,18 @@ def move_ennemi_2_2():
                 enemy_2_2_list[i][1][0] = -150000
                 enemy_2_2_list[i][1][1] = -150000
             if enemy_2_2_list[i][7] == -30:
-                enemy_2_2_list[i][1][0] = max((min((enemy_2_2_list[i][8][0] + random.random() * 100 - random.random() * 100, graphic_main.right-100)), graphic_main.left+50))
-                enemy_2_2_list[i][1][1] = max((min((enemy_2_2_list[i][8][1] + random.random() * 100 - random.random() * 100, graphic_main.bottom-100)), graphic_main.top+50))
+                enemy_2_2_list[i][8][0] = max((min((enemy_2_2_list[i][8][
+                                                        0] + random.random() * 100 - random.random() * 100,
+                                                    graphic_main.right - 100)), graphic_main.left + 50))
+                enemy_2_2_list[i][8][1] = max((min((enemy_2_2_list[i][8][
+                                                        1] + random.random() * 100 - random.random() * 100,
+                                                    graphic_main.bottom - 100)), graphic_main.top + 50))
+
+            if -30>enemy_2_2_list[i][7]>-50:
+                graphic_main.update.append(pygame.draw.circle(graphic_main.screen, (0, 0, 0), (enemy_2_2_list[i][8][0] +24, enemy_2_2_list[i][8][1]+25), 20, 0))
+            if enemy_2_2_list[i][7] == -50:
+                enemy_2_2_list[i][1][0] = enemy_2_2_list[i][8][0]
+                enemy_2_2_list[i][1][1] = enemy_2_2_list[i][8][1]
                 enemy_2_2_list[i][6] = False
                 enemy_2_2_list[i][7] = 50
         """if enemy_2_2_list[i][3] % 2 == 0 and enemy_2_2_list[i][3] > 0:
