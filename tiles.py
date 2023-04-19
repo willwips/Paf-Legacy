@@ -30,7 +30,7 @@ def load_tile():
     for i in range(1, 7):
         Tile_3.append(pygame.transform.scale(pygame.image.load('picture/tiles/Tile_3-' + str(i) + '.png').convert_alpha(), [50, 50]))
 
-    for i in range(1, 6):
+    for i in range(1, 7):
         #Tile_4.append(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png').convert_alpha()) ce que tu as mit
         Tile_4.append(pygame.transform.scale(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png').convert_alpha(), [50, 50]))
     

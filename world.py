@@ -32,16 +32,14 @@ def create_floor(_level):
         pos_boss = [9, random.randint(0, 9)]
     if _level == 4:
         first_room = room.room_5_0
-        liste_level = [room.room_5_0]
-        boss_room = room.room_boss_4
-        pos_boss = [9, random.randint(0, 9)]
-
+        liste_level = [room.room_boss_5]
+        pos_boss = None
     for i in range(10):
         floor.append([])    
         for j in range(0, 10):
             if j == 0 and i == 0:
                 floor[i].append(first_room)
-            elif i == pos_boss[0] and j == pos_boss[1]:
+            elif pos_boss != None and i == pos_boss[0] and j == pos_boss[1]:
                 floor[i].append(boss_room)
             else:
                 floor[i].append(random.choice(liste_level))
