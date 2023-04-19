@@ -1220,7 +1220,7 @@ def move_boss_3():
             for i in boss_list_3[0][11]:
                 graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_lave_2)
 
-        if boss_list_3[0][5] == -50:
+        if boss_list_3[0][5] == -30:
             for i in boss_list_3[0][11]:
                 graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_lave_3)
                 boss_list_3[0][12].append(pygame.Rect(i[0] + graphic_main.left, i[1]+graphic_main.top, 50, 50))
