@@ -1717,7 +1717,7 @@ def collision_with_weapon(a, strenght, knockback):
                         if len(boss_list) == 0:
                             player.dash_invicibility_unlocked=True
                             world.next_level()
-                            breakq
+                            break
 
                 else:
                     del boss_list_2[n]
