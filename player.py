@@ -297,7 +297,7 @@ def collision_with_door(door):
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
     if rectA.collidelist(door) != -1:
 
-        if not ennemy.enemy_1_list and not ennemy.enemy_1_2_list and not ennemy.enemy_2_1_list and not ennemy.boss_list and not ennemy.enemy_slime_list and not ennemy.enemy_4_1_list and not ennemy.enemy_4_2_list and not ennemy.boss_list_2 and timer < 0:
+        if not ennemy.enemy_1_list and not ennemy.enemy_1_2_list and not ennemy.enemy_2_1_list and not ennemy.enemy_2_2_list and not ennemy.boss_list and not ennemy.enemy_slime_list and not ennemy.enemy_4_1_list and not ennemy.enemy_4_2_list and not ennemy.boss_list_2 and timer < 0:
             folie -= 100
             if folie < 0:
                 folie = 0

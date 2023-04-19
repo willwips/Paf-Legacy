@@ -526,9 +526,10 @@ def move_ennemi_2_2():
                 enemy_2_2_list[i][8][1] = max((min((enemy_2_2_list[i][8][
                                                         1] + random.random() * 100 - random.random() * 100,
                                                     graphic_main.bottom - 100)), graphic_main.top + 50))
-            if -30<enemy_2_2_list[i][7]<-80:
-                graphic_main.update.append(pygame.draw.circle(graphic_main.screen, (0, 0, 0), enemy_2_2_list[i][8], 20))
-            if enemy_2_2_list[i][7] == -80:
+
+            if -30>enemy_2_2_list[i][7]>-50:
+                graphic_main.update.append(pygame.draw.circle(graphic_main.screen, (0, 0, 0), (enemy_2_2_list[i][8][0] +24, enemy_2_2_list[i][8][1]+25), 20, 0))
+            if enemy_2_2_list[i][7] == -50:
                 enemy_2_2_list[i][1][0] = enemy_2_2_list[i][8][0]
                 enemy_2_2_list[i][1][1] = enemy_2_2_list[i][8][1]
                 enemy_2_2_list[i][6] = False
