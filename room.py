@@ -181,6 +181,8 @@ def room_1_0(n, _door):
         # ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
         # ennemy.spawn_boss_4([left + 427, top + 79], 200)
         # ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
+        ennemy.spawn_enemy_3_2([left + 427, top + 79], ['picture/enemy/bull/RedFoe2-Left.png', 'picture/enemy/bull/RedFoe2-Right.png', 'picture/enemy/bull/RedFoe2-Up.png', 'picture/enemy/bull/RedFoe2-Down.png'], 50)
+
         #ennemy.spawn_enemy_3_1([left + 427, top + 79],
         #                       ['picture/enemy/star/star enemy.png', 'picture/enemy/star/star enemy 2.png'], 20)
 

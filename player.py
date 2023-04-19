@@ -205,6 +205,13 @@ def boucle():
                 cooldown = 60
 
                 cooldown_move = 0
+        if collision_with_ennemy_3_2():
+
+            if cooldown <= 0:
+                pv -= 20 - 20 * resistance
+                cooldown = 60
+
+                cooldown_move = 0
         if collision_with_boss_1():
             if cooldown <= 0:
                 pv -= 15 - 15 * resistance
@@ -428,6 +435,38 @@ def collision_with_ennemy_1_2():
     rectA.center = (pos[0] + 15, pos[1] + 25)
     collision = False
     for i in ennemy.enemy_1_2_list:
+        rectB = i[0][i[8]].get_rect(center=i[1])
+        rectB.h = 12
+        rectB.w = 49
+        rectB.center = (i[1][0] + 24, i[1][1] + 11)
+        collision = True
+        if rectB.right < rectA.left:
+            collision = False
+        if rectB.bottom < rectA.top:
+            collision = False
+        if rectB.left > rectA.right:
+            collision = False
+        if rectB.top > rectA.bottom:
+            collision = False
+        if collision:
+            if i[4][0] == True:
+                pos[0] -= 10
+            if i[4][1] == True:
+                pos[0] += 10
+            if i[4][2] == True:
+                pos[1] += 10
+            if i[4][3] == True:
+                pos[1] -= 10
+            return collision
+
+def collision_with_ennemy_3_2():
+    global pos
+    rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
+    rectA.h = 40
+    rectA.w = 15
+    rectA.center = (pos[0] + 15, pos[1] + 25)
+    collision = False
+    for i in ennemy.enemy_3_2_list:
         rectB = i[0][i[8]].get_rect(center=i[1])
         rectB.h = 12
         rectB.w = 49

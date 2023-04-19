@@ -19,6 +19,8 @@ projectile_list = []
 enemy_slime_list = []
 enemy_4_1_list = []
 enemy_4_2_list = []
+enemy_3_2_list = []
+
 boss_list_4 = []
 boss_list_2 = []
 boss_list_3 = []
@@ -72,8 +74,9 @@ def spawn_enemy_3_2(pos, img, pv):
     for i in img:
         _img.append(pygame.image.load(i).convert_alpha())
     pos = pos
-    global enemy_1_list
-    enemy_1_list.append([img, pos, pv, 10, [False, False, False, False], [0, 0], 0])
+    global enemy_1_2_list
+    enemy_3_2_list.append([_img, pos, pv, 10, [False, False, False, False], [0, 0], [0, 0], 0, 0])
+
 def spawn_enemy_1_2(pos, img, pv):
     _img = []
     for i in img:
@@ -223,6 +226,7 @@ def boucle():
     move_ennemi_2_2()
     move_ennemi_1_2()
     move_ennemi_3_1()
+    move_ennemi_3_2()
     move_projectile()
     move_boss_1()
     move_ennemi_slime()
@@ -239,6 +243,11 @@ def boucle():
     for i in enemy_1_2_list:
         if i[3] > 0:
             enemy_1_2_list[n][3] -= 1
+        n += 1
+    n = 0
+    for i in enemy_3_2_list:
+        if i[3] > 0:
+            enemy_3_2_list[n][3] -= 1
         n += 1
     n = 0
     for i in enemy_2_1_list:
@@ -383,7 +392,6 @@ def move_ennemi_1():
                         abs(enemy_1_list[i][1][1] - player.pos[1]) + abs(enemy_1_list[i][1][0] - player.pos[0])))
                 enemy_1_list[i][4][3] = True
 
-
 def move_ennemi_1_2():
     global enemy_1_2_list
     for i in range(0, len(enemy_1_2_list)):
@@ -435,6 +443,76 @@ def move_ennemi_1_2():
 
                 enemy_1_2_list[i][4][3] = True
         enemy_1_2_list[i][7] += 1 / 20
+
+
+def move_ennemi_3_2():
+    global enemy_3_2_list
+    for i in range(0, len(enemy_3_2_list)):
+        rectB = enemy_3_2_list[i][0][enemy_3_2_list[i][8]].get_rect(center=enemy_3_2_list[i][1])
+        rectB.h = 40
+        rectB.w = 15
+        rectB.center = (enemy_3_2_list[i][1][0] + 15, enemy_3_2_list[i][1][1] + 25)
+        dist = math.sqrt(
+            (enemy_3_2_list[i][1][0] - player.pos[0]) ** 2 + (enemy_3_2_list[i][1][1] - player.pos[1]) ** 2)
+        enemy_3_2_list[i][4][0] = False
+        enemy_3_2_list[i][4][1] = False
+        enemy_3_2_list[i][4][2] = False
+        enemy_3_2_list[i][4][3] = False
+
+
+        if is_touch_wall(enemy_3_2_list[i][1],  enemy_3_2_list[i][0][enemy_3_2_list[i][8]].get_rect()) or enemy_3_2_list[i][6] == [0, 0]:
+            dir_to_player = [-3 * (enemy_3_2_list[i][1][0] - player.pos[0]) / (
+                    abs(enemy_3_2_list[i][1][1] - player.pos[1]) + abs((enemy_3_2_list[i][1][0] - player.pos[0]))),
+                             -3 * (enemy_3_2_list[i][1][1] - player.pos[1]) / (
+                                     abs(enemy_3_2_list[i][1][1] - player.pos[1]) + abs(
+                                 enemy_3_2_list[i][1][0] - player.pos[0]))]
+            enemy_3_2_list[i][6] = dir_to_player
+
+        enemy_3_2_list[i][1] = touch_wall(enemy_3_2_list[i][1], enemy_3_2_list[i][0][enemy_3_2_list[i][8]].get_rect())
+
+
+        if enemy_3_2_list[i][6][0]>0:
+            if enemy_3_2_list[i][6][0] > abs(enemy_3_2_list[i][6][1]):
+                enemy_3_2_list[i][8] = 1
+            else:
+                if enemy_3_2_list[i][6][0] > 0:
+                    enemy_3_2_list[i][8] = 3
+                if enemy_3_2_list[i][6][0] < 0:
+                    enemy_3_2_list[i][8] = 2
+        elif enemy_3_2_list[i][6][0]<0:
+            if abs(enemy_3_2_list[i][6][0]) > abs(enemy_3_2_list[i][6][1]):
+                enemy_3_2_list[i][8] = 0
+            else:
+                if enemy_3_2_list[i][6][1] > 0:
+                    enemy_3_2_list[i][8] = 3
+                if enemy_3_2_list[i][6][1] < 0:
+                    enemy_3_2_list[i][8] = 2
+
+        if enemy_3_2_list[i][3] % 2 == 0 and enemy_3_2_list[i][3] > 0:
+            enemy_3_2_list[i][1][0] += enemy_3_2_list[i][5][0]
+
+
+
+        else:
+            if (enemy_3_2_list[i][1][0] - player.pos[0]) >= 0:
+                enemy_3_2_list[i][1][0] += enemy_3_2_list[i][6][0] * 3
+                enemy_3_2_list[i][4][0] = True
+
+            elif (enemy_3_2_list[i][1][0] - player.pos[0]) <= 0:
+                enemy_3_2_list[i][1][0] += enemy_3_2_list[i][6][0] * 3
+                enemy_3_2_list[i][4][1] = True
+
+            if (enemy_3_2_list[i][1][1] - player.pos[1]) >= 0:
+                enemy_3_2_list[i][1][1] += enemy_3_2_list[i][6][1]  * 3
+
+                enemy_3_2_list[i][4][2] = True
+
+            elif (enemy_3_2_list[i][1][1] - player.pos[1]) <= 0:
+                enemy_3_2_list[i][1][1] += enemy_3_2_list[i][6][1] * 3
+
+                enemy_3_2_list[i][4][3] = True
+
+        enemy_3_2_list[i][7] += 1 / 20
 
 
 def move_ennemi_2_1():
@@ -1729,6 +1807,33 @@ def collision_with_weapon(a, strenght, knockback):
                 player.folie -= 20
                 del enemy_1_2_list[n]
                 player.xp += 1
+
+        n += 1
+    n = 0
+    for i in enemy_3_2_list:
+        collision = False
+        rectB = i[0][i[8]].get_rect(center=i[1])
+        rectB.h = 12
+        rectB.w = 49
+        rectB.center = (i[1][0] + 24, i[1][1] + 11)
+
+        collision = rectB.colliderect(a)
+        if collision and i[3] <= 0:
+            player.mana += 3
+
+            player.folie -= 5
+
+            enemy_3_2_list[n][2] -= strenght
+            enemy_3_2_list[n][3] = 30
+            if player.last_move_is_up or player.last_move_is_right:
+                enemy_3_2_list[n][5][0] = knockback
+            if player.last_move_is_down or player.last_move_is_left:
+                enemy_3_2_list[n][5][0] = -knockback
+
+            if enemy_3_2_list[n][2] <= 0:
+                player.folie -= 20
+                del enemy_3_2_list[n]
+                player.xp += 1.5
 
         n += 1
     n = 0
