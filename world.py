@@ -16,22 +16,30 @@ def create_floor(_level):
         boss_room = room.room_boss_1
         pos_boss = [9,random.randint(0, 9)]
     if _level == 1:
-        first_room = room.room_2_0
+        first_room = room.room_2_3
         liste_level = [room.room_2_1, room.room_2_2, room.room_2_3, room.room_2_4, room.room_2_5, room.room_2_6, room.room_2_7, room.room_2_8, room.room_2_9, room.room_2_10, room.room_2_11, room.room_2_12]
         boss_room = room.room_boss_2
         pos_boss = [9, random.randint(0, 9)]
+    if _level == 2:
+        first_room = room.room_3_0
+        liste_level = [room.room_3_1, room.room_3_0, room.room_3_0, room.room_3_0, room.room_3_0, room.room_3_0, room.room_3_0, room.room_3_0, room.room_3_0, room.room_3_0]
+        boss_room = room.room_boss_3
+        pos_boss = [9, random.randint(0, 9)]
     if _level == 3:
-        first_room = room.room_4_0
+        first_room = room.room_4_5
         liste_level = [room.room_4_1, room.room_4_2, room.room_4_3, room.room_4_4, room.room_4_5, room.room_4_6, room.room_4_7, room.room_4_8, room.room_4_9, room.room_4_10, room.room_4_11, room.room_4_12]
         boss_room = room.room_boss_4
         pos_boss = [9, random.randint(0, 9)]
-
+    if _level == 4:
+        first_room = room.room_5_0
+        liste_level = [room.room_boss_5]
+        pos_boss = None
     for i in range(10):
         floor.append([])    
         for j in range(0, 10):
             if j == 0 and i == 0:
                 floor[i].append(first_room)
-            elif i == pos_boss[0] and j == pos_boss[1]:
+            elif pos_boss != None and i == pos_boss[0] and j == pos_boss[1]:
                 floor[i].append(boss_room)
             else:
                 floor[i].append(random.choice(liste_level))

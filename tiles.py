@@ -23,19 +23,23 @@ def load_tile():
     global door
     global wall
     global Tile_lava
+
     for i in range(1, 7):
         Tile_1.append(
             pygame.transform.scale(pygame.image.load('picture/tiles/Tile_1-' + str(i) + '.png').convert_alpha(),
                                    [50, 50]))
+    
     for i in range(1, 7):
         Tile_2.append(pygame.transform.scale(pygame.image.load('picture/tiles/Tile_2-' + str(i) + '.png').convert_alpha(), [50, 50]))
+    
     for i in range(1, 7):
         Tile_3.append(pygame.transform.scale(pygame.image.load('picture/tiles/Tile_3-' + str(i) + '.png').convert_alpha(), [50, 50]))
 
-    for i in range(1, 6):
+    for i in range(1, 7):
         #Tile_4.append(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png').convert_alpha()) ce que tu as mit
         Tile_4.append(pygame.transform.scale(pygame.image.load('picture/tiles/Tile_4-' + str(i) + '.png').convert_alpha(), [50, 50]))
     
+
     door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), -90))
     door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Black.png').convert_alpha(), [55, 55]), 0))
     door.append(pygame.transform.rotate(
@@ -57,6 +61,21 @@ def load_tile():
     door.append(pygame.transform.rotate(
         pygame.transform.scale(pygame.image.load('picture/tiles/Door-Purple.png').convert_alpha(), [55, 55]), 90))
 
+    door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Red.png').convert_alpha(), [55, 55]), -90))
+    door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-Red.png').convert_alpha(), [55, 55]), 0))
+    door.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Door-Red.png').convert_alpha(), [55, 55]), 180))
+    door.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Door-Red.png').convert_alpha(), [55, 55]), 90))
+
+    door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-White.png').convert_alpha(), [55, 55]), -90))
+    door.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Door-White.png').convert_alpha(), [55, 55]), 0))
+    door.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Door-White.png').convert_alpha(), [55, 55]), 180))
+    door.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Door-White.png').convert_alpha(), [55, 55]), 90))
+    
+
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center-Square.png').convert_alpha(), [55, 55]), -90))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center-Square.png').convert_alpha(), [55, 55]), 0))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Center-Square.png').convert_alpha(), [55, 55]), 90))
@@ -65,12 +84,36 @@ def load_tile():
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Corner-Square.png').convert_alpha(), [55, 55]), 90))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Corner-Square.png').convert_alpha(), [55, 55]), 180))
     wall.append(pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/tiles/Wall-Corner-Square.png').convert_alpha(), [55, 55]), -90))
+
+
     chest.append(pygame.transform.rotate(
-        pygame.transform.scale(pygame.image.load('picture/tiles/Chest-Yellow-Closed.png').convert_alpha(), [29, 29]),
+        pygame.transform.scale(pygame.image.load('picture/tiles/Chest-Black-Closed.png').convert_alpha(), [29, 29]),
         -90))
     chest.append(pygame.transform.rotate(
-        pygame.transform.scale(pygame.image.load('picture/tiles/Chest-Yellow-Opened.png').convert_alpha(), [29, 29]),
+        pygame.transform.scale(pygame.image.load('picture/tiles/Chest-Black-Opened.png').convert_alpha(), [29, 29]),
         -90))
+
+    chest.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Chest-Purple-Closed.png').convert_alpha(), [29, 29]),
+        -90))
+    chest.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Chest-Purple-Opened.png').convert_alpha(), [29, 29]),
+        -90))
+    
+    chest.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Chest-Red-Closed.png').convert_alpha(), [29, 29]),
+        -90))
+    chest.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Chest-Red-Opened.png').convert_alpha(), [29, 29]),
+        -90))
+
+    chest.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Chest-Blue-Closed.png').convert_alpha(), [29, 29]),
+        -90))
+    chest.append(pygame.transform.rotate(
+        pygame.transform.scale(pygame.image.load('picture/tiles/Chest-Blue-Opened.png').convert_alpha(), [29, 29]),
+        -90))
+    
     print(door)
     for i in range(1, 4):
         Tile_lava.append(
@@ -435,6 +478,7 @@ def blit_door_purple_2(x, y, tile):
         return a
 
     return blit_tile
+
 def blit_door_purple_3(x, y, tile):
     def blit_tile():
         a = tile()
@@ -447,6 +491,70 @@ def blit_door_purple_4(x, y, tile):
     def blit_tile():
         a = tile()
         graphic_main.screen.blit(door[11], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_door_red(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[12], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_door_red_2(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[13], [x, y])
+        return a
+
+    return blit_tile
+def blit_door_red_3(x, y, tile):
+
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[14], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_door_red_4(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[15], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_door_white(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[16], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_door_white_2(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[17], [x, y])
+        return a
+
+    return blit_tile
+def blit_door_white_3(x, y, tile):
+    
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[18], [x, y])
+        return a
+
+    return blit_tile
+
+def blit_door_white_4(x, y, tile):
+    def blit_tile():
+        a = tile()
+        graphic_main.screen.blit(door[19], [x, y])
         return a
 
     return blit_tile
@@ -520,20 +628,54 @@ def blit_door_black_4(x, y, tile):
 
     return blit_tile
 
-def blit_chest_yellow(x, y, tile, _loot, rot=-90, nbr = 0):
+def blit_chest_black(x, y, tile, _loot, rot=-90, nbr = 0):
     rect = tile()
-
     def blit_tile():
         a = tile()
-
         if _chest[nbr]:
             graphic_main.screen.blit(pygame.transform.rotate(chest[1], rot), [x + 10, y + 10])
         else:
             graphic_main.screen.blit(pygame.transform.rotate(chest[0], rot), [x + 10, y + 10])
-
         return a
+    a = {}
+    a[_loot] = rect
+    return blit_tile, a
 
+def blit_chest_purple(x, y, tile, _loot, rot=-90, nbr = 0):
+    rect = tile()
+    def blit_tile():
+        a = tile()
+        if _chest[nbr]:
+            graphic_main.screen.blit(pygame.transform.rotate(chest[3], rot), [x + 10, y + 10])
+        else:
+            graphic_main.screen.blit(pygame.transform.rotate(chest[2], rot), [x + 10, y + 10])
+        return a
+    a = {}
+    a[_loot] = rect
+    return blit_tile, a
 
+def blit_chest_red(x, y, tile, _loot, rot=-90, nbr = 0):
+    rect = tile()
+    def blit_tile():
+        a = tile()
+        if _chest[nbr]:
+            graphic_main.screen.blit(pygame.transform.rotate(chest[5], rot), [x + 10, y + 10])
+        else:
+            graphic_main.screen.blit(pygame.transform.rotate(chest[4], rot), [x + 10, y + 10])
+        return a
+    a = {}
+    a[_loot] = rect
+    return blit_tile, a
+
+def blit_chest_blue(x, y, tile, _loot, rot=-90, nbr = 0):
+    rect = tile()
+    def blit_tile():
+        a = tile()
+        if _chest[nbr]:
+            graphic_main.screen.blit(pygame.transform.rotate(chest[7], rot), [x + 10, y + 10])
+        else:
+            graphic_main.screen.blit(pygame.transform.rotate(chest[6], rot), [x + 10, y + 10])
+        return a
     a = {}
     a[_loot] = rect
     return blit_tile, a
