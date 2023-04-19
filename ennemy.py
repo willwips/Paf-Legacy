@@ -1700,6 +1700,8 @@ def collision_with_weapon(a, strenght, knockback):
             if enemy_1_list[n][2] <= 0:
                 player.folie -= 30
                 del enemy_1_list[n]
+                player.xp += 1
+
 
         n += 1
     n = 0
@@ -1726,6 +1728,7 @@ def collision_with_weapon(a, strenght, knockback):
             if enemy_1_2_list[n][2] <= 0:
                 player.folie -= 20
                 del enemy_1_2_list[n]
+                player.xp += 1
 
         n += 1
     n = 0
@@ -1751,6 +1754,8 @@ def collision_with_weapon(a, strenght, knockback):
             if enemy_2_1_list[n][2] <= 0:
                 del enemy_2_1_list[n]
                 player.folie -= 30
+                player.xp += 1.1
+
 
         n += 1
     n = 0
@@ -1776,6 +1781,8 @@ def collision_with_weapon(a, strenght, knockback):
             if enemy_3_1_list[n][2] <= 0:
                 del enemy_3_1_list[n]
                 player.folie -= 30
+                player.xp += 1.5
+
 
         n += 1
     n = 0
@@ -1801,6 +1808,8 @@ def collision_with_weapon(a, strenght, knockback):
             if enemy_2_2_list[n][2] <= 0:
                 del enemy_2_2_list[n]
                 player.folie -= 30
+                player.xp += 1.1
+
 
         n += 1
     n = 0
@@ -1840,6 +1849,7 @@ def collision_with_weapon(a, strenght, knockback):
                     if len(boss_list) == 0:
                         player.dash_unlocked=True
                         world.next_level()
+                        player.xp += 100
 
         n += 1
     n = 0
@@ -1865,6 +1875,7 @@ def collision_with_weapon(a, strenght, knockback):
             if enemy_slime_list[n][2] <= 0:
                 #player.folie -= 30
                 del enemy_slime_list[n]
+
         n += 1
     n = 0
     for i in enemy_4_1_list:
@@ -1889,6 +1900,8 @@ def collision_with_weapon(a, strenght, knockback):
             if enemy_4_1_list[n][2] <= 0:
                 del enemy_4_1_list[n]
                 player.folie -= 30
+                player.xp += 2
+
 
         n += 1
     n = 0
@@ -1914,6 +1927,7 @@ def collision_with_weapon(a, strenght, knockback):
             if enemy_4_2_list[n][2] <= 0:
                 del enemy_4_2_list[n]
                 player.folie -= 30
+                player.xp += 2
 
         n += 1
     n = 0
@@ -1952,6 +1966,8 @@ def collision_with_weapon(a, strenght, knockback):
                     player.folie -= 70
                     if len(boss_list) == 0:
                         player.dash_unlocked=True
+                        player.xp += 170
+
                         world.next_level()
 
         n += 1
@@ -1997,6 +2013,8 @@ def collision_with_weapon(a, strenght, knockback):
                         if len(boss_list) == 0:
                             player.dash_invicibility_unlocked=True
                             world.next_level()
+                            player.xp += 120
+
                             break
 
                 else:
@@ -2041,6 +2059,7 @@ def collision_with_weapon(a, strenght, knockback):
                     if len(boss_list) == 0:
                         player.dash_invicibility_unlocked=True
                         world.next_level()
+                        player.xp += 150
                         break
 
 

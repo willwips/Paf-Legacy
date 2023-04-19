@@ -31,7 +31,7 @@ lvl = 0
 resistance = 0.1
 cooldown = 0
 cooldown_move = 0
-dash_unlocked = True
+dash_unlocked = False
 dash = 0
 dash_invicibility_unlocked = False
 dash_inv = False
@@ -71,7 +71,7 @@ def boucle():
     global timer
     old_pos = pos
     timer -= 1
-
+    lvl_up()
 
     if folie < 0:
         folie = 0
@@ -305,7 +305,7 @@ def collision_with_door(door):
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
     if rectA.collidelist(door) != -1:
 
-        if not ennemy.enemy_1_list and not ennemy.enemy_1_2_list and not ennemy.enemy_2_1_list and not ennemy.enemy_2_2_list and not ennemy.boss_list and not ennemy.enemy_slime_list and not ennemy.enemy_4_1_list and not ennemy.enemy_4_2_list and not ennemy.boss_list_2 and timer < 0:
+        if not ennemy.enemy_1_list and not ennemy.enemy_1_2_list and not ennemy.enemy_2_1_list and not ennemy.enemy_2_2_list and not ennemy.boss_list and not ennemy.enemy_slime_list and not ennemy.enemy_4_1_list and not ennemy.enemy_4_2_list and not ennemy.boss_list_2 and not ennemy.boss_list_3 and timer < 0:
             folie -= 100
             if folie < 0:
                 folie = 0
@@ -710,7 +710,6 @@ def collision_with_boss_3():
     rectA.h = 15
     rectA.w = 15
     rectA.center = (pos[0] + 15, pos[1] + 40)
-    pygame.draw.rect(graphic_main.screen, (0, 255, 0), rectA)
 
     collision = False
     for i in ennemy.boss_list_3:
@@ -753,8 +752,21 @@ def lvl_up():
     global mana_max
     global pv_max
     global strength
+    global mana
+    global resistance
+    global heal
+    global lvl
     if xp >= 100+ 2*lvl**2 + 3*lvl:
         xp -= 100+2**lvl*2
+        pv *= (pv_max+10)/pv_max
+        pv_max += 10
+        strength += 1
+        mana *= (mana_max+10)/mana_max
+        mana_max+=10
+        resistance *= 1.5
+        heal+=3
+        lvl += 1
+
 
 def showpv():
     global pv

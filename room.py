@@ -19,7 +19,7 @@ def heal(pv):
     # Fonction qui affiche l'objet de soin sur l'écran
     def __heal():
         player.possible_object = _heal
-        player.possible_object_picture = pygame.image.load('picture/ui/Potions_Heal.png.png').convert_alpha()
+        player.possible_object_picture = pygame.image.load('picture/ui/Potions_Heal.png').convert_alpha()
 
     return __heal
 
@@ -181,8 +181,8 @@ def room_1_0(n, _door):
         # ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
         # ennemy.spawn_boss_4([left + 427, top + 79], 200)
         # ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
-        ennemy.spawn_enemy_3_1([left + 427, top + 79],
-                               ['picture/enemy/star/star enemy.png', 'picture/enemy/star/star enemy 2.png'], 20)
+        #ennemy.spawn_enemy_3_1([left + 427, top + 79],
+        #                       ['picture/enemy/star/star enemy.png', 'picture/enemy/star/star enemy 2.png'], 20)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
