@@ -675,9 +675,9 @@ def collision_with_boss_4():
 def collision_with_boss_2():
     global pos
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
-    rectA.h = 15
+    rectA.h = 40
     rectA.w = 15
-    rectA.center = (pos[0] + 15, pos[1] + 40)
+    rectA.center = (pos[0] + 15, pos[1] + 25)
     collision = False
     for i in ennemy.boss_list_2:
         rectB = i[0][0].get_rect(center=i[1])
@@ -707,9 +707,11 @@ def collision_with_boss_2():
 def collision_with_boss_3():
     global pos
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
-    rectA.h = 40
+    rectA.h = 15
     rectA.w = 15
-    rectA.center = (pos[0] + 15, pos[1] + 25)
+    rectA.center = (pos[0] + 15, pos[1] + 40)
+    pygame.draw.rect(graphic_main.screen, (0, 255, 0), rectA)
+
     collision = False
     for i in ennemy.boss_list_3:
         rectB = i[0][0].get_rect(center=i[1])
