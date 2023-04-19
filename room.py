@@ -6112,9 +6112,9 @@ def room_boss_3(n, _door):
                 elif i == x - 1:
                     room[i].append(tiles.blit_wall_mid(i * 50 + left, j * 50 + top))
                 elif (j % 2 + i % 2) % 2 == 0:
-                    room[i].append(tiles.blit_tile_3_4(i * 50 + left, j * 50 + top))
+                    room[i].append(tiles.blit_tile_3_3(i * 50 + left, j * 50 + top))
                 elif j % 2 + i % 2 == 1:
-                    room[i].append(tiles.blit_tile_2_4(i * 50 + left, j * 50 + top))
+                    room[i].append(tiles.blit_tile_3_3(i * 50 + left, j * 50 + top))
 
         # Affiche les éléments de la salle
         for i in room:
@@ -6124,7 +6124,7 @@ def room_boss_3(n, _door):
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
-        ennemy.spawn_boss_4([left + 450, top + 300], 200)
+        ennemy.spawn_boss_3([left + 450, top + 300], 150)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -6167,7 +6167,17 @@ def room_boss_3(n, _door):
                 pass
 
     def modifie(x, y, tile):
-        room[x][y] = tile
+        try:
+            print((right-left)/50, "fuhoidsjdzsf")
+            if x == 0 or x == int((right-left)/50)-1 or y == 0 or y == (bottom-top)/50 - 1:
+                raise
+            print(x, 'e')
+            room[int(x)][int(y)] = tile(x*50 + left, y*50+top)
+            graphic_main.update.append(room[int(x)][int(y)]())
+        except:
+            pass
+
+
 
     # Retourne les éléments suivant
     return create, update, door, top, bottom, left, right, pos_play[n], chest, modifie

@@ -69,6 +69,8 @@ def boucle():
     global timer
     old_pos = pos
     timer -= 1
+
+
     if folie < 0:
         folie = 0
     for event in pygame.event.get():
@@ -112,13 +114,11 @@ def boucle():
             if event.key == pygame.K_u:
                 weapon.is_attacking = True
                 folie += weapon.weapon[weapon.current_weapon][4]
-                #print(folie, 'ezsdzfezfiuezoçduftj')
                 if folie >= floie_max:
                     sys.exit()
             if event.key == pygame.K_i:
                 if dash_unlocked:
                     if mana - 10 >= 0:
-                        print('e')
                         if dash == -45:
                             dash = 15
                             if dash_invicibility_unlocked:
@@ -230,7 +230,6 @@ def boucle():
                 folie += _coll[1]
                 cooldown = 60
                 cooldown_move = 0
-                print(folie, _coll[1])
         if collision_with_ennemy_slime():
 
             if cooldown <= 0:
@@ -259,6 +258,13 @@ def boucle():
 
                 cooldown_move = 0
         if collision_with_boss_2():
+            if cooldown <= 0:
+
+                pv -= 15 - 15 * resistance
+                cooldown = 60
+
+                cooldown_move = 0
+        if collision_with_boss_3():
             if cooldown <= 0:
 
                 pv -= 15 - 15 * resistance
@@ -695,6 +701,34 @@ def collision_with_boss_2():
             if i[3][3] == True:
                 pos[1] -= 10
             return collision
+
+def collision_with_boss_3():
+    global pos
+    rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
+    rectA.h = 40
+    rectA.w = 15
+    rectA.center = (pos[0] + 15, pos[1] + 25)
+    collision = False
+    for i in ennemy.boss_list_3:
+        rectB = i[0][0].get_rect(center=i[1])
+        rectB.h = 40
+        rectB.w = 15
+        rectB.center = (i[1][0] + 15, i[1][1] + 25)
+        collision = True
+        if rectB.right < rectA.left:
+            collision = False
+        if rectB.bottom < rectA.top:
+            collision = False
+        if rectB.left > rectA.right:
+            collision = False
+        if rectB.top > rectA.bottom:
+            collision = False
+        for i in i[12]:
+            if rectA.colliderect(i):
+                collision = True
+        if collision:
+            return collision
+
 def _heal():
     global heal_duration
     global mana
