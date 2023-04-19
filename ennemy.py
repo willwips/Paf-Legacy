@@ -1183,7 +1183,9 @@ def move_boss_3():
 
             boss_list_3[0][1][0] += boss_list_3[0][7][0]
 
-
+        if random.random() < 0.01:
+            boss_list_3[0][1] = [2 * ((graphic_main.right - graphic_main.left) / 2 + graphic_main.left) - player.pos[0],
+                                 2 * ((graphic_main.bottom - graphic_main.top) / 2 + graphic_main.top )- player.pos[1]]
 
         if boss_list_3[0][5] == -1:
             for i in boss_list_3[0][11]:
@@ -1216,11 +1218,12 @@ def move_boss_3():
             for i in boss_list_3[0][11]:
                 graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_lave_1)
 
+
         if boss_list_3[0][5] == -15:
             for i in boss_list_3[0][11]:
                 graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_lave_2)
 
-        if boss_list_3[0][5] == -30:
+        if boss_list_3[0][5] == -50:
             for i in boss_list_3[0][11]:
                 graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_lave_3)
                 boss_list_3[0][12].append(pygame.Rect(i[0] + graphic_main.left, i[1]+graphic_main.top, 50, 50))
@@ -1264,7 +1267,7 @@ def move_boss_3():
 
             boss_list_3[0][11] = []
             boss_list_3[0][12] = []
-            n = random.randrange(0, 7)
+            n = random.randrange(0, 9)
 
             if n == 0:
                 for i in range(0, int((graphic_main.right - graphic_main.left) / 50)):
@@ -1298,6 +1301,10 @@ def move_boss_3():
                             boss_list_3[0][11].append([i*50, j*50])
             if n == 6:
                 pass
+            if n == 7 or random.random()<0.2:
+                boss_list_3[0][1] = [
+                    2 * ((graphic_main.right - graphic_main.left) / 2 + graphic_main.left) - player.pos[0],
+                    2 * ((graphic_main.bottom - graphic_main.top) / 2 + graphic_main.top) - player.pos[1]]
             for i in boss_list_3[0][11]:
                 graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_lave_1)
 
@@ -1364,7 +1371,7 @@ def move_boss_3():
 
             boss_list_3[0][11] = []
             boss_list_3[0][12] = []
-            n = random.randrange(0, 12)
+            n = random.randrange(0, 14)
 
 
             if n == 0:
@@ -1405,8 +1412,11 @@ def move_boss_3():
 
             if n == 7:
                 pass
-            if n == 12:
-                pass
+            if n == 12 or n==13 or random.random() < 0.2:
+                boss_list_3[0][1] = [
+                    2 * ((graphic_main.right - graphic_main.left) / 2 + graphic_main.left) - player.pos[0],
+                    2 * ((graphic_main.bottom - graphic_main.top) / 2 + graphic_main.top) - player.pos[1]]
+
             if n == 8:
                 for i in range(0, int((graphic_main.right - graphic_main.left) / 50)):
                     for j in range(0, int((graphic_main.bottom - graphic_main.top) / 50)):
