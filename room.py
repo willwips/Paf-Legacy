@@ -1925,7 +1925,7 @@ def room_2_0(n, _door):
 
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
-        ennemy.spawn_boss_2([left + 427, top + 79], 80)
+        #ennemy.spawn_boss_2([left + 427, top + 79], 80)
 
 
 
@@ -2196,10 +2196,10 @@ def room_2_2(n, _door):
                 elif j % 2 + i % 2 == 1:
                     room[i].append(tiles.blit_tile_1_2(i * 50 + left, j * 50 + top))
 
-        ennemy.spawn_enemy_2_1([left + 60, top + 50],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
-        ennemy.spawn_enemy_2_1([left + 460, top + 50],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
-        ennemy.spawn_enemy_2_1([left + 60, top + 250],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
-        ennemy.spawn_enemy_2_1([left + 460, top + 250],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
+        ennemy.spawn_enemy_2_1([left + 60, top + 50],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
+        ennemy.spawn_enemy_2_1([left + 460, top + 50],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
+        ennemy.spawn_enemy_2_1([left + 60, top + 250],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
+        ennemy.spawn_enemy_2_1([left + 460, top + 250],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
 
         # Affiche les éléments de la salle
         for i in room:
@@ -2341,15 +2341,15 @@ def room_2_3(n, _door):
                 elif j % 2 + i % 2 == 1:
                     room[i].append(tiles.blit_tile_1_2(i * 50 + left, j * 50 + top))
 
-        ennemy.spawn_enemy_2_1([left + 110, top + 50],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
-        ennemy.spawn_enemy_2_1([left + 60, top + 100],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
-        ennemy.spawn_enemy_2_1([left + 710, top + 50],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
-        ennemy.spawn_enemy_2_1([left + 760, top + 100],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
+        ennemy.spawn_enemy_2_1([left + 110, top + 50],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
+        ennemy.spawn_enemy_2_1([left + 60, top + 100],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
+        ennemy.spawn_enemy_2_1([left + 710, top + 50],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
+        ennemy.spawn_enemy_2_1([left + 760, top + 100],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
 
-        ennemy.spawn_enemy_2_1([left + 110, top + 450],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
-        ennemy.spawn_enemy_2_1([left + 60, top + 400],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
-        ennemy.spawn_enemy_2_1([left + 760, top + 450],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
-        ennemy.spawn_enemy_2_1([left + 760, top + 400],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
+        ennemy.spawn_enemy_2_1([left + 110, top + 450],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
+        ennemy.spawn_enemy_2_1([left + 60, top + 400],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
+        ennemy.spawn_enemy_2_1([left + 760, top + 450],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
+        ennemy.spawn_enemy_2_1([left + 760, top + 400],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
 
         # Affiche les éléments de la salle
         for i in room:
@@ -2486,8 +2486,8 @@ def room_2_4(n, _door):
                 elif j % 2 + i % 2 == 1:
                     room[i].append(tiles.blit_tile_3_2(i * 50 + left, j * 50 + top))
 
-        ennemy.spawn_enemy_2_1([left + 410, top + 100],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
-        ennemy.spawn_enemy_2_1([left + 510, top + 100],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
+        ennemy.spawn_enemy_2_1([left + 410, top + 100],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
+        ennemy.spawn_enemy_2_1([left + 510, top + 100],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
         ennemy.spawn_enemy_2_2([left + 460, top + 100], ['picture/enemy/spider/araignee.png'], 20)
 
         # Affiche les éléments de la salle
@@ -2765,11 +2765,11 @@ def room_2_6(n, _door):
                 elif j % 2 + i % 2 == 1:
                     room[i].append(tiles.blit_tile_4_2(i * 50 + left, j * 50 + top))
 
-        ennemy.spawn_enemy_2_1([left + 410, top + 250],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
-        ennemy.spawn_enemy_2_1([left + 510, top + 250],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
+        ennemy.spawn_enemy_2_1([left + 410, top + 250],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
+        ennemy.spawn_enemy_2_1([left + 510, top + 250],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
         
-        ennemy.spawn_enemy_2_1([left + 460, top + 200],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
-        ennemy.spawn_enemy_2_1([left + 460, top + 300],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 50)
+        ennemy.spawn_enemy_2_1([left + 460, top + 200],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
+        ennemy.spawn_enemy_2_1([left + 460, top + 300],  ['picture/enemy/foe/foe_L_1.png', 'picture/enemy/foe/foe_L_2.png', 'picture/enemy/foe/foe_L_3.png', 'picture/enemy/foe/foe_R_1.png', 'picture/enemy/foe/foe_R_2.png', 'picture/enemy/foe/foe_R_3.png'], 40)
         
         ennemy.spawn_enemy_2_2([left + 460, top + 250], ['picture/enemy/spider/araignee.png'], 20)
         ennemy.spawn_enemy_2_2([left + 460, top + 250], ['picture/enemy/spider/araignee.png'], 20)

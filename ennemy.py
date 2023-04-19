@@ -476,7 +476,7 @@ def move_ennemi_2_1():
                     total = abs(enemy_2_1_list[i][1][0] - player.pos[0]) + abs(enemy_2_1_list[i][1][1] - player.pos[1])
                     spawm_projectile([enemy_2_1_list[i][1][0], enemy_2_1_list[i][1][1]], 10,
                                      [(player.pos[0] - enemy_2_1_list[i][1][0]) / total * 5,
-                                      (player.pos[1] - enemy_2_1_list[i][1][1]) / total * 5], (75, 0, 130), None, [30, 20])
+                                      (player.pos[1] - enemy_2_1_list[i][1][1]) / total * 5], (75, 0, 130), None, [15, 20])
                 except:
                     pass
             if -1 < enemy_2_1_list[i][7] < -30:
