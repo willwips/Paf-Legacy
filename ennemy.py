@@ -476,7 +476,7 @@ def move_ennemi_2_1():
                     total = abs(enemy_2_1_list[i][1][0] - player.pos[0]) + abs(enemy_2_1_list[i][1][1] - player.pos[1])
                     spawm_projectile([enemy_2_1_list[i][1][0], enemy_2_1_list[i][1][1]], 10,
                                      [(player.pos[0] - enemy_2_1_list[i][1][0]) / total * 5,
-                                      (player.pos[1] - enemy_2_1_list[i][1][1]) / total * 5], (75, 0, 130), None, [30, 20])
+                                      (player.pos[1] - enemy_2_1_list[i][1][1]) / total * 5], (75, 0, 130), None, [15, 20])
                 except:
                     pass
             if -1 < enemy_2_1_list[i][7] < -30:
@@ -1693,6 +1693,9 @@ def collision_with_weapon(a, strenght, knockback):
             boss_list_2[n][2] -= strenght
             boss_list_2[n][6] = 10
             boss_list_2[n][8] = 30
+            if boss_list_2[n][12]:
+                boss_list_2[n][5] = 30
+
             if player.last_move_is_up or player.last_move_is_right:
                 boss_list_2[n][7][0] = knockback
             if player.last_move_is_down or player.last_move_is_left:
