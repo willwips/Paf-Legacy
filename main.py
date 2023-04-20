@@ -13,7 +13,7 @@ import world
 screen = graphic_main.initialisation(True)
 tiles.load_tile()
 frame = graphic_main.import_character_picture(6)
-start = False
+start = True
 
 weapon.import_weapon()
 #graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right = world.next_room()
@@ -38,9 +38,16 @@ while True:
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     start = False
+                    graphic_main.screen.fill((0, 0, 0))
+                    pygame.display.update()
+
+                    world.create_floor(0)
+                    world.show_next_room()
+                    pygame.display.update()
+
                     break
             graphic_main.clock.tick(10)
-            world.next_room(0)
+
 
     elif player.dead:
         graphic_main.screen.blit(death_screen, (0, 0))

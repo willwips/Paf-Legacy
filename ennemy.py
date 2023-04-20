@@ -429,7 +429,7 @@ def move_ennemi_1_2():
         # if is_touch_wall(enemy_1_2_list[i][1], enemy_1_2_list[i][0][enemy_1_2_list[i][8]].get_rect()) or \
         #         enemy_1_2_list[i][6] == [0, 0]:
 
-        if is_touch_wall(final_boss[0][1],  enemy_1_2_list[i][0][enemy_1_2_list[i][8]].get_rect()) or enemy_1_2_list[i][6] == [0, 0]:
+        if is_touch_wall(enemy_1_2_list[0][1],  enemy_1_2_list[i][0][enemy_1_2_list[i][8]].get_rect()) or enemy_1_2_list[i][6] == [0, 0]:
             dir_to_player = [-3 * (enemy_1_2_list[i][1][0] - player.pos[0]) / (
                     abs(enemy_1_2_list[i][1][1] - player.pos[1]) + abs((enemy_1_2_list[i][1][0] - player.pos[0]))),
                              -3 * (enemy_1_2_list[i][1][1] - player.pos[1]) / (
