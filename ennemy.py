@@ -1578,7 +1578,7 @@ def move_boss_final():
 
         if not final_boss[0][11] or is_touch_wall(final_boss[0][1], (
             final_boss[0][0][0].get_rect().w,
-            final_boss[0][0][0].get_rect().h)):
+            final_boss[0][0][0].get_rect().h)) or final_boss[0][5] == 0:
             dir_to_player = [-3 * (final_boss[0][1][0] - player.pos[0]) / (
                     abs(final_boss[0][1][1] - player.pos[1]) + abs((final_boss[0][1][0] - player.pos[0]))),
                              -3 * (final_boss[0][1][1] - player.pos[1]) / (
@@ -1590,9 +1590,11 @@ def move_boss_final():
         final_boss[0][1] = touch_wall(final_boss[0][1], (
             final_boss[0][0][0].get_rect().w,
             final_boss[0][0][0].get_rect().h))
-        final_boss[0][1][0] += final_boss[0][11][0] * 2 + math.sin(final_boss[0][5]/5) * 10
-        final_boss[0][1][1] += final_boss[0][11][1] * 2 + math.cos(final_boss[0][5]/5) * 10
-
+        if final_boss[0][5] < 0:
+            final_boss[0][1][0] += final_boss[0][11][0] * 2 + math.sin(final_boss[0][5]/5) * 10
+            final_boss[0][1][1] += final_boss[0][11][1] * 2 + math.cos(final_boss[0][5]/5) * 10
+        if random.random() < 0.005:
+            final_boss[0][5] = 60
     if  0 < final_boss[0][4] < 1:
         final_boss[0][4] += 0.01
         if 0.5 < final_boss[0][4] < 0.51:
