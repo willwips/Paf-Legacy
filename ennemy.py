@@ -1,94 +1,96 @@
+# Importation de module
 import math
 import random
-
 import pygame
-
 import graphic_main
 import player
 import tiles
 import world
 
+# Initialisation de liste vide
 enemy_1_list = []
 enemy_1_2_list = []
 enemy_2_1_list = []
 enemy_2_2_list = []
 enemy_3_1_list = []
-
 boss_list = []
 projectile_list = []
 enemy_slime_list = []
 enemy_4_1_list = []
 enemy_4_2_list = []
 enemy_3_2_list = []
-
 boss_list_4 = []
 boss_list_2 = []
 boss_list_3 = []
 final_boss = []
 
+# Fonction qui créer le premier ennemi du niveau 2
 def spawn_enemy_2_1(pos, img, pv):
-    img_ = []
+    img_ = [] # Variable regroupant les images de l'ennemi pour ses actions
     n = 0
-    for i in img:
-
+    for i in img: # Regroupe les différentes images des différentes actions de l'ennemi
         if n % 3 == 2:
             img_.append(pygame.transform.scale(pygame.image.load(i).convert_alpha(), [40, 40]))
         else:
             img_.append(pygame.transform.scale(pygame.image.load(i).convert_alpha(), [25, 49]))
         n += 1
     pos = pos
-    global enemy_2_1_list
-    enemy_2_1_list.append([img_, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, 0])
+    global enemy_2_1_list # défini une variable globale
+    enemy_2_1_list.append([img_, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, 0]) # Créer l'ennemi avec ces paramètres
 
-def spawn_enemy_3_1(pos, img, pv):
-    img_ = [pygame.image.load(img[i]).convert_alpha() for i in range(2)]
+# Fonction qui créer le premier ennemi du niveau 3
+def spawn_enemy_3_1(pos, img, pv): 
+    img_ = [pygame.image.load(img[i]).convert_alpha() for i in range(2)] # Regroupe les différentes images des différentes actions de l'ennemi donné
     proj_1 = pygame.image.load('picture/enemy/star/proj_star_1.png')
     proj_2 = pygame.image.load('picture/enemy/star/proj_star_2.png')
-
     pos = pos
-    global enemy_3_1_list
-    enemy_3_1_list.append([img_, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, 0, [proj_1, proj_2, pygame.transform.rotate(proj_1, 90), pygame.transform.rotate(proj_2, 90), pygame.transform.rotate(proj_1, 180), pygame.transform.rotate(proj_2, 180), pygame.transform.rotate(proj_1, -90), pygame.transform.rotate(proj_2, -90)]])
+    global enemy_3_1_list # Défini une variable global
+    enemy_3_1_list.append([img_, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, 0, [proj_1, proj_2, pygame.transform.rotate(proj_1, 90), pygame.transform.rotate(proj_2, 90), pygame.transform.rotate(proj_1, 180), pygame.transform.rotate(proj_2, 180), pygame.transform.rotate(proj_1, -90), pygame.transform.rotate(proj_2, -90)]]) # Créer l'ennemi avec ces paramètres
+
+# Fonction qui créer le second ennemi du niveau 2
 def spawn_enemy_2_2(pos, img, pv):
-    img_ = []
+    img_ = [] # Variable regroupant les images de l'ennemi pour ses actions
     n = 0
-    for i in img:
-
+    for i in img: # Regroupe les différentes images des différentes actions de l'ennemi
         img_.append(pygame.image.load(i).convert_alpha())
-
         n += 1
     pos = pos
-    global enemy_2_2_list
-    enemy_2_2_list.append([img_, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, [0, 0]])
+    global enemy_2_2_list # Défini une variable global
+    enemy_2_2_list.append([img_, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, [0, 0]]) # Créer l'ennemi avec ces variables
+
+# Fonction qui créer un projectile avec différents paramètres 
 def spawm_projectile(pos, radius, directon, color, img = None, dgt = [30, 0]):
     global projectile_list
     projectile_list.append([pos, radius, directon, color, img, dgt])
 
-
+# Fonction qui créer le premier ennemi du niveau 1
 def spawn_enemy_1(pos, img, pv):
-    img = pygame.transform.scale(pygame.image.load(img).convert_alpha(), [28, 50])
+    img = pygame.transform.scale(pygame.image.load(img).convert_alpha(), [28, 50]) # Regroupe les différentes images des différentes actions de l'ennemi donné
     pos = pos
-    global enemy_1_list
-    enemy_1_list.append([img, pos, pv, 10, [False, False, False, False], [0, 0]])
+    global enemy_1_list # Défini une variable global
+    enemy_1_list.append([img, pos, pv, 10, [False, False, False, False], [0, 0]]) # Créer l'ennemi avec ces paramètres
 
+# Fonction qui créer le second ennemi du niveau 3
 def spawn_enemy_3_2(pos, img, pv):
-    _img = []
+    _img = [] # # Variable regroupant les images de l'ennemi pour ses actions
     for i in img:
-        _img.append(pygame.image.load(i).convert_alpha())
+        _img.append(pygame.image.load(i).convert_alpha()) # Regroupe les différentes images des différentes actions de l'ennemi donné
     pos = pos
-    global enemy_1_2_list
-    enemy_3_2_list.append([_img, pos, pv, 10, [False, False, False, False], [0, 0], [0, 0], 0, 0])
+    global enemy_1_2_list # Défini une variable globale
+    enemy_3_2_list.append([_img, pos, pv, 10, [False, False, False, False], [0, 0], [0, 0], 0, 0]) # Créer l'ennemi avec ces paramètres
 
 def spawn_enemy_1_2(pos, img, pv):
-    _img = []
+    _img = [] # Variable regroupant les images de l'ennemi pour ses actions
     for i in img:
-        _img.append(pygame.transform.scale(pygame.image.load(i).convert_alpha(), [49, 23]))
+        _img.append(pygame.transform.scale(pygame.image.load(i).convert_alpha(), [49, 23])) # Créer l'ennemi avec ces paramètres
     pos = pos
-    global enemy_1_2_list
-    enemy_1_2_list.append([_img, pos, pv, 10, [False, False, False, False], [0, 0], [0, 0], 0, 0])
+    global enemy_1_2_list # Défini une variable
+    enemy_1_2_list.append([_img, pos, pv, 10, [False, False, False, False], [0, 0], [0, 0], 0, 0]) # Créer l'ennemi avec ces paramètres
 
-
+# Fonction qui permet de créer le premier boss du jeu
 def spawn_boss_1(pos, pv):
-    _img = []
+    _img = [] 
+    # Regroupe toutes les images du boss en fonction de ses phases et de ses actions
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p1_L.png'), [46, 80]))
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p1_R.png'), [46, 80]))
     _img.append(
@@ -130,9 +132,10 @@ def spawn_boss_1(pos, pv):
         pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_4.png'), [80, 80]))
     _img.append(
         pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_5.png'), [92, 80]))
-    boss_list.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0])
+    boss_list.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0]) # Créer le boss avec ces paramètres
 
-def spawn_boss_2(pos, pv, is_reel  = True):
+# Créer le boss de la même manière que les autres boss
+def spawn_boss_2(pos, pv, is_reel  = True): 
     _img = []
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_boss_1.png').convert_alpha(), [50, 45]))
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_boss_2.png').convert_alpha(), [50, 45]))
@@ -140,6 +143,7 @@ def spawn_boss_2(pos, pv, is_reel  = True):
 
     boss_list_2.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0, [0, 0], is_reel])
 
+# Créer le boss de la même manière que les autres boss
 def spawn_boss_3(pos, pv):
     _img = []
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Red_boss/RedBoss_face_standing.png').convert_alpha(), [52,94]))
@@ -147,6 +151,7 @@ def spawn_boss_3(pos, pv):
 
     boss_list_3.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0, [], [], 0])
 
+# Créer le boss de la même manière que les autres boss
 def spawn_boss_final(pos, pv):
     _img = []
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/ange/ange_1.png').convert_alpha(), [70, 50]))
@@ -154,9 +159,9 @@ def spawn_boss_final(pos, pv):
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/ange/ange_3.png').convert_alpha(), [70, 50]))
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/ange/ange_4.png').convert_alpha(), [70, 50]))
 
-
     final_boss.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0, [], [], 0])
 
+# Créer le boss de la même manière que les autres boss
 def spawn_boss_4(pos, pv):
     _img = []
     _img.append(pygame.image.load('picture/enemy/tortue/Boss_tortue_1.png'))
@@ -204,11 +209,14 @@ def spawn_boss_4(pos, pv):
         pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_5.png'), [92, 80]))"""
     boss_list_4.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0])
 
+# Fonction qui permet de créer le slime de la même manière que les autres ennemis
 def spawn_enemy_slime(pos, img, pv):
     img = pygame.image.load(img).convert_alpha()
     pos = pos
     global enemy_slime_list
     enemy_slime_list.append([img, pos, pv, 10, [False, False, False, False], [0, 0]])
+
+# Fonction qui permet de créer l'ennemi de la même manière que les autres ennemis
 def spawn_enemy_4_1(pos, img, pv):
     n = 0
     img = pygame.transform.scale(pygame.image.load(img).convert_alpha(), [40, 40])
@@ -217,19 +225,19 @@ def spawn_enemy_4_1(pos, img, pv):
     global enemy_4_1_list
     enemy_4_1_list.append([img, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, 0])
 
+# Fonction qui permet de créer le slime de la même manière que les autres ennemis
 def spawn_enemy_4_2(pos, img, pv):
     n = 0
     _img = []
     _img.append(pygame.transform.scale(pygame.image.load(img).convert_alpha(), [40, 40]))
     _img.append(pygame.transform.flip(pygame.transform.scale(pygame.image.load(img).convert_alpha(), [40, 40]), True, False))
-
     pos = pos
     global enemy_4_2_list
     enemy_4_2_list.append([_img, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, 0])
+
 def boucle():
     global enemy_1_list
     global enemy_2_1_list
-
     n = 0
     move_ennemi_1()
     move_ennemi_2_1()
