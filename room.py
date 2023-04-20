@@ -6456,7 +6456,7 @@ def room_boss_3(n, _door):
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
 
-        ennemy.spawn_boss_3([left + 450, top + 300], 150)
+        ennemy.spawn_boss_final([left + 450, top + 300], 150)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
