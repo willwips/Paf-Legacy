@@ -3,6 +3,7 @@ import sys
 import pygame
 import ennemy
 import graphic_main
+
 import tiles
 # import main
 import weapon
@@ -23,7 +24,7 @@ last_move_is_left = True
 last_move_is_up = False
 last_move_is_down = False
 is_movement = 0
-pv = 120
+pv = 1
 pv_max = 120
 strength = 10
 xp = 0
@@ -47,6 +48,7 @@ heal_duration = 120
 heal_duration_max = 120
 is_heal = False
 timer = 60
+dead = False
 # boucle permettant de bouger le personage
 def boucle():
     global pos
@@ -117,7 +119,7 @@ def boucle():
                 weapon.is_attacking = True
                 folie += weapon.weapon[weapon.current_weapon][4]
                 if folie >= floie_max:
-                    sys.exit()
+                    death()
             if event.key == pygame.K_i:
                 if dash_unlocked:
                     if mana - 10 >= 0:
@@ -290,8 +292,7 @@ def boucle():
 
 
     if pv <= 0:
-        sys.exit()
-
+        death()
     cooldown -= 1
     cooldown_move -= 1
     if cooldown > 0 and cooldown % 20 == 10:
@@ -872,6 +873,78 @@ def showpv():
     rectB = pygame.draw.rect(graphic_main.screen, (40, 40, 40), life_black)
     return rectA, rectB
 
+def death():
+    global pos
+    global move_down
+    global move_right
+    global move_up
+    global move_left
+    global last_move_is_up
+    global last_move_is_down
+    global last_move_is_left
+    global last_move_is_right
+    global is_movement
+    global pv
+    global pv_max
+    global strength
+    global xp
+    global lvl
+    global resistance
+    global cooldown
+    global cooldown_move
+    global dash_unlocked
+    global dash
+    global dash_invicibility_unlocked
+    global dash_inv
+    global folie
+    global floie_max
+    global barre_de_folie
+    global possible_object
+    global possible_object_picture
+    global mana
+    global mana_max
+    global heal
+    global heal_duration
+    global heal_duration_max
+    global is_heal
+    global timer
+    global dead
+
+    pos = [0, 0]
+
+    move_right = False
+    move_left = False
+    move_up = False
+    move_down = False
+    last_move_is_right = False
+    last_move_is_left = True
+    last_move_is_up = False
+    last_move_is_down = False
+    is_movement = 0
+    pv = 120
+    pv_max = 120
+    strength = 10
+    xp = 0
+    lvl = 0
+    resistance = 0.1
+    cooldown = 0
+    cooldown_move = 0
+    dash_unlocked = True
+    dash = 0
+    dash_invicibility_unlocked = True
+    dash_inv = False
+    folie = 0
+    floie_max = 200
+    possible_object = _pass
+    possible_object_picture = None
+    mana = 100
+    mana_max = 100
+    heal = 15
+    heal_duration = 120
+    heal_duration_max = 120
+    is_heal = False
+    timer = 60
+    dead = True
 
 def showfolie():
     w, h = pygame.display.get_surface().get_size()
