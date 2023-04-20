@@ -14,6 +14,7 @@ enemy_2_1_list = []
 enemy_2_2_list = []
 enemy_3_1_list = []
 
+boss_1_dial = []
 boss_list = []
 projectile_list = []
 enemy_slime_list = []
@@ -88,6 +89,7 @@ def spawn_enemy_1_2(pos, img, pv):
 
 
 def spawn_boss_1(pos, pv):
+    global boss_1_dial
     _img = []
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p1_L.png'), [46, 80]))
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p1_R.png'), [46, 80]))
@@ -130,8 +132,8 @@ def spawn_boss_1(pos, pv):
         pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_4.png'), [80, 80]))
     _img.append(
         pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_5.png'), [92, 80]))
-    boss_list.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0])
-
+    boss_list.append([_img, pos, pv, [False, False, False, False], -1, 0, 0, [0, 0], 0, [0, 0], 0])
+    boss_1_dial = [pygame.image.load('picture/ui/dialogue_boss_1_1.png').convert_alpha()]
 def spawn_boss_2(pos, pv, is_reel  = True):
     _img = []
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_boss_1.png').convert_alpha(), [50, 45]))
@@ -714,6 +716,11 @@ def move_boss_1():
     global boss_list
     if not boss_list:
         return
+    if  -1 <= boss_list[0][4] < 0:
+        boss_list[0][4] += 0.01
+        graphic_main.update.append(graphic_main.screen.blit(boss_1_dial[0], (pygame.display.get_surface().get_size()[0]/2 - 368/2, pygame.display.get_surface().get_size()[1]/5*4)))
+        if boss_list[0][4] > 0:
+            boss_list[0][4] = 1
     if boss_list[0][4] == 0:
         rectB = boss_list[0][0][0].get_rect(center=boss_list[0][1])
         rectB.h = 90
