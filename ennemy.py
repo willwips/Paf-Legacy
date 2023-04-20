@@ -717,10 +717,11 @@ def move_boss_1():
     if not boss_list:
         return
     if  -1 <= boss_list[0][4] < 0:
-        boss_list[0][4] += 0.01
+        boss_list[0][4] += 0.005
         graphic_main.update.append(graphic_main.screen.blit(boss_1_dial[0], (pygame.display.get_surface().get_size()[0]/2 - 368/2, pygame.display.get_surface().get_size()[1]/5*4)))
         if boss_list[0][4] > 0:
             boss_list[0][4] = 1
+            graphic_main.update.append(pygame.draw.rect(graphic_main.screen, (0, 0, 0), pygame.Rect((pygame.display.get_surface().get_size()[0]/2 - 368/2, pygame.display.get_surface().get_size()[1]/5*4, 368, 62))))
     if boss_list[0][4] == 0:
         rectB = boss_list[0][0][0].get_rect(center=boss_list[0][1])
         rectB.h = 90
