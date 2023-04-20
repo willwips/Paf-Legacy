@@ -149,7 +149,10 @@ def spawn_boss_3(pos, pv):
 
 def spawn_boss_final(pos, pv):
     _img = []
-    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/Red_boss/RedBoss_face_standing.png').convert_alpha(), [52,94]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/ange/ange_1.png').convert_alpha(), [70, 50]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/ange/ange_2.png').convert_alpha(), [70, 50]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/ange/ange_3.png').convert_alpha(), [70, 50]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/ange/ange_4.png').convert_alpha(), [70, 50]))
 
 
     final_boss.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0, [], [], 0])
@@ -1601,6 +1604,7 @@ def move_boss_final():
             final_boss[0][5] = 60
             final_boss[0][2] = 200
             final_boss[0][11] = []
+            final_boss[0][13] = 1
 
 
     if final_boss[0][4] == 1:
@@ -1675,6 +1679,8 @@ def move_boss_final():
             final_boss[0][4] = 2
             final_boss[0][5] = 20
             final_boss[0][11]=[]
+            final_boss[0][13] = 2
+
     if final_boss[0][4] == 2:
         rectB = final_boss[0][0][0].get_rect(center=final_boss[0][1])
         rectB.h = 90
@@ -1810,6 +1816,8 @@ def move_boss_final():
             final_boss[0][5] = 60
             final_boss[0][2] = 200
             final_boss[0][11] = []
+            final_boss[0][13] = 3
+
     if final_boss[0][4] == 3:
 
         rectB = final_boss[0][0][0].get_rect(center=final_boss[0][1])
