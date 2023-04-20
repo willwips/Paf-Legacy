@@ -760,7 +760,8 @@ def collision_with_final_boss():
 
     collision = False
     for i in ennemy.final_boss:
-        rectB = i[0][0].get_rect(center=i[1])
+        print(i)
+        rectB = i[0][0].get_rect(center=(i[1][0], i[1][1]))
         rectB.h = 40
         rectB.w = 15
         rectB.center = (i[1][0] + 15, i[1][1] + 25)

@@ -1557,6 +1557,7 @@ def move_boss_final():
     if not final_boss:
         return
     if final_boss[0][4] == 0:
+        final_boss[0][4] = 0
         #    final_boss.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0, [], [], 0])
 
         rectB = final_boss[0][0][0].get_rect(center=final_boss[0][1])
@@ -1586,8 +1587,8 @@ def move_boss_final():
         final_boss[0][1] = touch_wall(final_boss[0][1], (
             final_boss[0][0][0].get_rect().w,
             final_boss[0][0][0].get_rect().h))
-        final_boss[0][1][0] += final_boss[0][11][0] * 2 + math.sin(final_boss[0][5]/5) * 20
-        final_boss[0][1][1] += final_boss[0][11][1] * 2 + math.cos(final_boss[0][5]/5) * 20
+        final_boss[0][1][0] += final_boss[0][11][0] * 2 + math.sin(final_boss[0][5]/5) * 10
+        final_boss[0][1][1] += final_boss[0][11][1] * 2 + math.cos(final_boss[0][5]/5) * 10
 
     if  0 < final_boss[0][4] < 1:
         final_boss[0][4] += 0.01
@@ -1599,6 +1600,8 @@ def move_boss_final():
             final_boss[0][4] = 1
             final_boss[0][5] = 60
             final_boss[0][2] = 200
+            final_boss[0][11] = []
+
 
     if final_boss[0][4] == 1:
 
@@ -1609,75 +1612,41 @@ def move_boss_final():
         # zadezd = pygame.draw.rect(graphic_main.screen, (255, 255, 255), rectB)
         # graphic_main.update.append(zadezd)
         dist = math.sqrt((final_boss[0][1][0] - player.pos[0]) ** 2 + (final_boss[0][1][1] - player.pos[1]) ** 2)
-
-        final_boss[0][3][0] = False
-        final_boss[0][3][1] = False
-        final_boss[0][3][2] = False
-        final_boss[0][3][3] = False
-        final_boss[0][1] = touch_wall(final_boss[0][1], (
-            final_boss[0][0][0].get_rect().w,
-            final_boss[0][0][0].get_rect().h))
-        if final_boss[0][5] == -1:
-            for i in final_boss[0][11]:
-                graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_3_3)
-
-            final_boss[0][11] = []
-            final_boss[0][12] = []
-            n = random.randrange(0, 9)
-
-            if n == 0:
-                for i in range(0, int((graphic_main.right - graphic_main.left) / 50)):
-                    for j in range(0, int((graphic_main.bottom - graphic_main.top) / 50)):
-                        if (i+j)%2 == 0:
-                            final_boss[0][11].append([i*50, j*50])
-            if n == 1:
-                for i in range(0, int((graphic_main.right - graphic_main.left) / 50)):
-                    for j in range(0, int((graphic_main.bottom - graphic_main.top) / 50)):
-                        if i%2 == 0:
-                            final_boss[0][11].append([i*50, j*50])
-            if n == 2:
-                for i in range(0, int((graphic_main.right - graphic_main.left) / 50)):
-                    for j in range(0, int((graphic_main.bottom - graphic_main.top) / 50)):
-                        if j%2 == 0:
-                            final_boss[0][11].append([i*50, j*50])
-            if n == 3:
-                for i in range(0, int((graphic_main.right - graphic_main.left) / 50)):
-                    for j in range(0, int((graphic_main.bottom - graphic_main.top) / 50)):
-                        if i%2 == 1:
-                            final_boss[0][11].append([i*50, j*50])
-            if n == 4:
-                for i in range(0, int((graphic_main.right - graphic_main.left) / 50)):
-                    for j in range(0, int((graphic_main.bottom - graphic_main.top) / 50)):
-                        if j%2 == 1:
-                            final_boss[0][11].append([i*50, j*50])
-            if n == 5:
-                for i in range(0, int((graphic_main.right - graphic_main.left) / 50)):
-                    for j in range(0, int((graphic_main.bottom - graphic_main.top) / 50)):
-                        if (i+j)%3 == 0 or (i+j)%5 == 2:
-                            final_boss[0][11].append([i*50, j*50])
-            if n == 6:
-                pass
-            if n == 7 or random.random()<0.2:
-                final_boss[0][1] = [
-                    2 * ((graphic_main.right - graphic_main.left) / 2 + graphic_main.left) - player.pos[0],
-                    2 * ((graphic_main.bottom - graphic_main.top) / 2 + graphic_main.top) - player.pos[1]]
-            for i in final_boss[0][11]:
-                graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_lave_1)
-
-        if final_boss[0][5] == -15:
-            for i in final_boss[0][11]:
-                graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_lave_2)
-
-        if final_boss[0][5] == -50:
-            for i in final_boss[0][11]:
-                graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_lave_3)
-                final_boss[0][12].append(pygame.Rect(i[0] + graphic_main.left, i[1]+graphic_main.top, 50, 50))
-
-        if final_boss[0][5] == -60:
-            final_boss[0][5] = 20
+        print(final_boss)
         if final_boss[0][6] % 2 == 0 and final_boss[0][6] > 0:
 
             final_boss[0][1][0] += final_boss[0][7][0]
+            final_boss[0][5] = 10
+        if final_boss[0][5] == -1:
+            print('rrrrrrrrrrrrrrr')
+            if random.random() <= 0.5:
+
+                dir_to_player = [-3 * (final_boss[0][1][0] - player.pos[0]) / (
+                        abs(final_boss[0][1][1] - player.pos[1]) + abs((final_boss[0][1][0] - player.pos[0]))),
+                                 -3 * (final_boss[0][1][1] - player.pos[1]) / (
+                                         abs(final_boss[0][1][1] - player.pos[1]) + abs(
+                                     final_boss[0][1][0] - player.pos[0]))]
+                final_boss[0][11] = [dir_to_player[0], dir_to_player[1], 0]
+            else:
+                final_boss[0][11] = [player.pos[0], player.pos[1], 1]
+                final_boss[0][1] = [-1000000, -1000000]
+        final_boss[0][1] = touch_wall(final_boss[0][1], (
+            final_boss[0][0][0].get_rect().w,
+            final_boss[0][0][0].get_rect().h))
+        if final_boss[0][5] < -1:
+
+            if final_boss[0][11][2] == 0:
+                final_boss[0][1][0] += final_boss[0][11][0] * 5
+                final_boss[0][1][1] += final_boss[0][11][1] * 5
+                if  is_touch_wall(final_boss[0][1], (
+                        final_boss[0][0][0].get_rect().w,
+                        final_boss[0][0][0].get_rect().h)):
+                    final_boss[0][5] = 20
+            if final_boss[0][11][2] == 1:
+                if final_boss[0][5] == -20:
+                    final_boss[0][1] = final_boss[0][11][:2]
+                    final_boss[0][5] = 10
+
     if 1 < final_boss[0][4] < 2:
         final_boss[0][4] += 0.01
         if 1.17 < final_boss[0][4] < 1.18:
@@ -1705,6 +1674,7 @@ def move_boss_final():
             final_boss[0][2] = 100
             final_boss[0][4] = 2
             final_boss[0][5] = 20
+            final_boss[0][11]=[]
     if final_boss[0][4] == 2:
         rectB = final_boss[0][0][0].get_rect(center=final_boss[0][1])
         rectB.h = 90
@@ -1721,12 +1691,22 @@ def move_boss_final():
         final_boss[0][1] = touch_wall(final_boss[0][1], (
             final_boss[0][0][0].get_rect().w,
             final_boss[0][0][0].get_rect().h))
+        if not final_boss[0][11] or is_touch_wall(final_boss[0][1], (
+            final_boss[0][0][0].get_rect().w,
+            final_boss[0][0][0].get_rect().h)) or final_boss[0][5] == -2:
+            dir_to_player = [-3 * (final_boss[0][1][0] - player.pos[0]) / (
+                    abs(final_boss[0][1][1] - player.pos[1]) + abs((final_boss[0][1][0] - player.pos[0]))),
+                             -3 * (final_boss[0][1][1] - player.pos[1]) / (
+                                     abs(final_boss[0][1][1] - player.pos[1]) + abs(
+                                 final_boss[0][1][0] - player.pos[0]))]
+            final_boss[0][11][:2] = dir_to_player
         if final_boss[0][5] == -1:
-            for i in final_boss[0][11]:
+            for i in final_boss[0][11][2:]:
                 graphic_main.modifie(i[0] / 50, i[1] / 50, tiles.blit_tile_3_3)
 
-            final_boss[0][11] = []
             final_boss[0][12] = []
+            final_boss[0][11] = final_boss[0][11][:2]
+
             n = random.randrange(0, 14)
 
 
@@ -1768,7 +1748,7 @@ def move_boss_final():
 
             if n == 7:
                 pass
-            if n == 12 or n==13 or random.random() < 0.2:
+            if n == 12 or n==13 or True:
                 final_boss[0][1] = [
                     2 * ((graphic_main.right - graphic_main.left) / 2 + graphic_main.left) - player.pos[0],
                     2 * ((graphic_main.bottom - graphic_main.top) / 2 + graphic_main.top) - player.pos[1]]
@@ -1793,18 +1773,21 @@ def move_boss_final():
                     for j in range(0, int((graphic_main.bottom - graphic_main.top) / 50)):
                         if i  % 2 == 1 or j % 2 == 0:
                             final_boss[0][11].append([i * 50, j * 50])
-
-            for i in final_boss[0][11]:
+            a = 0
+            for i in final_boss[0][11][2:]:
+                a+=1
+                print(final_boss[0][11], a, i)
                 graphic_main.modifie(i[0] / 50, i[1] / 50, tiles.blit_tile_lave_1)
 
         if final_boss[0][5] == -15:
-            for i in final_boss[0][11]:
+            for i in final_boss[0][11][2:]:
+                print(i, 'rrrrrrrreq')
                 graphic_main.modifie(i[0] / 50, i[1] / 50, tiles.blit_tile_lave_2)
             if not final_boss:
                 final_boss[0][5] = 30
 
         if final_boss[0][5] == -30:
-            for i in final_boss[0][11]:
+            for i in final_boss[0][11][2:]:
                 graphic_main.modifie(i[0] / 50, i[1] / 50, tiles.blit_tile_lave_3)
                 final_boss[0][12].append(pygame.Rect(i[0] + graphic_main.left, i[1] + graphic_main.top, 50, 50))
 
@@ -1812,6 +1795,59 @@ def move_boss_final():
             final_boss[0][5] = 20
         if final_boss[0][6] % 2 == 0 and final_boss[0][6] > 0:
             final_boss[0][1][0] += final_boss[0][7][0]
+
+        if final_boss[0][5] < -1:
+            final_boss[0][1][0] += final_boss[0][11][0] * 3
+            final_boss[0][1][1] += final_boss[0][11][1] * 3
+    if  2 < final_boss[0][4] < 3:
+        final_boss[0][4] += 0.01
+        if 2.5 < final_boss[0][4] < 2.51:
+            final_boss[0][4]=2.5
+        if final_boss[0][4] == 2.5:
+            final_boss[0][10] += 2
+        if final_boss[0][4] > 3:
+            final_boss[0][4] = 3
+            final_boss[0][5] = 60
+            final_boss[0][2] = 200
+            final_boss[0][11] = []
+    if final_boss[0][4] == 3:
+
+        rectB = final_boss[0][0][0].get_rect(center=final_boss[0][1])
+        rectB.h = 90
+        rectB.w = 46
+        rectB.center = (final_boss[0][1][0] + 23, final_boss[0][1][1] + 40)
+        # zadezd = pygame.draw.rect(graphic_main.screen, (255, 255, 255), rectB)
+        # graphic_main.update.append(zadezd)
+        dist = math.sqrt((final_boss[0][1][0] - player.pos[0]) ** 2 + (final_boss[0][1][1] - player.pos[1]) ** 2)
+        print(final_boss)
+        if final_boss[0][6] % 2 == 0 and final_boss[0][6] > 0:
+
+            final_boss[0][1][0] += final_boss[0][7][0]
+            final_boss[0][5] = 10
+        if final_boss[0][5] == -1:
+
+
+            final_boss[0][11] = [player.pos[0], player.pos[1]]
+            final_boss[0][1] = [-1000000, -1000000]
+        final_boss[0][1] = touch_wall(final_boss[0][1], (
+            final_boss[0][0][0].get_rect().w,
+            final_boss[0][0][0].get_rect().h))
+
+
+
+        if final_boss[0][5] == -20:
+            if random.random() < 1/2:
+                final_boss[0][1] = final_boss[0][11]
+            else:
+                final_boss[0][1][0] = random.randrange(graphic_main.left + 50, graphic_main.right - 50)
+                final_boss[0][1][1] = random.randrange(graphic_main.top + 50, graphic_main.bottom - 50)
+            final_boss[0][5] = 20
+            if random.random()<1/4 and not len(enemy_4_1_list)+len(enemy_4_2_list) > 4:
+                if random.random() < 0.5:
+                    spawn_enemy_4_1([final_boss[0][1][0], final_boss[0][1][1]], 'picture/enemy/mage/Mage.png', 20)
+                else:
+                    spawn_enemy_4_2([final_boss[0][1][0], final_boss[0][1][1]], 'picture/enemy/snipe/mob_1.png', 20)
+
 
 def move_ennemi_3_1():
     global enemy_3_1_list
@@ -2484,8 +2520,10 @@ def collision_with_weapon(a, strenght, knockback):
                     del final_boss[n]
                     final_boss = []
                     player.folie -= 70
+                    final_boss[n][4] += 0.01
+                    final_boss[n][2] = 10
+                elif final_boss[n][4] == 3:
                     if len(boss_list) == 0:
-                        player.dash_invicibility_unlocked=True
                         world.next_level()
                         player.xp += 150
                         break
