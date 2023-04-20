@@ -6,7 +6,7 @@ import graphic_main
 import weapon
 
 
-# Fonction qui s'occupe de ce qui est lié au soin
+# Fonction qui s'occupe de ce qui est lié au soin avec la potion
 def heal(pv):
     a = pv
 
@@ -23,7 +23,7 @@ def heal(pv):
 
     return __heal
 
-# Fonction qui s'occupe de ce qui est lié a la perte de folie
+# Fonction qui s'occupe de ce qui est lié a la perte de folie avec la potion
 def cure(madness):
     a = madness
 
@@ -40,39 +40,40 @@ def cure(madness):
 
     return __cure
 
-# Fonction qui s'occupe de ce qui est lié au mana du joueur
+# Fonction qui s'occupe de ce qui est lié au mana du joueur avec la potion
 def mana(magic):
     a = magic
 
-    # Fonction qui permet au joueur de se soigner
+    # Fonction qui permet au joueur de gagner du mana
     def _mana():
         player.mana += a
         player.possible_object_picture = None
         player.possible_object = player._pass
 
-    # Fonction qui affiche l'objet de soin sur l'écran
+    # Fonction qui affiche l'objet de gain de mana sur l'écran
     def __mana():
         player.possible_object = _mana
         player.possible_object_picture = pygame.image.load('picture/ui/Potion_Mana.png').convert_alpha()
 
     return __mana
 
-# Fonction qui s'occupe de ce qui est lié à la résistance du joueur
-# def robustness(resistance):
-#     a = resistance
+# Fonction qui s'occupe de ce qui est lié au gain de points d'expérience avec la potion
+def exp_gain(exp_points):
+    a = exp_points
 
-#     # Fonction qui permet au joueur de se soigner
-#     def _robustness():
-#         player.resistance += a
-#         player.possible_object_picture = None
-#         player.possible_object = player._pass
+    # Fonction qui permet au joueur de gagner des points d'expérience
+    def _exp_gain():
+        player.exp += a
+        player.possible_object_picture = None
+        player.possible_object = player._pass
 
-#     # Fonction qui affiche l'objet de soin sur l'écran
-#     def __robustness():
-#         player.possible_object = _robustness
-#         player.possible_object_picture = pygame.image.load('picture/ui/Potion_Resistance.png').convert_alpha()
+    # Fonction qui affiche l'objet de gain d'expérience sur l'écran
+    def __exp_gain():
+        player.possible_object = _exp_gain
+        player.possible_object_picture = pygame.image.load('picture/ui/Potion_Exp.png').convert_alpha()
 
-#     return __robustness
+    return __exp_gain
+
 
 # Fonction qui permet de changer d'arme
 def change_weapon(_weapon):
