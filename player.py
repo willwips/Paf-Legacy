@@ -31,9 +31,9 @@ lvl = 0
 resistance = 0.1
 cooldown = 0
 cooldown_move = 0
-dash_unlocked = False
+dash_unlocked = True
 dash = 0
-dash_invicibility_unlocked = False
+dash_invicibility_unlocked = True
 dash_inv = False
 folie = 0
 floie_max = 200
@@ -775,17 +775,16 @@ def collision_with_final_boss():
             collision = False
 
         if collision:
-            if collision:
-                print('ezadeiuyg')
-                if i[3][0] == True:
-                    pos[0] -= 10
-                if i[3][1] == True:
-                    pos[0] += 10
-                if i[3][2] == True:
-                    pos[1] += 10
-                if i[3][3] == True:
-                    pos[1] -= 10
-                return collision
+            print('ezadeiuyg')
+            if last_move_is_right:
+                pos[0] -= 10
+            if last_move_is_left:
+                pos[0] += 10
+            if last_move_is_down:
+                pos[1] += 10
+            if last_move_is_up:
+                pos[1] -= 10
+            return collision
         rectA = graphic_main.frame[graphic_main.current].get_rect(center=pos)
         rectA.h = 15
         rectA.w = 15
@@ -793,6 +792,8 @@ def collision_with_final_boss():
         for i in i[12]:
             if rectA.colliderect(i):
                 collision = True
+                return collision
+
 
 def collision_with_boss_3():
     global pos

@@ -426,7 +426,7 @@ def move_ennemi_1_2():
         # if is_touch_wall(enemy_1_2_list[i][1], enemy_1_2_list[i][0][enemy_1_2_list[i][8]].get_rect()) or \
         #         enemy_1_2_list[i][6] == [0, 0]:
 
-        if is_touch_wall(enemy_1_2_list[i][1],  enemy_1_2_list[i][0][enemy_1_2_list[i][8]].get_rect()) or enemy_1_2_list[i][6] == [0, 0]:
+        if is_touch_wall(final_boss[0][1],  enemy_1_2_list[i][0][enemy_1_2_list[i][8]].get_rect()) or enemy_1_2_list[i][6] == [0, 0]:
             dir_to_player = [-3 * (enemy_1_2_list[i][1][0] - player.pos[0]) / (
                     abs(enemy_1_2_list[i][1][1] - player.pos[1]) + abs((enemy_1_2_list[i][1][0] - player.pos[0]))),
                              -3 * (enemy_1_2_list[i][1][1] - player.pos[1]) / (
@@ -1557,6 +1557,7 @@ def move_boss_final():
     if not final_boss:
         return
     if final_boss[0][4] == 0:
+        #    final_boss.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0, [], [], 0])
 
         rectB = final_boss[0][0][0].get_rect(center=final_boss[0][1])
         rectB.h = 40
@@ -1564,63 +1565,30 @@ def move_boss_final():
         rectB.center = (final_boss[0][1][0] + 15, final_boss[0][1][1] + 25)
         dist = math.sqrt(
             (final_boss[0][1][0] - player.pos[0]) ** 2 + (final_boss[0][1][1] - player.pos[1]) ** 2)
+
+        if final_boss[0][6] % 2 == 0 and final_boss[0][6] > 0:
+
+            final_boss[0][1][0] += final_boss[0][7][0]
+
+
+
+        if not final_boss[0][11] or is_touch_wall(final_boss[0][1], (
+            final_boss[0][0][0].get_rect().w,
+            final_boss[0][0][0].get_rect().h)):
+            dir_to_player = [-3 * (final_boss[0][1][0] - player.pos[0]) / (
+                    abs(final_boss[0][1][1] - player.pos[1]) + abs((final_boss[0][1][0] - player.pos[0]))),
+                             -3 * (final_boss[0][1][1] - player.pos[1]) / (
+                                     abs(final_boss[0][1][1] - player.pos[1]) + abs(
+                                 final_boss[0][1][0] - player.pos[0]))]
+            final_boss[0][11] = dir_to_player
+
+
         final_boss[0][1] = touch_wall(final_boss[0][1], (
             final_boss[0][0][0].get_rect().w,
             final_boss[0][0][0].get_rect().h))
-        if final_boss[0][6] % 2 == 0 and final_boss[0][6] > 0:
+        final_boss[0][1][0] += final_boss[0][11][0] * 2 + math.sin(final_boss[0][5]/5) * 20
+        final_boss[0][1][1] += final_boss[0][11][1] * 2 + math.cos(final_boss[0][5]/5) * 20
 
-            final_boss[0][1][0] += final_boss[0][7][0]
-
-        if random.random() < 0.01:
-            final_boss[0][1] = [2 * ((graphic_main.right - graphic_main.left) / 2 + graphic_main.left) - player.pos[0],
-                                 2 * ((graphic_main.bottom - graphic_main.top) / 2 + graphic_main.top )- player.pos[1]]
-
-        if final_boss[0][5] == -1:
-            for i in final_boss[0][11]:
-                graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_3_3)
-
-            final_boss[0][11] = []
-            final_boss[0][12] = []
-            if final_boss[0][6] > 0:
-
-                final_boss[0][11].append([int((final_boss[0][1][0]-graphic_main.left)/50 - 1)*50, int((final_boss[0][1][1]-graphic_main.top)/50)*50])
-                final_boss[0][11].append([int((final_boss[0][1][0]-graphic_main.left)/50 + 1)*50, int((final_boss[0][1][1]-graphic_main.top)/50)*50])
-                final_boss[0][11].append([int((final_boss[0][1][0]-graphic_main.left)/50)*50, int((final_boss[0][1][1]-graphic_main.top)/50)*50])
-                final_boss[0][11].append([int((final_boss[0][1][0]-graphic_main.left)/50 )*50, int((final_boss[0][1][1]-graphic_main.top)/50 + 1)*50])
-                final_boss[0][11].append([int((final_boss[0][1][0]-graphic_main.left)/50 )*50, int((final_boss[0][1][1]-graphic_main.top)/50 - 1)*50])
-                final_boss[0][11].append([int((final_boss[0][1][0]-graphic_main.left)/50 + 1)*50, int((final_boss[0][1][1]-graphic_main.top)/50 - 1)*50])
-                final_boss[0][11].append([int((final_boss[0][1][0]-graphic_main.left)/50 + 1)*50, int((final_boss[0][1][1]-graphic_main.top)/50 + 1)*50])
-                final_boss[0][11].append([int((final_boss[0][1][0]-graphic_main.left)/50 - 1)*50, int((final_boss[0][1][1]-graphic_main.top)/50 + 1)*50])
-                final_boss[0][11].append([int((final_boss[0][1][0]-graphic_main.left)/50 - 1)*50, int((final_boss[0][1][1]-graphic_main.top)/50 - 1)*50])
-
-            else:
-                final_boss[0][11].append([int((player.pos[0] - graphic_main.left) / 50 + 1)*50, int((player.pos[1]-graphic_main.top)/50)*50])
-                final_boss[0][11].append([int((player.pos[0] - graphic_main.left) / 50 - 1)*50, int((player.pos[1]-graphic_main.top)/50)*50])
-                final_boss[0][11].append([int((player.pos[0] - graphic_main.left) / 50)*50, int((player.pos[1]-graphic_main.top)/50)*50])
-                final_boss[0][11].append([int((player.pos[0] - graphic_main.left) / 50 )*50, int((player.pos[1]-graphic_main.top)/50 + 1)*50])
-                final_boss[0][11].append([int((player.pos[0] - graphic_main.left) / 50)*50, int((player.pos[1]-graphic_main.top)/50 - 1)*50])
-                final_boss[0][11].append([int((player.pos[0] - graphic_main.left) / 50 + 1)*50, int((player.pos[1]-graphic_main.top)/50 - 1)*50])
-                final_boss[0][11].append([int((player.pos[0] - graphic_main.left) /50 + 1)*50, int((player.pos[1]-graphic_main.top)/50 + 1)*50])
-                final_boss[0][11].append([int((player.pos[0] - graphic_main.left) /50 - 1)*50, int((player.pos[1]-graphic_main.top)/50 + 1)*50])
-                final_boss[0][11].append([int((player.pos[0] - graphic_main.left) /50 - 1)*50, int((player.pos[1]-graphic_main.top)/50 - 1)*50])
-            for i in final_boss[0][11]:
-                graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_lave_1)
-
-
-        if final_boss[0][5] == -15:
-            for i in final_boss[0][11]:
-                graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_lave_2)
-
-        if final_boss[0][5] == -50:
-            for i in final_boss[0][11]:
-                graphic_main.modifie(i[0]/50, i[1]/50, tiles.blit_tile_lave_3)
-                final_boss[0][12].append(pygame.Rect(i[0] + graphic_main.left, i[1]+graphic_main.top, 50, 50))
-
-        if final_boss[0][5] == -60:
-            final_boss[0][5] = 20
-        if final_boss[0][6] % 2 == 0 and final_boss[0][6] > 0:
-
-            final_boss[0][1][0] += final_boss[0][7][0]
     if  0 < final_boss[0][4] < 1:
         final_boss[0][4] += 0.01
         if 0.5 < final_boss[0][4] < 0.51:
