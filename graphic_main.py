@@ -56,6 +56,7 @@ On utilise les variable p et old_p pour pouvoir stocker les coordonées des imag
 
 
 def boucle():
+    # Prend des variables globales
     global timer
     global player_pos
     global old_player_pos
