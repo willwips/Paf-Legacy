@@ -14,7 +14,6 @@ def _pass():
     pass
 # initialisation des variables
 pos = [0, 0]
-
 move_right = False
 move_left = False
 move_up = False
@@ -75,15 +74,15 @@ def boucle():
     timer -= 1
     lvl_up()
 
-    if folie < 0:
+    if folie < 0: # Permet de ne pas avoir de valeur en folie négative
         folie = 0
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+    for event in pygame.event.get(): # Boucle pour chaque event
+        if event.type == pygame.QUIT: 
             sys.exit()
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
+        if event.type == pygame.KEYDOWN: # S'occupe des évènements quand un bouton est préssé
+            if event.key == pygame.K_ESCAPE: 
                 sys.exit()
-            if event.key == pygame.K_z:
+            if event.key == pygame.K_z: # Oriente le personnage vers le haut en changeant l'image affichée et lui permet de se déplacer quand le bouton z est appuyé
                 move_down = True
                 last_move_is_right = False
                 last_move_is_left = False
@@ -91,7 +90,7 @@ def boucle():
                 last_move_is_down = True
                 is_movement += 1
                 graphic_main.frame = graphic_main.frame_back
-            if event.key == pygame.K_s:
+            if event.key == pygame.K_s: # Oriente le personnage vers la bas en changeant l'image affichée et lui permet de se déplacer quand le bouton s est appuyé
                 move_up = True
                 is_movement += 1
                 graphic_main.frame = graphic_main.frame_front
@@ -99,7 +98,7 @@ def boucle():
                 last_move_is_left = False
                 last_move_is_up = True
                 last_move_is_down = False
-            if event.key == pygame.K_d:
+            if event.key == pygame.K_d: # Oriente le personnage vers la droite en changeant l'image affichée et lui permet de se déplacer quand le bouton d est appuyé
                 move_right = True
                 is_movement += 1
                 graphic_main.frame = graphic_main.frame_R
@@ -107,7 +106,7 @@ def boucle():
                 last_move_is_left = False
                 last_move_is_up = False
                 last_move_is_down = False
-            if event.key == pygame.K_q:
+            if event.key == pygame.K_q: # Oriente le personnage vers la gauche en changeant l'image affichée et lui permet de se déplacer quand le bouton q est appuyé
                 move_left = True
                 is_movement += 1
                 graphic_main.frame = graphic_main.frame_L
@@ -115,183 +114,174 @@ def boucle():
                 last_move_is_left = True
                 last_move_is_up = False
                 last_move_is_down = False
-            if event.key == pygame.K_u:
+            if event.key == pygame.K_u: # Permet au joueur d'attaquer quand le bouton u est pressé
                 weapon.is_attacking = True
-                folie += weapon.weapon[weapon.current_weapon][4]
-                if folie >= floie_max:
+                folie += weapon.weapon[weapon.current_weapon][4] # Augmente la folie du joueur en fonction de l'arme équippée
+                if folie >= floie_max: # Si la folie est supérieur à celle pouvant être supporté, le joueur meurt
                     death()
-            if event.key == pygame.K_i:
-                if dash_unlocked:
-                    if mana - 10 >= 0:
+            if event.key == pygame.K_i: # Permet au joueur d'utiliser la capacité équippée
+                if dash_unlocked: # Utilisable que si débloqué
+                    if mana - 10 >= 0: # Diminue le mana
                         if dash == -45:
                             dash = 15
-                            if dash_invicibility_unlocked:
-                                dash_inv = True
-                            mana -= 10
-            if event.key == pygame.K_a:
+                            if dash_invicibility_unlocked: # Si l'amélioration est débloqué
+                                dash_inv = True # Active cette variable qui donne une invincibilité pendant le dash
+                            mana -= 10 # Diminue le mana du joueur
+            if event.key == pygame.K_a: # Si le bouton a est pressé, la variable est activé et permet au joueur de se soigner
                 is_heal=True
-            if event.key == pygame.K_o:
+            if event.key == pygame.K_o: # Si le bouton o est pressé, utilise un objet si il en est possible
                 possible_object()
 
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_z:
+        if event.type == pygame.KEYUP: # Effectue ce qui suit une fois un bouton relaché
+            if event.key == pygame.K_z: # Si la touche z est relachée, la vitesse de mouvement devient nulle et le joueur s'arrête dans la direction où il regardait
                 move_down = False
                 is_movement -= 1
 
-            if event.key == pygame.K_s:
+            if event.key == pygame.K_s: # Si la touche s est relachée, la vitesse de mouvement devient nulle et le joueur s'arrête dans la direction où il regardait
                 move_up = False
                 is_movement -= 1
-            if event.key == pygame.K_d:
+            if event.key == pygame.K_d: # Si la touche d est relachée, la vitesse de mouvement devient nulle et le joueur s'arrête dans la direction où il regardait
                 move_right = False
                 is_movement -= 1
-            if event.key == pygame.K_q:
+            if event.key == pygame.K_q: # Si la touche z est relachée, la vitesse de mouvement devient nulle et le joueur s'arrête dans la direction où il regardait
                 move_left = False
                 is_movement -= 1
-            if event.key == pygame.K_a:
+            if event.key == pygame.K_a: # Si la touche a est relaché, le joueur arrête de se soigner
                 heal_duration = heal_duration_max
                 is_heal=False
     if cooldown_move < 0 and (dash <= 0 or not dash_unlocked):
         dash_inv = False
-        if move_up:
-            pos[1] += 2
-        if move_down:
-            pos[1] -= 2
-        if move_left:
-            pos[0] -= 2
-        if move_right:
-            pos[0] += 2
-    if possible_object_picture == None:
-        rect = pygame.rect.Rect(100, 0, 100, 100)
-        graphic_main.update.append(pygame.draw.rect(graphic_main.screen, (0, 0, 0), rect))
-    else:
-        graphic_main.update.append(graphic_main.screen.blit(possible_object_picture, (100, 0)))
+        if move_up: # Si le joueur se déplace vers le haut
+            pos[1] += 2 # Augmente les coordonées y du joueur de 2
+        if move_down: # Si le joueur se déplace vers le bas
+            pos[1] -= 2 # Diminue les coordonées y du joueur de 2
+        if move_left: # Si le joueur se déplace vers la gauche
+            pos[0] -= 2  # Diminue les coordonées x du joueur de 2
+        if move_right: # Si le joueur se déplace vers la droite
+            pos[0] += 2 # Augmente les coordonées x du joueur de 2
+    if possible_object_picture == None: # Si pas d'objet
+        rect = pygame.rect.Rect(100, 0, 100, 100) # Créer un rectangle avec ces paramètres (de largeur et hauteur 100 pixel en haut à gauche) et l'associe à la variable
+        graphic_main.update.append(pygame.draw.rect(graphic_main.screen, (0, 0, 0), rect)) # Affiche le rectangle précédemment défini
+    else: # Si le joueur à un objet
+        graphic_main.update.append(graphic_main.screen.blit(possible_object_picture, (100, 0))) # Affiche l'objet avec ces coordonées
 
-    if cooldown_move < 0 and dash > 0 and dash_unlocked:
-        if last_move_is_up:
-            pos[1] += 10
-        if last_move_is_down:
-            pos[1] -= 10
-        if last_move_is_left:
-            pos[0] -= 10
-        if last_move_is_right:
-            pos[0] += 10
-    if is_heal:
+    if cooldown_move < 0 and dash > 0 and dash_unlocked: # Si le dash est débloqué et que les conditions sont remplies
+        if last_move_is_up: # Si le joueur se déplace vers le haut
+            pos[1] += 10 # Augmente les coordonées y du joueur de 10
+        if last_move_is_down: # Si le joueur se déplace vers le bas
+            pos[1] -= 10 # Diminue les coordonées y du joueur de 10
+        if last_move_is_left: # Si le joueur se déplace vers la gauche
+            pos[0] -= 10 # Diminue les coordonées x du joueur de 10
+        if last_move_is_right: # Si le joueur se déplace vers la droite
+            pos[0] += 10  # Augmente les coordonées x du joueur de 10
+    if is_heal: # Si la variable est active, la fonction pour se soigné est activé
         _heal()
-    if dash > -45:
+    if dash > -45: # Si le dash est au dessus de -45 (donc une fois activé), sa valeur est diminuée de 1 jusqu'à réatteidre cette valeur et être réutilisé
         dash -= 1
-    if collision_with_door(graphic_main.door):
+    if collision_with_door(graphic_main.door): # Ne se passe rien de plus si le joueur touche la porte
         pass
-    if collision_with_chest():
+    if collision_with_chest(): # Ne se passe rien de plus si le joueur touche la porte
         pass
-    if collision_with_wall():
-        if move_up:
-            pos[1] -= 2
-        if move_down:
-            pos[1] += 2
-        if move_left:
-            pos[0] += 2
-        if move_right:
-            pos[0] -= 2
-    if dash_inv == False:
-        if collision_with_ennemy_1():
+    if collision_with_wall(): # Si le joueur cogne un mur son emplacement est modifié
+        if move_up: # Si le joueur se déplace vers le haut
+            pos[1] -= 2 # Diminue les coordonées y du joueur de 2
+        if move_down: # Si le joueur se déplace vers le bas
+            pos[1] += 2 # Augmente les coordonées y du joueur de 2
+        if move_left: # Si le joueur se déplace vers la gauche
+            pos[0] += 2 # Augmente les coordonées x du joueur de 2
+        if move_right: # Si le joueur se déplace vers la droite
+            pos[0] -= 2 # Diminue les coordonées x du joueur de 2
 
+    if dash_inv == False: # Si l'invulnérabilité lors d'une dash est pas obtenue et activé le joueur perd des pv quand il touche un ennemi
+        if collision_with_ennemy_1():
             if cooldown <= 0:
                 pv -= 20 - 20 * resistance
                 cooldown = 60
-
                 cooldown_move = 0
+                
         if collision_with_ennemy_1_2():
-
             if cooldown <= 0:
                 pv -= 10 - 10 * resistance
                 cooldown = 60
-
                 cooldown_move = 0
-        if collision_with_ennemy_3_2():
 
+        if collision_with_ennemy_3_2():
             if cooldown <= 0:
                 pv -= 20 - 20 * resistance
                 cooldown = 60
-
                 cooldown_move = 0
+
         if collision_with_boss_1():
             if cooldown <= 0:
                 pv -= 15 - 15 * resistance
                 cooldown = 60
-
                 cooldown_move = 0
+
         if collision_with_ennemy_2_1():
-
             if cooldown <= 0:
                 pv -= 20 - 20 * resistance
                 cooldown = 60
-
                 cooldown_move = 0
+
         if collision_with_ennemy_2_2():
-
             if cooldown <= 0:
                 pv -= 20 - 20 * resistance
                 cooldown = 60
-
                 cooldown_move = 0
-        _coll = collision_with_projectile()
+
+        _coll = collision_with_projectile() # De même avec les projectiles
         if _coll:
             if cooldown <= 0:
                 pv -= _coll[0] - _coll[0] * resistance
                 folie += _coll[1]
                 cooldown = 60
                 cooldown_move = 0
-        if collision_with_ennemy_slime():
 
+        if collision_with_ennemy_slime(): # De même avec les slimes
             if cooldown <= 0:
                 pv -= 20 - 20 * resistance
                 cooldown = 60
-
                 cooldown_move = 0
+                
         if collision_with_ennemy_4_1():
-
             if cooldown <= 0:
                 pv -= 20 - 20 * resistance
                 cooldown = 60
-
                 cooldown_move = 0
-        if collision_with_ennemy_4_2():
 
+        if collision_with_ennemy_4_2():
             if cooldown <= 0:
                 #pv -= 0 - 0 * resistance
                 cooldown = 60
-
                 cooldown_move = 0
+
         if collision_with_boss_4():
             if cooldown <= 0:
                 pv -= 15 - 15 * resistance
                 cooldown = 60
-
                 cooldown_move = 0
+
         if collision_with_boss_2():
             if cooldown <= 0:
-
                 pv -= 15 - 15 * resistance
                 cooldown = 60
-
                 cooldown_move = 0
+
         if collision_with_boss_3():
             if cooldown <= 0:
-
                 pv -= 15 - 15 * resistance
                 cooldown = 60
-
                 cooldown_move = 0
+
         if collision_with_final_boss():
             if cooldown <= 0:
-
                 pv -= 15 - 15 * resistance
                 cooldown = 60
-
                 cooldown_move = 0
 
     print(is_movement)
-    if pv <= 0:
+
+    if pv <= 0: # Si les pv du joueur sont inférieur ou égaux à 0, le joueur meurt et la fonction est activé
         death()
     cooldown -= 1
     cooldown_move -= 1
@@ -316,6 +306,8 @@ def boucle():
 
     if pv > pv_max:
         pv = pv_max
+
+# Définition de la collision avec les différents éléments du jeu
 def collision_with_door(door):
     global folie
     rectA = graphic_main.frame[graphic_main.current].get_rect(center=(pos[0] + 15, pos[1] + 25))
@@ -873,7 +865,7 @@ def showpv():
     rectB = pygame.draw.rect(graphic_main.screen, (40, 40, 40), life_black)
     return rectA, rectB
 
-def death():
+def death(): # Réinitialisation de toutes les variables à la mort du joueur et la fonction est activé
     global pos
     global move_down
     global move_right
@@ -909,9 +901,7 @@ def death():
     global is_heal
     global timer
     global dead
-
     pos = [0, 0]
-
     move_right = False
     move_left = False
     move_up = False
@@ -950,7 +940,6 @@ def death():
     ennemy.enemy_4_2_list = []
     ennemy.enemy_4_1_list = []
     ennemy.final_boss = []
-
     ennemy.boss_list = []
     ennemy.enemy_3_2_list = []
     ennemy.enemy_3_1_list = []
@@ -961,6 +950,8 @@ def death():
     ennemy.boss_list_2 = []
     ennemy.enemy_1_list = []
     ennemy.enemy_1_2_list = []
+
+# Fonction qui affiche la barre de folie en l'actualisant
 def showfolie():
     w, h = pygame.display.get_surface().get_size()
     rectA = graphic_main.screen.blit(barre_de_folie, (w/300, h * 20/100))
