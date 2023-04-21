@@ -15,7 +15,7 @@ _chest = [False for i in range(0, 10)]
 chest = []
 
 
-# Fonction qui permet la création des tuiles nécessaire à l'apparition de la salle
+# Fonction qui permet le chargement des tuiles nécessaire à l'apparition de la salle
 def load_tile():
     # Variables de type global
     global Tile_1
