@@ -281,7 +281,8 @@ def boucle():
 
     print(is_movement)
 
-    
+    if is_movement < 0:
+        is_movement = 0
     if pv <= 0: # Si les pv du joueur sont inférieur ou égaux à 0, le joueur meurt et la fonction est activé
         death()
     cooldown -= 1
