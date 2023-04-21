@@ -48,7 +48,7 @@ def spawn_enemy_3_1(pos, img, pv):
 
     pos = pos
     global enemy_3_1_list
-    enemy_3_1_list.append([img_, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, 0, [proj_1, proj_2, pygame.transform.rotate(proj_1, 90), pygame.transform.rotate(proj_2, 90), pygame.transform.rotate(proj_1, 180), pygame.transform.rotate(proj_2, 180), pygame.transform.rotate(proj_1, -90), pygame.transform.rotate(proj_2, -90)]])
+    enemy_3_1_list.append([img_, pos, pv + 10, 10, [False, False, False, False], [0, 0], False, 10, 0, [proj_1, proj_2, pygame.transform.rotate(proj_1, 90), pygame.transform.rotate(proj_2, 90), pygame.transform.rotate(proj_1, 180), pygame.transform.rotate(proj_2, 180), pygame.transform.rotate(proj_1, -90), pygame.transform.rotate(proj_2, -90)]])
 def spawn_enemy_2_2(pos, img, pv):
     img_ = []
     n = 0
@@ -77,7 +77,7 @@ def spawn_enemy_3_2(pos, img, pv):
         _img.append(pygame.image.load(i).convert_alpha())
     pos = pos
     global enemy_1_2_list
-    enemy_3_2_list.append([_img, pos, pv, 10, [False, False, False, False], [0, 0], [0, 0], 0, 0])
+    enemy_3_2_list.append([_img, pos, pv + 10, 10, [False, False, False, False], [0, 0], [0, 0], 0, 0])
 
 def spawn_enemy_1_2(pos, img, pv):
     _img = []

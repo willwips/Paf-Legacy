@@ -290,7 +290,6 @@ def boucle():
 
                 cooldown_move = 0
 
-    print(is_movement)
     if pv <= 0:
         death()
     cooldown -= 1
