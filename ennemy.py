@@ -133,7 +133,7 @@ def spawn_boss_1(pos, pv):
     _img.append(
         pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_5.png'), [92, 80]))
     boss_list.append([_img, pos, pv, [False, False, False, False], -1, 0, 0, [0, 0], 0, [0, 0], 0])
-    boss_1_dial = [pygame.image.load('picture/ui/dialogue_boss_1_1.png').convert_alpha()]
+    boss_1_dial = [pygame.image.load('picture/ui/dialogue_boss_1_1.png').convert_alpha(), pygame.image.load('picture/ui/Etage -5 fin.pdf (3).png').convert_alpha()]
 def spawn_boss_2(pos, pv, is_reel  = True):
     _img = []
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_boss_1.png').convert_alpha(), [50, 45]))
