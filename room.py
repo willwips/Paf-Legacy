@@ -4,7 +4,7 @@ import player
 import tiles
 import graphic_main
 import weapon
-
+import random
 
 # Fonction qui s'occupe de ce qui est lié au soin avec la potion
 def heal(pv):
@@ -74,7 +74,16 @@ def exp_gain(exp_points):
 
     return __exp_gain
 
-
+def popo():
+    n = random.random()
+    if n < 1/4:
+        return heal(player.pv_max*0.4)
+    elif n < 2/4:
+        return cure(player.folie*0.4)
+    elif n<3/4:
+        return exp_gain(50)
+    else:
+        return mana(player.mana_max*0.4)
 # Fonction qui permet de changer d'arme
 def change_weapon(_weapon):
     def _change():
@@ -751,8 +760,8 @@ def room_1_5(n, _door):
     door = []
     chest = {}
     tiles._chest = [False]
-    x = 5  # Longueur x de la salle
-    y = 5  # Longueur y de la salle
+    x = 7  # Longueur x de la salle
+    y = 7  # Longueur y de la salle
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
     left = pygame.display.get_surface().get_size()[0] / 2 - x / 2 * 50
@@ -766,11 +775,11 @@ def room_1_5(n, _door):
         for i in range(0, x):
             room.append([])
             for j in range(0, y):
-                if j == 2 and i == 2:
+                if j == 3 and i == 3:
                     room[i].append(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_2_1(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_2_1(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_2_1(i * 50 + left, j * 50 + top), popo())[1])
 
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
@@ -896,7 +905,7 @@ def room_1_6(n, _door):
                     room[i].append(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_4_1(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_4_1(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_4_1(i * 50 + left, j * 50 + top), popo())[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_black_1(i * 50 + left, j * 50 + top,
@@ -1180,7 +1189,7 @@ def room_1_8(n, _door):
                     room[i].append(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_3_1(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_3_1(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_3_1(i * 50 + left, j * 50 + top), popo())[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_black_1(i * 50 + left, j * 50 + top,
@@ -1313,7 +1322,7 @@ def room_1_9(n, _door):
                     room[i].append(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_2_1(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_black(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_2_1(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_2_1(i * 50 + left, j * 50 + top), popo())[1])
 
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
@@ -1427,7 +1436,7 @@ def room_1_10(n, _door):
     door = []
     chest = {}
     tiles._chest = [False]
-    x = 3  # Longueur x de la salle
+    x = 4  # Longueur x de la salle
     y = 10  # Longueur y de la salle
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
     bottom = pygame.display.get_surface().get_size()[1] / 2 + y / 2 * 50
@@ -2673,8 +2682,8 @@ def room_2_5(n, _door):
 
     tiles._chest = [False]  # Liste qui permet ou non la création de coffre
 
-    x = 5  # Longueur x de la salle
-    y = 5  # Longueur y de la salle
+    x = 7  # Longueur x de la salle
+    y = 7  # Longueur y de la salle
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -2693,11 +2702,11 @@ def room_2_5(n, _door):
         for i in range(0, x):
             room.append([])
             for j in range(0, y):
-                if j == 2 and i == 2:
+                if j == 3 and i == 3:
                     room[i].append(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_2_2(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_2_2(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_2_2(i * 50 + left, j * 50 + top), change_weapon("final_axe"))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_purple(i * 50 + left, j * 50 + top,
@@ -2836,7 +2845,7 @@ def room_2_6(n, _door):
                     room[i].append(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_4_2(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_4_2(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_4_2(i * 50 + left, j * 50 + top), popo())[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_purple(i * 50 + left, j * 50 + top,
@@ -3569,7 +3578,7 @@ def room_2_11(n, _door):
                     room[i].append(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_3_2(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_purple(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_3_2(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_3_2(i * 50 + left, j * 50 + top), popo())[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_purple(i * 50 + left, j * 50 + top,
@@ -4127,7 +4136,7 @@ def room_3_1(n, _door):
                     room[i].append(tiles.blit_chest_red(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_4_3(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_red(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_4_3(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_4_3(i * 50 + left, j * 50 + top), popo())[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_red(i * 50 + left, j * 50 + top,
@@ -4667,8 +4676,8 @@ def room_3_5(n, _door):
 
     tiles._chest = [False] # Liste qui permet ou non la création de coffre
 
-    x = 5  # Longueur x de la salle
-    y = 5  # Longueur y de la salle
+    x = 7  # Longueur x de la salle
+    y = 7  # Longueur y de la salle
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -4688,11 +4697,11 @@ def room_3_5(n, _door):
         for i in range(0, x):
             room.append([])
             for j in range(0, y):
-                if j == 2 and i == 2:
+                if j == 3 and i == 3:
                     room[i].append(tiles.blit_chest_red(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_2_3(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_red(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_2_3(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_2_3(i * 50 + left, j * 50 + top), change_weapon("katana"))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_red(i * 50 + left, j * 50 + top,
@@ -4832,7 +4841,7 @@ def room_3_6(n, _door):
                     room[i].append(tiles.blit_chest_red(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_3_3(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_red(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_3_3(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_3_3(i * 50 + left, j * 50 + top), popo())[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_red(i * 50 + left, j * 50 + top,
@@ -5682,7 +5691,7 @@ def room_3_12(n, _door):
                     room[i].append(tiles.blit_chest_red(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_4_3(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_red(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_4_3(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_4_3(i * 50 + left, j * 50 + top), popo())[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_red(i * 50 + left, j * 50 + top,
@@ -6254,7 +6263,7 @@ def room_4_2(n, _door):
                     room[i].append(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_3_4(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_3_4(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_3_4(i * 50 + left, j * 50 + top), popo())[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_blue(i * 50 + left, j * 50 + top,
@@ -6656,8 +6665,8 @@ def room_4_5(n, _door):
 
     tiles._chest = [False]  # Liste qui permet ou non la création de coffre
 
-    x = 5  # Longueur x de la salle
-    y = 5  # Longueur y de la salle
+    x = 7  # Longueur x de la salle
+    y = 7  # Longueur y de la salle
 
     # Associe les différentes parties de l'écran dans des variables pour faciliter la position des entitées quelque soit l'écran
     top = pygame.display.get_surface().get_size()[1] / 2 - y / 2 * 50
@@ -6676,11 +6685,11 @@ def room_4_5(n, _door):
         for i in range(0, x):
             room.append([])
             for j in range(0, y):
-                if j == 2 and i == 2:
+                if j == 3 and i == 3:
                     room[i].append(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_2_4(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_2_4(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_2_4(i * 50 + left, j * 50 + top), change_weapon("final_sword"))[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_blue(i * 50 + left, j * 50 + top,
@@ -6818,7 +6827,7 @@ def room_4_6(n, _door):
                     room[i].append(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_1_4(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_1_4(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_1_4(i * 50 + left, j * 50 + top), popo())[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_blue(i * 50 + left, j * 50 + top,
@@ -7658,7 +7667,7 @@ def room_4_11(n, _door):
                     room[i].append(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
                                                            tiles.blit_tile_1_4(i * 50 + left, j * 50 + top), 0)[0])
                     chest.update(tiles.blit_chest_blue(i * 50 + left, j * 50 + top,
-                                                         tiles.blit_tile_1_4(i * 50 + left, j * 50 + top), heal(50))[1])
+                                                         tiles.blit_tile_1_4(i * 50 + left, j * 50 + top), popo())[1])
                 elif j == int(y / 2) and i == x - 1:
                     if _door[0]:
                         room[i].append(tiles.blit_door_blue(i * 50 + left, j * 50 + top,

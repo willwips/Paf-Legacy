@@ -26,17 +26,18 @@ modifie = None
 
 def initialisation(full_screen=False):
     pygame.init()
-    pygame.mouse.set_visible(False)
+    pygame.mouse.set_visible(False) # Cache la sourie à l'écran
 
-    global screen
-    if full_screen:
+    global screen # Variable de type globale
+
+    if full_screen: # Affiche l'écran en plain écran
         screen = pygame.display.set_mode((0, 0), flags=pygame.FULLSCREEN)
-    else:
+    else: # Affiche l'écran avec une largeur de 600 pixels et une hauteur de 400 pixels
         screen = pygame.display.set_mode((600, 400))
-    pygame.display.flip()
+    pygame.display.flip() # Mise à jour de l'affichage complet à l'écran
     return screen
 
-
+# Initialisation de variables
 current = 0
 player_pos = None
 old_player_pos = None
@@ -71,7 +72,6 @@ def boucle():
     global r
     timer -= 1
     if timer == 0:
-
         world.show_next_room()
     elif timer <= 0:
         u(old_update)

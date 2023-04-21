@@ -24,7 +24,7 @@ last_move_is_left = True
 last_move_is_up = False
 last_move_is_down = False
 is_movement = 0
-pv = 1
+pv = 120
 pv_max = 120
 strength = 10
 xp = 0
@@ -32,9 +32,9 @@ lvl = 0
 resistance = 0.1
 cooldown = 0
 cooldown_move = 0
-dash_unlocked = True
+dash_unlocked = False
 dash = 0
-dash_invicibility_unlocked = True
+dash_invicibility_unlocked = False
 dash_inv = False
 folie = 0
 floie_max = 200
@@ -290,7 +290,7 @@ def boucle():
 
                 cooldown_move = 0
 
-
+    print(is_movement)
     if pv <= 0:
         death()
     cooldown -= 1
@@ -950,6 +950,8 @@ def death():
     ennemy.enemy_4_2_list = []
     ennemy.enemy_4_1_list = []
     ennemy.final_boss = []
+
+    ennemy.boss_list = []
     ennemy.enemy_3_2_list = []
     ennemy.enemy_3_1_list = []
     ennemy.boss_list_4 = []

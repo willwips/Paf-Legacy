@@ -5,7 +5,7 @@ import player
 
 weapon = {}
 
-
+# Fonction qui rempli le dictionnaire avec le nom d'une arme associé à son image
 def import_weapon():
     global weapon
     weapon['final_axe'] = (
@@ -17,13 +17,13 @@ def import_weapon():
     weapon['katana'] = (
         pygame.transform.scale(pygame.image.load('picture/weapon/final_sword.png').convert_alpha(), (12, 70)), 5 , [0, 0], 6, 5)
 
-
+# Initialisation de variables avec des valeurs initiales
 is_attacking = False
 angle = 0
 current_weapon = 'curved_sword'
 modify_angle = 5
 
-
+# Fonction qui permet de faire rotationner l'image 
 def rotate(surface, angle, pivot, offset):
     rotated_image = pygame.transform.rotate(surface, -angle)
     rotated_offset = offset.rotate(angle)
