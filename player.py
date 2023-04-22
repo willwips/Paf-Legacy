@@ -879,9 +879,11 @@ def lvl_up():
     global heal
     global lvl
     # vérifie que le joueur est assez d'xp
-    if xp >= 200 + 4 * lvl ** 2 + 6 * lvl:
+    if xp >= 150 + 4 * lvl ** 2 + 6 * lvl:
         # augmente les différentes statistiques
-        xp -= 200 + 4 ** lvl * 2 + 6 * lvl
+        xp -= 150 + 4 ** lvl * 2 + 6 * lvl
+        if xp < 0:
+            xp = 0
         pv *= (pv_max + 10) / pv_max
         pv_max += 10
         strength += 1
@@ -943,6 +945,7 @@ def death():  # Réinitialisation de toutes les variables à la mort du joueur e
     global is_heal
     global timer
     global dead
+    world.level = 0
     pos = [0, 0]
     move_right = False
     move_left = False

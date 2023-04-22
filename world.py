@@ -69,7 +69,6 @@ def next_level():
     graphic_main.timer = 60
     coo = [0, 0]
     level += 1
-    print(level)
     create_floor(level)
     next_room(0, 120)
 
