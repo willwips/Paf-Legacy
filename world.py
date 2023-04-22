@@ -8,9 +8,12 @@ coo = [0, 0]
 level = 0
 pos_p = None
 pygame.mixer.init()
+
+# permet de créer le labyrinthe pour chaque niveau
 def create_floor(_level):
     global floor
     floor = []
+    # pour chaque niveau, met les différentes salles dans un labyrinthe et lance la musique de la zone
     if _level == 0:
         pygame.mixer.music.load('picture/musique/musique_zone_1.mp3')
         pygame.mixer.music.play(loops=-1)
@@ -48,6 +51,7 @@ def create_floor(_level):
         first_room = room.room_5_0
         liste_level = [room.room_boss_5]
         pos_boss = None
+    # créer le labyrinthe avec ces salles
     for i in range(10):
         floor.append([])    
         for j in range(0, 10):
@@ -58,6 +62,7 @@ def create_floor(_level):
             else:
                 floor[i].append(random.choice(liste_level))
 
+# permet de passer au prochain niveau en recréant le labyrinthe et en réinitialisant la position du joueur
 def next_level():
     global level
     global coo
@@ -69,11 +74,15 @@ def next_level():
     next_room(0, 120)
 
 create_floor(0)
+
+# permet d'actualiser les coordonnés du joueur par rapport à la porte et d'afficher un écran noir
 def next_room(n, time = 20):
     global pos_p
     pos_p = n
     graphic_main.timer = time
     player.timer = 120
+
+# charge la prochaine salle et l'affiche sur l'écran
 def show_next_room():
     try:
         graphic_main.r, graphic_main.u, graphic_main.door, graphic_main.top, graphic_main.bottom, graphic_main.left, graphic_main.right, player.pos, graphic_main.chest, graphic_main.modifie = \
