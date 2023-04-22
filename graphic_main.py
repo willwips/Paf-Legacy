@@ -141,11 +141,15 @@ def boucle():
         ennemy.boucle()
         r = pygame.rect.Rect(0, 0, 50, 50)
         update.append(pygame.draw.rect(screen,(0, 0, 0), r))
-        r = pygame.rect.Rect(150, 0, 50, 50)
+        r = pygame.rect.Rect(150, 0, 100, 100)
         update.append(pygame.draw.rect(screen,(0, 0, 0), r))
         update.append(screen.blit(pygame.font.SysFont(None ,30).render(str(int(player.mana)), 1, (0, 0, 255)), (10, 10)))
         update.append(screen.blit(pygame.font.SysFont(None ,30).render(str(int(player.xp)), 1, (0, 255, 0)), (150, 10)))
         update.append(screen.blit(pygame.font.SysFont(None ,30).render(str(int(player.lvl)), 1, (0, 255, 0)), (200, 10)))
+        if player.dash_unlocked:
+            update.append(
+                screen.blit(pygame.font.SysFont(None, 30).render('dash débloqué', 1, (0, 255, 0)), (220, 10)))
+
 
         pygame.display.update(update + old_update + trash_update)
         trash_update = []
