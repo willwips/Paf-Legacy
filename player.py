@@ -50,7 +50,7 @@ heal_duration_max = 120
 is_heal = False
 timer = 60
 dead = False
-
+win = True
 
 # boucle permettant de bouger le personage
 def boucle():
@@ -994,6 +994,92 @@ def death():  # Réinitialisation de toutes les variables à la mort du joueur e
     ennemy.enemy_1_2_list = []
     ennemy.enemy_slime_list = []
 
+def win():  # Réinitialisation de toutes les variables à la mort du joueur et la fonction est activé
+    global pos
+    global move_down
+    global move_right
+    global move_up
+    global move_left
+    global last_move_is_up
+    global last_move_is_down
+    global last_move_is_left
+    global last_move_is_right
+    global is_movement
+    global pv
+    global pv_max
+    global strength
+    global xp
+    global lvl
+    global resistance
+    global cooldown
+    global cooldown_move
+    global dash_unlocked
+    global dash
+    global dash_invicibility_unlocked
+    global dash_inv
+    global folie
+    global floie_max
+    global barre_de_folie
+    global possible_object
+    global possible_object_picture
+    global mana
+    global mana_max
+    global heal
+    global heal_duration
+    global heal_duration_max
+    global is_heal
+    global timer
+    global win
+    pos = [0, 0]
+    move_right = False
+    move_left = False
+    move_up = False
+    move_down = False
+    last_move_is_right = False
+    last_move_is_left = True
+    last_move_is_up = False
+    last_move_is_down = False
+    is_movement = 0
+    pv = 120
+    pv_max = 120
+    strength = 10
+    xp = 0
+    lvl = 0
+    resistance = 0.1
+    cooldown = 0
+    cooldown_move = 0
+    dash_unlocked = False
+    dash = 0
+    dash_invicibility_unlocked = False
+    dash_inv = False
+    folie = 0
+    floie_max = 200
+    possible_object = _pass
+    possible_object_picture = None
+    mana = 100
+    mana_max = 100
+    heal = 15
+    heal_duration = 120
+    heal_duration_max = 120
+    is_heal = False
+    timer = 60
+    win = True
+    world.create_floor(0)
+    world.coo = [0, 0]
+    ennemy.enemy_4_2_list = []
+    ennemy.enemy_4_1_list = []
+    ennemy.final_boss = []
+    ennemy.boss_list = []
+    ennemy.enemy_3_2_list = []
+    ennemy.enemy_3_1_list = []
+    ennemy.boss_list_4 = []
+    ennemy.boss_list_3 = []
+    ennemy.enemy_2_2_list = []
+    ennemy.enemy_2_1_list = []
+    ennemy.boss_list_2 = []
+    ennemy.enemy_1_list = []
+    ennemy.enemy_1_2_list = []
+    ennemy.enemy_slime_list = []
 
 # Fonction qui affiche la barre de folie en l'actualisant
 def showfolie():

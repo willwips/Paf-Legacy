@@ -8,6 +8,7 @@ import player
 import tiles
 import world
 
+# initialise les différentes listes
 enemy_1_list = []
 enemy_1_2_list = []
 enemy_2_1_list = []
@@ -33,6 +34,15 @@ boss_list_3 = []
 final_boss = []
 
 
+# les fonctions suivantes créent les enemies en les ajoutant aux listes correspondantes à chaques ennemie
+# les listes possède pour chaque index différent qu'il serait long de détailler mais de manière général:
+#   - l'index 0 possède les images correspondant à chaques ennemie
+#   - l'index 1 possède les coordonnées de l'enemie
+#   - l'index 3 possède les point de vie de l'enemie
+#   - enfin le reste des indexes n'est pas une géneralités mais on retrouve générallemnt un qui décroit au fûr et à mesure du temps pour les attaques
+#   - un qui stock l'image actuelle
+#   - un qui stock le recule
+#...
 def spawn_enemy_2_1(pos, img, pv):
     img_ = []
     n = 0
@@ -248,6 +258,7 @@ def spawn_enemy_4_2(pos, img, pv):
     enemy_4_2_list.append([_img, pos, pv, 10, [False, False, False, False], [0, 0], False, 10, 0])
 
 
+# cette fonction s'occupe de bouger chaque enemie en appelant la fonction move associé et décroit les différentes variable si besoin
 def boucle():
     global enemy_1_list
     global enemy_2_1_list
@@ -363,20 +374,8 @@ def boucle():
         n += 1
 
 
-def test_collision__ennemy_1(rect, index=-1):
-    n = 0
-    for i in enemy_1_list:
-        if n != index:
-            rectB = i[0].get_rect(center=i[1])
-            rectB.h = 40
-            rectB.w = 15
-            rectB.center = (i[1][0] + 15, i[1][1] + 25)
-            if rectB.colliderect(rect):
-                return True
 
-        n += 1
-
-
+# vérifie si un enemie touche le mur et renvoie True si c'est le cas
 def is_touch_wall(pos, size):
     if pos[0] < graphic_main.left + 50:
         return True
@@ -390,6 +389,7 @@ def is_touch_wall(pos, size):
     return False
 
 
+# vérifie si un enemie touche le mur et renvoie sa nouvelle position si besoin
 def touch_wall(pos, size):
     if pos[0] < graphic_main.left + 50:
         pos[0] += 10
@@ -403,6 +403,7 @@ def touch_wall(pos, size):
     return pos
 
 
+# les fonction suivante s'occupe de déplacer chaques enemies
 def move_ennemi_1():
     global enemy_1_list
     for i in range(0, len(enemy_1_list)):
@@ -2022,8 +2023,8 @@ def move_boss_final():
         final_boss[0][4] += 0.005
         graphic_main.update.append(graphic_main.screen.blit(boss_final_dial[0], (pygame.display.get_surface().get_size()[0] / 2 - 368 / 2, pygame.display.get_surface().get_size()[1] / 5 * 4)))
         if final_boss[0][4] >= 3:
-            world.next_level()
             final_boss = []
+            player.win()
 
 def move_ennemi_3_1():
     global enemy_3_1_list
@@ -2257,7 +2258,9 @@ def move_projectile():
             del projectile_list[n]
         n += 1
 
-
+# s'occupe de la collision entre l'arme et un ennemi,
+# si c'est le cas l'ennemi perd des pvs en fonction de l'arme et obtient un effet de knockback
+# si c'est pvs sont à 0 l'ennemi disparait ou le boss change de phase
 def collision_with_weapon(a, strenght, knockback):
     n = 0
     global enemy_1_list
