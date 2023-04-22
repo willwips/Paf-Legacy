@@ -64,7 +64,7 @@ def exp_gain(exp_points):
 
     # Fonction qui permet au joueur de gagner des points d'expérience
     def _exp_gain():
-        player.exp += a
+        player.xp += a
         player.possible_object_picture = None
         player.possible_object = player._pass
 
@@ -1949,7 +1949,7 @@ def room_2_0(n, _door):
     right = pygame.display.get_surface().get_size()[0] / 2 + x / 2 * 50
 
     # Donne la position initialie de
-    pos_play = [[(x - 1) * 50 + left - 20, int(y / 2) * 50 + top],
+    pos_play = [[(x - 1) * 27 + left - 22, int(y / 2) * 100 ],
                 [int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10 - 50], [left + 20, int(y / 2) * 50 + top],
                 [int(x / 2) * 50 + left, top + 50]]
 
@@ -3989,7 +3989,7 @@ def room_3_0(n, _door):
 
 
     # Donne la position initialie de
-    pos_play = [[(x - 1) * 50 + left - 20, int(y / 2) * 50 + top],
+    pos_play = [[(x - 1) * 27 + left - 22, int(y / 2) * 100 ],
                 [int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10 - 50], [left + 20, int(y / 2) * 50 + top],
                 [int(x / 2) * 50 + left, top + 50]]
 
@@ -5971,7 +5971,7 @@ def room_4_0(n, _door):
     right = pygame.display.get_surface().get_size()[0] / 2 + x / 2 * 50
 
     # Donne la position initialie de
-    pos_play = [[(x - 1) * 50 + left - 20, int(y / 2) * 50 + top],
+    pos_play = [[(x - 1) * 27 + left - 22, int(y / 2) * 100 ],
                 [int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10 - 50], [left + 20, int(y / 2) * 50 + top],
                 [int(x / 2) * 50 + left, top + 50]]
 
@@ -6042,14 +6042,6 @@ def room_4_0(n, _door):
 
         # Initie la position d'apparition du joueur
         player.pos = [510 + left, 240 + top]
-
-        # ennemy.spawn_enemy_4_2([left + 550, top + 250], 'picture/enemy/snipe/mob_1.png', 20)
-        # ennemy.spawn_enemy_4_1([left + 320, top + 400], 'picture/enemy/mage/Mage.png', 20)
-        # ennemy.spawn_enemy_4_1([left + 370, top + 80], 'picture/enemy/mage/Mage.png', 20)
-        # ennemy.spawn_enemy_4_2([left + 427, top + 79], 'picture/enemy/snipe/mob_1.png', 20)
-        # ennemy.spawn_boss_4([left + 427, top + 79], 200)
-        # ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
-        #ennemy.spawn_boss_2([left + 427, top + 79], 80)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
@@ -8080,7 +8072,7 @@ def room_5_0(n, _door):
     right = pygame.display.get_surface().get_size()[0] / 2 + x / 2 * 50
 
     # Donne la position initialie de
-    pos_play = [[(x - 1) * 50 + left - 20, int(y / 2) * 50 + top],
+    pos_play = [[(x - 1) * 27 + left - 22, int(y / 2) * 100 ],
                 [int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10 - 50], [left + 20, int(y / 2) * 50 + top],
                 [int(x / 2) * 50 + left, top + 50]]
 
