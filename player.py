@@ -1030,6 +1030,7 @@ def win():  # Réinitialisation de toutes les variables à la mort du joueur et 
     global is_heal
     global timer
     global _win
+    weapon.current_weapon = 'curved_sword'
     pos = [0, 0]
     move_right = False
     move_left = False
