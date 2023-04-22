@@ -192,7 +192,7 @@ def spawn_boss_final(pos, pv):
     final_boss.append([_img, pos, pv, [False, False, False, False], -1, 0, 0, [0, 0], 0, [0, 0], 0, [], [], 0])
 
     boss_final_dial = [
-        pygame.transform.scale(pygame.image.load('picture/ui/Etage -1 fin p1.pdf (3).png').convert_alpha(), [368, 100]),
+        pygame.transform.scale(pygame.image.load('picture/ui/Etage -1 d�but.pdf (3).png').convert_alpha(), [368, 100]),
         pygame.transform.scale(pygame.image.load('picture/ui/Etage -1 fin p1.pdf (3).png').convert_alpha(), [368, 100]),
         pygame.transform.scale(pygame.image.load('picture/ui/Etage -1 fin p2.pdf (3).png').convert_alpha(), [368, 100]),
         pygame.transform.scale(pygame.image.load('picture/ui/Etage -1 fin p3.pdf (3).png').convert_alpha(), [368, 100]),

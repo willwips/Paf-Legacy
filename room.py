@@ -63,7 +63,7 @@ def exp_gain(exp_points):
 
     # Fonction qui permet au joueur de gagner des points d'expérience
     def _exp_gain():
-        player.exp += a
+        player.xp += a
         player.possible_object_picture = None
         player.possible_object = player._pass
 
