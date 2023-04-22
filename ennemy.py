@@ -2023,8 +2023,8 @@ def move_boss_final():
         final_boss[0][4] += 0.005
         graphic_main.update.append(graphic_main.screen.blit(boss_final_dial[0], (pygame.display.get_surface().get_size()[0] / 2 - 368 / 2, pygame.display.get_surface().get_size()[1] / 5 * 4)))
         if final_boss[0][4] >= 3:
-            world.next_level()
             final_boss = []
+            player.win()
 
 def move_ennemi_3_1():
     global enemy_3_1_list
