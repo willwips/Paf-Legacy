@@ -1018,13 +1018,13 @@ def move_boss_2():
                 if player.pos[1] > boss_list_2[0][1][1]:
                     boss_list_2[0][10] = 0
                 if player.pos[1] <= boss_list_2[0][1][1]:
-                    boss_list_2[0][10] = 1
+                    boss_list_2[0][10] = 2
 
             if player.pos[0] <= boss_list_2[0][1][0]:
                 if player.pos[1] > boss_list_2[0][1][1]:
-                    boss_list_2[0][10] = 0
-                if player.pos[1] <= boss_list_2[0][1][1]:
                     boss_list_2[0][10] = 1
+                if player.pos[1] <= boss_list_2[0][1][1]:
+                    boss_list_2[0][10] = 3
     if 0 < boss_list_2[0][4] < 1:
         boss_list_2[0][4] += 0.01
 
@@ -1083,7 +1083,17 @@ def move_boss_2():
                 boss_list_2[i][1][0] += boss_list_2[i][7][0]
 
             boss_list_2[i][1] = touch_wall(boss_list_2[i][1], (20, 20))
+            if player.pos[0] > boss_list_2[i][1][0]:
+                if player.pos[1] > boss_list_2[0][1][1]:
+                    boss_list_2[i][10] = 0 + boss_list_2[i][12] * 4
+                if player.pos[1] <= boss_list_2[0][1][1]:
+                    boss_list_2[i][10] = 2 + boss_list_2[i][12] * 4
 
+            if player.pos[0] <= boss_list_2[0][1][0]:
+                if player.pos[1] > boss_list_2[0][1][1]:
+                    boss_list_2[i][10] = 1 + boss_list_2[i][12] * 4
+                if player.pos[1] <= boss_list_2[0][1][1]:
+                    boss_list_2[i][10] = 3 + boss_list_2[i][12] * 4
     if 1 < boss_list_2[0][4] < 2:
         boss_list_2[0][4] += 0.01
         """ if 1.17 < boss_list_2[0][4] < 1.18:
