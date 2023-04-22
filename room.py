@@ -1,3 +1,4 @@
+# importations
 import pygame
 import ennemy
 import player
@@ -111,7 +112,7 @@ def room_1_0(n, _door):
     right = pygame.display.get_surface().get_size()[0] / 2 + x / 2 * 50
 
     # Donne la position initialie de 
-    pos_play = [[(x - 1) * 50 + left - 20, int(y / 2) * 50 + top],
+    pos_play = [[(x - 1) * 50 + left - 20, int(y / 2) * 50 ],
                 [int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10 - 50], [left + 20, int(y / 2) * 50 + top],
                 [int(x / 2) * 50 + left, top + 50]]
 
