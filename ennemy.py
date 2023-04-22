@@ -133,7 +133,7 @@ def spawn_boss_1(pos, pv):
     _img.append(
         pygame.transform.scale(pygame.image.load('picture/enemy/Dark_shadow/Dark_shadow_p2_to_p3_5.png'), [92, 80]))
     boss_list.append([_img, pos, pv, [False, False, False, False], -1, 0, 0, [0, 0], 0, [0, 0], 0])
-    boss_1_dial = [pygame.image.load('picture/ui/dialogue_boss_1_1.png').convert_alpha(), pygame.image.load('picture/ui/Etage -5 fin.pdf (3).png').convert_alpha()]
+    boss_1_dial = [pygame.image.load('picture/ui/dialogue_boss_1_1.png').convert_alpha(), pygame.transform.scale(pygame.image.load('picture/ui/Etage -5 fin.pdf (3).png').convert_alpha(), [368, 90])]
 def spawn_boss_2(pos, pv, is_reel  = True):
     _img = []
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_boss_1.png').convert_alpha(), [50, 45]))
@@ -893,7 +893,18 @@ def move_boss_1():
 
                     boss_list[i][3][3] = True
             boss_list[i][5] += 1 / 20
+    if  2 < boss_list[0][4] < 3:
+        boss_list[0][4] += 0.005
+        print(boss_list[0][4], 'e')
+        graphic_main.update.append(graphic_main.screen.blit(boss_1_dial[1], (pygame.display.get_surface().get_size()[0]/2 - 368/2, pygame.display.get_surface().get_size()[1]/5*4)))
+        if boss_list[0][4] > 3:
+            boss_list[0][4] = 3
+            graphic_main.update.append(pygame.draw.rect(graphic_main.screen, (0, 0, 0), pygame.Rect((pygame.display.get_surface().get_size()[0]/2 - 368/2, pygame.display.get_surface().get_size()[1]/5*4, 368, 62))))
+            boss_list = []
 
+            player.dash_unlocked = True
+            world.next_level()
+            player.xp += 100
 def move_boss_2():
     global boss_list_2
     if not boss_list_2:
@@ -2284,12 +2295,18 @@ def collision_with_weapon(a, strenght, knockback):
                     player.folie -= 120
 
                 elif boss_list[n][4] == 2:
+                    player.folie -= 70
+                    print(boss_list[0][4])
+                    if len(boss_list) == 1:
+                        boss_list[n][4] += 0.01
+
+                    else:
+                        del boss_list[n]
+
+                elif boss_list[n][4] == 3:
                     del boss_list[n]
                     player.folie -= 70
-                    if len(boss_list) == 0:
-                        player.dash_unlocked=True
-                        world.next_level()
-                        player.xp += 100
+
 
         n += 1
     n = 0

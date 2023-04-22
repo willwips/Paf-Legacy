@@ -279,7 +279,6 @@ def boucle():
                 cooldown = 60
                 cooldown_move = 0
 
-    print(is_movement)
 
     if is_movement < 0:
         is_movement = 0
@@ -755,7 +754,6 @@ def collision_with_final_boss():
 
     collision = False
     for i in ennemy.final_boss:
-        print(i)
         rectB = i[0][0].get_rect(center=(i[1][0], i[1][1]))
         rectB.h = 40
         rectB.w = 15
@@ -771,7 +769,6 @@ def collision_with_final_boss():
             collision = False
 
         if collision:
-            print('ezadeiuyg')
             if last_move_is_right:
                 pos[0] -= 10
             if last_move_is_left:
