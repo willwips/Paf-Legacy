@@ -24,18 +24,20 @@ trash_update = []
 timer = 0
 modifie = None
 
+
 def initialisation(full_screen=False):
     pygame.init()
-    pygame.mouse.set_visible(False) # Cache la sourie à l'écran
+    pygame.mouse.set_visible(False)  # Cache la sourie à l'écran
 
-    global screen # Variable de type globale
+    global screen  # Variable de type globale
 
-    if full_screen: # Affiche l'écran en plain écran
+    if full_screen:  # Affiche l'écran en plain écran
         screen = pygame.display.set_mode((0, 0), flags=pygame.FULLSCREEN)
-    else: # Affiche l'écran avec une largeur de 600 pixels et une hauteur de 400 pixels
+    else:  # Affiche l'écran avec une largeur de 600 pixels et une hauteur de 400 pixels
         screen = pygame.display.set_mode((600, 400))
-    pygame.display.flip() # Mise à jour de l'affichage complet à l'écran
+    pygame.display.flip()  # Mise à jour de l'affichage complet à l'écran
     return screen
+
 
 # Initialisation de variables
 current = 0
@@ -50,8 +52,9 @@ chest = {}
 """
 fonction boucle
 
-Dans cette fonction, on affiche les differentes images afin de déplacer le personnage.
-On utilise les variable p et old_p pour pouvoir stocker les coordonées des images et ainsi pour ne pas à avoir à update tout l'écran
+Dans cette fonction, on affiche les differentes images aussi bien des ennemies que du personnage ou de la salle On 
+utilise les variable p et old_p pour pouvoir stocker les coordonnées des images et ainsi pour ne pas à avoir à 
+actualiser tout l'écran 
 
 """
 
@@ -83,6 +86,7 @@ def boucle():
         update.extend(player.showpv())
         update.extend(player.showfolie())
         old_w = w
+        # affichent les enemies
         for i in ennemy.enemy_1_list:
             ennemy_pos = screen.blit(i[0], i[1])
             update.append(ennemy_pos)
@@ -109,7 +113,6 @@ def boucle():
             ennemy_pos = screen.blit(i[0], i[1])
             update.append(ennemy_pos)
         for i in ennemy.boss_list:
-
             ennemy_pos = screen.blit(i[0][i[10]], i[1])
             update.append(ennemy_pos)
         for i in ennemy.enemy_4_1_list:
@@ -135,34 +138,41 @@ def boucle():
             ennemy_pos = screen.blit(i[0][i[8]], i[1])
             update.append(ennemy_pos)
         w, a = weapon.loop(player.pos)
-
+        # affichent les différents éléments d'interface
         update.append(w)
         update.append(a)
         ennemy.boucle()
         r = pygame.rect.Rect(0, 0, 50, 50)
-        update.append(pygame.draw.rect(screen,(0, 0, 0), r))
-        r = pygame.rect.Rect(150, 0, 50, 50)
-        update.append(pygame.draw.rect(screen,(0, 0, 0), r))
-        update.append(screen.blit(pygame.font.SysFont(None ,30).render(str(int(player.mana)), 1, (0, 0, 255)), (10, 10)))
-        update.append(screen.blit(pygame.font.SysFont(None ,30).render(str(int(player.xp)), 1, (0, 255, 0)), (150, 10)))
-        update.append(screen.blit(pygame.font.SysFont(None ,30).render(str(int(player.lvl)), 1, (0, 255, 0)), (200, 10)))
-
+        update.append(pygame.draw.rect(screen, (0, 0, 0), r))
+        r = pygame.rect.Rect(150, 0, 100, 100)
+        update.append(pygame.draw.rect(screen, (0, 0, 0), r))
+        update.append(
+            screen.blit(pygame.font.SysFont(None, 30).render(str(int(player.mana)), 1, (0, 0, 255)), (10, 10)))
+        update.append(screen.blit(pygame.font.SysFont(None, 30).render(str(int(player.xp)), 1, (0, 255, 0)), (150, 10)))
+        update.append(
+            screen.blit(pygame.font.SysFont(None, 30).render(str(int(player.lvl)), 1, (0, 255, 0)), (200, 10)))
+        if player.dash_unlocked:
+            update.append(
+                screen.blit(pygame.font.SysFont(None, 30).render('dash débloqué', 1, (0, 255, 0)), (220, 10)))
+        # actualise l'écran
         pygame.display.update(update + old_update + trash_update)
         trash_update = []
+        # oblige le jeu à tourner en 60 fps
         clock.tick(60)
-        #print(clock.get_fps())
         if player.is_movement:
             current += 1
             current = current % len(frame)
         else:
             current = 0
     else:
+        # sert durant les transitions entre salle
         screen.fill((0, 0, 0))
         pygame.display.flip()
         clock.tick(60)
 
 
 
+# importe les différentes images du joueur
 def import_character_picture(nbr):
     player1 = pygame.image.load('picture/character/player1.png').convert_alpha()
     player2 = pygame.image.load('picture/character/player2.png').convert_alpha()
@@ -177,9 +187,12 @@ def import_character_picture(nbr):
         frame_front.append(player1)
     for i in range(0, nbr):
         frame_front.append(player3)
-    player1 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_1.png').convert_alpha(), (30*(47/56), 47))
-    player2 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_3.png').convert_alpha(), (31*(47/55), 47))
-    player3 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_2.png').convert_alpha(), (30*(47/56), 47))
+    player1 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_1.png').convert_alpha(),
+                                     (30 * (47 / 56), 47))
+    player2 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_3.png').convert_alpha(),
+                                     (31 * (47 / 55), 47))
+    player3 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_2.png').convert_alpha(),
+                                     (30 * (47 / 56), 47))
     global frame_L
     frame_L = []
     for i in range(0, nbr):
@@ -190,9 +203,12 @@ def import_character_picture(nbr):
         frame_L.append(player1)
     for i in range(0, nbr):
         frame_L.append(player3)
-    player1 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_1.png').convert_alpha(), (28*(47/54), 47))
-    player2 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_2.png').convert_alpha(), (28*(47/54), 47))
-    player3 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_3.png').convert_alpha(), (29*(47/55), 47))
+    player1 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_1.png').convert_alpha(),
+                                     (28 * (47 / 54), 47))
+    player2 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_2.png').convert_alpha(),
+                                     (28 * (47 / 54), 47))
+    player3 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_3.png').convert_alpha(),
+                                     (29 * (47 / 55), 47))
     global frame_R
     frame_R = []
     for i in range(0, nbr):
@@ -243,9 +259,12 @@ def import_character_picture(nbr):
     for i in range(0, nbr):
         frame_back_wounded.append(player3)
 
-    player1 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_wounded_1.png').convert_alpha(), (28*(47/54), 47))
-    player2 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_wounded_3.png').convert_alpha(), (28*(47/54), 47))
-    player3 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_wounded_2.png').convert_alpha(), (29*(47/55), 47))
+    player1 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_wounded_1.png').convert_alpha(),
+                                     (28 * (47 / 54), 47))
+    player2 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_wounded_3.png').convert_alpha(),
+                                     (28 * (47 / 54), 47))
+    player3 = pygame.transform.scale(pygame.image.load('picture/character/Player_L_wounded_2.png').convert_alpha(),
+                                     (29 * (47 / 55), 47))
     global frame_L_wounded
     frame_L_wounded = []
     for i in range(0, nbr):
@@ -257,10 +276,12 @@ def import_character_picture(nbr):
     for i in range(0, nbr):
         frame_L_wounded.append(player3)
 
-
-    player1 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_wounded_1.png').convert_alpha(), (28*(47/54), 47))
-    player2 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_wounded_2.png').convert_alpha(), (28*(47/54), 47))
-    player3 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_wounded_3.png').convert_alpha(), (29*(47/55), 47))
+    player1 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_wounded_1.png').convert_alpha(),
+                                     (28 * (47 / 54), 47))
+    player2 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_wounded_2.png').convert_alpha(),
+                                     (28 * (47 / 54), 47))
+    player3 = pygame.transform.scale(pygame.image.load('picture/character/Player_R_wounded_3.png').convert_alpha(),
+                                     (29 * (47 / 55), 47))
     global frame_R_wounded
     frame_R_wounded = []
     for i in range(0, nbr):
@@ -275,6 +296,6 @@ def import_character_picture(nbr):
     global frame
     frame = frame_back
     w, h = pygame.display.get_surface().get_size()
-    player.barre_de_folie =  pygame.transform.scale(pygame.image.load('picture/ui/img1.jpg'
-                                                                      ).convert_alpha(), [73 * w / 1920, 634 * h / 1080])
+    player.barre_de_folie = pygame.transform.scale(pygame.image.load('picture/ui/img1.jpg'
+                                                                     ).convert_alpha(), [73 * w / 1920, 634 * h / 1080])
     return frame

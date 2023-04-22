@@ -20,10 +20,10 @@ def import_weapon():
 # Initialisation de variables avec des valeurs initiales
 is_attacking = False
 angle = 0
-current_weapon = 'final_axe'
+current_weapon = 'curved_sword'
 modify_angle = 5
 
-# Fonction qui permet de faire rotationner l'image 
+# Fonction qui permet d'appliquer une rotation à l'image l'image
 def rotate(surface, angle, pivot, offset):
     rotated_image = pygame.transform.rotate(surface, -angle)
     rotated_offset = offset.rotate(angle)
@@ -31,6 +31,7 @@ def rotate(surface, angle, pivot, offset):
     return rotated_image, rect
 
 
+# fonction de boucle qui dépend de chaque
 def loop(pos_player):
     global angle
     global is_attacking
@@ -44,7 +45,9 @@ def loop(pos_player):
     if current_weapon == 'katana':
         return loop_katana(pos_player)
 
-
+# toutes les fonctions suivantes effectuent la même tâche :
+#   - appliqué une rotation sur l'arme si le joueur attaque
+#   - affiché l'arme au bon endroit par rapport au joueur
 def loop_final_axe(pos_player):
     global angle
     global is_attacking
