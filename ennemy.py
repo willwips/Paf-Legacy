@@ -8,6 +8,7 @@ import player
 import tiles
 import world
 
+# initialise les différentes listes
 enemy_1_list = []
 enemy_1_2_list = []
 enemy_2_1_list = []
@@ -33,6 +34,12 @@ boss_list_3 = []
 final_boss = []
 
 
+# les fonctions suivantes créent les enemies en les ajoutant aux listes correspondantes à chaques ennemie
+# les listes possède pour chaque index différent qu'il serait long de détailler mais de manière général:
+#   - l'index 0 possède les images correspondant à chaques ennemie
+#   - l'index 1 possède les coordonnées de l'enemie
+#   - l'index 3 possède les point de vie de l'enemie
+#   - enfin le reste des indexes n'est pas une géneralités mais on retrouve générallemnt un qui décroit au fûr et à mesure du temps pour les attaques
 def spawn_enemy_2_1(pos, img, pv):
     img_ = []
     n = 0
