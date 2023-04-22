@@ -943,6 +943,7 @@ def death():  # Réinitialisation de toutes les variables à la mort du joueur e
     global is_heal
     global timer
     global dead
+    world.level = 0
     pos = [0, 0]
     move_right = False
     move_left = False
