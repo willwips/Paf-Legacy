@@ -20,7 +20,7 @@ def import_weapon():
 # Initialisation de variables avec des valeurs initiales
 is_attacking = False
 angle = 0
-current_weapon = 'final_axe'
+current_weapon = 'curved_sword'
 modify_angle = 5
 
 # Fonction qui permet de faire rotationner l'image 
