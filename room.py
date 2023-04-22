@@ -63,7 +63,7 @@ def exp_gain(exp_points):
 
     # Fonction qui permet au joueur de gagner des points d'expérience
     def _exp_gain():
-        player.xp += a
+        player.exp += a
         player.possible_object_picture = None
         player.possible_object = player._pass
 
@@ -79,7 +79,7 @@ def popo():
     if n < 1/4:
         return heal(player.pv_max*0.4)
     elif n < 2/4:
-        return cure(player.folie*0.4)
+        return cure(50)
     elif n<3/4:
         return exp_gain(50)
     else:
