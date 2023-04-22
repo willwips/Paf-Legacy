@@ -31,7 +31,7 @@ lvl = 0
 resistance = 0.1
 cooldown = 0
 cooldown_move = 0
-dash_unlocked = False
+dash_unlocked = True
 dash = 0
 dash_invicibility_unlocked = False
 dash_inv = False
@@ -847,7 +847,7 @@ def lvl_up():
         strength += 1
         mana *= (mana_max+10)/mana_max
         mana_max+=10
-        resistance *= 1.5
+        resistance *= 1.05
         heal+=3
         lvl += 1
 
@@ -949,6 +949,7 @@ def death(): # Réinitialisation de toutes les variables à la mort du joueur et
     ennemy.boss_list_2 = []
     ennemy.enemy_1_list = []
     ennemy.enemy_1_2_list = []
+    ennemy.enemy_slime_list = []
 
 # Fonction qui affiche la barre de folie en l'actualisant
 def showfolie():

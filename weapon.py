@@ -9,9 +9,9 @@ weapon = {}
 def import_weapon():
     global weapon
     weapon['final_axe'] = (
-        pygame.transform.scale(pygame.image.load('picture/weapon/final_axe.png').convert_alpha(), (20, 40)), 15 , [17, 30], 11, 20)
+        pygame.transform.scale(pygame.image.load('picture/weapon/final_axe.png').convert_alpha(), (20, 40)), 15 , [17, 30], 11, 18)
     weapon['final_sword'] = (
-        pygame.transform.scale(pygame.image.load('picture/weapon/final_sword.png').convert_alpha(), (12, 70)), 7 , [0, 0], 8, 20)
+        pygame.transform.scale(pygame.image.load('picture/weapon/final_sword.png').convert_alpha(), (12, 70)), 7 , [0, 0], 8, 16)
     weapon['curved_sword'] = (
     pygame.transform.rotate(pygame.transform.scale(pygame.image.load('picture/weapon/Weapon-Curved.png').convert_alpha(),  (20, 60)), 0), 5 , [0, -50], 12, 10)
     weapon['katana'] = (
@@ -20,7 +20,7 @@ def import_weapon():
 # Initialisation de variables avec des valeurs initiales
 is_attacking = False
 angle = 0
-current_weapon = 'final_sword'
+current_weapon = 'final_axe'
 modify_angle = 5
 
 # Fonction qui permet de faire rotationner l'image 
