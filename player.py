@@ -879,9 +879,9 @@ def lvl_up():
     global heal
     global lvl
     # vérifie que le joueur est assez d'xp
-    if xp >= 200 + 4 * lvl ** 2 + 6 * lvl:
+    if xp >= 150 + 4 * lvl ** 2 + 6 * lvl:
         # augmente les différentes statistiques
-        xp -= 200 + 4 ** lvl * 2 + 6 * lvl
+        xp -= 150 + 4 ** lvl * 2 + 6 * lvl
         pv *= (pv_max + 10) / pv_max
         pv_max += 10
         strength += 1

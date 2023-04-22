@@ -1748,7 +1748,6 @@ def move_boss_final():
             final_boss[0][1][1] += final_boss[0][11][1] * 2 + math.cos(final_boss[0][5] / 5) * 10
         if random.random() < 0.005:
             final_boss[0][5] = 60
-    print(final_boss[0][4])
     if 0 < final_boss[0][4] < 1:
         final_boss[0][4] += 0.005
         graphic_main.update.append(graphic_main.screen.blit(boss_final_dial[1], (pygame.display.get_surface().get_size()[0] / 2 - 368 / 2, pygame.display.get_surface().get_size()[1] / 5 * 4)))
