@@ -66,7 +66,8 @@ while True:
                 start = True
                 break
         graphic_main.clock.tick(10)
-    elif player.win:
+    elif player._win:
+        print(player._win)
         graphic_main.screen.blit(win_screen, (0, 0))
         pygame.display.update()
         for event in pygame.event.get():

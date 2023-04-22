@@ -50,7 +50,7 @@ heal_duration_max = 120
 is_heal = False
 timer = 60
 dead = False
-win = True
+_win = False
 
 # boucle permettant de bouger le personage
 def boucle():
@@ -1029,7 +1029,7 @@ def win():  # Réinitialisation de toutes les variables à la mort du joueur et 
     global heal_duration_max
     global is_heal
     global timer
-    global win
+    global _win
     pos = [0, 0]
     move_right = False
     move_left = False
