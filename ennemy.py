@@ -734,6 +734,9 @@ def move_boss_1():
     if not boss_list:
         return
     if -1 <= boss_list[0][4] < 0:
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('picture/musique/musique_boss.mp3')
+        pygame.mixer.music.play(loops=-1)
         boss_list[0][4] += 0.005
         graphic_main.update.append(graphic_main.screen.blit(boss_1_dial[0], (
         pygame.display.get_surface().get_size()[0] / 2 - 368 / 2, pygame.display.get_surface().get_size()[1] / 5 * 4)))
@@ -940,6 +943,9 @@ def move_boss_2():
     if not boss_list_2:
         return
     if -1 <= boss_list_2[0][4] < 0:
+        pygame.mixer.music.stop()
+        #pygame.mixer.music.load('picture/musique/musique_boss_2.mp3')
+        #pygame.mixer.music.play(loops=-1)
         boss_list_2[0][4] += 0.005
         graphic_main.update.append(graphic_main.screen.blit(boss_2_dial[0], (
         pygame.display.get_surface().get_size()[0] / 2 - 368 / 2, pygame.display.get_surface().get_size()[1] / 5 * 4)))
@@ -1323,6 +1329,9 @@ def move_boss_3():
     if not boss_list_3:
         return
     if -1 <= boss_list_3[0][4] < 0:
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('picture/musique/musique_boss_3.mp3')
+        pygame.mixer.music.play(loops=-1)
         boss_list_3[0][4] += 0.005
         graphic_main.update.append(graphic_main.screen.blit(boss_3_dial[0], (pygame.display.get_surface().get_size()[0] / 2 - 368 / 2, pygame.display.get_surface().get_size()[1] / 5 * 4)))
         if boss_list_3[0][4] > 0:
@@ -1654,6 +1663,9 @@ def move_boss_final():
     if not final_boss:
         return
     if -1 <= final_boss[0][4] < 0:
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('picture/musique/musique_boss_final.mp3')
+        pygame.mixer.music.play(loops=-1)
         final_boss[0][4] += 0.005
         graphic_main.update.append(graphic_main.screen.blit(boss_final_dial[0], (pygame.display.get_surface().get_size()[0] / 2 - 368 / 2, pygame.display.get_surface().get_size()[1] / 5 * 4)))
         if final_boss[0][4] > 0:
@@ -2035,6 +2047,9 @@ def move_boss_4():
     if not boss_list_4:
         return
     if -1 <= boss_list_4[0][4] < 0:
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('picture/musique/musique_boss_4.mp3')
+        pygame.mixer.music.play(loops=-1)
         boss_list_4[0][4] += 0.0025
         graphic_main.update.append(graphic_main.screen.blit(boss_4_dial[0], (
         pygame.display.get_surface().get_size()[0] / 2 - 368 / 2, pygame.display.get_surface().get_size()[1] / 5 * 4)))

@@ -6048,7 +6048,7 @@ def room_4_0(n, _door):
         # ennemy.spawn_enemy_4_2([left + 427, top + 79], 'picture/enemy/snipe/mob_1.png', 20)
         # ennemy.spawn_boss_4([left + 427, top + 79], 200)
         # ennemy.spawn_enemy_2_2([left + 427, top + 79], ['picture/enemy/spider/araignee.png'], 20)
-        ennemy.spawn_boss_2([left + 427, top + 79], 80)
+        #ennemy.spawn_boss_2([left + 427, top + 79], 80)
 
         # Affiche les portes des quatres cotés de l'écran en fonction des éléments de la variable _door
         if _door[0]:
