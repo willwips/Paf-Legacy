@@ -9,7 +9,7 @@ import weapon
 import tiles
 import world
 
-# initialisation des module
+# initialisation des modules
 screen = graphic_main.initialisation(True)
 tiles.load_tile()
 frame = graphic_main.import_character_picture(6)
