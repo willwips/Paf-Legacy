@@ -40,6 +40,9 @@ final_boss = []
 #   - l'index 1 possède les coordonnées de l'enemie
 #   - l'index 3 possède les point de vie de l'enemie
 #   - enfin le reste des indexes n'est pas une géneralités mais on retrouve générallemnt un qui décroit au fûr et à mesure du temps pour les attaques
+#   - un qui stock l'image actuelle
+#   - un qui stock le recule
+#...
 def spawn_enemy_2_1(pos, img, pv):
     img_ = []
     n = 0
