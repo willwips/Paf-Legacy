@@ -1194,11 +1194,11 @@ def move_boss_2():
         graphic_main.update.append(graphic_main.screen.blit(boss_2_dial[1], (
         pygame.display.get_surface().get_size()[0] / 2 - 368 / 2, pygame.display.get_surface().get_size()[1] / 5 * 4)))
         boss_list_2[0][4] += 0.005
-        boss_list_2 = []
         if boss_list_2[0][4] >= 3:
             player.dash_invicibility_unlocked = True
             world.next_level()
             player.xp += 120
+            boss_list_2 = []
 
 
 def move_ennemi_slime():

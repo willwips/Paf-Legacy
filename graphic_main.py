@@ -150,7 +150,7 @@ def boucle():
             screen.blit(pygame.font.SysFont(None, 30).render(str(int(player.mana)), 1, (0, 0, 255)), (10, 10)))
         update.append(screen.blit(pygame.font.SysFont(None, 30).render(str(int(player.xp)), 1, (0, 255, 0)), (150, 10)))
         update.append(
-            screen.blit(pygame.font.SysFont(None, 30).render(str(int(player.lvl)), 1, (0, 255, 0)), (200, 10)))
+            screen.blit(pygame.font.SysFont(None, 30).render('lvl : '+str(int(player.lvl)), 1, (0, 255, 0)), (200, 10)))
         if player.dash_unlocked:
             update.append(
                 screen.blit(pygame.font.SysFont(None, 30).render('dash débloqué', 1, (0, 255, 0)), (220, 10)))
