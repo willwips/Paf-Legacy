@@ -14,14 +14,14 @@ pos_p = None
 def create_floor(_level):
     global floor
     floor = []
-    _level = 0
+    _level = 1
     if _level == 0: # Si le joueur est au premier niveau c'est ce dernier qui va être affiché
         first_room = room.room_1_0 # Première salle du jeu
         liste_level = [room.room_1_1, room.room_1_2, room.room_1_3, room.room_1_4, room.room_1_5, room.room_1_6, room.room_1_7, room.room_1_8, room.room_1_9, room.room_1_10, room.room_1_11, room.room_1_12] # Salles qui composent le niveau
         boss_room = room.room_boss_1 # Salle du boss
         pos_boss = [9,random.randint(0, 9)] # Permet de positionner la salle du boss
     if _level == 1: # Même procédé que les autres niveaux pour le niveau 2
-        first_room = room.room_2_0
+        first_room = room.room_boss_2
         liste_level = [room.room_2_1, room.room_2_2, room.room_2_3, room.room_2_4, room.room_2_5, room.room_2_6, room.room_2_7, room.room_2_8, room.room_2_9, room.room_2_10, room.room_2_11, room.room_2_12]
         boss_room = room.room_boss_2
         pos_boss = [9, random.randint(0, 9)]
@@ -37,7 +37,7 @@ def create_floor(_level):
         pos_boss = [9, random.randint(0, 9)]
     if _level == 4: # Même procédé que les autres niveaux pour le niveau final (5)
         player.xp = 1000 # Redéfini les ponts d'expérience du joueur
-        first_room = room.room_boss_5
+        first_room = room.room_5_0
         liste_level = [room.room_boss_5]
         pos_boss = None
     for i in range(10): # Permet de créer le niveau
