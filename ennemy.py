@@ -15,6 +15,8 @@ enemy_2_2_list = []
 enemy_3_1_list = []
 
 boss_1_dial = []
+boss_2_dial = []
+
 boss_list = []
 projectile_list = []
 enemy_slime_list = []
@@ -135,12 +137,15 @@ def spawn_boss_1(pos, pv):
     boss_list.append([_img, pos, pv, [False, False, False, False], -1, 0, 0, [0, 0], 0, [0, 0], 0])
     boss_1_dial = [pygame.image.load('picture/ui/dialogue_boss_1_1.png').convert_alpha(), pygame.transform.scale(pygame.image.load('picture/ui/Etage -5 fin.pdf (3).png').convert_alpha(), [368, 90])]
 def spawn_boss_2(pos, pv, is_reel  = True):
+    global boss_2_dial
     _img = []
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_boss_1.png').convert_alpha(), [50, 45]))
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_boss_2.png').convert_alpha(), [50, 45]))
     _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_boss_3.png').convert_alpha(), [50, 45]))
 
-    boss_list_2.append([_img, pos, pv, [False, False, False, False], 0, 0, 0, [0, 0], 0, [0, 0], 0, [0, 0], is_reel])
+    boss_list_2.append([_img, pos, pv, [False, False, False, False], -1, 0, 0, [0, 0], 0, [0, 0], 0, [0, 0], is_reel])
+    boss_2_dial = [pygame.transform.scale(pygame.image.load('picture/ui/Etage -4 d�but.pdf (3).png').convert_alpha(), [368, 90]), pygame.transform.scale(pygame.image.load('picture/ui/Etage -4 fin.pdf (3).png').convert_alpha(), [368, 90])]
+
 
 def spawn_boss_3(pos, pv):
     _img = []
@@ -909,6 +914,15 @@ def move_boss_2():
     global boss_list_2
     if not boss_list_2:
         return
+    if  -1 <= boss_list_2[0][4] < 0:
+        boss_list_2[0][4] += 0.005
+        graphic_main.update.append(graphic_main.screen.blit(boss_2_dial[0], (pygame.display.get_surface().get_size()[0]/2 - 368/2, pygame.display.get_surface().get_size()[1]/5*4)))
+        if boss_list_2[0][4] > 0:
+            boss_list_2[0][4] = 0
+            if len(boss_list_2) > 1:
+                boss_list_2 = [boss_list_2[0]]
+            graphic_main.update.append(pygame.draw.rect(graphic_main.screen, (0, 0, 0), pygame.Rect((pygame.display.get_surface().get_size()[0]/2 - 368/2, pygame.display.get_surface().get_size()[1]/5*4, 368, 90))))
+
     if boss_list_2[0][4] == 0:
         rectB = boss_list_2[0][0][0].get_rect(center=boss_list_2[0][1])
         rectB.h = 40
@@ -920,26 +934,7 @@ def move_boss_2():
         if boss_list_2[0][6] % 2 == 0 and boss_list_2[0][6] > 0:
 
             boss_list_2[0][1][0] += boss_list_2[0][7][0]
-        if False:
-            if (boss_list_2[0][1][0] - player.pos[0]) >= 0:
-                boss_list_2[0][1][0] += abs((boss_list_2[0][1][0] - player.pos[0]) / (
-                        abs(boss_list_2[0][1][1] - player.pos[1]) + abs((boss_list_2[0][1][0] - player.pos[0]))))
 
-
-            elif (boss_list_2[0][1][0] - player.pos[0]) <= 0:
-                boss_list_2[0][1][0] -= abs((boss_list_2[0][1][0] - player.pos[0]) / (
-                        abs(boss_list_2[0][1][1] - player.pos[1]) + abs(boss_list_2[0][1][0] - player.pos[0])))
-
-            if (boss_list_2[0][1][1] - player.pos[1]) >= 0:
-                boss_list_2[0][1][1] += abs((boss_list_2[0][1][1] - player.pos[1]) / (
-                        abs(boss_list_2[0][1][1] - player.pos[1]) + abs(boss_list_2[0][1][0] - player.pos[0])))
-            elif (boss_list_2[0][1][1] - player.pos[1]) <= 0:
-                boss_list_2[0][1][1] -= abs((boss_list_2[0][1][1] - player.pos[1]) / (
-                        abs(boss_list_2[0][1][1] - player.pos[1]) + abs(boss_list_2[0][1][0] - player.pos[0])))
-
-        """        if dist < 100 and  -10 >= boss_list_2[0][5]  >= -20:
-            boss_list_2[0][1][0] = random.randrange(graphic_main.left +50, graphic_main.right-50)
-            boss_list_2[0][1][1] = random.randrange(graphic_main.top+50, graphic_main.bottom-50)"""
         if boss_list_2[0][5] < 0:
             boss_list_2[0][6] = True
         if boss_list_2[0][6] == True:
@@ -1128,7 +1123,14 @@ def move_boss_2():
 
                 boss_list_2[0][11] = [0, 0]
                 boss_list_2[0][5] = 20
-
+    if 2 < boss_list_2[0][4] < 3:
+        print('a')
+        graphic_main.update.append(graphic_main.screen.blit(boss_2_dial[1], (pygame.display.get_surface().get_size()[0]/2 - 368/2, pygame.display.get_surface().get_size()[1]/5*4)))
+        boss_list_2[0][4] += 0.005
+        if boss_list_2[0][4] >=3:
+            player.dash_invicibility_unlocked = True
+            world.next_level()
+            player.xp += 120
 
 def move_ennemi_slime():
     global enemy_slime_list
@@ -2464,15 +2466,12 @@ def collision_with_weapon(a, strenght, knockback):
                         boss_list_2 = [boss_list_2[0]]
                         break
                     elif boss_list_2[n][4] == 2:
-                        del boss_list_2[n]
-                        boss_list_2 = []
+                        boss_list_2 = [boss_list_2[0]]
                         player.folie -= 70
-                        if len(boss_list) == 0:
-                            player.dash_invicibility_unlocked=True
-                            world.next_level()
-                            player.xp += 120
+                        boss_list_2[n][4] += 0.01
 
-                            break
+
+                        break
 
                 else:
                     del boss_list_2[n]

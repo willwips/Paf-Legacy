@@ -20,7 +20,7 @@ def import_weapon():
 # Initialisation de variables avec des valeurs initiales
 is_attacking = False
 angle = 0
-current_weapon = 'katana'
+current_weapon = 'final_sword'
 modify_angle = 5
 
 # Fonction qui permet de faire rotationner l'image 
@@ -28,7 +28,6 @@ def rotate(surface, angle, pivot, offset):
     rotated_image = pygame.transform.rotate(surface, -angle)
     rotated_offset = offset.rotate(angle)
     rect = rotated_image.get_rect(center=pivot + rotated_offset)
-    graphic_main.update.append(pygame.draw.circle(graphic_main.screen, (255, 0,0), pivot, 1))
     return rotated_image, rect
 
 
