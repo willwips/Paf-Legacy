@@ -956,8 +956,8 @@ def move_boss_2():
         return
     if -1 <= boss_list_2[0][4] < 0:
         pygame.mixer.music.stop()
-        #pygame.mixer.music.load('picture/musique/musique_boss_2.mp3')
-        #pygame.mixer.music.play(loops=-1)
+        pygame.mixer.music.load('picture/musique/musique_boss_2.mp3')
+        pygame.mixer.music.play(loops=-1)
         boss_list_2[0][4] += 0.005
         graphic_main.update.append(graphic_main.screen.blit(boss_2_dial[0], (
         pygame.display.get_surface().get_size()[0] / 2 - 368 / 2, pygame.display.get_surface().get_size()[1] / 5 * 4)))
@@ -1194,6 +1194,7 @@ def move_boss_2():
         graphic_main.update.append(graphic_main.screen.blit(boss_2_dial[1], (
         pygame.display.get_surface().get_size()[0] / 2 - 368 / 2, pygame.display.get_surface().get_size()[1] / 5 * 4)))
         boss_list_2[0][4] += 0.005
+        boss_list_2 = []
         if boss_list_2[0][4] >= 3:
             player.dash_invicibility_unlocked = True
             world.next_level()
