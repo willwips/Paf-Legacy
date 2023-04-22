@@ -191,7 +191,7 @@ def room_1_0(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -334,7 +334,7 @@ def room_1_1(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -462,7 +462,7 @@ def room_1_2(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -591,7 +591,7 @@ def room_1_3(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -721,7 +721,7 @@ def room_1_4(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -847,7 +847,7 @@ def room_1_5(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -1003,7 +1003,7 @@ def room_1_6(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -1131,7 +1131,7 @@ def room_1_7(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -1264,7 +1264,7 @@ def room_1_8(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -1397,7 +1397,7 @@ def room_1_9(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -1521,7 +1521,7 @@ def room_1_10(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -1654,7 +1654,7 @@ def room_1_11(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -1782,7 +1782,7 @@ def room_1_12(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -2031,7 +2031,7 @@ def room_2_0(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -2170,7 +2170,7 @@ def room_2_1(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -2321,7 +2321,7 @@ def room_2_2(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -2494,7 +2494,7 @@ def room_2_3(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -2638,7 +2638,7 @@ def room_2_4(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -2777,7 +2777,7 @@ def room_2_5(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -2937,7 +2937,7 @@ def room_2_6(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -3073,7 +3073,7 @@ def room_2_7(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -3210,7 +3210,7 @@ def room_2_8(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -3368,7 +3368,7 @@ def room_2_9(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -3510,7 +3510,7 @@ def room_2_10(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -3660,7 +3660,7 @@ def room_2_11(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -3796,7 +3796,7 @@ def room_2_12(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -3931,7 +3931,7 @@ def room_boss_2(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -4068,7 +4068,7 @@ def room_3_0(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -4212,7 +4212,7 @@ def room_3_1(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -4350,7 +4350,7 @@ def room_3_2(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -4492,7 +4492,7 @@ def room_3_3(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -4632,7 +4632,7 @@ def room_3_4(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -4772,7 +4772,7 @@ def room_3_5(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -4920,7 +4920,7 @@ def room_3_6(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -5065,7 +5065,7 @@ def room_3_7(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -5203,7 +5203,7 @@ def room_3_8(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -5341,7 +5341,7 @@ def room_3_9(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -5480,7 +5480,7 @@ def room_3_10(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -5622,7 +5622,7 @@ def room_3_11(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -5768,7 +5768,7 @@ def room_3_12(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -5903,7 +5903,7 @@ def room_boss_3(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -6050,7 +6050,7 @@ def room_4_0(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -6188,7 +6188,7 @@ def room_4_1(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -6335,7 +6335,7 @@ def room_4_2(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -6474,7 +6474,7 @@ def room_4_3(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -6614,7 +6614,7 @@ def room_4_4(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -6752,7 +6752,7 @@ def room_4_5(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -6906,7 +6906,7 @@ def room_4_6(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -7045,7 +7045,7 @@ def room_4_7(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -7182,7 +7182,7 @@ def room_4_8(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -7317,7 +7317,7 @@ def room_4_9(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -7452,7 +7452,7 @@ def room_4_10(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -7591,7 +7591,7 @@ def room_4_10(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -7736,7 +7736,7 @@ def room_4_11(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -7876,7 +7876,7 @@ def room_4_12(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -8012,7 +8012,7 @@ def room_boss_4(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -8151,7 +8151,7 @@ def room_5_0(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
@@ -8287,7 +8287,7 @@ def room_boss_5(n, _door):
             door.append(pygame.Rect(0, 0, 0, 0))  # Porte 1
 
         if _door[1]:
-            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 10, 50, 50))  # Porte 2
+            door.append(pygame.Rect(int(x / 2) * 50 + left, y - 1 * 50 + bottom - 20, 50, 50))  # Porte 2
         else:
             door.append(pygame.Rect(0, 0, 0, 0))
         if _door[2]:
