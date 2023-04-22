@@ -156,12 +156,23 @@ def spawn_boss_1(pos, pv):
 def spawn_boss_2(pos, pv, is_reel=True):
     global boss_2_dial
     _img = []
-    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_boss_1.png').convert_alpha(),
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_1_True.png').convert_alpha(),
                                        [50, 45]))
-    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_boss_2.png').convert_alpha(),
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_2_True.png').convert_alpha(),
                                        [50, 45]))
-    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_boss_3.png').convert_alpha(),
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_3_True.png').convert_alpha(),
                                        [50, 45]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_4_True.png').convert_alpha(),
+                                       [50, 45]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_1_False.png').convert_alpha(),
+                                       [50, 45]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_2_False.png').convert_alpha(),
+                                       [50, 45]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_3_False.png').convert_alpha(),
+                                       [50, 45]))
+    _img.append(pygame.transform.scale(pygame.image.load('picture/enemy/spider boss/spider_4_False.png').convert_alpha(),
+                                       [50, 45]))
+
 
     boss_list_2.append([_img, pos, pv, [False, False, False, False], -1, 0, 0, [0, 0], 0, [0, 0], 0, [0, 0], is_reel])
     boss_2_dial = [
@@ -1003,6 +1014,17 @@ def move_boss_2():
                 if boss_list_2[0][9] == 0:
                     boss_list_2[0][1] = [boss_list_2[0][11][0], boss_list_2[0][11][1]]
                     boss_list_2[0][5] = 30
+            if player.pos[0] > boss_list_2[0][1][0]:
+                if player.pos[1] > boss_list_2[0][1][1]:
+                    boss_list_2[0][10] = 0
+                if player.pos[1] <= boss_list_2[0][1][1]:
+                    boss_list_2[0][10] = 1
+
+            if player.pos[0] <= boss_list_2[0][1][0]:
+                if player.pos[1] > boss_list_2[0][1][1]:
+                    boss_list_2[0][10] = 0
+                if player.pos[1] <= boss_list_2[0][1][1]:
+                    boss_list_2[0][10] = 1
     if 0 < boss_list_2[0][4] < 1:
         boss_list_2[0][4] += 0.01
 
