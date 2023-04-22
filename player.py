@@ -882,6 +882,8 @@ def lvl_up():
     if xp >= 150 + 4 * lvl ** 2 + 6 * lvl:
         # augmente les différentes statistiques
         xp -= 150 + 4 ** lvl * 2 + 6 * lvl
+        if xp < 0:
+            xp = 0
         pv *= (pv_max + 10) / pv_max
         pv_max += 10
         strength += 1
