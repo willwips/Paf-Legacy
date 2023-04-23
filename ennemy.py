@@ -2036,21 +2036,21 @@ def move_ennemi_3_1():
 
             if enemy_3_1_list[i][7] == -40:
                 spawm_projectile([enemy_3_1_list[i][1][0] + 30, enemy_3_1_list[i][1][1] + 28], 10,
-                                 [5, 0], (75, 0, 130), enemy_3_1_list[i][9][4])
+                                 [5, 0], (75, 0, 130), enemy_3_1_list[i][9][4], [15, 0])
                 spawm_projectile([enemy_3_1_list[i][1][0] + 30, enemy_3_1_list[i][1][1] + 28], 10,
-                                 [5, 5], (75, 0, 130), enemy_3_1_list[i][9][3])
+                                 [5, 5], (75, 0, 130), enemy_3_1_list[i][9][3], [15, 0])
                 spawm_projectile([enemy_3_1_list[i][1][0] + 30, enemy_3_1_list[i][1][1] + 28], 10,
-                                 [0, 5], (75, 0, 130), enemy_3_1_list[i][9][2])
+                                 [0, 5], (75, 0, 130), enemy_3_1_list[i][9][2], [15, 0])
                 spawm_projectile([enemy_3_1_list[i][1][0] + 30, enemy_3_1_list[i][1][1] + 28], 10,
-                                 [-5, 5], (75, 0, 130), enemy_3_1_list[i][9][1])
+                                 [-5, 5], (75, 0, 130), enemy_3_1_list[i][9][1], [15, 0])
                 spawm_projectile([enemy_3_1_list[i][1][0] + 30, enemy_3_1_list[i][1][1] + 28], 10,
-                                 [-5, 0], (75, 0, 130), enemy_3_1_list[i][9][0])
+                                 [-5, 0], (75, 0, 130), enemy_3_1_list[i][9][0], [15, 0])
                 spawm_projectile([enemy_3_1_list[i][1][0] + 30, enemy_3_1_list[i][1][1] + 28], 10,
-                                 [-5, -5], (75, 0, 130), enemy_3_1_list[i][9][7])
+                                 [-5, -5], (75, 0, 130), enemy_3_1_list[i][9][7], [15, 0])
                 spawm_projectile([enemy_3_1_list[i][1][0] + 30, enemy_3_1_list[i][1][1] + 28], 10,
-                                 [0, -5], (75, 0, 130), enemy_3_1_list[i][9][6])
+                                 [0, -5], (75, 0, 130), enemy_3_1_list[i][9][6], [15, 0])
                 spawm_projectile([enemy_3_1_list[i][1][0] + 30, enemy_3_1_list[i][1][1] + 28], 10,
-                                 [5, -5], (75, 0, 130), enemy_3_1_list[i][9][5])
+                                 [5, -5], (75, 0, 130), enemy_3_1_list[i][9][5], [15, 0])
                 enemy_3_1_list[i][6] = False
                 enemy_3_1_list[i][8] = 0
                 enemy_3_1_list[i][7] = 120
