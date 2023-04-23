@@ -54,6 +54,7 @@ _win = False
 
 # boucle permettant de bouger le personage
 def boucle():
+    print(world.coo)
     global pos
     global move_down
     global move_right
