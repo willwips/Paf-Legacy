@@ -5850,7 +5850,7 @@ def room_boss_3(n, _door):
 
                 elif j == int(y / 2) and i == 0:
                     if _door[2]:
-                        room[i].append(tiles.blit_door_blue_4(i * 50 + left, j * 50 + top,
+                        room[i].append(tiles.blit_door_red_4(i * 50 + left, j * 50 + top,
                                                               tiles.blit_wall_left_mid(i * 50 + left,
                                                                                        j * 50 + top)))  # Porte 3
                     else:
@@ -5858,7 +5858,7 @@ def room_boss_3(n, _door):
 
                 elif j == 0 and i == int(x / 2):
                     if _door[3]:
-                        room[i].append(tiles.blit_door_blue_2(i * 50 + left, j * 50 + top,
+                        room[i].append(tiles.blit_door_red_2(i * 50 + left, j * 50 + top,
                                                               tiles.blit_wall_top_mid(i * 50 + left,
                                                                                       j * 50 + top)))  # Porte 4
                     else:
