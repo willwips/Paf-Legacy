@@ -224,7 +224,7 @@ def room_1_0(n, _door):
                 room[int((i.left - left) / 50) + 1][int((i.top - top) / 50) + 1]()
             except:
                 pass
-        graphic_main.update.append(graphic_main.screen.blit(tuto, [left + left/3, top + top/3]))
+        graphic_main.update.append(graphic_main.screen.blit(tuto,[right  + (left-right)/2 - 715/2, bottom + (top-bottom)/2 - 150/2]))
 
 
     # Retourne les éléments suivant
