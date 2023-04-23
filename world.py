@@ -47,7 +47,6 @@ def create_floor(_level):
         pos_boss = [9, random.randint(0, 9)]
     if _level == 4:
         pygame.mixer.music.stop()
-        player.xp = 1000
         first_room = room.room_5_0
         liste_level = [room.room_boss_5]
         pos_boss = None
