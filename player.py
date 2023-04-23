@@ -996,6 +996,8 @@ def death():  # Réinitialisation de toutes les variables à la mort du joueur e
     ennemy.enemy_1_list = []
     ennemy.enemy_1_2_list = []
     ennemy.enemy_slime_list = []
+    weapon.current_weapon = 'curved_sword'
+
 
 def win():  # Réinitialisation de toutes les variables à la mort du joueur et la fonction est activé
     global pos
