@@ -13,7 +13,6 @@ pygame.mixer.init()
 def create_floor(_level):
     global floor
     floor = []
-    _level = 2
     # pour chaque niveau, met les différentes salles dans un labyrinthe et lance la musique de la zone
     if _level == 0:
         pygame.mixer.music.load('picture/musique/musique_zone_1.mp3')
