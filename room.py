@@ -99,6 +99,7 @@ def room_1_0(n, _door):
     room = []
     door = []
     chest = {}
+    tuto = pygame.image.load('picture/ui/output-onlinepngtools_1.png').convert_alpha()
 
     tiles._chest = [False]  # Liste qui permet ou non la création de coffre
 
@@ -223,6 +224,8 @@ def room_1_0(n, _door):
                 room[int((i.left - left) / 50) + 1][int((i.top - top) / 50) + 1]()
             except:
                 pass
+        graphic_main.update.append(graphic_main.screen.blit(tuto, [left + left/3, top + top/3]))
+
 
     # Retourne les éléments suivant
     return create, update, door, top, bottom, left, right, pos_play[n], chest
